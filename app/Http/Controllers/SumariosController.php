@@ -14,7 +14,7 @@ class SumariosController extends Controller
 
         $this->middleware('can:CrearSumario')->only('create');
         $this->middleware('can:CrearSumario')->only('create');
-        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
+       
     }     
 
     public function index(){
