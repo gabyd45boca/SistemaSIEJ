@@ -8,6 +8,12 @@ use App\Models\Infractor;
 
 class SumarisimasController extends Controller
 {
+
+  public function __construct(){
+
+    $this->middleware('can:CrearSumarisima')->only('create');
+   
+}     
     public function index(){
 
        // $sumarisimas = Sumarisima::all();
