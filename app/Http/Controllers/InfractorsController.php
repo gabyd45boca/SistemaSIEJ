@@ -7,6 +7,15 @@ use App\Models\Infractor;
 
 class InfractorsController extends Controller
 {
+      public function __construct(){
+
+        $this->middleware('can:AdministracionInfractores')->only('index');
+        $this->middleware('can:AdministracionInfractores')->only('create');
+        $this->middleware('can:AdministracionInfractores')->only('edit');
+        $this->middleware('can:AdministracionInfractores')->only('destroy');
+
+      
+    }
     public function index(){
 
         $infractores = Infractor::all();

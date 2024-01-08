@@ -55,7 +55,10 @@
                           <a href="{{ route ('sumarisimas.show', $sumarisima->id) }}" class="btn btn-primary btn-sm" > Editar </a>
                           @csrf
                           @method('delete')
+
+                          @can('EliminarSumarisima') 
                           <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+                          @endcan
                         </form>   
                     </td>   
             </tr>

@@ -13,7 +13,8 @@ class SumariosController extends Controller
     public function __construct(){
 
         $this->middleware('can:CrearSumario')->only('create');
-       
+        $this->middleware('can:EliminarSumario')->only('destroy');
+
        
     }     
 

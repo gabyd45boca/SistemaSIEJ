@@ -12,12 +12,13 @@ class SumarisimasController extends Controller
   public function __construct(){
 
     $this->middleware('can:CrearSumarisima')->only('create');
+    $this->middleware('can:EliminarSumarisima')->only('create');
    
 }     
     public function index(){
 
-       // $sumarisimas = Sumarisima::all();
-        $sumarisimas = Sumarisima::with(['infractors'])->get();
+       $sumarisimas = Sumarisima::all();
+        //$sumarisimas = Sumarisima::with(['infractors'])->get();
        
         return view('sumarisimas',compact('sumarisimas'));
     }

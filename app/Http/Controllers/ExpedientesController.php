@@ -7,6 +7,16 @@ use App\Models\Expediente;
 
 class ExpedientesController extends Controller
 {
+    public function __construct(){
+
+        $this->middleware('can:AdministracionExpedientes')->only('index');
+        $this->middleware('can:AdministracionExpedientes')->only('create');
+        $this->middleware('can:AdministracionExpedientes')->only('edit');
+        $this->middleware('can:AdministracionExpedientes')->only('destroy');
+    
+       
+    }
+
     public function index(){
 
         $expedientes = Expediente::all();

@@ -7,6 +7,16 @@ use Spatie\Permission\Models\Permission;
 
 class PermisoController extends Controller
 {
+    public function __construct(){
+
+        $this->middleware('can:AdministrarPermisos')->only('index');
+        $this->middleware('can:AdministrarPermisos')->only('create');
+        $this->middleware('can:AdministrarPermisos')->only('edit');
+        $this->middleware('can:AdministrarPermisos')->only('destroy');
+       
+       
+    }    
+   
    
     public function index()
     {
