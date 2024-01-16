@@ -117,7 +117,7 @@
               <x-adminlte-input type="hidden" name="concluido_DGRRHH"  value="{{$sumario->concluido_DGRRHH}}"/>
 
               </div>
-
+            <div class="table-responsive text-nowrap">
               <table id="sumarios" class="table table-stripted shadow-lg mt-4" with-buttons>
               <thead class="bg-dark text-white">
               <tr>
@@ -157,6 +157,7 @@
               </tr>
               </tbody>
               </table>
+            </div>  
               <br>
               <br>                  
                   @can('EditarSumarioDGAJ')
