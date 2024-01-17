@@ -12,8 +12,9 @@
     <style>
         body {
             font-family: 'Nunito', sans-serif;
-            background-image: url('url_de_tu_imagen.jpg'); /* Cambia 'url_de_tu_imagen.jpg' por la URL de tu imagen */
-            background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+            background-image: url('{{ asset('vendor/adminlte/dist/img/escudo_policia.png') }}');
+            background-size: contain; /* Cambiado a 'contain' para mantener el tamaño original */
+            background-repeat: no-repeat; /* Evita la repetición de la imagen */
             background-position: center center; /* Centra la imagen en el fondo */
             display: flex;
             flex-direction: column;
@@ -36,6 +37,7 @@
                 font-size: 3xl; /* Tamaño de fuente para pantallas pequeñas */
             }
         }
+        
     </style>
 </head>
 <body class="antialiased">
