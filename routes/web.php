@@ -105,4 +105,14 @@ Route::middleware('auth')->group(function () {
     //usuarios///////////////////////////
     ////////////////////////////////////////
     Route::resource('/usuarios', AsignarController::class)->names('asignar');
+
+    //informacion sumaria///////////////////////////////////
+    ///////////////////////////////////////////
+
+    Route::get('/isas', [App\Http\Controllers\IsasController::class,'index'])->name('isas');
+    Route::get('/isas/create', [App\Http\Controllers\IsasController::class,'create'])->name('isas.create');
+    Route::post('/isas/store',[App\Http\Controllers\IsasController::class,'store'])->name('isas.store');
+    Route::get('/isas/show/{isa_id}',[App\Http\Controllers\IsasController::class,'show'])->name('isas.show');  
+    Route::post('/isas/update',[App\Http\Controllers\IsasController::class,'update'])->name('isas.update');  
+    Route::delete('/isas/destroy/{isa_id}',[App\Http\Controllers\IsasController::class,'destroy'])->name('isas.destroy');
 });

@@ -22,4 +22,9 @@ class Infractor extends Model
 
         return $this->belongsToMany(Sumarisima::class)->withTimestamps();
     }
+
+    public function isas(){
+
+        return $this->belongsToMany(Isa::class)->withTimestamps();
+    }
 }

@@ -32,28 +32,12 @@ return new class extends Migration
             $table->string('destino_pase'); 
             $table->text('observaciones')->nullable();
             $table->string('tipo_mov'); 
-            
-            /*personal infractor 
-            $table->string('apellido_inf');
-            $table->string('nombre_inf');
-            $table->string('leg_pers_inf');
-            $table->string('dependen_inf'); //poner un select  filtrar por aqui las consultas
-            $table->string('jerarquia_inf'); //poner un select  filtrar por aqui las consultas
-            $table->string('retirado')->nullable();
-            $table->string('detenido')->nullable();
-            $table->string('dispon_prev')->nullable();
-            $table->string('levan_disp_prev')->nullable();
-            $table->date('fecha_disp_prev')->nullable();
-            $table->date('fecha_lev_disp_prev')->nullable();
-            $table->string('resol_disp_prev')->nullable();
-            $table->string('resol_levan_disp_prev')->nullable();*/
-
+                        
             //personal instructor asuntos internos
             $table->string('apellido_nombre_DAI')->nullable();
             $table->string('leg_pers_DAI')->nullable();
             $table->string('dependen_DAI')->nullable(); //poner un select  filtrar por aqui las consultas     
-            $table->string('jerarquia_DAI')->nullable(); //poner un select  filtrar por aqui las consultas
-             
+            $table->string('jerarquia_DAI')->nullable(); //poner un select  filtrar por aqui las consultas             
             //carga movimientos asuntos internos
             $table->text('reg_interno_DAI')->nullable();
             $table->date('fecha_mov_proceDAI')->nullable();
@@ -72,8 +56,7 @@ return new class extends Migration
             $table->string('apellido_nombre_DGAJ')->nullable();
             $table->string('leg_pers_DGAJ')->nullable();
             $table->string('dependen_DGAJ')->nullable(); //poner un select  filtrar por aqui las consultas        
-            $table->string('jerarquia_DGAJ')->nullable(); //poner un select  filtrar por aqui las consultas
-           
+            $table->string('jerarquia_DGAJ')->nullable(); //poner un select  filtrar por aqui las consultas           
             //carga movimientos direccion asuntos judicales
             $table->text('reg_interno_DGAJ')->nullable();
             $table->date('fecha_mov_proceDGAJ')->nullable();

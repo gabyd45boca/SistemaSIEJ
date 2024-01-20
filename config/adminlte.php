@@ -130,10 +130,10 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
-    'usermenu_desc' => false,
+    'usermenu_desc' => false, //para habilitar se debe crear metodo en el controlador usuario
     'usermenu_profile_url' => false,
 
     /*
@@ -150,8 +150,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -308,7 +308,7 @@ return [
             'can'  => 'manage-blog',
         ],
                
-        ['header' => 'USUARIOS',
+        ['header' => '>>> USUARIOS <<<',
           'can'   => 'AdministracionUsuario'
         ],
 
@@ -334,7 +334,7 @@ return [
         ],
 
         
-        ['header' => 'EXPEDIENTES',
+        ['header' => '>>> EXPEDIENTES <<<',
         'can'   => 'AdmistracionDGAJ'
         ],
 
@@ -356,7 +356,7 @@ return [
             ]
         ],
 
-        ['header' => 'INFRACTORES',
+        ['header' => '>>> INFRACTORES <<<',
         'can'   => 'AdmistracionDGAJ',
         ],
 
@@ -378,7 +378,7 @@ return [
             ]
         ],
 
-        ['header' => 'SUMARIOS'],
+        ['header' => '>>> SUMARIOS <<<'],
 
         [
             'text'       => 'Sumarios',
@@ -398,7 +398,7 @@ return [
             ]
         ],
 
-        ['header' => 'SUMARISIMAS'],
+        ['header' => '>>> SUMARISIMAS <<<'],
 
         [
             'text'       => 'Sumarisimas',
@@ -413,6 +413,26 @@ return [
                     'text' => 'Registrar Sumarisimas',
                     'icon'       => 'fas fa-file-alt',
                     'url' => '/sumarisimas/create',
+                    'can'   => 'AdmistracionDGAJ'
+                ],
+            ]
+            ],
+        
+        ['header' => '>>> INFORMACION S. A. <<<'],
+
+        [
+            'text'       => 'I. S. A.',
+            'icon'       => 'fas fa-folder',
+            'submenu'    => [
+                [
+                    'text' => 'Lista de I. S. A.',
+                    'icon'       => 'fas fa-file-alt',
+                    'url' => '/isas'
+                ],
+                [
+                    'text' => 'Registrar I. S. A.',
+                    'icon'       => 'fas fa-file-alt',
+                    'url' => '/isas/create',
                     'can'   => 'AdmistracionDGAJ'
                 ],
             ]
