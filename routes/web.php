@@ -7,10 +7,12 @@ use App\Models\Infractor;
 use App\Models\Expediente;
 use App\Models\Role;
 use App\Models\Permission;
+use App\Models\Isa;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\AsignarController;
+use App\Http\Controllers\IsasController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

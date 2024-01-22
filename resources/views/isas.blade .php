@@ -75,7 +75,7 @@
 @endsection
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Sumarios</h1>
+    <h1 class="m-0 text-dark">Isas</h1>
 @stop
 
 @section('css')

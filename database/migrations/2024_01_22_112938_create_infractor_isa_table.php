@@ -6,28 +6,35 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-   
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
-        Schema::create('infractor_sumarisima', function (Blueprint $table) {
+        Schema::create('infractor_isa', function (Blueprint $table) {
             //$table->id();
-            $table->bigIncrements('id');
 
-            //sumarisima  
-            $table->unsignedBigInteger('sumarisima_id');
-            $table->foreign('sumarisima_id')->references('id')->on('sumarisimas')->onDelete('cascade');
-                       
+            $table->bigIncrements('id');
+          
+
+            //isa  
+            $table->unsignedBigInteger('isa_id');
+            $table->foreign('isa_id')->references('id')->on('isas')->onDelete('cascade');
+              
+            //$table->foreignId('isa_id')->nullable()->constrained->();
+
             //infractor   
             $table->unsignedBigInteger('infractor_id');
             $table->foreign('infractor_id')->references('id')->on('infractors')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
 
-    
+
     public function down()
     {
-        Schema::dropIfExists('infractor_sumarisima');
+        Schema::dropIfExists('infractor_isa');
     }
 };

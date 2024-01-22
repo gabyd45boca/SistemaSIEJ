@@ -105,6 +105,9 @@ return new class extends Migration
             $table->string('tipo_mov_pase_DGRRHH')->nullable();
             $table->string('obs_pase_DGRRHH')->nullable();
             $table->string('concluido_DGRRHH')->nullable();
+            $table->string('DGRRHH N°')->nullable();
+            $table->date('fecha_notificacion')->nullable();
+
                        
          /*   $table ->unsignedBigInteger('personal_id');
             $table ->foreign('personal_id')->references('id')->on('personals');

@@ -115,7 +115,7 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
+              <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento Pase</label>
               <x-adminlte-select2  name="tipo_mov" value="{{old('tipo_mov')}}" required>
                 <option value="">Seleccionar el tipo de movimiento</option>
                 <option value="Salida">Salida</option>
@@ -134,7 +134,7 @@
               <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
               <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" title="Seleccionar infractores" data-style="btn-primary"  multiple required  >
                   @foreach ($infractores as $infractor) 
-                  <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}}</option>
+                  <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}</option>
                   @endforeach
               </x-adminlte-select>
 

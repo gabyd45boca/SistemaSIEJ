@@ -32,11 +32,11 @@
                   </ul>
               </div>
           @endif
-      <form method= "POST" action="{{ route ('sumarios.update')}}" class="card-body">
+      <form method= "POST" action="{{ route ('isas.update')}}" class="card-body">
               @csrf
              
               <div class="hidden-view">
-              <x-adminlte-input type="hidden" name="sumario_id"   value="{{$isa->id}}"/> 
+              <x-adminlte-input type="hidden" name="isa_id"   value="{{$isa->id}}"/> 
               <x-adminlte-input type="hidden" name="num_dja"   value="{{$isa->num_dja}}"/> 
               <x-adminlte-input type="hidden" name="fecha_ingreso"    value="{{$isa->fecha_ingreso}}"/> 
               <x-adminlte-input type="hidden" name="num_dj"   value="{{$isa->num_dj}}"/> 
@@ -49,7 +49,7 @@
               <x-adminlte-input type="hidden" name="destino_pase"  value="{{$isa->destino_pase}}"/> 
               <x-adminlte-input type="hidden" name="extracto"  value="{{$isa->extracto}}"/> 
               <x-adminlte-input type="hidden" name="tipo_mov"  value="{{$isa->tipo_mov}}"/>
-              <x-adminlte-input type="hidden" name="observaciones"   value="{{$sumario->observaciones}}"/> 
+              <x-adminlte-input type="hidden" name="observaciones"   value="{{$isa->observaciones}}"/> 
               
               <x-adminlte-input type="hidden" name="apellido_nombre_DAI"   value="{{$isa->apellido_nombre_DAI}}"/> 
               <x-adminlte-input type="hidden" name="leg_pers_DAI"    value="{{$isa->leg_pers_DAI}}"/> 
@@ -307,7 +307,7 @@
                       <label class="form-label" for="multicol-dependen_DAI">Dependencia</label>
                       <x-adminlte-select2  name="dependen_DAI" value="{{ $isa-> dependen_DAI }}" >
                         <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion de Asuntos Internos" @if ($sumario->dependen_DAI == 'Direccion de Asuntos Internos') selected @endif 'Direccion de Asuntos Internos'>Direccion de Asuntos Internos</option>
+                        <option value="Direccion de Asuntos Internos" @if ($isa->dependen_DAI == 'Direccion de Asuntos Internos') selected @endif 'Direccion de Asuntos Internos'>Direccion de Asuntos Internos</option>
                         <option value="Departmental" @if ($isa->dependen_DAI == 'Departamental') selected @endif 'Departamental'>Departamental</option>
                         <option value="Destacamento" @if ($isa->dependen_DAI == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
                       </x-adminlte-select2>
@@ -808,7 +808,7 @@
     
                   <div class="pt-4">
                       <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-                      <button type="button" class="btn btn-secondary" onClick="location.href='/sumarios'">Cancelar</button>
+                      <button type="button" class="btn btn-secondary" onClick="location.href='/isas'">Cancelar</button>
                   </div>
       </form>
 

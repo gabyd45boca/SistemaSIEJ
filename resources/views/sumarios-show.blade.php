@@ -247,7 +247,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
+                      <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento Pase</label>
                       <x-adminlte-select2  name="tipo_mov" value="{{ $sumario-> tipo_mov }}" required>
                         <option value="">Seleccionar el tipo de movimiento</option>
                         <option value="Salida" @if ($sumario->tipo_mov == 'Salida') selected @endif 'Salida'>Salida</option>
@@ -266,7 +266,7 @@
                           <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
                           <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Infractores" multiple required >
                               @foreach ($infractores as $infractor) 
-                              <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}}</option>
+                              <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}</option>
                               @endforeach
                           </x-adminlte-select>
                           @if ($errors->has('apellido_nombre_inf'))
@@ -357,7 +357,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_proce_DAI">Tipo Movimiento</label>
+                      <label class="form-label" for="multicol-tipo_mov_proce_DAI">Tipo Movimiento Pase</label>
                       <x-adminlte-select2  name="tipo_mov_proce_DAI" value="{{ $sumario->tipo_mov_proce_DAI }}" class="select2 form-select" >
                         <option value="">Seleccionar el tipo de movimiento</option>
                         <option value="Salida" @if ($sumario->tipo_mov_proce_DAI == 'Salida') selected @endif 'Salida'>Salida</option>

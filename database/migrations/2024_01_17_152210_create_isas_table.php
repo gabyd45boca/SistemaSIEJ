@@ -24,14 +24,16 @@ return new class extends Migration
              $table->string('num_dj')->unique();
              $table->date('fecha_inicio');
              $table->integer('fojas');
-             $table->string('infraccion');
+             $table->string('deslindar_resp');
              $table->string('motivo'); //poner un select  filtrar por violencia de genero, accidente, arma, .. 
-             $table->text('extracto');
-             $table->string('tipo_denun'); //poner un select filtrar por denuncia, exposicion, oficio, comparendo, otro
              $table->date('fecha_movimiento');
              $table->string('destino_pase'); 
+             $table->string('tipo_mov');
              $table->text('observaciones')->nullable();
-             $table->string('tipo_mov'); 
+             $table->string('elevado_por_instruccion')->nullable();
+             $table->text('opinion_sede_inst')->nullable();
+             $table->string('conversion_convalid')->nullable();
+
                          
              //personal instructor asuntos internos
              $table->string('apellido_nombre_DAI')->nullable();
@@ -105,6 +107,8 @@ return new class extends Migration
              $table->string('tipo_mov_pase_DGRRHH')->nullable();
              $table->string('obs_pase_DGRRHH')->nullable();
              $table->string('concluido_DGRRHH')->nullable();
+             $table->string('DGRRHH N°')->nullable();
+             $table->date('fecha_notificacion')->nullable();
                         
           /*   $table ->unsignedBigInteger('personal_id');
              $table ->foreign('personal_id')->references('id')->on('personals');
