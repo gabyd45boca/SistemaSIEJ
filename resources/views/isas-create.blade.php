@@ -29,7 +29,7 @@
      
      <div class="card mb-4">
     
-  <form method="POST" action="{{ route ('sumarios.store')}}" class="card-body">
+  <form method="POST" action="{{ route ('isas.store')}}" class="card-body">
        @csrf
        <h4 class="fw-normal">1. Carga de datos del expediente</h4>
       <div class="row g-3">
@@ -134,7 +134,7 @@
               <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
               <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" title="Seleccionar infractores" data-style="btn-primary"  multiple required  >
                   @foreach ($infractores as $infractor) 
-                  <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}}</option>
+                  <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}</option>
                   @endforeach
               </x-adminlte-select>
 

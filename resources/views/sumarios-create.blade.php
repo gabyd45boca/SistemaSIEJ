@@ -127,7 +127,7 @@
           </div>
 
           <hr class="my-4 mx-n4" />
-          <h4 class="fw-normal">2. Carga de datos del personal infractor</h4>
+          <h4 class="fw-normal">2. Carga del personal infractor</h4>
           <div class="row g-3">
             
             <div class="col-md-12">

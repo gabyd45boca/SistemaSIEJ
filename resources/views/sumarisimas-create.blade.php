@@ -85,14 +85,14 @@
             
     </div>
     <hr class="my-4 mx-n4"/>
-    <h6 class="fw-normal">2. Carga de datos del personal infractor</h6>
+    <h4 class="fw-normal">2. Carga de datos del personal infractor</h4>
             <div class="row g-3">
 
                 <div class="col-md-12">
                     <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
                     <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" title="Seleccionar infractores" data-style="btn-primary" multiple required>
                         @foreach ($infractores as $infractor) 
-                        <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}}</option>
+                        <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}</option>
                         @endforeach
                     </x-adminlte-select>
 
@@ -106,7 +106,7 @@
             </div>
 
     <hr class="my-4 mx-n4" />
-    <h6 class="fw-normal">3. Carga de datos del personal instructor de la Division de Asuntos Legales</h6>
+    <h4 class="fw-normal">3. Carga de datos del personal instructor de la Division de Asuntos Legales</h4>
            <div class="row g-3">
     
                 <div class="col-md-6">
@@ -143,7 +143,7 @@
             </div> 
 
     <hr class="my-4 mx-n4" />
-    <h6 class="fw-normal">4. Carga de movimientos y sugerencias del instructor de la Division de Asuntos Legales</h6>
+    <h4 class="fw-normal">4. Carga de movimientos y sugerencias del instructor de la Division de Asuntos Legales</h4>
           <div class="row g-3">
 
                 <div class="col-md-6">

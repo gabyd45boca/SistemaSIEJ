@@ -108,7 +108,7 @@ Route::middleware('auth')->group(function () {
     ////////////////////////////////////////
     Route::resource('/usuarios', AsignarController::class)->names('asignar');
 
-    //informacion sumaria///////////////////////////////////
+    //informacion ISA sumaria///////////////////////////////////
     ///////////////////////////////////////////
 
     Route::get('/isas', [App\Http\Controllers\IsasController::class,'index'])->name('isas');

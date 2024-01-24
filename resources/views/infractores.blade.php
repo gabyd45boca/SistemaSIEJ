@@ -74,7 +74,7 @@
 
    <script>
        $(document).ready(function(){
-             $('#sumarios').DataTable({
+             $('#infractores').DataTable({
                       "language":{
                           "search":      "Buscar",
                           "lengthMenu":  "Mostrar _MENU_ registros por pagina",
