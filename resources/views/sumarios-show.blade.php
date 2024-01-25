@@ -367,7 +367,7 @@
                     </div>
                     
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia Sede Instruccion</label>
+                      <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
                       <input type="text" name= "sugerencia_DAI" value="{{ $sumario-> sugerencia_DAI }}" id="multicol-sugerencia_DAI" class="form-control" placeholder="Escribir la sugerencia " />
                     </div>
 
@@ -623,7 +623,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-sugerencia_AL">Sugerencia</label>
+                      <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
                       <input type="text" name="sugerencia_AL" value="{{ $sumario-> sugerencia_AL }}" id="multicol-sugerencia_AL" class="form-control" placeholder="Escribir la sugerencia " />
                     </div>
 
@@ -801,6 +801,16 @@
                           <option value="Si" @if ($sumario->concluido_DGRRHH == 'Si') selected @endif 'Si'>Si</option>
                           <option value="No" @if ($sumario->concluido_DGRRHH == 'No') selected @endif 'No'>No</option>
                         </x-adminlte-select2>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
+                        <input type="text" name="DGRRHH_N°" id="multicol-DGRRHH_N°" value="{{ $sumario-> DGRRHH_N°}}" class="form-control" placeholder="Escribir N° de resolucion" />
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-fecha_notificacion"> Fecha de Notificacion</label>
+                        <input type="date" name="fecha_notificacion" id="multicol-fecha_notificacion" value="{{ $sumario-> fecha_notificacion}}" class="form-control" placeholder="Fecha de notificacion de la resolucion" />
                       </div>
                       
               </div>

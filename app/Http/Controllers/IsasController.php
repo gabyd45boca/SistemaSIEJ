@@ -145,6 +145,8 @@ class IsasController extends Controller
             $isa->tipo_mov_pase_DGRRHH = $request->tipo_mov_pase_DGRRHH;
             $isa->obs_pase_DGRRHH = $request->obs_pase_DGRRHH;
             $isa->concluido_DGRRHH = $request->concluido_DGRRHH;
+            $isa->DGRRHH_N° = $request->DGRRHH_N°;
+            $isa->fecha_notificacion = $request->fecha_notificacion;
                   
             $isa->save();
 
@@ -253,6 +255,8 @@ class IsasController extends Controller
         $isa->tipo_mov_pase_DGRRHH = $request->tipo_mov_pase_DGRRHH;
         $isa->obs_pase_DGRRHH = $request->obs_pase_DGRRHH;
         $isa->concluido_DGRRHH = $request->concluido_DGRRHH;
+        $isa->DGRRHH_N° = $request->DGRRHH_N°;
+        $isa->fecha_notificacion = $request->fecha_notificacion;
 
         //dd($request->all());
         $isa->save();

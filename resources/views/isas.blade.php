@@ -21,9 +21,9 @@
           <th>MOTIVO</th>
           <th>LEGAJO</th>
           <th>INFRACTOR</th>
-          <th>TIPO DENUNCIA</th>
+          <th>CONVERSION CONVALIDAR</th>
           <th>FECHA INGRESO</th>
-          <th>INFRACCION</th>
+          <th>ELEVADO INSTRUCCION</th>
           <th>ACCION</th>
 
         </tr>
@@ -47,9 +47,9 @@
                                     {{$infractor->apellido_nombre_inf}} <br>
                                     @endforeach
                                 </td>   
-                    <td>{{$isa->tipo_denun}}</td>   
+                    <td>{{$isa->conversion_convalid}}</td>   
                     <td>{{$isa->fecha_ingreso}}</td>  
-                    <td>{{$isa->infraccion}}</td>
+                    <td>{{$isa->elevado_por_instruccion}}</td>
                     
                     <td> 
                         <form action="{{route('isas.destroy', $isa->id) }}" class="formEliminar" method="POST">

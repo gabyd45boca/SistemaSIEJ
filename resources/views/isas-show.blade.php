@@ -42,14 +42,15 @@
               <x-adminlte-input type="hidden" name="num_dj"   value="{{$isa->num_dj}}"/> 
               <x-adminlte-input type="hidden" name="fecha_inicio"    value="{{$isa->fecha_inicio}}"/>
               <x-adminlte-input type="hidden" name="fojas"   value="{{$isa->fojas}}"/> 
-              <x-adminlte-input type="hidden" name="infraccion"    value="{{$isa->infraccion}}"/> 
+              <x-adminlte-input type="hidden" name="deslindar_resp"    value="{{$isa->deslindar_resp}}"/> 
               <x-adminlte-input type="hidden" name="motivo"  value="{{$isa->motivo}}"/> 
-              <x-adminlte-input type="hidden" name="tipo_denun"  value="{{$isa->tipo_denun}}"/>
               <x-adminlte-input type="hidden" name="fecha_movimiento"  value="{{$isa->fecha_movimiento}}"/> 
               <x-adminlte-input type="hidden" name="destino_pase"  value="{{$isa->destino_pase}}"/> 
-              <x-adminlte-input type="hidden" name="extracto"  value="{{$isa->extracto}}"/> 
               <x-adminlte-input type="hidden" name="tipo_mov"  value="{{$isa->tipo_mov}}"/>
-              <x-adminlte-input type="hidden" name="observaciones"   value="{{$isa->observaciones}}"/> 
+              <x-adminlte-input type="hidden" name="observaciones"  value="{{$isa->observaciones}}"/> 
+              <x-adminlte-input type="hidden" name="elevado_por_instruccion"  value="{{$isa->elevado_por_instruccion}}"/>
+              <x-adminlte-input type="hidden" name="opinion_sede_inst"   value="{{$isa->opinion_sede_inst}}"/>
+              <x-adminlte-input type="hidden" name="conversion_convalid"   value="{{$isa->conversion_convalid}}"/>
               
               <x-adminlte-input type="hidden" name="apellido_nombre_DAI"   value="{{$isa->apellido_nombre_DAI}}"/> 
               <x-adminlte-input type="hidden" name="leg_pers_DAI"    value="{{$isa->leg_pers_DAI}}"/> 
@@ -127,9 +128,9 @@
                 <th>MOTIVO</th>
                 <th>LEGAJO</th>
                 <th>INFRACTOR</th>
-                <th>TIPO DENUNCIA</th>
+                <th>CONVERSION CONVALIDAR</th>
                 <th>FECHA INGRESO</th>
-                <th>INFRACCION</th>
+                <th>ELEVADO INSTRUCCION</th>
                 
               </tr>
               </thead>
@@ -151,9 +152,9 @@
                                     {{$infractor->apellido_nombre_inf}} <br>
                                     @endforeach
                                 </td>   
-                    <td>{{$isa->tipo_denun}}</td>   
+                    <td>{{$isa->conversion_convalid}}</td>   
                     <td>{{$isa->fecha_ingreso}}</td>  
-                    <td>{{$isa->infraccion}}</td>
+                    <td>{{$isa->elevado_por_instruccion}}</td>
               </tr>
               </tbody>
               </table>
@@ -192,8 +193,8 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-username">Infraccion</label>
-                      <input type="text" name="infraccion" value="{{ $isa-> infraccion }}" id="multicol-infraccion" class="form-control" placeholder="Infraccion cometida" required/>
+                      <label class="form-label" for="multicol-deslindar_resp">Deslindar responsabilidad</label>
+                      <input type="text" name="deslindar_resp" value="{{ $isa-> deslindar_resp }}" id="multicol-deslindar_resp" class="form-control" placeholder="Deslindar responsabilidad" required/>
                     </div>
 
                     <div class="col-md-6">
@@ -206,23 +207,6 @@
                         <option value="Ebriedad" @if ($isa->motivo == 'Ebriedad') selected @endif 'Ebriedad'>Ebriedad</option>
                         <option value="Ausentismo Laboral" @if ($isa->motivo == 'Ausentismo Laboral') selected @endif 'Ausentismo Laboral'>Ausentismo Laboral</option>
                         <option value="Otro" @if ($isa->motivo == 'Otro') selected @endif 'Otro'>Otro</option>
-                      </x-adminlte-select2>
-                    </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-extracto">Extracto</label>
-                      <input type="text" name="extracto" value="{{ $isa->extracto }}" id="multicol-extracto" class="form-control" placeholder="Extracto" />
-                    </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_denun">Tipo de denuncia</label>
-                      <x-adminlte-select2  name="tipo_denun" value="{{ $isa-> tipo_denun }}" required>
-                        <option value="">Seleccionar el tipo</option>
-                        <option value="Comparendo" @if ($isa->tipo_denun == 'Comparendo') selected @endif 'Comparendo'>Comparendo</option>
-                        <option value="Denuncia" @if ($isa->tipo_denun == 'Denuncia') selected @endif 'Denuncia'>Denuncia</option>
-                        <option value="Oficio" @if ($isa->tipo_denun == 'Oficio') selected @endif 'Oficio'>Oficio</option>
-                        <option value="Exposicion" @if ($isa->tipo_denun == 'exposicion') selected @endif 'Exposicion'>Exposicion</option>
-                        <option value="Otro" @if ($isa->tipo_denun == 'Otro') selected @endif 'Otro'>Otro</option>
                       </x-adminlte-select2>
                     </div>
                   
@@ -242,11 +226,6 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
-                        <input type="text" name="observaciones" value="{{ $isa-> observaciones}}" id="multicol-observaciones" class="form-control" placeholder="Escribir observaciones para el pase" />
-                    </div>
-
-                    <div class="col-md-6">
                       <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
                       <x-adminlte-select2  name="tipo_mov" value="{{ $isa-> tipo_mov }}" required>
                         <option value="">Seleccionar el tipo de movimiento</option>
@@ -255,6 +234,30 @@
                         <option value="ReIngreso" @if ($isa->tipo_mov == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
                       </x-adminlte-select2>
                     </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+                        <input type="text" name="observaciones" value="{{ $isa->observaciones}}" id="multicol-observaciones" class="form-control" placeholder="Escribir observaciones para el pase" />
+                    </div>
+
+                    <div class="col-md-6">
+                    <label class="form-label" for="multicol-elevado_por_instruccion">Elevado por instruccion</label>
+                      <x-adminlte-select2  name="elevado_por_instruccion" value="{{ $isa-> elevado_por_instruccion }}" class="select2 form-select" >
+                        <option value="">Seleccione</option>
+                        <option value="Si" @if ($isa->elevado_por_instruccion == 'Si') selected @endif 'Si'>Si</option>
+                        <option value="No" @if ($isa->elevado_por_instruccion == 'No') selected @endif 'No'>No</option>
+                      </x-adminlte-select2>
+                    </div>
+
+                    <div class="col-md-6">
+                    <label class="form-label" for="multicol-conversion_convalid">Conversion y convalidacion</label>
+                      <x-adminlte-select2  name="conversion_convalid" value="{{ $isa-> conversion_convalid }}" class="select2 form-select" >
+                        <option value="">Seleccione</option>
+                        <option value="Si" @if ($isa->conversion_convalid == 'Si') selected @endif 'Si'>Si</option>
+                        <option value="No" @if ($isa->conversion_convalid == 'No') selected @endif 'No'>No</option>
+                      </x-adminlte-select2>
+                    </div>
+
                               
                   </div>
                               
@@ -367,7 +370,7 @@
                     </div>
                     
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia Sede Instruccion</label>
+                      <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
                       <input type="text" name= "sugerencia_DAI" value="{{ $isa-> sugerencia_DAI }}" id="multicol-sugerencia_DAI" class="form-control" placeholder="Escribir la sugerencia " />
                     </div>
 
@@ -623,7 +626,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-sugerencia_AL">Sugerencia</label>
+                      <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
                       <input type="text" name="sugerencia_AL" value="{{ $isa-> sugerencia_AL }}" id="multicol-sugerencia_AL" class="form-control" placeholder="Escribir la sugerencia " />
                     </div>
 
@@ -801,6 +804,16 @@
                           <option value="Si" @if ($isa->concluido_DGRRHH == 'Si') selected @endif 'Si'>Si</option>
                           <option value="No" @if ($isa->concluido_DGRRHH == 'No') selected @endif 'No'>No</option>
                         </x-adminlte-select2>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
+                        <input type="text" name="DGRRHH_N°" id="multicol-DGRRHH_N°" value="{{ $isa-> DGRRHH_N°}}" class="form-control" placeholder="Escribir N° de resolucion" />
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-fecha_notificacion"> Fecha de Notificacion</label>
+                        <input type="date" name="fecha_notificacion" id="multicol-fecha_notificacion" value="{{ $isa-> fecha_notificacion}}" class="form-control" placeholder="Fecha de notificacion de la resolucion" />
                       </div>
                       
               </div>

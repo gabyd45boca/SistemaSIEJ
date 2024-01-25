@@ -60,8 +60,8 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-infraccion">Infraccion</label>
-              <input type="text" name="infraccion" id="multicol-infraccion" class="form-control" value="{{old('infraccion')}}" placeholder="Infraccion cometida" required/>
+              <label class="form-label" for="multicol-deslindar_resp">Deslindar responsabilidad</label>
+              <input type="text" name="deslindar_resp" id="multicol-deslindar_resp" class="form-control" value="{{old('deslindar_resp')}}" placeholder="Deslindar responsabilidad" required/>
             </div>
 
             <div class="col-md-6">
@@ -76,24 +76,7 @@
                 <option value="Otro">Otro</option>
               </x-adminlte-select2>
             </div>
-
-            <div class="col-md-6">
-                      <label class="form-label" for="multicol-extracto">Extracto</label>
-                      <input type="text" name="extracto" id="multicol-extracto" class="form-control" value="{{old('extracto')}}" placeholder="Extracto" />
-                    </div>
-
-            <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_denun">Tipo de denuncia</label>
-              <x-adminlte-select2  name="tipo_denun" value="{{old('tipo_denun')}}" required>
-                <option value="">Seleccionar el tipo</option>
-                <option value="Comparendo">Comparendo</option>
-                <option value="Denuncia">Denuncia</option>
-                <option value="Oficio">Oficio</option>
-                <option value="Exposicion">Exposicion</option>
-                <option value="Otro">Otro</option>
-              </x-adminlte-select2>
-            </div>
-          
+                     
             <div class="col-md-6">
               <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Movimiento</label>
               <input type="date" name="fecha_movimiento" id="multicol-fecha_movimiento" class="form-control" value="{{old('fecha_movimiento')}}" placeholder="Fecha de pase del expediente " required />
@@ -110,11 +93,6 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
-              <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Observaciones" />
-            </div>
-
-            <div class="col-md-6">
               <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
               <x-adminlte-select2  name="tipo_mov" value="{{old('tipo_mov')}}" required>
                 <option value="">Seleccionar el tipo de movimiento</option>
@@ -123,7 +101,31 @@
                 <option value="ReIngreso">ReIngreso</option>
               </x-adminlte-select2>
             </div>
-                      
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+              <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Escribir observaciones para el pase" />
+            </div>
+
+            <div class="col-md-6">
+            <label class="form-label" for="multicol-elevado_por_instruccion">Elevado por instruccion</label>
+              <x-adminlte-select2  name="elevado_por_instruccion" value="{{old('elevado_por_instruccion')}}" class="select2 form-select" >
+                <option value="">Seleccione</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </x-adminlte-select2>
+            </div>
+
+            <div class="col-md-6">
+            <label class="form-label" for="multicol-conversion_convalid">Conversion y convalidacion</label>
+              <x-adminlte-select2  name="conversion_convalid" value="{{old('conversion_convalid')}}" class="select2 form-select" >
+                <option value="">Seleccione</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </x-adminlte-select2>
+            </div>
+
+                                
           </div>
 
           <hr class="my-4 mx-n4" />
@@ -226,7 +228,7 @@
             </div>
             
             <div class="col-md-6">
-              <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia Sede Instruccion</label>
+              <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
               <input type="text" name="sugerencia_DAI" id="multicol-sugerencia_DAI" value="{{old('sugerencia_DAI')}}" class="form-control" placeholder="Escribir la sugerencia " />
             </div>
 
@@ -472,7 +474,7 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-sugerencia_AL">Sugerencia</label>
+              <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
               <input type="text" name="sugerencia_AL" id="multicol-sugerencia_AL" class="form-control" value="{{old('sugerencia_AL')}}" placeholder="Escribir la sugerencia " />
             </div>
 
@@ -639,6 +641,18 @@
                   <option value="No">No</option>
                 </x-adminlte-select2>
               </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
+                <input type="text" name="DGRRHH_N°" id="multicol-DGRRHH_N°" value="{{old('DGRRHH_N°')}}" class="form-control" placeholder="Escribir N° de resolucion" />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-fecha_notificacion"> Fecha de Notificacion</label>
+                <input type="date" name="fecha_notificacion" id="multicol-fecha_notificacion" value="{{old('fecha_notificacion')}}" class="form-control" placeholder="Fecha de notificacion de la resolucion" />
+              </div>
+
+
               
             </div>
 

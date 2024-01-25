@@ -144,6 +144,8 @@ class SumariosController extends Controller
             $sumario->tipo_mov_pase_DGRRHH = $request->tipo_mov_pase_DGRRHH;
             $sumario->obs_pase_DGRRHH = $request->obs_pase_DGRRHH;
             $sumario->concluido_DGRRHH = $request->concluido_DGRRHH;
+            $sumario->DGRRHH_N° = $request->DGRRHH_N°;
+            $sumario->fecha_notificacion = $request->fecha_notificacion;
                   
             $sumario->save();
 
@@ -252,6 +254,8 @@ class SumariosController extends Controller
         $sumario->tipo_mov_pase_DGRRHH = $request->tipo_mov_pase_DGRRHH;
         $sumario->obs_pase_DGRRHH = $request->obs_pase_DGRRHH;
         $sumario->concluido_DGRRHH = $request->concluido_DGRRHH;
+        $sumario->DGRRHH_N° = $request->DGRRHH_N°;
+        $sumario->fecha_notificacion = $request->fecha_notificacion;
 
         //dd($request->all());
         $sumario->save();

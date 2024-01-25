@@ -105,7 +105,7 @@ return new class extends Migration
             $table->string('tipo_mov_pase_DGRRHH')->nullable();
             $table->string('obs_pase_DGRRHH')->nullable();
             $table->string('concluido_DGRRHH')->nullable();
-            $table->string('DGRRHH N°')->nullable();
+            $table->string('DGRRHH_N°')->nullable();
             $table->date('fecha_notificacion')->nullable();
 
                        

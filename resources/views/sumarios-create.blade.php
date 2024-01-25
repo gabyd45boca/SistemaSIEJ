@@ -639,6 +639,16 @@
                   <option value="No">No</option>
                 </x-adminlte-select2>
               </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
+                <input type="text" name="DGRRHH_N°" id="multicol-DGRRHH_N°" value="{{old('DGRRHH_N°')}}" class="form-control" placeholder="Escribir N° de resolucion" />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-fecha_notificacion"> Fecha de Notificacion</label>
+                <input type="date" name="fecha_notificacion" id="multicol-fecha_notificacion" value="{{old('fecha_notificacion')}}" class="form-control" placeholder="Fecha de notificacion de la resolucion" />
+              </div>
               
             </div>
 
