@@ -116,6 +116,9 @@
               <x-adminlte-input type="hidden" name="tipo_mov_pase_DGRRHH"  value="{{$isa->tipo_mov_pase_DGRRHH}}"/> 
               <x-adminlte-input type="hidden" name="obs_pase_DGRRHH"  value="{{$isa->obs_pase_DGRRHH}}"/>
               <x-adminlte-input type="hidden" name="concluido_DGRRHH"  value="{{$isa->concluido_DGRRHH}}"/>
+              <x-adminlte-input type="hidden" name="DGRRHH_N°"  value="{{$isa->DGRRHH_N°}}"/>
+              <x-adminlte-input type="hidden" name="fecha_notificacion"  value="{{$isa->fecha_notificacion}}"/>
+
 
               </div>
             <div class="table-responsive text-nowrap">
