@@ -53,8 +53,9 @@
                     
                     <td> 
                         <form action="{{route('isas.destroy', $isa->id) }}" class="formEliminar" method="POST">
-                
-                          <a href="{{ route ('isas.show', $isa->id) }}" class="btn btn-primary btn-sm"> Editar </a> 
+                          
+                          <a href="{{ route ('isas.show', $isa->id) }}" class="btn btn-secondary btn-sm"> Ver </a> 
+                          <a href="{{ route ('isas.edit', $isa->id) }}" class="btn btn-primary btn-sm"> Editar </a> 
              
                           @csrf
                           @method('delete')

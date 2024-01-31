@@ -54,8 +54,8 @@
                     <td> 
                         <form action="{{route('sumarios.destroy', $sumario->id) }}" class="formEliminar" method="POST">
                 
-                          <a href="{{ route ('sumarios.show', $sumario->id) }}" class="btn btn-primary btn-sm"> Editar </a> 
-             
+                          <a href="{{ route ('sumarios.show', $sumario->id) }}" class="btn btn-secondary btn-sm"> Ver</a> 
+                          <a href="{{ route ('sumarios.edit', $sumario->id) }}" class="btn btn-primary btn-sm"> Editar </a> 
                           @csrf
                           @method('delete')
 

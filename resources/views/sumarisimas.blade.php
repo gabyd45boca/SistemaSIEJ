@@ -52,7 +52,8 @@
                                          
                     <td>
                         <form action="{{route('sumarisimas.destroy', $sumarisima->id) }}" class="formEliminar" method="POST">
-                          <a href="{{ route ('sumarisimas.show', $sumarisima->id) }}" class="btn btn-primary btn-sm" > Editar </a>
+                          <a href="{{ route ('sumarisimas.show', $sumarisima->id) }}" class="btn btn-secondary btn-sm" > Ver </a>
+                          <a href="{{ route ('sumarisimas.edit', $sumarisima->id) }}" class="btn btn-primary btn-sm" > Editar </a>
                           @csrf
                           @method('delete')
 

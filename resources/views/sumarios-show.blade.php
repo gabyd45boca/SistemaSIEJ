@@ -82,8 +82,7 @@
             </div>  
               <br>
               <br>                  
-                  @can('EditarSumarioDGAJ')
-                
+                                
 
                   <h4 class="fw-normal">1. Datos del expediente</h4>
                   <div class="row g-3">
@@ -156,13 +155,13 @@
                   </div>
                               
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">2. Carga del personal infractor</h4>
+                  <h4 class="fw-normal">2. Personal infractor</h4>
                   <div class="row g-3">
                     
                     <div class="col-md-12">
                           <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
                           <br>
-                          <span class="form-control" id="multicol-tipo_mov">
+                          <span class="card" id="multicol-tipo_mov">
                               @foreach ($sumario->infractors as $infractor)
                               {{$infractor->apellido_nombre_inf}} Lp:{{$infractor->leg_pers_inf }}, 
                               @endforeach
@@ -170,12 +169,10 @@
                     </div>
                                       
                   </div>
-                  @endcan 
-
-                  @can('EditarSumarioDGAI')
+                 
                                                
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">3. Carga de datos del personal instructor de la Direccion de Asuntos Internos</h4>
+                  <h4 class="fw-normal">3. Datos del personal instructor de la Direccion de Asuntos Internos</h4>
                   <div class="row g-3">
 
                     <div class="col-md-6">
@@ -203,7 +200,7 @@
            
              
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">4. Carga de movimientos y sugerencias del instructor de la Direccion de Asuntos Internos </h4>
+                  <h4 class="fw-normal">4. Movimientos y sugerencias del instructor de la Direccion de Asuntos Internos </h4>
               <div class="row g-3">
 
                     <div class="col-md-6">
@@ -266,12 +263,9 @@
                       <span class="form-control" id="multicol-concluido_DAI">{{ $sumario->concluido_DAI}}</span>
                     </div>
               </div>
-              @endcan
-
-  
-              @can('EditarSumarioDGAJ')  
+           
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">5. Carga de datos del personal instructor de la Direccion General de Asuntos Judiciales</h4>
+                  <h4 class="fw-normal">5. Datos del personal instructor de la Direccion General de Asuntos Judiciales</h4>
               <div class="row g-3">
 
                         <div class="col-md-6">
@@ -297,7 +291,7 @@
               </div> 
 
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">6. Carga de movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
+                  <h4 class="fw-normal">6. Movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
               <div class="row g-3">
 
                         <div class="col-md-6">
@@ -357,13 +351,11 @@
                         </div>
                     
               </div>
-              @endcan
-
-              @can('EditarSumarioDGAL')
+            
                               
 
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">7. Carga de datos del personal instructor de Asesoria Letrada</h4>
+                  <h4 class="fw-normal">7. Datos del personal instructor de Asesoria Letrada</h4>
               <div class="row g-3">
 
                         <div class="col-md-6">
@@ -389,7 +381,7 @@
               </div> 
 
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">8. Carga de movimientos y sugerencias del instructor de Asesoria Letrada</h4>
+                  <h4 class="fw-normal">8. Movimientos y sugerencias del instructor de Asesoria Letrada</h4>
               <div class="row g-3">
 
                     <div class="col-md-6">
@@ -448,13 +440,10 @@
                     </div>
                     
               </div>
-              @endcan
-
-              @can('EditarSumarioDGRRHH')
-              
+             
                              
                   <hr class="my-4 mx-n4" />
-                    <h4 class="fw-normal">9. Carga de datos del personal instructor de la Direccion General de Recursos Humanos</h4>
+                    <h4 class="fw-normal">9. Datos del personal instructor de la Direccion General de Recursos Humanos</h4>
               <div class="row g-3">
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-apellido_nombre_DGRRHH">Apellido y Nombre</label>
@@ -479,7 +468,7 @@
               </div> 
 
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">10. Carga de movimientos y resolucion final del instructor de la Direccion General de Recursos Humanos</h4>
+                  <h4 class="fw-normal">10. Movimientos y resolucion final del instructor de la Direccion General de Recursos Humanos</h4>
               <div class="row g-3">
 
                       <div class="col-md-6">
@@ -548,7 +537,7 @@
                       </div>
                       
               </div>
-              @endcan
+            
     
                   <div class="pt-4">
                       <button type="button" class="btn btn-secondary" onClick="location.href='/sumarios'">Volver</button>

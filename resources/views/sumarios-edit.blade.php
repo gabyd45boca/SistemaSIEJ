@@ -449,9 +449,9 @@
                           <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
                           <x-adminlte-select2  name="jerarquia_DGAJ"  value="{{ $sumario-> jerarquia_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccionar la jerarquia</option>
-                            <option value="agente" @if ($sumario->jerarquia_DAI == 'agente') selected @endif 'agente'>agente</option>
-                            <option value="oficial ayudante" @if ($sumario->jerarquia_DAI == 'oficial ayudante') selected @endif 'oficial ayudante'>oficial ayudante</option>
-                            <option value="comisario" @if ($sumario->jerarquia_DAI == 'comisario') selected @endif 'comisario'>comisario</option>
+                            <option value="agente" @if ($sumario->jerarquia_DGAJ == 'agente') selected @endif 'agente'>agente</option>
+                            <option value="oficial ayudante" @if ($sumario->jerarquia_DGAJ == 'oficial ayudante') selected @endif 'oficial ayudante'>oficial ayudante</option>
+                            <option value="comisario" @if ($sumario->jerarquia_DGAJ == 'comisario') selected @endif 'comisario'>comisario</option>
                           </x-adminlte-select2>
                         </div>
 

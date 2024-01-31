@@ -45,6 +45,16 @@ class IsasController extends Controller
         return view('isas-show',compact('isa','infractores','infractores_ids'));
     }
 
+    public function edit($isa_id){
+
+      $isa = Isa::find($isa_id);
+
+      $infractores = Infractor::all();
+      $infractores_ids = $isa->infractors()->pluck('infractors.id'); 
+     
+      return view('isas-edit',compact('isa','infractores','infractores_ids'));
+  }
+
     public function store(Request $request){
 
            // dd($request->all());

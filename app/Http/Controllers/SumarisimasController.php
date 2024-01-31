@@ -41,6 +41,16 @@ class SumarisimasController extends Controller
         return view('sumarisimas-show',compact('sumarisima','infractores','infractores_ids'));
     }
 
+    public function edit($sumarisima_id){
+
+      $sumarisima = Sumarisima::find($sumarisima_id);
+
+      $infractores = Infractor::all();
+      $infractores_ids = $sumarisima->infractors()->pluck('infractors.id'); 
+     
+      return view('sumarisimas-edit',compact('sumarisima','infractores','infractores_ids'));
+  }
+
     public function store(Request $request)  {
         $validator = $request -> validate ([
           'num_dj'=> 'required|unique:sumarisimas',

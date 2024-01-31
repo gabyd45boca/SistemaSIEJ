@@ -46,7 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/sumarios', [App\Http\Controllers\SumariosController::class,'index'])->name('sumarios');
     Route::get('/sumarios/create', [App\Http\Controllers\SumariosController::class,'create'])->name('sumarios.create');
     Route::post('/sumarios/store',[App\Http\Controllers\SumariosController::class,'store'])->name('sumarios.store');
-    Route::get('/sumarios/show/{sumario_id}',[App\Http\Controllers\SumariosController::class,'show'])->name('sumarios.show');  
+    Route::get('/sumarios/show/{sumario_id}',[App\Http\Controllers\SumariosController::class,'show'])->name('sumarios.show');
+    Route::get('/sumarios/edit/{sumario_id}',[App\Http\Controllers\SumariosController::class,'edit'])->name('sumarios.edit');    
     Route::post('/sumarios/update',[App\Http\Controllers\SumariosController::class,'update'])->name('sumarios.update');  
     Route::delete('/sumarios/destroy/{sumario_id}',[App\Http\Controllers\SumariosController::class,'destroy'])->name('sumarios.destroy');
 
@@ -56,7 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/sumarisimas', [App\Http\Controllers\SumarisimasController::class,'index'])->name('sumarisimas');
     Route::get('/sumarisimas/create', [App\Http\Controllers\SumarisimasController::class,'create'])->name('sumarisimas.create');
     Route::post('/sumarisimas/store',[App\Http\Controllers\SumarisimasController::class,'store'])->name('sumarisimas.store');
-    Route::get('/sumarisimas/show/{sumarisima_id}',[App\Http\Controllers\SumarisimasController::class,'show'])->name('sumarisimas.show');  
+    Route::get('/sumarisimas/show/{sumarisima_id}',[App\Http\Controllers\SumarisimasController::class,'show'])->name('sumarisimas.show');
+    Route::get('/sumarisimas/edit/{sumarisima_id}',[App\Http\Controllers\SumarisimasController::class,'edit'])->name('sumarisimas.edit');    
     Route::post('/sumarisimas/update',[App\Http\Controllers\SumarisimasController::class,'update'])->name('sumarisimas.update');  
     Route::delete('/sumarisimas/destroy/{sumarisima_id}',[App\Http\Controllers\SumarisimasController::class,'destroy'])->name('sumarisimas.destroy');
     
@@ -114,7 +116,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/isas', [App\Http\Controllers\IsasController::class,'index'])->name('isas');
     Route::get('/isas/create', [App\Http\Controllers\IsasController::class,'create'])->name('isas.create');
     Route::post('/isas/store',[App\Http\Controllers\IsasController::class,'store'])->name('isas.store');
-    Route::get('/isas/show/{isa_id}',[App\Http\Controllers\IsasController::class,'show'])->name('isas.show');  
+    Route::get('/isas/show/{isa_id}',[App\Http\Controllers\IsasController::class,'show'])->name('isas.show');
+    Route::get('/isas/edit/{isa_id}',[App\Http\Controllers\IsasController::class,'edit'])->name('isas.edit');    
     Route::post('/isas/update',[App\Http\Controllers\IsasController::class,'update'])->name('isas.update');  
     Route::delete('/isas/destroy/{isa_id}',[App\Http\Controllers\IsasController::class,'destroy'])->name('isas.destroy');
 });

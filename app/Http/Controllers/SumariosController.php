@@ -44,6 +44,16 @@ class SumariosController extends Controller
         return view('sumarios-show',compact('sumario','infractores','infractores_ids'));
     }
 
+    public function edit($sumario_id){
+
+      $sumario = Sumario::find($sumario_id);
+
+      $infractores = Infractor::all();
+      $infractores_ids = $sumario->infractors()->pluck('infractors.id'); 
+     
+      return view('sumarios-edit',compact('sumario','infractores','infractores_ids'));
+  }
+
     public function store(Request $request){
 
            // dd($request->all());
