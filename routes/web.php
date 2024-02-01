@@ -68,7 +68,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/infractores', [App\Http\Controllers\InfractorsController::class,'index'])->name('infractores');
     Route::get('/infractores/create', [App\Http\Controllers\InfractorsController::class,'create'])->name('infractores.create');
     Route::post('/infractores/store',[App\Http\Controllers\InfractorsController::class,'store'])->name('infractores.store');
-    Route::get('/infractores/show/{infractor_id}',[App\Http\Controllers\InfractorsController::class,'show'])->name('infractores.show');  
+    Route::get('/infractores/show/{infractor_id}',[App\Http\Controllers\InfractorsController::class,'show'])->name('infractores.show');
+    Route::get('/infractores/edit/{infractor_id}',[App\Http\Controllers\InfractorsController::class,'edit'])->name('infractores.edit');    
     Route::post('/infractores/update',[App\Http\Controllers\InfractorsController::class,'update'])->name('infractores.update');  
     Route::delete('/infractores/destroy/{infractor_id}',[App\Http\Controllers\InfractorsController::class,'destroy'])->name('infractores.destroy');
 
@@ -78,7 +79,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/expedientes', [App\Http\Controllers\ExpedientesController::class,'index'])->name('expedientes');
     Route::get('/expedientes/create', [App\Http\Controllers\ExpedientesController::class,'create'])->name('expedientes.create');
     Route::post('/expedientes/store',[App\Http\Controllers\ExpedientesController::class,'store'])->name('expedientes.store');
-    Route::get('/expedientes/show/{expediente_id}',[App\Http\Controllers\ExpedientesController::class,'show'])->name('expedientes.show');  
+    Route::get('/expedientes/show/{expediente_id}',[App\Http\Controllers\ExpedientesController::class,'show'])->name('expedientes.show');
+    Route::get('/expedientes/edit/{expediente_id}',[App\Http\Controllers\ExpedientesController::class,'edit'])->name('expedientes.edit');  
     Route::post('/expedientes/update',[App\Http\Controllers\ExpedientesController::class,'update'])->name('expedientes.update');  
     Route::delete('/expedientes/destroy/{expediente_id}',[App\Http\Controllers\ExpedientesController::class,'destroy'])->name('expedientes.destroy');
 

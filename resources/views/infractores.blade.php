@@ -44,7 +44,8 @@
                     
                     <td> 
                         <form action="{{route('infractores.destroy', $infractor->id) }}" class="formEliminar" method="POST">
-                          <a href="{{ route ('infractores.show', $infractor->id) }}" class="btn btn-primary btn-sm"> Editar </a>
+                          <a href="{{ route ('infractores.show', $infractor->id) }}" class="btn btn-secondary btn-sm"> Ver </a>
+                          <a href="{{ route ('infractores.edit', $infractor->id) }}" class="btn btn-primary btn-sm"> Editar </a>
                           @csrf
                           @method('delete')
                           <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">

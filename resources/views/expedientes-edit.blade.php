@@ -3,7 +3,7 @@
 @section('title', 'SIEJ')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Mostrar Expediente</h1>
+    <h1 class="m-0 text-dark">Editar Expediente</h1>
 @endsection
 
 @section('content')
@@ -27,7 +27,7 @@
 
         <x-adminlte-input type="hidden" name="expediente_id" value="{{$expediente->id}}"/> 
 
-        <h6 class="fw-normal">1. Datos del expediente</h6>
+        <h6 class="fw-normal">1. Carga de datos del expediente</h6>
     <div class="row g-3">
     
             <div class="col-md-6">

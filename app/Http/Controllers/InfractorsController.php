@@ -38,6 +38,13 @@ class InfractorsController extends Controller
         return view('infractores-show',compact('infractor'));
     }
 
+    public function edit($infractor_id){
+
+      $infractor = Infractor::find($infractor_id);
+     
+      return view('infractores-edit',compact('infractor'));
+  }
+
     public function store(Request $request){
 
             $validator = $request -> validate ([
