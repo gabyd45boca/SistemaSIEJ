@@ -107,8 +107,8 @@
 
     
     <div class="pt-4">
-    <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-    <button type="button" class="btn btn-secondary" onClick="location.href='/expedientes'">Cancelar</button>
+        <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
+        <button type="button" class="btn btn-secondary" onClick="location.href='/expedientes'">Cancelar</button>
     </div>
   </form>
 </div>

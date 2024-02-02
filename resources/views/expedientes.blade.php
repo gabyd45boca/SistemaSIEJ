@@ -50,7 +50,8 @@
               
                     <td>
                         <form action="{{route('expedientes.destroy', $expediente->id) }}" class="formEliminar" method="POST">
-                          <a href="{{ route ('expedientes.show', $expediente->id) }}" class="btn btn-primary btn-sm"> Editar </a>
+                          <a href="{{ route ('expedientes.show', $expediente->id) }}" class="btn btn-secondary btn-sm"> Ver </a>
+                          <a href="{{ route ('expedientes.edit', $expediente->id) }}" class="btn btn-primary btn-sm"> Editar </a>
                           @csrf
                           @method('delete')
                           <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">

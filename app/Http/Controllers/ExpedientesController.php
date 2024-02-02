@@ -35,6 +35,12 @@ class ExpedientesController extends Controller
         return view('expedientes-show',compact('expediente'));
     }
 
+
+    public function edit($expediente_id){
+        $expediente = Expediente::find($expediente_id);
+        return view('expedientes-edit',compact('expediente'));
+    }
+
     public function store(Request $request){
 
             $validator = $request -> validate ([

@@ -13,9 +13,9 @@ class InfractorsController extends Controller
         $this->middleware('can:AdministracionInfractores')->only('create');
         $this->middleware('can:AdministracionInfractores')->only('edit');
         $this->middleware('can:AdministracionInfractores')->only('destroy');
-
-      
+   
     }
+    
     public function index(){
 
         $infractores = Infractor::all();
