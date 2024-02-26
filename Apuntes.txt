@@ -1,0 +1,2 @@
+*Realizar cambios en las tablas en las proximas migraciones, en la eliminacion en cascada.
+*Solucionar la eliminacion sin alerta en el datatable.

@@ -73,50 +73,65 @@
    <script> src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" </script>
    <script> src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js" </script>
 
-   <script>
-       $(document).ready(function(){
-             $('#infractores').DataTable({
-                      "language":{
-                          "search":      "Buscar",
-                          "lengthMenu":  "Mostrar _MENU_ registros por pagina",
-                          "info":        "Mostrando pagina _PAGE_ de _PAGES_",
-                          "paginate":     {
-                                              "previous":  "Anterior",
-                                              "next":      "Siguiente",
-                                              "first":     "Primero",
-                                              "last":      "Ultimo"
-                          }  
-
+   
+<script>
+   $(document).ready(function(){
+             // Inicializa DataTable
+             let dataTable = $('#infractores').DataTable({
+                      "language": {
+                          "search": "Buscar",
+                          "lengthMenu": "Mostrar _MENU_ registros por página",
+                          "info": "Mostrando página _PAGE_ de _PAGES_",
+                          "paginate": {
+                              "previous": "Anterior",
+                              "next": "Siguiente",
+                              "first": "Primero",
+                              "last": "Último"
+                          }
                       }
+             });
 
+             // Agrega el manejador de eventos para el formulario de eliminación
+             $('.formEliminar').submit(function(e){
+                 e.preventDefault();
+                 Swal.fire({
+                      title: "¿Estás seguro?",
+                      text: "Se eliminará el registro",
+                      icon: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: "Sí, eliminar"
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                          this.submit();
+                    }
+                  });
+             });
+
+             // Agrega el manejador de eventos al evento draw.dt para las nuevas páginas
+             dataTable.on('draw.dt', function () {
+                 $('.formEliminar').submit(function(e){
+                     e.preventDefault();
+                     Swal.fire({
+                          title: "¿Estás seguro?",
+                          text: "Se eliminará el registro",
+                          icon: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#3085d6",
+                          cancelButtonColor: "#d33",
+                          confirmButtonText: "Sí, eliminar"
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                              this.submit();
+                        }
+                      });
+                 });
              });
        });
    </script>
 
-<script>
-    $(document).ready(function(){
-      $('.formEliminar').submit(function(e){
-             e.preventDefault();
-             Swal.fire({
-                  title: "Estas seguro?",
-                  text: "Se eliminara el registro!",
-                  icon: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: "#3085d6",
-                  cancelButtonColor: "#d33",
-                  confirmButtonText: "Si, eliminar!"
-              }).then((result) => {
-                if (result.isConfirmed) {
-                      this.submit();  
-                      
-                }
-              }); 
-      })
-    
-    })
-   </script>
-
-@if (session("message"))      
+   @if (session("message"))      
    <script>
       $(document).ready(function(){
             let mensaje = "{{ session ('message')}}";                 

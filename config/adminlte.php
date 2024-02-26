@@ -308,7 +308,7 @@ return [
             'can'  => 'manage-blog',
         ],
                
-        ['header' => '>>> USUARIOS <<<',
+        ['header' => 'USUARIOS',
           'can'   => 'AdministracionUsuario'
         ],
 
@@ -334,7 +334,7 @@ return [
         ],
 
         
-        ['header' => '>>> EXPEDIENTES <<<',
+        ['header' => 'EXPEDIENTES',
         'can'   => 'AdmistracionDGAJ'
         ],
 
@@ -356,7 +356,7 @@ return [
             ]
         ],
 
-        ['header' => '>>> INFRACTORES <<<',
+        ['header' => 'INFRACTORES',
         'can'   => 'AdmistracionDGAJ',
         ],
 
@@ -378,7 +378,7 @@ return [
             ]
         ],
 
-        ['header' => '>>> SUMARIOS <<<'],
+        ['header' => 'SUMARIOS'],
 
         [
             'text'       => 'Sumarios',
@@ -398,7 +398,7 @@ return [
             ]
         ],
 
-        ['header' => '>>> SUMARISIMAS <<<'],
+        ['header' => 'SUMARISIMAS'],
 
         [
             'text'       => 'Sumarisimas',
@@ -418,7 +418,7 @@ return [
             ]
             ],
         
-        ['header' => '>>> INFORMACION S. A. <<<'],
+        ['header' => 'INFORMACION S. A.'],
 
         [
             'text'       => 'I. S. A.',
