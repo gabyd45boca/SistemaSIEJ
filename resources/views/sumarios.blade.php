@@ -52,19 +52,26 @@
                     <td>{{$sumario->infraccion}}</td>
                     
                     <td> 
-                        <form action="{{route('sumarios.destroy', $sumario->id) }}" class="formEliminar" method="POST">
-                
-                          <a href="{{ route ('sumarios.show', $sumario->id) }}" class="btn btn-secondary btn-sm"> Ver</a> 
-                          <a href="{{ route ('sumarios.edit', $sumario->id) }}" class="btn btn-primary btn-sm"> Editar </a> 
-                          @csrf
-                          @method('delete')
+                        <form action="{{ route('sumarios.destroy', $sumario->id) }}" class="formEliminar" method="POST">
+                            @csrf
+                            @method('delete')
 
-                          @can('EliminarSumario') 
-                          <input type="submit" value="Eliminar" class="btn btn-danger btn-sm"> 
-                          @endcan
+                            <a href="{{ route('sumarios.show', $sumario->id) }}" class="btn btn-secondary btn-sm" title="Ver">
+                                <i class="fas fa-eye"></i>
+                            </a> 
 
+                            <a href="{{ route('sumarios.edit', $sumario->id) }}" class="btn btn-primary btn-sm" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </a> 
+
+                            @can('EliminarSumario') 
+                                <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            @endcan
                         </form> 
-                    </td>   
+                  </td>
+
               </tr>
          @endforeach
       </tbody>

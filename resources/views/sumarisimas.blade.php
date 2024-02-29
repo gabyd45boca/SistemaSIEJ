@@ -52,13 +52,19 @@
                                          
                     <td>
                         <form action="{{route('sumarisimas.destroy', $sumarisima->id) }}" class="formEliminar" method="POST">
-                          <a href="{{ route ('sumarisimas.show', $sumarisima->id) }}" class="btn btn-secondary btn-sm" > Ver </a>
-                          <a href="{{ route ('sumarisimas.edit', $sumarisima->id) }}" class="btn btn-primary btn-sm" > Editar </a>
+                          <a href="{{ route ('sumarisimas.show', $sumarisima->id) }}" class="btn btn-secondary btn-sm" > 
+                            <i class="fas fa-eye"></i>
+                          </a>
+                          <a href="{{ route ('sumarisimas.edit', $sumarisima->id) }}" class="btn btn-primary btn-sm" > 
+                            <i class="fas fa-edit"></i>
+                          </a>
                           @csrf
                           @method('delete')
 
                           @can('EliminarSumarisima') 
-                          <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+                              <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                                    <i class="fas fa-trash"></i>
+                              </button>
                           @endcan
                         </form>   
                     </td>   

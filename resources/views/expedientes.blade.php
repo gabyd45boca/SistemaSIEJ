@@ -50,11 +50,18 @@
               
                     <td>
                         <form action="{{route('expedientes.destroy', $expediente->id) }}" class="formEliminar" method="POST">
-                          <a href="{{ route ('expedientes.show', $expediente->id) }}" class="btn btn-secondary btn-sm"> Ver </a>
-                          <a href="{{ route ('expedientes.edit', $expediente->id) }}" class="btn btn-primary btn-sm"> Editar </a>
+                          <a href="{{ route ('expedientes.show', $expediente->id) }}" class="btn btn-secondary btn-sm"> 
+                           <i class="fas fa-eye"></i>
+                          </a>
+
+                          <a href="{{ route ('expedientes.edit', $expediente->id) }}" class="btn btn-primary btn-sm"> 
+                           <i class="fas fa-edit"></i>
+                          </a>
                           @csrf
                           @method('delete')
-                          <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+                          <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                           <i class="fas fa-trash"></i>
+                          </button>
                         </form>   
                     </td>   
             </tr>

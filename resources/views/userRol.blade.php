@@ -30,7 +30,7 @@
                <p>{{$user->name}}</p>    
             </div>
             <div class="card-body">
-                <h5 class="fw-normal">Lista de permisos</h5>
+                <h5 class="fw-normal">Lista de roles</h5>
                     {!! Form::model($user, ['route' => ['asignar.update', $user],'method'=>'put']) !!}
                         @foreach  ($roles as $role)
                         <div >
