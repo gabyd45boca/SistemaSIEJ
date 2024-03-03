@@ -20,7 +20,7 @@
 <div class="card">
   <h5 class="card-header">Lista de Permisos</h5>
   <div class="card-header">
-  <x-adminlte-button label="Nuevo Permiso" theme="primary"  class="float-right" data-toggle="modal" data-target="#modalPurple"/>
+  <x-adminlte-button label="+ Permiso" theme="primary"  title="Nuevo Permiso" class="float-right" data-toggle="modal" data-target="#modalPurple"/>
   </div>
    <div class="table-responsive text-nowrap">
        
@@ -42,10 +42,14 @@
                                          
                     <td>
                         <form action="{{route('permisos.destroy', $permiso) }}" class="formEliminar" method="POST">
-                          <a href="{{ route ('permisos.edit', $permiso) }}" class="btn btn-primary btn-sm"> Editar </a>
+                          <a href="{{ route ('permisos.edit', $permiso) }}" class="btn btn-primary btn-sm" title="Editar">
+                            <i class="fas fa-edit"></i>
+                          </a>
                           @csrf
                           @method('delete')
-                          <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+                            <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                                    <i class="fas fa-trash"></i>
+                            </button>
                         </form>   
                     </td>   
             </tr>

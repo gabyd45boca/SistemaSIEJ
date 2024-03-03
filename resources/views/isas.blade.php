@@ -54,11 +54,11 @@
                     <td> 
                         <form action="{{route('isas.destroy', $isa->id) }}" class="formEliminar" method="POST">
                           
-                          <a href="{{ route ('isas.show', $isa->id) }}" class="btn btn-secondary btn-sm"> 
+                          <a href="{{ route ('isas.show', $isa->id) }}" class="btn btn-secondary btn-sm" title="Ver"> 
                            <i class="fas fa-eye"></i>
                           </a>
 
-                          <a href="{{ route ('isas.edit', $isa->id) }}" class="btn btn-primary btn-sm"> 
+                          <a href="{{ route ('isas.edit', $isa->id) }}" class="btn btn-primary btn-sm" title="Editar"> 
                            <i class="fas fa-edit"></i>
                           </a> 
              

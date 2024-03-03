@@ -50,11 +50,11 @@
               
                     <td>
                         <form action="{{route('expedientes.destroy', $expediente->id) }}" class="formEliminar" method="POST">
-                          <a href="{{ route ('expedientes.show', $expediente->id) }}" class="btn btn-secondary btn-sm"> 
+                          <a href="{{ route ('expedientes.show', $expediente->id) }}" class="btn btn-secondary btn-sm" title="Ver"> 
                            <i class="fas fa-eye"></i>
                           </a>
 
-                          <a href="{{ route ('expedientes.edit', $expediente->id) }}" class="btn btn-primary btn-sm"> 
+                          <a href="{{ route ('expedientes.edit', $expediente->id) }}" class="btn btn-primary btn-sm" title="Editar"> 
                            <i class="fas fa-edit"></i>
                           </a>
                           @csrf

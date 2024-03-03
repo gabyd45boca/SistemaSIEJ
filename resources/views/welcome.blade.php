@@ -12,8 +12,8 @@
     <style>
         body {
             font-family: 'Nunito', sans-serif;
-            background-image: url('{{ asset('vendor/adminlte/dist/img/escudo_policia.png') }}');
-            background-size: contain; /* Cambiado a 'contain' para mantener el tamaño original */
+            background-image: url('{{ asset('vendor/adminlte/dist/img/fondo.png') }}');
+            background-size: cover; /* Cambiado a 'contain' para mantener el tamaño original */
             background-repeat: no-repeat; /* Evita la repetición de la imagen */
             background-position: center center; /* Centra la imagen en el fondo */
             display: flex;
@@ -30,7 +30,7 @@
         @media (max-width: 640px) {
             /* Ajustes específicos para pantallas pequeñas */
             body {
-                background-size: contain; /* Ajusta el tamaño de la imagen para que quepa completamente en pantallas pequeñas */
+                background-size: cover; /* Ajusta el tamaño de la imagen para que quepa completamente en pantallas pequeñas */
             }
             h1 {
                 text-align: center; /* Alinea el texto al centro en pantallas pequeñas */
@@ -58,7 +58,7 @@
 
     <div class="text-center">
         <div class="pt-8">
-            <h1 class="m-0 text-dark text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">SISTEMA DE INFORMACION DE EXPEDIENTES JUDICIALES</h1>
+            <h1 class="m-0 text-dark">SISTEMA DE INFORMACION SIEA</h1>
         </div>
     </div>
 

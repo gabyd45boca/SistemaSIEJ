@@ -21,7 +21,7 @@
   <h5 class="card-header">Lista de Roles</h5>
   
   <div class="card-header">
-  <x-adminlte-button label="Nuevo Rol" theme="primary"  class="float-right" data-toggle="modal" data-target="#modalPurple"/>
+  <x-adminlte-button label="+ Rol" theme="primary"  title="Nuevo Rol" class="float-right" data-toggle="modal" data-target="#modalPurple"/>
   </div>
   
   <div class="table-responsive text-nowrap">
@@ -44,10 +44,14 @@
                                          
                     <td>
                         <form action="{{route('roles.destroy', $role)}}" class="formEliminar" method="POST">
-                          <a href="{{route ('roles.edit',$role)}}" class="btn btn-primary btn-sm"> Editar </a>
+                          <a href="{{route ('roles.edit',$role)}}" class="btn btn-primary btn-sm" title="Editar">
+                            <i class="fas fa-edit"></i> 
+                          </a>
                           @csrf
                           @method('delete')
-                          <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+                            <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                              <i class="fas fa-trash"></i>
+                            </button>
                         </form>   
                     </td>   
             </tr>

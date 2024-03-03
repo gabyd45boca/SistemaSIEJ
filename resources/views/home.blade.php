@@ -1,10 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'SIEJ')
+@section('title', 'SIEA')
 
 @section('content_header')
 
-    <h1 class="m-0 text-dark">SISTEMA DE INFORMACION DE EXPEDIENTES JUDICIALES</h1>
+    <div class="text-center">
+        <div class="pt-8">
+            <h1 class="m-0 text-dark">SISTEMA DE INFORMACION DE EXPEDIENTES ADMINISTRATIVOS</h1>
+        </div>
+    </div>
+
 @stop
 
 @section('content')

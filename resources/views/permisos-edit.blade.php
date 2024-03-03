@@ -22,26 +22,25 @@
             </ul>
         </div>
      @endif
-  <form method= "post" action="{{ route ('permisos.update','permiso')}}" class="card-body">
-      @csrf
-      @method('PUT')
+  <form method= "post" action="{{ route ('permisos.update', $permiso->id) }}" class="card-body">
+        @csrf
+        @method('put')
+            
+            <h6 class="fw-normal">Edicion del permiso</h6>
+        <div class="row g-3">
         
-        <h6 class="fw-normal">Edicion del permiso</h6>
-    <div class="row g-3">
-    
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-name">Nombre</label>
-                <input type="text" name="name" value="{{ $permiso->name}}" id="multicol-name" class="form-control" placeholder="Escribir el nombre del permiso"/> 
-            </div>
-           
-                
-    </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="multicol-name">Nombre</label>
+                    <input type="text" name="name" value="{{ $permiso->name}}" id="multicol-name" class="form-control" placeholder="Escribir el nombre del permiso"/> 
+                </div>
+                    
+        </div>
 
-    
-    <div class="pt-4">
-    <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-    <button type="button" class="btn btn-secondary" onClick="location.href='/permisos'">Cancelar</button>
-    </div>
+        
+        <div class="pt-4">
+            <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
+            <button type="button" class="btn btn-secondary" onClick="location.href='/permisos'">Cancelar</button>
+        </div>
   </form>
 </div>
    

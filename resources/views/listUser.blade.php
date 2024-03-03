@@ -52,10 +52,14 @@
                     </td>  
                     <td>
                         <form action="{{route('asignar.destroy', $user)}}" class="formEliminar" method="POST">
-                          <a href="{{route ('asignar.edit',$user)}}" class="btn btn-primary btn-sm"> Editar </a>
+                          <a href="{{route ('asignar.edit',$user)}}" class="btn btn-primary btn-sm"  title="Editar"> 
+                            <i class="fas fa-edit"></i>
+                          </a>
                           @csrf
                           @method('delete')
-                          <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+                            <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                              <i class="fas fa-trash"></i>
+                            </button>
                         </form>   
                     </td>   
             </tr>

@@ -25,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+Route::get('/', function () {
+    return Auth::check() ? view('home') : view('auth.login');
+});
 */
 
 Route::get('/', function () {
@@ -87,27 +90,11 @@ Route::middleware('auth')->group(function () {
      //roles///////////////////////////
     ////////////////////////////////////////
     Route::resource('/roles', RoleController::class)->names('roles');
-   
-   /* Route::get('/roles', [App\Http\Controllers\RoleController::class,'index'])->name('roles');
-    Route::get('/roles/create', [App\Http\Controllers\RoleController::class,'create'])->name('roles.create');
-    Route::post('/roles/store',[App\Http\Controllers\RoleController::class,'store'])->name('roles.store');
-    Route::get('/roles/show/{role_id}',[App\Http\Controllers\RoleController::class,'show'])->name('roles.show');
-    Route::get('/roles/edit/{role_id}',[App\Http\Controllers\RoleController::class,'edit'])->name('roles.edit');  
-    Route::put('/roles/update',[App\Http\Controllers\RoleController::class,'update'])->name('roles.update');  
-    Route::delete('/roles/destroy/{role_id}',[App\Http\Controllers\RoleController::class,'destroy'])->name('roles.destroy');*/
-
+  
     //permisos///////////////////////////
     ////////////////////////////////////////
-    Route::resource('/permisos', PermisoController::class)->names('permisos');
-    /*Route::get('/permisos', [App\Http\Controllers\PermisoController::class,'index'])->name('permisos');
-    Route::get('/permisos/create', [App\Http\Controllers\PermisoController::class,'create'])->name('permisos.create');
-    Route::post('/permisos/store',[App\Http\Controllers\PermisoController::class,'store'])->name('permisos.store');
-    Route::get('/permisos/show/{permiso_id}',[App\Http\Controllers\PermisoController::class,'show'])->name('permisos.show');
-    Route::get('/permisos/edit/{permiso_id}',[App\Http\Controllers\PermisoController::class,'edit'])->name('permisos.edit');    
-    Route::post('/permisos/update',[App\Http\Controllers\PermisoController::class,'update'])->name('permisos.update');  
-    Route::delete('/permisos/destroy/{permiso_id}',[App\Http\Controllers\PermisoController::class,'destroy'])->name('permisos.destroy');*/
+    Route::resource('permisos', PermisoController::class);
     
-
     //usuarios///////////////////////////
     ////////////////////////////////////////
     Route::resource('/usuarios', AsignarController::class)->names('asignar');

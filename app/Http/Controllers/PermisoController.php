@@ -57,7 +57,7 @@ class PermisoController extends Controller
    
     public function edit(Permission $permiso)
     {
-        
+       
         return view('permisos-edit',compact('permiso'));
         
     }
@@ -65,23 +65,16 @@ class PermisoController extends Controller
     
     public function update(Request $request, Permission $permiso)
     {
-        //dd($request->all());    
-        
-           $validator = $request -> validate ([
-           
-            'name'=> 'required|unique:permissions',
-                                               
-            ]);
+        $validator = $request->validate([
+            'name' => 'required|unique:permissions,name,' . $permiso->id,
+        ]);
 
-           
-           // $permiso = Permission::find($id);
+        $permiso->update($request->all());
 
-            $permiso->update($request->all());  
-                                            
-            // return back()->with('message','Actualizado correctamente!');
-                  
-            return redirect()->route('permisos.index')->with('message','Actualizado correctamente!');
+        return redirect()->route('permisos.index')->with('message', 'Actualizado correctamente!');
     }
+
+
 
     
     public function destroy($permiso_id)
