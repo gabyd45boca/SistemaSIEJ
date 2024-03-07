@@ -232,8 +232,10 @@
                     </div>
                     
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
-                      <span class="form-control" id="multicol-sugerencia_DAI">{{ $isa->sugerencia_DAI }}</span>
+                        <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
+                        <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                            {{ $isa->sugerencia_DAI }}
+                        </textarea>
                     </div>
 
                     <div class="col-md-6">
@@ -318,8 +320,10 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
-                          <span class="form-control" id="multicol-sugerencia_DGAJ">{{ $isa->sugerencia_DGAJ}}</span>
+                            <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DGAJ</label>
+                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                                {{ $isa->sugerencia_DGAJ }}
+                            </textarea>
                         </div>
 
                         <div class="col-md-6">
@@ -408,8 +412,10 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
-                      <span class="form-control" id="multicol-sugerencia_AL">{{ $isa->sugerencia_AL}}</span>
+                            <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia AL</label>
+                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                                {{ $isa->sugerencia_AL }}
+                            </textarea>
                     </div>
 
                     <div class="col-md-6">
@@ -495,9 +501,11 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
-                        <span class="form-control" id="multicol-resol_final_DGRRHH">{{ $isa->resol_final_DGRRHH}}</span>
-                      </div>
+                            <label class="form-label" for="multicol-sugerencia_DAI">Resolucion Final</label>
+                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                                {{ $isa->resol_final_DGRRHH}}
+                            </textarea>
+                     </div>
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de la procedencia</label>
