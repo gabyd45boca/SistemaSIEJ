@@ -120,10 +120,13 @@
                     <label class="form-label" for="multicol-destino_pase">Destino de Pase</label>
                     <span class="form-control" id="multicol-destino_pase">{{ $sumarisima->destino_pase }}</span>
                 </div>
-                
+                 
+
                 <div class="col-md-6">
-                    <label class="form-label" for="multicol-primera_interv">PRIMERA INTERVENCION</label>
-                    <span class="form-control" id="multicol-primera_interv">{{ $sumarisima->primera_interv }}</span>
+                        <label class="form-label" for="multicol-primera_interv">PRIMERA INTERVENCION</label>
+                        <textarea class="form-control" id="multicol-primera_interv" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                            {{ $sumarisima->primera_interv }}
+                        </textarea>
                 </div>
 
                 <div class="col-md-6">
@@ -142,9 +145,12 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label" for="multicol-opinion_final">OPINION FINAL</label>
-                    <span class="form-control" id="multicol-opinion_final">{{ $sumarisima->opinion_final }}</span>
+                        <label class="form-label" for="multicol-opinion_final">OPINION FINAL</label>
+                        <textarea class="form-control" id="multicol-opinion_final" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                            {{ $sumarisima->opinion_final }}
+                        </textarea>
                 </div>
+         
 
                 <div class="col-md-6">
                 <label class="form-label" for="multicol-fecha_egreso"> FECHA DE EGRESO</label>

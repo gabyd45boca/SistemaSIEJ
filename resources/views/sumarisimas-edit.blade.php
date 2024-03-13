@@ -158,10 +158,12 @@
                         <option value="Destacamento" @if ($sumarisima->destino_pase == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
                     </x-adminlte-select2>
                 </div>
+
                 <div class="col-md-6">
-                <label class="form-label" for="multicol-primera_interv">PRIMERA INTERVENCION</label>
-                    <input type="text" name="primera_interv" value="{{ $sumarisima-> primera_interv }}" id="multicol-primera_interv" class="form-control" placeholder="Escribir la sugerencia " />
+                    <label class="form-label" for="multicol-primera_interv">PRIMERA INTERVENCION</label>
+                    <textarea name="primera_interv" id="multicol-primera_interv" class="form-control">{{ $sumarisima->primera_interv }}</textarea>
                 </div>
+
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
                     <x-adminlte-select2 name="tipo_mov" value="{{ $sumarisima-> tipo_mov }}" class="select2 form-select">
@@ -184,8 +186,9 @@
 
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-opinion_final">OPINION FINAL</label>
-                    <input type="text" name="opinion_final" value="{{ $sumarisima-> opinion_final }}" id="multicol-opinion_final" class="form-control" placeholder="Escribir la sugerencia " />
+                    <textarea name="opinion_final" id="multicol-opinion_final" class="form-control">{{ $sumarisima->opinion_final }}</textarea>
                 </div>
+
                 <div class="col-md-6">
                 <label class="form-label" for="multicol-fecha_egreso"> FECHA DE EGRESO</label>
                     <input type="date" name="fecha_egreso" value="{{ $sumarisima-> fecha_egreso }}" id="multicol-fecha_egreso" class="form-control" placeholder="Fecha de reingreso " />

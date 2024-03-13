@@ -159,10 +159,12 @@
                     <option value="Destacamento">Destacamento</option>
                     </x-adminlte-select2>
                 </div>
+
                 <div class="col-md-6">
-                <label class="form-label" for="multicol-primera_interv">PRIMERA INTERVENCION</label>
-                    <input type="text" name="primera_interv" id="multicol-primera_interv" class="form-control" placeholder="Escribir la sugerencia " />
+                    <label class="form-label" for="multicol-primera_interv">PRIMERA INTERVENCION</label>
+                    <textarea name="primera_interv" id="multicol-primera_interv" class="form-control" placeholder="Escribir la primera intervención"></textarea>
                 </div>
+
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
                     <x-adminlte-select2 name="tipo_mov" class="select2 form-select">
@@ -185,8 +187,9 @@
 
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-opinion_final">OPINION FINAL</label>
-                    <input type="text" name="opinion_final" id="multicol-opinion_final" class="form-control" placeholder="Escribir la sugerencia " />
+                    <textarea name="opinion_final" id="multicol-opinion_final" class="form-control" placeholder="Escribir la opinión final"></textarea>
                 </div>
+
                 <div class="col-md-6">
                 <label class="form-label" for="multicol-fecha_egreso"> FECHA DE EGRESO</label>
                     <input type="date" name="fecha_egreso" id="multicol-fecha_egreso" class="form-control" placeholder="Fecha de reingreso " />

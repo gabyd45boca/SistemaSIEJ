@@ -228,8 +228,8 @@
             </div>
             
             <div class="col-md-6">
-              <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
-              <input type="text" name="sugerencia_DAI" id="multicol-sugerencia_DAI" value="{{old('sugerencia_DAI')}}" class="form-control" placeholder="Escribir la sugerencia " />
+                <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
+                <textarea name="sugerencia_DAI" id="multicol-sugerencia_DAI" class="form-control" placeholder="Escribir la sugerencia">{{ old('sugerencia_DAI') }}</textarea>
             </div>
 
             <div class="col-md-6">
@@ -351,8 +351,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
-                  <input type="text" name="sugerencia_DGAJ" id="multicol-sugerencia_DGAJ" class="form-control" placeholder="Escribir la sugerencia " />
+                    <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
+                    <textarea name="sugerencia_DGAJ" id="multicol-sugerencia_DGAJ" class="form-control" placeholder="Escribir la sugerencia"></textarea>
                 </div>
 
                 <div class="col-md-6">
@@ -474,8 +474,8 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
-              <input type="text" name="sugerencia_AL" id="multicol-sugerencia_AL" class="form-control" value="{{old('sugerencia_AL')}}" placeholder="Escribir la sugerencia " />
+                <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
+                <textarea name="sugerencia_AL" id="multicol-sugerencia_AL" class="form-control" placeholder="Escribir la sugerencia">{{ old('sugerencia_AL') }}</textarea>
             </div>
 
             <div class="col-md-6">
@@ -594,8 +594,8 @@
               </div>
 
               <div class="col-md-6">
-                <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
-                <input type="text" name="resol_final_DGRRHH" id="multicol-resol_final_DGRRHH" value="{{old('resol_final_DGRRHH')}}" class="form-control" placeholder="Escribir la sugerencia " />
+                  <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
+                  <textarea name="resol_final_DGRRHH" id="multicol-resol_final_DGRRHH" class="form-control" placeholder="Escribir la resolución final">{{ old('resol_final_DGRRHH') }}</textarea>
               </div>
 
               <div class="col-md-6">

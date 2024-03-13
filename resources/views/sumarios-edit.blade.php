@@ -369,9 +369,10 @@
                     </div>
                     
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
-                      <input type="text" name= "sugerencia_DAI" value="{{ $sumario-> sugerencia_DAI }}" id="multicol-sugerencia_DAI" class="form-control" placeholder="Escribir la sugerencia " />
+                        <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
+                        <textarea name="sugerencia_DAI" id="multicol-sugerencia_DAI" class="form-control">{{ $sumario->sugerencia_DAI }}</textarea>
                     </div>
+
 
                     <div class="col-md-6">
                     <label class="form-label" for="multicol-fecha_elev_inst_DAI"> Fecha de Elevado por Instruccion</label>
@@ -492,9 +493,10 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
-                          <input type="text" name="sugerencia_DGAJ" value="{{ $sumario-> sugerencia_DGAJ }}" id="multicol-sugerencia_DGAJ" class="form-control" placeholder="Escribir la sugerencia " />
+                            <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
+                            <textarea name="sugerencia_DGAJ" id="multicol-sugerencia_DGAJ" class="form-control">{{ $sumario->sugerencia_DGAJ }}</textarea>
                         </div>
+
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de la procedencia</label>
@@ -625,8 +627,8 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
-                      <input type="text" name="sugerencia_AL" value="{{ $sumario-> sugerencia_AL }}" id="multicol-sugerencia_AL" class="form-control" placeholder="Escribir la sugerencia " />
+                        <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
+                        <textarea name="sugerencia_AL" id="multicol-sugerencia_AL" class="form-control">{{ $sumario->sugerencia_AL }}</textarea>
                     </div>
 
                     <div class="col-md-6">
@@ -757,8 +759,8 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
-                        <input type="text" name="resol_final_DGRRHH" value="{{ $sumario-> resol_final_DGRRHH}}" id="multicol-resol_final_DGRRHH" class="form-control" placeholder="Escribir la sugerencia " />
+                          <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
+                          <textarea name="resol_final_DGRRHH" id="multicol-resol_final_DGRRHH" class="form-control">{{ $sumario->resol_final_DGRRHH }}</textarea>
                       </div>
 
                       <div class="col-md-6">
