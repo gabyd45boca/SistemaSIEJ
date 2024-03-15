@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'SIEJ')
+@section('title', 'SIEA')
 
 @section('content_header')
     <h1 class="m-0 text-dark">Registrar Sumarisima</h1>
@@ -24,26 +24,42 @@
      @endif
 
 <div class ="row">
-    
+
      <div class="col-lg-12">
      
      <div class="card mb-4">
     
-<form method= "POST" action="{{ route ('sumarisimas.store')}}" class="card-body">
-        @csrf
-        <h4 class="fw-normal">1. Carga de datos del expediente</h4>
-    <div class="row g-3">
-    
+  <form method="POST" action="{{ route ('sumarisimas.store')}}" class="card-body">
+       @csrf
+       <h4 class="fw-normal">1. Carga de datos del expediente</h4>
+      <div class="row g-3">
+
             <div class="col-md-6">
                 <label class="form-label" for="num_dj"> N° DJ</label>
                 <input type="text" name="num_dj" id="num_dj" class="form-control" placeholder="Numero de DJ" value="{{old('num_dj')}}" required/>
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
+                <x-adminlte-select2  name="lugar_proced" class="select2 form-select" required>
+                    <option value="">Seleccionar la dependencia</option>
+                    <option value="Comisaria Comunitaria">Comisaria Comunitaria</option>
+                    <option value="Departamental">Departamental</option>
+                    <option value="Destacamento">Destacamento</option>
+                </x-adminlte-select2>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-username"> Fecha de ingreso</label>
                 <input type="date" name="fecha_ingreso" id="multicol-fecha_ingreso" class="form-control" value="{{old('fecha_ingreso')}}" placeholder="Fecha de inicio de actuaciones " required/>
             </div>
+         
 
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-username"> Fecha Inicio de Actuaciones</label>
+              <input type="date" name="fecha_inicio" id="multicol-fecha_inicio" class="form-control" placeholder="Fecha de inicio de actuaciones" value="{{old('fecha_inicio')}}" required/>
+            </div>
+                      
             <div class="col-md-6">
                 <label class="form-label" for="multicol-fojas">Fojas</label>
                 <input type="text" name="fojas" id="multicol-fojas" class="form-control" value="{{old('fojas')}}" placeholder="Cantidad de fojas" required/>
@@ -73,137 +89,441 @@
                     <option value="Otro">Otro</option>
                 </x-adminlte-select2>
             </div>
+
             <div class="col-md-6">
-                <label class="form-label" for="multicol-destino_proced">Destino de Procedencia</label>
-                <x-adminlte-select2  name="destino_proced" class="select2 form-select" required>
-                    <option value="">Seleccionar la dependencia</option>
-                    <option value="Comisaria Comunitaria">Comisaria Comunitaria</option>
-                    <option value="Departamental">Departamental</option>
-                    <option value="Destacamento">Destacamento</option>
-                </x-adminlte-select2>
+                    <label class="form-label" for="multicol-primera_interv">Primera Intervencion</label>
+                    <textarea name="primera_interv" id="multicol-primera_interv" class="form-control" placeholder="Escribir la primera intervención"></textarea>
+             </div>
+         
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-fecha_pase"> Fecha de Pase</label>
+              <input type="date" name="fecha_pase" id="multicol-fecha_pase" class="form-control" value="{{old('fecha_pase')}}" placeholder="Fecha de pase del expediente " required />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+              <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Observaciones" />
             </div>
             
-    </div>
-    <hr class="my-4 mx-n4"/>
-    <h4 class="fw-normal">2. Carga de datos del personal infractor</h4>
-            <div class="row g-3">
-
-                <div class="col-md-12">
-                    <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
-                    <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" title="Seleccionar infractores" data-style="btn-primary" multiple required>
-                        @foreach ($infractores as $infractor) 
-                        <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}</option>
-                        @endforeach
-                    </x-adminlte-select>
-
-                    @if ($errors->has('apellido_nombre_inf'))
-                    <span class="text-danger">
-                        <strong>{{$errors->first('apellido_nombre_inf') }}</strong>
-                    </span>
-                    @endif  
-                </div>
-                    
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-lugar_pase">Lugar de Pase</label>
+              <x-adminlte-select2  name="lugar_pase" value="{{old('lugar_pase')}}" required>
+                <option value="">Seleccionar la dependencia</option>
+                <option value="Asesoria Letrada">Asuntos Interno</option>
+                <option value="Comisaria">Comisaria</option>
+                <option value="Departamental">Departamental</option>
+              </x-adminlte-select2>
             </div>
 
-    <hr class="my-4 mx-n4" />
-    <h4 class="fw-normal">3. Carga de datos del personal instructor de la Division de Asuntos Legales</h4>
-           <div class="row g-3">
-    
+           
+                                 
+          </div>
+
+          <hr class="my-4 mx-n4" />
+          <h4 class="fw-normal">2. Carga del personal infractor</h4>
+          <div class="row g-3">
+            
+            <div class="col-md-12">
+              <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
+              <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" title="Seleccionar infractores" data-style="btn-primary"  multiple required  >
+                  @foreach ($infractores as $infractor) 
+                  <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}</option>
+                  @endforeach
+              </x-adminlte-select>
+
+              @if ($errors->has('apellido_nombre_inf'))
+              <span class="text-danger">
+                  <strong>{{$errors->first('apellido_nombre_inf') }}</strong>
+              </span>
+              @endif  
+            </div>
+                      
+
+          </div>
+     
+
+          <hr class="my-4 mx-n4" />
+          <h4 class="fw-normal">3. Carga de datos del personal instructor de la Direccion General de Asuntos Judiciales</h4>
+          <div class="row g-3">
+
                 <div class="col-md-6">
-                    <label class="form-label" for="multicol-apellido_nombre_AL">Apellido y Nombres</label>
-                    <input type="text" name="apellido_nombre_AL" id="multicol-apellido_nombre_AL" class="form-control" placeholder="Escribir el apellido y nombres"/>
+                  <label class="form-label" for="multicol-apellido_nombre_DGAJ">Apellido y Nombre</label>
+                  <input type="text" name="apellido_nombre_DGAJ" id="multicol-apellido_nombre_DGAJ" class="form-control" placeholder="Escribir el apellido y nombre"/>
                 </div>
-                
-                               
+               
                 <div class="col-md-6">
-                    <label class="form-label" for="multicol-leg_pers_AL">Legajo Personal</label>
-                    <input type="text" name="leg_pers_AL" id="multicol-leg_pers_AL" class="form-control" placeholder="Escribir el legajo personal" />
+                  <label class="form-label" for="multicol-leg_pers_DGAJ">Legajo Personal</label>
+                  <input type="text" name="leg_pers_DGAJ" id="multicol-leg_pers_DGAJ" class="form-control" value="{{old('leg_pers_DGAJ')}}" placeholder="Escribir el legajo personal" />
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
-                    <x-adminlte-select2  name="dependen_AL" class="select2 form-select">
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Comisaria comunitaria N° 5">Comisaria comunitaria N° 5</option>
-                        <option value="D.S.C. N°1">D.S.C. N°1</option>
-                        <option value="Destacamento">Destacamento</option>
-                    </x-adminlte-select2>
+                  <label class="form-label" for="multicol-dependen_DGAJ">Dependencia</label>
+                  <x-adminlte-select2  name="dependen_DGAJ"  class="select2 form-select" value="{{old('dependen_DGAJ')}}" >
+                    <option value="">Seleccionar la dependencia</option>
+                    <option value="Direccion General de Asuntos Judiciales">Direccion General de Asuntos Judiciales</option>
+                    <option value="D.S.C. N°1">D.S.C. N°1</option>
+                    <option value="DESTACAMENTO">DESTACAMENTO</option>
+                  </x-adminlte-select2>
                 </div>
 
                 <div class="col-md-6 select2-primary">
-                <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
-                    <x-adminlte-select2 name="jerarquia_AL" class="select2 form-select">
-                        <option value="">Seleccionar la jerarquia</option>
-                        <option value="Agente">Agente</option>
-                        <option value="Oficial ayudante">Oficial ayudante</option>
-                        <option value="Comisario">Comisario</option>
-                    </x-adminlte-select2>
+                  <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
+                  <x-adminlte-select2  name="jerarquia_DGAJ"  class="select2 form-select" >
+                    <option value="">Seleccionar la jerarquia</option>
+                    <option value="Agente">Agente</option>
+                    <option value="Oficial ayudante">Oficial ayudante</option>
+                    <option value="Comisario">Comisario</option>
+                  </x-adminlte-select2>
+                </div>
+
+          </div> 
+
+          <hr class="my-4 mx-n4" />
+          <h4 class="fw-normal">4. Carga de movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
+            <div class="row g-3">
+             
+            
+                <div class="col-md-6">
+                <label class="form-label" for="multicol-fecha_reingreso_DGAJ"> Fecha de Reingreso</label>
+                  <input type="date" name="fecha_reingreso_DGAJ" id="multicol-fecha_reingreso_DGAJ" class="form-control" value="{{old('fecha_reingreso_DGAJ')}}" placeholder="Fecha de pase del expediente " />
+                </div>
+          
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-obs_reingreso_DGAJ">Observaciones del Reingreso</label>
+                  <input type="text" name="obs_reingreso_DGAJ" id="multicol-obs_reingreso_DGAJ" class="form-control" value="{{old('obs_reingreso_DGAJ')}}" placeholder="Escribir observaciones de la procedencia" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label" for="multicol-opinion_cierre_DGAJ">Opinion de Cierre</label>
+                    <textarea name="opinion_cierre_DGAJ" id="multicol-opinion_cierre_DGAJ" class="form-control" placeholder="Escribir la sugerencia"></textarea>
+                </div>
+                
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-fecha_pase_DGAJ"> Fecha de Pase</label>
+                  <input type="date" name="fecha_pase_DGAJ" id="multicol-fecha_pase_DGAJ" class="form-control" value="{{old('fecha_pase_DGAJ')}}" placeholder="Fecha de pase del expediente " />
+                </div>
+
+
+                <div class="col-md-6">
+                <label class="form-label" for="multicol-lugar_pase_DGAJ">Lugar de Pase</label>
+                  <x-adminlte-select2  name="lugar_pase_DGAJ" value="{{old('lugar_pase_DGAJ')}}"  class="select2 form-select" >
+                    <option value="">Seleccionar la dependencia</option>
+                    <option value="Asesoria Letrada">Asesoria Letrada</option>
+                    <option value="D.S.C. N°1">D.S.C. N°1</option>
+                    <option value="DESTACAMENTO">DESTACAMENTO</option>
+                  </x-adminlte-select2>
+                </div>
+             
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
+                  <input type="text" name="obs_pase_DGAJ" id="multicol-obs_pase_DGAJ"value="{{old('obs_pase_DGAJ')}}"  class="form-control" placeholder="Escribir observaciones para el pase" />
+                </div>
+              
+            
+             </div>
+
+          
+          <hr class="my-4 mx-n4" />
+          <h4 class="fw-normal">5. Carga de datos del personal instructor de Asesoria Letrada</h4>
+          <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-apellido_nombre_AL">Apellido y Nombre</label>
+                  <input type="text" name="apellido_nombre_AL" id="multicol-apellido_nombre_AL" class="form-control" value="{{old('apellido_nombre_AL')}}" placeholder="Escribir el apellido y nombre"/>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-leg_pers_AL">Legajo Personal</label>
+                  <input type="text" name="leg_pers_AL" id="multicol-leg_pers_AL" class="form-control" value="{{old('leg_pers_AL')}}" placeholder="Escribir el legajo personal" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
+                  <x-adminlte-select2  name="dependen_AL" value="{{old('dependen_AL')}}" class="select2 form-select">
+                    <option value="">Seleccionar la dependencia</option>
+                    <option value="Asesoria Letrada">Asesoria Letrada</option>
+                    <option value="D.S.C. N°1">D.S.C. N°1</option>
+                    <option value="DESTACAMENTO">DESTACAMENTO</option>
+                  </x-adminlte-select2>
+                </div>
+
+                <div class="col-md-6 select2-primary">
+                  <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
+                  <x-adminlte-select2  name="jerarquia_AL" value="{{old('jerarquia_AL')}}" class="select2 form-select">
+                    <option value="">Seleccionar la jerarquia</option>
+                    <option value="Agente">Agente</option>
+                    <option value="Oficial ayudante">Oficial ayudante</option>
+                    <option value="Comisario">Comisario</option>
+                  </x-adminlte-select2>
                 </div>
 
             </div> 
 
-    <hr class="my-4 mx-n4" />
-    <h4 class="fw-normal">4. Carga de movimientos y sugerencias del instructor de la Division de Asuntos Legales</h4>
+          <hr class="my-4 mx-n4" />
+          <h4 class="fw-normal">6. Carga de movimientos y sugerencias del instructor de Asesoria Letrada</h4>
+          <div class="row g-3">
+
+            <div class="col-md-6">
+                <label class="form-label" for="multicol-reg_interno_AL">Registro Interno</label>
+                <input type="text" name="reg_interno_AL" id="multicol-reg_interno_AL" value="{{old('reg_interno_AL')}}" class="form-control" placeholder="Registro interno" />
+            </div>
+          
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Procedencia</label>
+              <input type="date" name="fecha_mov_procAL" id="multicol-fecha_mov_procAL" class="form-control" value="{{old('fecha_mov_procAL')}}" placeholder="Fecha de pase del expediente " />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
+              <x-adminlte-select2  name="destin_proceden_AL" value="{{old('destin_proceden_AL')}}" class="select2 form-select" >
+                <option value="">Seleccionar la dependencia</option>
+                <option value="Direccion General de Asuntos Judiciales">Direccion General de Asuntos Judiciales</option>
+                <option value="D.S.C. N°1">D.S.C. N°1</option>
+                <option value="DESTACAMENTO">DESTACAMENTO</option>
+              </x-adminlte-select2>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
+                <textarea name="sugerencia_AL" id="multicol-sugerencia_AL" class="form-control" placeholder="Escribir la sugerencia">{{ old('sugerencia_AL') }}</textarea>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-obs_proced_AL">Observaciones de procedencia</label>
+              <input type="text" name="obs_proced_AL" id="multicol-obs_proced_AL" class="form-control" value="{{old('obs_proced_AL')}}" placeholder="Escribir observaciones de la procedencia" />
+            </div>
+          
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Pase</label>
+              <input type="date" name="fecha_mov_paseAL" id="multicol-fecha_mov_paseAL" value="{{old('fecha_mov_paseAL')}}" class="form-control" placeholder="Fecha de pase del expediente " />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
+              <x-adminlte-select2  name="destin_pase_AL" value="{{old('destin_pase_AL')}}" class="select2 form-select">
+                <option value="">Seleccionar la dependencia</option>
+                <option value="Secretaria de Seguridad">Secretaria de Seguridad</option>
+                <option value="D.S.C. N°1">D.S.C. N°1</option>
+                <option value="DESTACAMENTO">DESTACAMENTO</option>
+              </x-adminlte-select2>
+            </div>
+          
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+              <input type="text" name="obs_pase_AL" id="multicol-obs_pase_AL" value="{{old('obs_pase_AL')}}" class="form-control" placeholder="Escribir observaciones para el pase" />
+            </div>
+        
+            
+          </div>
+
+
+          <hr class="my-4 mx-n4" />
+          <h4 class="fw-normal">7. Carga de datos del personal instructor de la Secretaria de Seguridad</h4>
           <div class="row g-3">
 
                 <div class="col-md-6">
-                    <label class="form-label" for="multicol-fecha_mov"> Fecha de Movimiento</label>
-                    <input type="date" name="fecha_mov" id="multicol-fecha_mov" class="form-control" placeholder="Fecha de pase del expediente " />
+                  <label class="form-label" for="multicol-apellido_nombre_AL">Apellido y Nombre</label>
+                  <input type="text" name="apellido_nombre_SS" id="multicol-apellido_nombre_SS" class="form-control" value="{{old('apellido_nombre_SS')}}" placeholder="Escribir el apellido y nombre"/>
                 </div>
+
                 <div class="col-md-6">
-                    <label class="form-label" for="multicol-destino_pase">Destino de Pase</label>
-                    <x-adminlte-select2  name="destino_pase" class="select2 form-select" >
+                  <label class="form-label" for="multicol-leg_pers_AL">Legajo Personal</label>
+                  <input type="text" name="leg_pers_SS" id="multicol-leg_pers_SS" class="form-control" value="{{old('leg_pers_SS')}}" placeholder="Escribir el legajo personal" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-dependen_SS">Dependencia</label>
+                  <x-adminlte-select2  name="dependen_SS" value="{{old('dependen_SS')}}" class="select2 form-select">
                     <option value="">Seleccionar la dependencia</option>
-                    <option value="Comisaria comunitaria N° 5">Comisaria comunitaria N° 5</option>
+                    <option value="Direccion General de RRHH">Secretaria de Seguridad</option>
                     <option value="D.S.C. N°1">D.S.C. N°1</option>
-                    <option value="Destacamento">Destacamento</option>
-                    </x-adminlte-select2>
+                    <option value="DESTACAMENTO">DESTACAMENTO</option>
+                  </x-adminlte-select2>
                 </div>
 
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-primera_interv">PRIMERA INTERVENCION</label>
-                    <textarea name="primera_interv" id="multicol-primera_interv" class="form-control" placeholder="Escribir la primera intervención"></textarea>
+                <div class="col-md-6 select2-primary">
+                  <label class="form-label" for="multicol-jerarquia_SS">Jerarquia</label>
+                  <x-adminlte-select2  name="jerarquia_SS" value="{{old('jerarquia_SS')}}" class="select2 form-select">
+                    <option value="">Seleccionar la jerarquia</option>
+                    <option value="Agente">Agente</option>
+                    <option value="Oficial ayudante">Oficial ayudante</option>
+                    <option value="Comisario">Comisario</option>
+                  </x-adminlte-select2>
                 </div>
 
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
-                    <x-adminlte-select2 name="tipo_mov" class="select2 form-select">
-                    <option value="">Seleccionar el tipo de movimiento</option>
-                    <option value="Salida">Salida</option>
-                    <option value="Ingreso">Ingreso</option>
-                    <option value="ReIngreso">ReIngreso</option>
-                    </x-adminlte-select2>
+            </div> 
 
-                </div>
-                
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-observaciones">OBSERVACIONES</label>
-                    <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" placeholder="Escribir la observacion" />
-                </div>
-                <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_reingreso"> FECHA DE REINGRESO</label>
-                    <input type="date" name="fecha_reingreso" id="multicol-fecha_reingreso" class="form-control" placeholder="Fecha de reingreso " />
-                </div>
+          <hr class="my-4 mx-n4" />
+          <h4 class="fw-normal">8. Carga de movimientos y sugerencias del instructor de la Secretaria de Seguridad</h4>
+          <div class="row g-3">
 
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-opinion_final">OPINION FINAL</label>
-                    <textarea name="opinion_final" id="multicol-opinion_final" class="form-control" placeholder="Escribir la opinión final"></textarea>
-                </div>
-
-                <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_egreso"> FECHA DE EGRESO</label>
-                    <input type="date" name="fecha_egreso" id="multicol-fecha_egreso" class="form-control" placeholder="Fecha de reingreso " />
-                </div>
-                
+            <div class="col-md-6">
+                <label class="form-label" for="multicol-reg_interno_AL">Registro Interno</label>
+                <input type="text" name="reg_interno_SS" id="multicol-reg_interno_SS" value="{{old('reg_interno_SS')}}" class="form-control" placeholder="Registro interno" />
+            </div>
+          
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-fecha_proced_SS"> Fecha de Procedencia</label>
+              <input type="date" name="fecha_proced_SS" id="multicol-fecha_proced_SS" class="form-control" value="{{old('fecha_proced_SS')}}" placeholder="Fecha de pase del expediente " />
             </div>
 
-    
-    <div class="pt-4">
-    <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-    <button type="button" class="btn btn-secondary" onClick="location.href='/sumarisimas'">Cancelar</button>
-    </div>
-</form>
-  
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-lugar_proceden_SS">Lugar de Procedencia</label>
+              <x-adminlte-select2  name="lugar_proceden_SS" value="{{old('lugar_proceden_SS')}}" class="select2 form-select" >
+                <option value="">Seleccionar la dependencia</option>
+                <option value="Asesoria Letrada">Asesoria Letrada</option>
+                <option value="D.S.C. N°1">D.S.C. N°1</option>
+                <option value="DESTACAMENTO">DESTACAMENTO</option>
+              </x-adminlte-select2>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label" for="multicol-sugerencia_SS">Sugerencia</label>
+                <textarea name="sugerencia_SS" id="multicol-sugerencia_SS" class="form-control" placeholder="Escribir la sugerencia">{{ old('sugerencia_SS') }}</textarea>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-obs_proced_SS">Observaciones de procedencia</label>
+              <input type="text" name="obs_proced_SS" id="multicol-obs_proced_SS" class="form-control" value="{{old('obs_proced_SS')}}" placeholder="Escribir observaciones de la procedencia" />
+            </div>
+          
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-fecha_pase_SS">Fecha de Pase</label>
+              <input type="date" name="fecha_pase_SS" id="multicol-fecha_pase_SS" value="{{old('fecha_pase_SS')}}" class="form-control" placeholder="Fecha de pase del expediente " />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
+              <x-adminlte-select2  name="lugar_pase_SS" value="{{old('lugar_pase_SS')}}" class="select2 form-select">
+                <option value="">Seleccionar la dependencia</option>
+                <option value="Direccion General Recursos Humanos">Direccion General Recursos Humanos</option>
+                <option value="D.S.C. N°1">D.S.C. N°1</option>
+                <option value="DESTACAMENTO">DESTACAMENTO</option>
+              </x-adminlte-select2>
+            </div>
+      
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+              <input type="text" name="obs_pase_SS" id="multicol-obs_pase_SS" value="{{old('obs_pase_SS')}}" class="form-control" placeholder="Escribir observaciones para el pase" />
+            </div>
+                    
+          </div>
+
+
+          <hr class="my-4 mx-n4" />
+            <h4 class="fw-normal">9. Carga de datos del personal instructor de la Direccion General de Recursos Humanos</h4>
+          <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-apellido_nombre_DGRRHH">Apellido y Nombre</label>
+                <input type="text" name="apellido_nombre_DGRRHH" id="multicol-apellido_nombre_DGRRHH" value="{{old('apellido_nombre_DGRRHH')}}" class="form-control" placeholder="Escribir el apellido y nombre"/>
+              </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-leg_pers_DGRRHH">Legajo Personal</label>
+              <input type="text" name="leg_pers_DGRRHH" id="multicol-leg_pers_DGRRHH" class="form-control" value="{{old('leg_pers_DGRRHH')}}" placeholder="Escribir el legajo personal" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-dependen_DGRRHH">Dependencia</label>
+              <x-adminlte-select2  name="dependen_DGRRHH" value="{{old('dependen_DGRRHH')}}" class="select2 form-select" >
+                <option value="">Seleccionar la dependencia</option>
+                <option value="Direccion General de Recursos Humanos">Direccion General de Recursos Humanos</option>
+                <option value="D.S.C. N°1">D.S.C. N°1</option>
+                <option value="DESTACAMENTO">DESTACAMENTO</option>
+              </x-adminlte-select2>
+            </div>
+
+            <div class="col-md-6 select2-primary">
+              <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
+              <x-adminlte-select2  name="jerarquia_DGRRHH" value="{{old('jerarquia_DGRRHH')}}" class="select2 form-select" >
+                <option value="">Seleccionar la jerarquia</option>
+                <option value="Agente">Agente</option>
+                <option value="Oficial ayudante">Oficial ayudante</option>
+                <option value="Comisario">Comisario</option>
+              </x-adminlte-select2>
+            </div>
+
+          </div> 
+
+          <hr class="my-4 mx-n4" />
+          <h4 class="fw-normal">10. Carga de movimientos y resolucion final del instructor de la Direccion General de Recursos Humanos</h4>
+          <div class="row g-3">
+
+              <div class="col-md-6">
+                  <label class="form-label" for="multicol-reg_interno_DGRRHH">Registro Interno</label>
+                  <input type="text" name="reg_interno_DGRRHH" id="multicol-reg_interno_DGRRHH" value="{{old('reg_interno_DGRRHH')}}" class="form-control" placeholder="Registro interno" />
+              </div>
+            
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Procedencia</label>
+                <input type="date" name="fecha_mov_proceDGRRHH" id="multicol-fecha_mov_proceDGRRHH" value="{{old('fecha_mov_proceDGRRHH')}}" class="form-control" placeholder="Fecha de pase del expediente " />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
+                <x-adminlte-select2  name="destin_proceden_DGRRHH" value="{{old('destin_proceden_DGRRHH')}}" class="select2 form-select">
+                  <option value="">Seleccionar la dependencia</option>
+                  <option value="Secretaria de Seguridad">Secretaria de Seguridad</option>
+                  <option value="D.S.C. N°1">D.S.C. N°1</option>
+                  <option value="DESTACAMENTO">DESTACAMENTO</option>
+                </x-adminlte-select2>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Pase</label>
+                <input type="date" name="fecha_mov_paseDGRRHH" id="multicol-fecha_mov_paseDGRRHH" value="{{old('fecha_mov_paseDGRRHH')}}" class="form-control" placeholder="Fecha de pase del expediente " />
+              </div>
+            
+
+              <div class="col-md-6">
+                  <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
+                  <textarea name="resol_final_DGRRHH" id="multicol-resol_final_DGRRHH" class="form-control" placeholder="Escribir la resolución final">{{ old('resol_final_DGRRHH') }}</textarea>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de procedencia</label>
+                <input type="text" name="obs_proced_DGRRHH" id="multicol-obs_proced_DGRRHH" class="form-control" value="{{old('obs_proced_DGRRHH')}}" placeholder="Escribir observaciones de la procedencia" />
+              </div>
+                      
+           
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
+                <input type="text" name="obs_pase_DGRRHH" id="multicol-obs_pase_DGRRHH" value="{{old('obs_pase_DGRRHH')}}" class="form-control" placeholder="Escribir observaciones para el pase" />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>
+                <x-adminlte-select2  name="concluido_DGRRHH" value="{{old('concluido_DGRRHH')}}" class="select2 form-select">
+                  <option value="">Seleccione</option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </x-adminlte-select2>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
+                <input type="text" name="DGRRHH_N°" id="multicol-DGRRHH_N°" value="{{old('DGRRHH_N°')}}" class="form-control" placeholder="Escribir N° de resolucion" />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="multicol-fecha_notificacion"> Fecha de Notificacion</label>
+                <input type="date" name="fecha_notificacion" id="multicol-fecha_notificacion" value="{{old('fecha_notificacion')}}" class="form-control" placeholder="Fecha de notificacion de la resolucion" />
+              </div>
+              
+            </div>
+
+          <div class="pt-4">
+              <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
+              <button type="reset" class="btn btn-secondary" onClick="location.href='/sumarios'">Cancelar</button>
+          </div>
+   </form>
+
+  </div>
+
+   
 @endsection
 
 @section('scripts')
