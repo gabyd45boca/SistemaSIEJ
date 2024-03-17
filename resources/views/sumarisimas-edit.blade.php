@@ -315,76 +315,35 @@
                             <label class="form-label" for="multicol-opinion_cierre_DGAJ">Opinion de Cierre</label>
                             <textarea name="opinion_cierre_DGAJ" value="{{ $sumarisima-> opinion_cierre_DGAJ}}" id="multicol-opinion_cierre_DGAJ" class="form-control" placeholder="Escribir la sugerencia"></textarea>
                         </div>
-        QUEDEEEE AQUIIIII
+
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-destin_proced_DGAJ">Destino de Procedencia</label>
-                          <x-adminlte-select2  name="destin_proced_DGAJ" value="{{ $sumarisima-> destin_proced_DGAJ }}" class="select2 form-select" >
+                          <label class="form-label" for="multicol-fecha_pase_DGAJ"> Fecha de Pase</label>
+                          <input type="date" name="fecha_pase_DGAJ" value="{{ $sumarisima-> fecha_pase_DGAJ}}" id="multicol-fecha_pase_DGAJ" class="form-control" value="{{old('fecha_pase_DGAJ')}}" placeholder="Fecha de pase del expediente " />
+                        </div>
+
+                
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-lugar_pase_DGAJ">Lugar de Pase</label>
+                          <x-adminlte-select2  name="lugar_pase_DGAJ" value="{{ $sumarisima-> lugar_pase_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccionar la dependencia</option>
-                            <option value="Asuntos Internos" @if ($sumarisima->destin_proced_DGAJ == 'Asuntos Internos') selected @endif 'Asuntos Internos'>Asuntos Internos</option>
-                            <option value="Comisaria" @if ($sumarisima->destin_proced_DGAJ == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                            <option value="Departamental" @if ($sumarisima->destin_proced_DGAJ == 'Departamental') selected @endif 'Departamental'>Departamental</option>
+                            <option value="Asesoria Letrada" @if ($sumarisima->lugar_pase_DGAJ == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
+                            <option value="D.S.C. N°1" @if ($sumarisima->lugar_pase_DGAJ == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
+                            <option value="DESTACAMENTO" @if ($sumarisima->lugar_pase_DGAJ == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
                           </x-adminlte-select2>
                         </div>
 
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-tipo_mov_proce_DGAJ">Tipo Movimiento</label>
-                          <x-adminlte-select2  name="tipo_mov_proce_DGAJ" value="{{ $sumarisima-> tipo_mov_proce_DGAJ }}" class="select2 form-select">
-                            <option value="">Seleccionar el tipo de movimiento</option>
-                            <option value="Salida" @if ($sumarisima->tipo_mov_proce_DGAJ == 'Salida') selected @endif 'Salida'>Salida</option>
-                            <option value="Ingreso" @if ($sumarisima->tipo_mov_proce_DGAJ == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                            <option value="ReIngreso" @if ($sumarisima->tipo_mov_proce_DGAJ == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                          </x-adminlte-select2>
-                        </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
-                            <textarea name="sugerencia_DGAJ" id="multicol-sugerencia_DGAJ" class="form-control">{{ $sumarisima->sugerencia_DGAJ }}</textarea>
+                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
+                          <input type="text" name="obs_pase_DGAJ" value="{{ $sumarisima-> obs_pase_DGAJ}}" id="multicol-obs_pase_DGAJ"value="{{old('obs_pase_DGAJ')}}"  class="form-control" placeholder="Escribir observaciones para el pase" />
                         </div>
 
-
-                       
+                                 
                         
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Movimiento</label>
                           <input type="date" name="fecha_mov_destDGAJ" value="{{ $sumarisima-> fecha_mov_destDGAJ }}" id="multicol-fecha_mov_destDGAJ" class="form-control" placeholder="Fecha de pase del expediente " />
                         </div>
-
-
-                        <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_pase_DGAJ">Destino de Pase</label>
-                          <x-adminlte-select2  name="destin_pase_DGAJ" value="{{ $sumarisima-> destin_pase_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccionar la dependencia</option>
-                            <option value="Asesoria Letrada" @if ($sumarisima->destin_pase_DGAJ == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
-                            <option value="Comisaria" @if ($sumarisima->destin_pase_DGAJ == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                            <option value="Departamental" @if ($sumarisima->destin_pase_DGAJ == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                          </x-adminlte-select2>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-tipo_mov_pase_DGAJ">Tipo Movimiento</label>
-                          <x-adminlte-select2  name="tipo_mov_pase_DGAJ" value="{{ $sumarisima-> tipo_mov_pase_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccionar el tipo de movimiento</option>
-                            <option value="Salida" @if ($sumarisima->tipo_mov_pase_DGAJ == 'Salida') selected @endif 'Salida'>Salida</option>
-                            <option value="Ingreso" @if ($sumarisima->tipo_mov_pase_DGAJ == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                            <option value="ReIngreso" @if ($sumarisima->tipo_mov_pase_DGAJ == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                          </x-adminlte-select2>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
-                          <input type="text" name="obs_pase_DGAJ" value="{{ $sumarisima-> obs_pase_DGAJ }}" id="multicol-obs_pase_DGAJ" class="form-control" placeholder="Escribir observaciones para el pase" />
-                        </div>
-
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-concluido_DGAJ">Concluido por Instruccion</label>
-                          <x-adminlte-select2 name="concluido_DGAJ" value="{{ $sumarisima-> concluido_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccione</option>
-                            <option value="Si" @if ($sumarisima->concluido_DGAJ == 'Si') selected @endif 'Si'>Si</option>
-                            <option value="No" @if ($sumarisima->concluido_DGAJ == 'No') selected @endif 'No'>No</option>
-                          </x-adminlte-select2>
-                        </div>
-                    
-              </div>
               @endcan
 
               @can('EditarSumarisimaDGAL')
@@ -398,7 +357,7 @@
                   </div>
 
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">7. Carga de datos del personal instructor de Asesoria Letrada</h4>
+                  <h4 class="fw-normal">5. Carga de datos del personal instructor de Asesoria Letrada</h4>
               <div class="row g-3">
 
                         <div class="col-md-6">
@@ -434,7 +393,7 @@
               </div> 
 
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">8. Carga de movimientos y sugerencias del instructor de Asesoria Letrada</h4>
+                  <h4 class="fw-normal">6. Carga de movimientos y sugerencias del instructor de Asesoria Letrada</h4>
               <div class="row g-3">
 
                     <div class="col-md-6">
@@ -443,12 +402,12 @@
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Movimiento</label>
+                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Procedencia</label>
                       <input type="date" name="fecha_mov_procAL" value="{{ $sumarisima-> fecha_mov_procAL }}" id="multicol-fecha_mov_procAL" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_AL">Destino de Procedencia</label>
+                      <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
                       <x-adminlte-select2  name="destin_proceden_AL" value="{{ $sumarisima-> destin_proceden_AL }}" class="select2 form-select" >
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Asuntos Judiciales" @if ($sumarisima->destin_proceden_AL == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
@@ -456,16 +415,7 @@
                         <option value="Departamental" @if ($sumarisima->destin_proceden_AL == 'Departamental') selected @endif 'Departamental'>Departamental</option>
                       </x-adminlte-select2>
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_proce_AL">Tipo Movimiento</label>
-                      <x-adminlte-select2 name="tipo_mov_proce_AL" value="{{ $sumarisima-> tipo_mov_proce_AL }}" class="select2 form-select" >
-                        <option value="">Seleccionar el tipo de movimiento</option>
-                        <option value="Salida" @if ($sumarisima->tipo_mov_proce_AL == 'Salida') selected @endif 'Salida'>Salida</option>
-                        <option value="Ingreso" @if ($sumarisima->tipo_mov_proce_AL == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                        <option value="ReIngreso" @if ($sumarisima->tipo_mov_proce_AL == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                      </x-adminlte-select2>
-                    </div>
+                
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
@@ -478,46 +428,135 @@
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Movimiento</label>
+                      <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Pase</label>
                       <input type="date" name="fecha_mov_paseAL" value="{{ $sumarisima-> fecha_mov_paseAL }}" id="multicol-fecha_mov_paseAL" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_AL">Destino de Pase</label>
+                      <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
                       <x-adminlte-select2  name="destin_pase_AL" value="{{ $sumarisima-> destin_pase_AL }}" class="select2 form-select">
                         <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion General Recursos Humanos" @if ($sumarisima->destin_pase_AL == 'Direccion General Recursos Humanos') selected @endif 'Direccion General Recursos Humanos'>Direccion General Recursos Humanos</option>
-                        <option value="Comisaria" @if ($sumarisima->destin_pase_AL == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                        <option value="Departamental" @if ($sumarisima->destin_pase_AL == 'Departamental') selected @endif 'Departamental'>Departamental</option>
+                        <option value="Secretaria de Seguridad" @if ($sumarisima->destin_pase_AL == 'Secretaria de Seguridad') selected @endif 'Secretaria de Seguridad'>Secretaria de Seguridad/option>
+                        <option value="D.S.C. N°1" @if ($sumarisima->destin_pase_AL == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
+                        <option value="DESTACAMENTO" @if ($sumarisima->destin_pase_AL == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
                       </x-adminlte-select2>
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_pase_AL">Tipo Movimiento</label>
-                      <x-adminlte-select2  name="tipo_mov_pase_AL" value="{{ $sumarisima-> tipo_mov_pase_AL }}" class="select2 form-select" >
-                        <option value="">Seleccionar el tipo de movimiento</option>
-                        <option value="Salida" @if ($sumarisima->tipo_mov_pase_AL == 'Salida') selected @endif 'Salida'>Salida</option>
-                        <option value="Ingreso" @if ($sumarisima->tipo_mov_pase_AL == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                        <option value="ReIngreso" @if ($sumarisima->tipo_mov_pase_AL == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                      </x-adminlte-select2>
-                    </div>
+       
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
                       <input type="text" name="obs_pase_AL" value="{{ $sumarisima-> obs_pase_AL}}" id="multicol-obs_pase_AL" class="form-control" placeholder="Escribir observaciones para el pase" />
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-concluido_AL">Concluido por Instruccion</label>
-                      <x-adminlte-select2  name="concluido_AL" value="{{ $sumarisima-> concluido_AL }}" class="select2 form-select">
-                        <option value="">Seleccione</option>
-                        <option value="Si" @if ($sumarisima->concluido_AL == 'Si') selected @endif 'Si'>Si</option>
-                        <option value="No" @if ($sumarisima->concluido_AL == 'No') selected @endif 'No'>No</option>
-                      </x-adminlte-select2>
-                    </div>
+                
                     
               </div>
               @endcan
+
+              @can('EditarSumarisimaSS')
+              
+              <div class="hidden-view">
+                <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Infractores" multiple>
+                          @foreach ($infractores as $infractor) 
+                          <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}}</option>
+                          @endforeach
+                </x-adminlte-select>
+              </div>
+
+              <hr class="my-4 mx-n4" />
+              <h4 class="fw-normal">7. Carga de datos del personal instructor de la Secretaria de Seguridad</h4>
+          <div class="row g-3">
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-apellido_nombre_SS">Apellido y Nombre</label>
+                      <input type="text" name="apellido_nombre_SS" value="{{ $sumarisima-> apellido_nombre_SS }}" id="multicol-apellido_nombre_SS" class="form-control" placeholder="Escribir el apellido y nombre"/>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-leg_pers_SS">Legajo Personal</label>
+                      <input type="text" name="leg_pers_SS" value="{{ $sumarisima-> leg_pers_SS }}" id="multicol-leg_pers_SS" class="form-control" placeholder="Escribir el legajo personal" />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-dependen_SS">Dependencia</label>
+                      <x-adminlte-select2  name="dependen_SS" value="{{ $sumarisima-> dependen_SS }}" class="select2 form-select">
+                        <option value="">Seleccionar la dependencia</option>
+                        <option value="Direccion General de RRHH" @if ($sumarisima->dependen_SS == 'Direccion General de RRHH') selected @endif 'Direccion General de RRHH'>Direccion General de RRHH</option>
+                        <option value="D.S.C. N°1" @if ($sumarisima->dependen_SS == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
+                        <option value="DESTACAMENTO" @if ($sumarisima->dependen_SS == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
+                      </x-adminlte-select2>
+                    </div>
+
+                    <div class="col-md-6 select2-primary">
+                      <label class="form-label" for="multicol-jerarquia_SS">Jerarquia</label>
+                      <x-adminlte-select2  name="jerarquia_SS" value="{{ $sumarisima-> jerarquia_SS }}" class="select2 form-select">
+                        <option value="">Seleccionar la jerarquia</option>
+                        <option value="agente" @if ($sumarisima->jerarquia_SS == 'agente') selected @endif 'agente'>agente</option>
+                        <option value="oficial_ayudante" @if ($sumarisima->jerarquia_SS == 'oficial_ayudante') selected @endif 'oficial_ayudante'>oficial ayudante</option>
+                        <option value="comisario" @if ($sumarisima->jerarquia_SS == 'comisario') selected @endif 'comisario'>comisario</option>
+                      </x-adminlte-select2>
+                    </div>
+
+          </div> 
+
+              <hr class="my-4 mx-n4" />
+              <h4 class="fw-normal">8. Carga de movimientos y sugerencias del instructor de Asesoria Letrada</h4>
+          <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label" for="multicol-reg_interno_SS">Registro Interno</label>
+                    <input type="text" name="reg_interno_SS" value="{{ $sumarisima-> reg_interno_SS }}" id="multicol-reg_interno_SS" class="form-control" placeholder="Registro interno" />
+                </div>
+              
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-fecha_proced_SS"> Fecha de Procedencia</label>
+                  <input type="date" name="fecha_proced_SS" value="{{ $sumarisima-> fecha_proced_SS }}" id="multicol-fecha_proced_SS" class="form-control" placeholder="Fecha de pase del expediente " />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-lugar_proceden_SS">Lugar de Procedencia</label>
+                  <x-adminlte-select2  name="lugar_proceden_SS" value="{{ $sumarisima-> lugar_proceden_SS }}" class="select2 form-select" >
+                    <option value="">Seleccionar la dependencia</option>
+                    <option value="Direccion General Asuntos Judiciales" @if ($sumarisima->lugar_proceden_SS == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
+                    <option value="Comisaria" @if ($sumarisima->lugar_proceden_SS == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
+                    <option value="Departamental" @if ($sumarisima->lugar_proceden_SS == 'Departamental') selected @endif 'Departamental'>Departamental</option>
+                  </x-adminlte-select2>
+                </div>
+            
+
+                <div class="col-md-6">
+                    <label class="form-label" for="multicol-sugerencia_SS">Sugerencia AL</label>
+                    <textarea name="sugerencia_SS" id="multicol-sugerencia_SS" class="form-control">{{ $sumarisima->sugerencia_SS }}</textarea>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-obs_proced_SS">Observaciones de la procedencia</label>
+                  <input type="text" name="obs_proced_SS" value="{{ $sumarisima-> obs_proced_SS }}" id="multicol-obs_proced_SS" class="form-control" placeholder="Escribir observaciones de la procedencia" />
+                </div>
+              
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-fecha_pase_SS"> Fecha de Pase</label>
+                  <input type="date" name="fecha_pase_SS" value="{{ $sumarisima-> fecha_pase_SS }}" id="multicol-fecha_pase_SS" class="form-control" placeholder="Fecha de pase del expediente " />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-lugar_pase_SS">Lugar de Pase</label>
+                  <x-adminlte-select2  name="lugar_pase_SS" value="{{ $sumarisima-> lugar_pase_SS }}" class="select2 form-select">
+                    <option value="">Seleccionar la dependencia</option>
+                    <option value="Direccion General Recursos Humanos" @if ($sumarisima->lugar_pase_SS == 'Direccion General Recursos Humanos') selected @endif 'Direccion General Recursos Humanos'>Direccion General Recursos Humanos/option>
+                    <option value="D.S.C. N°1" @if ($sumarisima->lugar_pase_SS == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
+                    <option value="DESTACAMENTO" @if ($sumarisima->lugar_pase_SS == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
+                  </x-adminlte-select2>
+                </div>
+   
+
+                <div class="col-md-6">
+                  <label class="form-label" for="multicol-obs_pase_SS">Observaciones del pase</label>
+                  <input type="text" name="obs_pase_SS" value="{{ $sumarisima-> obs_pase_SS}}" id="multicol-obs_pase_SS" class="form-control" placeholder="Escribir observaciones para el pase" />
+                </div>
+            
+                
+          </div>
+          @endcan
 
               @can('EditarSumarisimaDGRRHH')
               
@@ -575,29 +614,25 @@
                       </div>
                     
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Movimiento Procendencia</label>
+                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Procedencia</label>
                         <input type="date" name="fecha_mov_proceDGRRHH" value="{{ $sumarisima-> fecha_mov_proceDGRRHH}}" id="multicol-fecha_mov_proceDGRRHH" class="form-control" placeholder="Fecha de pase del expediente " />
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Destino de Procedencia</label>
+                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
                         <x-adminlte-select2  name="destin_proceden_DGRRHH" value="{{ $sumarisima-> destin_proceden_DGRRHH}}" class="select2 form-select">
                           <option value="">Seleccionar la dependencia</option>
-                          <option value="Asesoria Letrada" @if ($sumarisima->destin_proceden_DGRRHH == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
+                          <option value="Secretaria de Seguridad" @if ($sumarisima->destin_proceden_DGRRHH == 'Secretaria de Seguridad') selected @endif 'Secretaria de Seguridad'>Secretaria de Seguridad</option>
                           <option value="Comisaria" @if ($sumarisima->destin_proceden_DGRRHH == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
                           <option value="Departamental" @if ($sumarisima->destin_proceden_DGRRHH == 'Departamental') selected @endif 'Departamental'>Departamental</option>
                         </x-adminlte-select2>
                       </div>
-
+                    
                       <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_proce_DGRRHH">Tipo Movimiento Procedencia</label>
-                        <x-adminlte-select2 name="tipo_mov_proce_DGRRHH" value="{{ $sumarisima-> tipo_mov_proce_DGRRHH}}" class="select2 form-select" >
-                          <option value="">Seleccionar el tipo de movimiento</option>
-                          <option value="Salida" @if ($sumarisima->tipo_mov_proce_DGRRHH == 'Salida') selected @endif 'Salida'>Salida</option>
-                          <option value="Ingreso" @if ($sumarisima->tipo_mov_proce_DGRRHH == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                          <option value="ReIngreso" @if ($sumarisima->tipo_mov_proce_DGRRHH == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                        </x-adminlte-select2>
+                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Pase</label>
+                        <input type="date" name="fecha_mov_paseDGRRHH" value="{{ $sumarisima-> fecha_mov_paseDGRRHH}}" id="multicol-fecha_mov_paseDGRRHH" value="{{old('fecha_mov_paseDGRRHH')}}" class="form-control" placeholder="Fecha de pase del expediente " />
                       </div>
+                    
 
                       <div class="col-md-6">
                           <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
@@ -608,31 +643,6 @@
                         <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de la procedencia</label>
                         <input type="text" name="obs_proced_DGRRHH"  value="{{ $sumarisima-> obs_proced_DGRRHH}}" id="multicol-obs_proced_DGRRHH" class="form-control" placeholder="Escribir observaciones de la procedencia" />
                       </div>
-                    
-                      <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Movimiento Pase</label>
-                        <input type="date" name="fecha_mov_paseDGRRHH" value="{{ $sumarisima-> fecha_mov_paseDGRRHH}}" id="multicol-fecha_mov_paseDGRRHH" class="form-control" placeholder="Fecha de pase del expediente " />
-                      </div>
-
-                      <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_DGRRHH">Destino de Pase</label>
-                        <x-adminlte-select2 name="destin_pase_DGRRHH" value="{{ $sumarisima-> destin_pase_DGRRHH}}" class="select2 form-select" >
-                          <option value="">Seleccionar la dependencia</option>
-                          <option value="Secretaria" @if ($sumarisima->destin_pase_DGRRHH == 'Secretaria') selected @endif 'Secretaria'>Secretaria</option>
-                          <option value="Comisaria" @if ($sumarisima->destin_pase_DGRRHH == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                          <option value="Departamental" @if ($sumarisima->destin_pase_DGRRHH == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                        </x-adminlte-select2>
-                      </div>
-
-                      <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_pase_DGRRHH">Tipo Movimiento Pase</label>
-                        <x-adminlte-select2  name="tipo_mov_pase_DGRRHH" value="{{ $sumarisima-> tipo_mov_pase_DGRRHH}}" class="select2 form-select">
-                          <option value="">Seleccionar el tipo de movimiento</option>
-                          <option value="Salida" @if ($sumarisima->tipo_mov_pase_DGRRHH == 'Salida') selected @endif 'Salida'>Salida</option>
-                          <option value="Ingreso" @if ($sumarisima->tipo_mov_pase_DGRRHH == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                          <option value="ReIngreso" @if ($sumarisima->tipo_mov_pase_DGRRHH == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                        </x-adminlte-select2>
-                      </div>
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
@@ -640,14 +650,14 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-concluido_DGRRHH">CONCLUIDO POR INSTRUCCION</label>
+                        <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>
                         <x-adminlte-select2  name="concluido_DGRRHH" value="{{ $sumarisima-> concluido_DGRRHH}}" class="select2 form-select">
                           <option value="">Seleccione</option>
                           <option value="Si" @if ($sumarisima->concluido_DGRRHH == 'Si') selected @endif 'Si'>Si</option>
                           <option value="No" @if ($sumarisima->concluido_DGRRHH == 'No') selected @endif 'No'>No</option>
                         </x-adminlte-select2>
                       </div>
-
+               
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
                         <input type="text" name="DGRRHH_N°" id="multicol-DGRRHH_N°" value="{{ $sumarisima-> DGRRHH_N°}}" class="form-control" placeholder="Escribir N° de resolucion" />
