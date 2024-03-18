@@ -1,10 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'SIEJ')
+@section('title', 'SIEA')
 
 @section('content_header')
+<style>
+        .hidden-view {
+            display: none;
+        }
+</style>
     <h1 class="m-0 text-dark">Mostrar Sumarisima</h1>
-@endsection
+@stop
 
 @section('styles')
 <!-- Latest compiled and minified CSS -->
@@ -13,63 +18,146 @@
 
 @section('content')
 
-<div class ="row">
-    
-     <div class="col-lg-12">
-     
-     <div class="card mb-4">
-     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-               @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-     @endif
-<form method= "POST" action="{{ route ('sumarisimas.update')}}" class="card-body">
-        @csrf
+ <div class ="row">
 
-        <x-adminlte-input type="hidden" name="sumarisima_id" value="{{$sumarisima->id}}"/> 
+          <div class="col-lg-12">
+          
+          <div class="card mb-4">
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+      <form method= "POST" action="{{ route ('sumarisimas.update')}}" class="card-body">
+              @csrf
+             
+              <div class="hidden-view">
+              <x-adminlte-input type="hidden" name="sumarisima_id"   value="{{$sumarisima->id}}"/> 
+              </div>
 
-        <h4 class="fw-normal">1. Datos del expediente</h4>
-    <div class="row g-3">
-    
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-num_dj"> N° DJ</label>
-                <span class="form-control" id="multicol-num_dj">{{ $sumarisima->num_dj }}</span>
-            </div>
+            <div class="table-responsive text-nowrap">
+              <table id="sumarisimas" class="table table-stripted shadow-lg mt-4" with-buttons>
+              <thead class="bg-dark text-white">
+              <tr>
+                <th>ID</th>
+                <th>N° DJA</th>
+                <th>N° DJ</th>
+                <th>MOTIVO</th>
+                <th>LEGAJO</th>
+                <th>INFRACTOR</th>
+                <th>TIPO DENUNCIA</th>
+                <th>FECHA INGRESO</th>
+                <th>INFRACCION</th>
+                
+              </tr>
+              </thead>
 
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_ingreso"> Fecha de ingreso</label>
-                <span class="form-control" id="multicol-fecha_ingreso">{{ $sumarisima->fecha_ingreso }}</span>
-            </div>
+              <tbody class="table-border-bottom-0">
+              <tr>
+              <td>{{$sumarisima->id}}</td>   
+                    <td>{{$sumarisima->num_dja}} </td>   
+                    <td>{{$sumarisima->num_dj}}</td>   
+                    <td>{{$sumarisima->motivo}} </td>
+                                <td>
+                                    @foreach ($sumarisima->infractors as $infractor)
+                                    {{$infractor->leg_pers_inf }} <br>
+                                    @endforeach
+                                </td>
+                   
+                                <td>
+                                    @foreach ($sumarisima->infractors as $infractor)
+                                    {{$infractor->apellido_nombre_inf}} <br>
+                                    @endforeach
+                                </td>   
+                    <td>{{$sumarisima->tipo_denun}}</td>   
+                    <td>{{$sumarisima->fecha_ingreso}}</td>  
+                    <td>{{$sumarisima->infraccion}}</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>  
+              <br>
+              <br>                  
+                                
 
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-fojas">Fojas</label>
-                <span class="form-control" id="multicol-fojas">{{ $sumarisima->fojas }}</span>
-            </div>
+                  <h4 class="fw-normal">1. Datos del expediente</h4>
+                  <div class="row g-3">
 
-            <div class="col-md-6">
-                 <label class="form-label" for="multicol-tipo_denuncia">Tipo de denuncia</label>
-                 <span class="form-control" id="multicol-tipo_denuncia">{{ $sumarisima->tipo_denuncia }}</span>
-            </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-username">N° DJA</label>
+                      <span class="form-control" id="multicol-num_dja">{{ $sumarisima-> num_dja}}</span>
+                    </div>
 
-            <div class="col-md-6">
-                 <label class="form-label" for="multicol-motivo">Motivo</label>
-                 <span class="form-control" id="multicol-motivo">{{ $sumarisima->motivo }}</span>
-            </div>
-            
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-destino_proced">Destino de Procedencia</label>
-                <span class="form-control" id="multicol-destino_proced">{{ $sumarisima->destino_proced }}</span>
-            </div>
-            
-    </div>
-    <hr class="my-4 mx-n4" />
-    <h4 class="fw-normal">2. Datos del personal infractor</h4>
-            <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fecha_ingreso"> Fecha Ingreso</label>
+                      <span class="form-control" id="multicol-fecha_ingreso">{{ $sumarisima-> fecha_ingreso }}</span>
+                    </div>
 
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-num_dj"> N° DJ</label>
+                      <span class="form-control" id="multicol-num_dj">{{ $sumarisima-> num_dj }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fecha_inicio"> Fecha Inicio de Actuaciones</label>
+                      <span class="form-control" id="multicol-fecha_inicio">{{ $sumarisima-> fecha_inicio }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fojas">Fojas</label>
+                      <span class="form-control" id="multicol-fojas">{{ $sumarisima-> fojas }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-infraccion">Infraccion</label>
+                      <span class="form-control" id="multicol-infraccion">{{ $sumarisima-> infraccion }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-motivo">Motivo</label>
+                      <span class="form-control" id="multicol-motivo">{{ $sumarisima-> motivo }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-extracto">Extracto</label>
+                      <span class="form-control" id="multicol-extracto">{{ $sumarisima-> extracto }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-tipo_denun">Tipo de denuncia</label>
+                      <span class="form-control" id="multicol-tipo_denun">{{ $sumarisima->tipo_denun }}</span>
+                     </div>
+                  
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Movimiento</label>
+                      <span class="form-control" id="multicol-tipo_denun">{{ $sumarisima->tipo_denun }}</span>
+                    </div>
+                    
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-destino_pase">Destino de Pase</label>
+                      <span class="form-control" id="multicol-destino_pase">{{ $sumarisima->destino_pase }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+                        <span class="form-control" id="multicol-observaciones">{{ $sumarisima->observaciones }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento Pase</label>
+                      <span class="form-control" id="multicol-tipo_mov">{{ $sumarisima->tipo_mov }}</span>
+                    </div>
+                              
+                  </div>
+                              
+                  <hr class="my-4 mx-n4" />
+                  <h4 class="fw-normal">2. Personal infractor</h4>
+                  <div class="row g-3">
+                    
                     <div class="col-md-12">
                           <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
                           <br>
@@ -79,92 +167,394 @@
                               @endforeach
                           </span>
                     </div>
-                                
-            </div>
-
-    <hr class="my-4 mx-n4" />
-    <h4 class="fw-normal">3. Datos del personal instructor de la Division de Asuntos Legales</h4>
-           <div class="row g-3">
-    
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-apellido_nombre_AL">Apellido y Nombre</label>
-                    <span class="form-control" id="multicol-apellido_nombre_AL">{{ $sumarisima->apellido_nombre_AL }}</span>
-                </div>
-               
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-leg_pers_AL">Legajo Personal</label>
-                    <span class="form-control" id="multicol-leg_pers_AL">{{ $sumarisima->leg_pers_AL }}</span>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
-                    <span class="form-control" id="multicol-dependen_AL">{{ $sumarisima->dependen_AL }}</span>
-                </div>
-
-                <div class="col-md-6 select2-primary">
-                    <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
-                    <span class="form-control" id="multicol-jerarquia_AL">{{ $sumarisima->jerarquia_AL }}</span>
-                </div>
-
-            </div> 
-
-    <hr class="my-4 mx-n4" />
-    <h4 class="fw-normal">4. Movimientos y sugerencias del instructor de la Division de Asuntos Legales</h4>
-          <div class="row g-3">
-
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-fecha_mov"> Fecha de Movimiento</label>
-                    <span class="form-control" id="multicol-fecha_mov">{{ $sumarisima->fecha_mov }}</span>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-destino_pase">Destino de Pase</label>
-                    <span class="form-control" id="multicol-destino_pase">{{ $sumarisima->destino_pase }}</span>
-                </div>
+                                      
+                  </div>
                  
+                                               
+                  <hr class="my-4 mx-n4" />
+                  <h4 class="fw-normal">3. Datos del personal instructor de la Direccion de Asuntos Internos</h4>
+                  <div class="row g-3">
 
-                <div class="col-md-6">
-                        <label class="form-label" for="multicol-primera_interv">PRIMERA INTERVENCION</label>
-                        <textarea class="form-control" id="multicol-primera_interv" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
-                            {{ $sumarisima->primera_interv }}
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-apellido_nombre_DAI">Apellido y Nombre</label>
+                      <span class="form-control" id="multicol-apellido_nombre_DAI">{{ $sumarisima->apellido_nombre_DAI }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-leg_pers_DAI">Legajo Personal</label>
+                      <span class="form-control" id="multicol-leg_pers_DAI">{{ $sumarisima->leg_pers_DAI }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-dependen_DAI">Dependencia</label>
+                      <span class="form-control" id="multicol-dependen_DAI">{{ $sumarisima->dependen_DAI }}</span>
+                    </div>
+
+                    <div class="col-md-6 select2-primary">
+                          <label class="form-label" for="multicol-jerarquia_DAI">Jerarquia</label>
+                          <span class="form-control" id="multicol-jerarquia_DAI">{{ $sumarisima->jerarquia_DAI }}</span>
+                    </div>
+                            
+
+                  </div> 
+           
+             
+                  <hr class="my-4 mx-n4" />
+                  <h4 class="fw-normal">4. Movimientos y sugerencias del instructor de la Direccion de Asuntos Internos </h4>
+              <div class="row g-3">
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-reg_interno_DAI">Registro Interno</label>
+                      <span class="form-control" id="multicol-reg_interno_DAI">{{ $sumarisima->reg_interno_DAI }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fecha_mov_proceDAI"> Fecha de Movimiento Procedencia</label>
+                      <span class="form-control" id="multicol-fecha_mov_proceDAI">{{ $sumarisima->fecha_mov_proceDAI }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-destin_proceden_DAI">Destino de Procedencia</label>
+                      <span class="form-control" id="multicol-destin_proceden_DAI">{{ $sumarisima->destin_proceden_DAI }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de la procedencia</label>
+                      <span class="form-control" id="multicol-destin_proceden_DAI">{{ $sumarisima->destin_proceden_DAI }}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-tipo_mov_proce_DAI">Tipo Movimiento Pase</label>
+                      <span class="form-control" id="multicol-tipo_mov_proce_DAI">{{ $sumarisima->tipo_mov_proce_DAI }}</span>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
+                        <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                            {{ $sumarisima->sugerencia_DAI }}
                         </textarea>
-                </div>
+                    </div>
 
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
-                     <span class="form-control" id="multicol-tipo_mov">{{ $sumarisima->tipo_mov }}</span>
-                </div>
-                
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-observaciones">OBSERVACIONES</label>
-                    <span class="form-control" id="multicol-observaciones">{{ $sumarisima->observaciones }}</span>
-                </div>
 
-                <div class="col-md-6">
-                    <label class="form-label" for="multicol-fecha_reingreso"> FECHA DE REINGRESO</label>
-                    <span class="form-control" id="multicol-fecha_reingreso">{{ $sumarisima->fecha_reingreso }}</span>
-                </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fecha_elev_inst_DAI"> Fecha de Elevado por Instruccion</label>
+                      <span class="form-control" id="multicol-fecha_elev_inst_DAI">{{ $sumarisima->fecha_elev_inst_DAI }}</span>
+                    </div>
 
-                <div class="col-md-6">
-                        <label class="form-label" for="multicol-opinion_final">OPINION FINAL</label>
-                        <textarea class="form-control" id="multicol-opinion_final" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
-                            {{ $sumarisima->opinion_final }}
-                        </textarea>
-                </div>
-         
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fecha_mov_paseDAI"> Fecha de Movimiento Pase</label>
+                      <span class="form-control" id="multicol-fecha_mov_paseDAI">{{ $sumarisima->fecha_mov_paseDAI}}</span>
+                    </div>
 
-                <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_egreso"> FECHA DE EGRESO</label>
-                    <span class="form-control" id="multicol-fecha_egreso">{{ $sumarisima->fecha_egreso }}</span>
-                </div>
-                
-            </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-destin_pase_DAI">Destino de Pase</label>
+                      <span class="form-control" id="multicol-destin_pase_DAI">{{ $sumarisima->destin_pase_DAI}}</span>
+                    </div>
 
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del pase</label>
+                      <span class="form-control" id="multicol-obs_pase_DAI">{{ $sumarisima->obs_pase_DAI}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-tipo_mov_pase_DAI">Tipo Movimiento</label>
+                      <span class="form-control" id="multicol-tipo_mov_pase_DAI">{{ $sumarisima->tipo_mov_pase_DAI}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-concluido_DAI">Concluido por Instruccion</label>
+                      <span class="form-control" id="multicol-concluido_DAI">{{ $sumarisima->concluido_DAI}}</span>
+                    </div>
+              </div>
+           
+                  <hr class="my-4 mx-n4" />
+                  <h4 class="fw-normal">5. Datos del personal instructor de la Direccion General de Asuntos Judiciales</h4>
+              <div class="row g-3">
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-apellido_nombre_DGAJ">Apellido y Nombre</label>
+                          <span class="form-control" id="multicol-apellido_nombre_DGAJ">{{ $sumarisima->apellido_nombre_DGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-leg_pers_DGAJ">Legajo Personal</label>
+                          <span class="form-control" id="multicol-leg_pers_DGAJ">{{ $sumarisima->leg_pers_DGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="multicol-dependen_DGAJ">Dependencia</label>
+                            <span class="form-control" id="multicol-dependen_DGAJ">{{ $sumarisima->dependen_DGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6 select2-primary">
+                          <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
+                          <span class="form-control" id="multicol-jerarquia_DGAJ">{{ $sumarisima->jerarquia_DGAJ}}</span>
+                        </div>
+
+              </div> 
+
+                  <hr class="my-4 mx-n4" />
+                  <h4 class="fw-normal">6. Movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
+              <div class="row g-3">
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-reg_interno_DGAJ">Registro Interno</label>
+                          <span class="form-control" id="multicol-reg_interno_DGAJ">{{ $sumarisima->reg_interno_DGAJ}}</span>
+                        </div>
+                    
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Movimiento</label>
+                          <span class="form-control" id="multicol-fecha_mov_proceDGAJ">{{ $sumarisima->fecha_mov_proceDGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-destin_proced_DGAJ">Destino de Procedencia</label>
+                          <span class="form-control" id="multicol-destin_proced_DGAJ">{{ $sumarisima->destin_proced_DGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-tipo_mov_proce_DGAJ">Tipo Movimiento</label>
+                          <span class="form-control" id="multicol-tipo_mov_proce_DGAJ">{{ $sumarisima->tipo_mov_proce_DGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DGAJ</label>
+                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                                {{ $sumarisima->sugerencia_DGAJ }}
+                            </textarea>
+                        </div>
+                       
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de la procedencia</label>
+                          <span class="form-control" id="multicol-obs_proced_DGAJ">{{ $sumarisima->obs_proced_DGAJ}}</span>
+                        </div>
+                        
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Movimiento</label>
+                          <span class="form-control" id="multicol-fecha_mov_destDGAJ">{{ $sumarisima->fecha_mov_destDGAJ}}</span>
+                        </div>
+
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-destin_pase_DGAJ">Destino de Pase</label>
+                          <span class="form-control" id="multicol-destin_pase_DGAJ">{{ $sumarisima->destin_pase_DGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-tipo_mov_pase_DGAJ">Tipo Movimiento</label>
+                          <span class="form-control" id="multicol-tipo_mov_pase_DGAJ">{{ $sumarisima->tipo_mov_pase_DGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
+                          <span class="form-control" id="multicol-obs_pase_DGAJ">{{ $sumarisima->obs_pase_DGAJ}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-concluido_DGAJ">Concluido por Instruccion</label>
+                          <span class="form-control" id="multicol-concluido_DGAJ">{{ $sumarisima->concluido_DGAJ}}</span>
+                        </div>
+                    
+              </div>
+            
+                              
+
+                  <hr class="my-4 mx-n4" />
+                  <h4 class="fw-normal">7. Datos del personal instructor de Asesoria Letrada</h4>
+              <div class="row g-3">
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-apellido_nombre_AL">Apellido y Nombre</label>
+                          <span class="form-control" id="multicol-apellido_nombre_AL">{{ $sumarisima->apellido_nombre_AL}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-leg_pers_AL">Legajo Personal</label>
+                          <span class="form-control" id="multicol-leg_pers_AL">{{ $sumarisima->leg_pers_AL}}</span>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
+                          <span class="form-control" id="multicol-dependen_AL">{{ $sumarisima->dependen_AL}}</span>
+                        </div>
+
+                        <div class="col-md-6 select2-primary">
+                          <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
+                          <span class="form-control" id="multicol-jerarquia_AL">{{ $sumarisima->jerarquia_AL}}</span>
+                        </div>
+
+              </div> 
+
+                  <hr class="my-4 mx-n4" />
+                  <h4 class="fw-normal">8. Movimientos y sugerencias del instructor de Asesoria Letrada</h4>
+              <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="multicol-reg_interno_AL">Registro Interno</label>
+                        <span class="form-control" id="multicol-reg_interno_AL">{{ $sumarisima->reg_interno_AL}}</span>
+                    </div>
+                  
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Movimiento</label>
+                      <span class="form-control" id="multicol-fecha_mov_procAL">{{ $sumarisima->fecha_mov_procAL}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-destin_proceden_AL">Destino de Procedencia</label>
+                      <span class="form-control" id="multicol-destin_proceden_AL">{{ $sumarisima->destin_proceden_AL}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-tipo_mov_proce_AL">Tipo Movimiento</label>
+                      <span class="form-control" id="multicol-tipo_mov_proce_AL">{{ $sumarisima->tipo_mov_proce_AL}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                            <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia AL</label>
+                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                                {{ $sumarisima->sugerencia_AL }}
+                            </textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de la procedencia</label>
+                      <span class="form-control" id="multicol-obs_proced_AL">{{ $sumarisima->obs_proced_AL}}</span>
+                    </div>
+                  
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Movimiento</label>
+                      <span class="form-control" id="multicol-fecha_mov_paseAL">{{ $sumarisima->fecha_mov_paseAL}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-destin_pase_AL">Destino de Pase</label>
+                      <span class="form-control" id="multicol-destin_pase_AL">{{ $sumarisima->destin_pase_AL}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-tipo_mov_pase_AL">Tipo Movimiento</label>
+                      <span class="form-control" id="multicol-tipo_mov_pase_AL">{{ $sumarisima->tipo_mov_pase_AL}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+                      <span class="form-control" id="multicol-obs_pase_AL">{{ $sumarisima->obs_pase_AL}}</span>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-concluido_AL">Concluido por Instruccion</label>
+                      <span class="form-control" id="multicol-concluido_AL">{{ $sumarisima->concluido_AL}}</span>
+                    </div>
+                    
+              </div>
+             
+                             
+                  <hr class="my-4 mx-n4" />
+                    <h4 class="fw-normal">9. Datos del personal instructor de la Direccion General de Recursos Humanos</h4>
+              <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-apellido_nombre_DGRRHH">Apellido y Nombre</label>
+                        <span class="form-control" id="multicol-apellido_nombre_DGRRHH">{{ $sumarisima->apellido_nombre_DGRRHH}}</span>
+                      </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-leg_pers_DGRRHH">Legajo Personal</label>
+                      <span class="form-control" id="multicol-leg_pers_DGRRHH">{{ $sumarisima->leg_pers_DGRRHH}}</span>
+                    </div>
+                    
+                    <div class="col-md-6">
+                          <label class="form-label" for="multicol-dependen_DGRRHH">Dependencia</label>
+                          <span class="form-control" id="multicol-dependen_DGRRHH">{{ $sumarisima->dependen_DGRRHH}}</span>
+                    </div>
+
+                    <div class="col-md-6 select2-primary">
+                      <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
+                      <span class="form-control" id="multicol-jerarquia_DGRRHH">{{ $sumarisima->jerarquia_DGRRHH}}</span>
+                    </div>
+
+              </div> 
+
+                  <hr class="my-4 mx-n4" />
+                  <h4 class="fw-normal">10. Movimientos y resolucion final del instructor de la Direccion General de Recursos Humanos</h4>
+              <div class="row g-3">
+
+                      <div class="col-md-6">
+                          <label class="form-label" for="multicol-reg_interno_DGRRHH">Registro Interno</label>
+                          <span class="form-control" id="multicol-reg_interno_DGRRHH">{{ $sumarisima->reg_interno_DGRRHH}}</span>
+                      </div>
+                    
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Movimiento Procendencia</label>
+                        <span class="form-control" id="multicol-fecha_mov_proceDGRRHH">{{ $sumarisima->fecha_mov_proceDGRRHH}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Destino de Procedencia</label>
+                        <span class="form-control" id="multicol-destin_proceden_DGRRHH">{{ $sumarisima->destin_proceden_DGRRHH}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-tipo_mov_proce_DGRRHH">Tipo Movimiento Procedencia</label>
+                        <span class="form-control" id="multicol-tipo_mov_proce_DGRRHH">{{ $sumarisima->tipo_mov_proce_DGRRHH}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                            <label class="form-label" for="multicol-sugerencia_DAI">Resolucion Final</label>
+                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                                {{ $sumarisima->resol_final_DGRRHH}}
+                            </textarea>
+                     </div>
+           
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de la procedencia</label>
+                        <span class="form-control" id="multicol-obs_proced_DGRRHH">{{ $sumarisima->obs_proced_DGRRHH}}</span>
+                      </div>
+                    
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Movimiento Pase</label>
+                        <span class="form-control" id="multicol-fecha_mov_paseDGRRHH">{{ $sumarisima->fecha_mov_paseDGRRHH}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-destin_pase_DGRRHH">Destino de Pase</label>
+                        <span class="form-control" id="multicol-destin_pase_DGRRHH">{{ $sumarisima->destin_pase_DGRRHH}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-tipo_mov_pase_DGRRHH">Tipo Movimiento Pase</label>
+                        <span class="form-control" id="multicol-tipo_mov_pase_DGRRHH">{{ $sumarisima->tipo_mov_pase_DGRRHH}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
+                        <span class="form-control" id="multicol-obs_pase_DGRRHH">{{ $sumarisima->obs_pase_DGRRHH}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-concluido_DGRRHH">CONCLUIDO POR INSTRUCCION</label>
+                        <span class="form-control" id="multicol-concluido_DGRRHH">{{ $sumarisima->concluido_DGRRHH}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
+                        <span class="form-control" id="multicol-DGRRHH_N°">{{ $sumarisima->DGRRHH_N°}}</span>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label" for="multicol-fecha_notificacion"> Fecha de Notificacion</label>
+                        <span class="form-control" id="multicol-fecha_notificacion">{{ $sumarisima->fecha_notificacion}}</span>
+                      </div>
+                      
+              </div>
+            
     
-    <div class="pt-4">
-       <button type="button" class="btn btn-secondary" onClick="location.href='/sumarisimas'" >Volver</button>
-    </div>
-</form>
-   
+                  <div class="pt-4">
+                      <button type="button" class="btn btn-secondary" onClick="location.href='/sumarios'">Volver</button>
+                  </div>
+      </form>
+
+  </div>
 @endsection
 
 @section('scripts')
@@ -177,7 +567,3 @@
 </script>
 
 @endsection
-
-
-
-

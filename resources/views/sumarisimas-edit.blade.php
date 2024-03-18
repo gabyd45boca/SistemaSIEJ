@@ -298,9 +298,7 @@
                   <hr class="my-4 mx-n4" />
                   <h4 class="fw-normal">4. Carga de movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
               <div class="row g-3">
-
-                      
-                    
+                   
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-fecha_reingreso_DGAJ"> Fecha de Reingreso</label>
                           <input type="date" name="fecha_reingreso_DGAJ" value="{{ $sumarisima-> fecha_reingreso_DGAJ }}" id="multicol-fecha_reingreso_DGAJ" class="form-control"  />
@@ -344,6 +342,8 @@
                           <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Movimiento</label>
                           <input type="date" name="fecha_mov_destDGAJ" value="{{ $sumarisima-> fecha_mov_destDGAJ }}" id="multicol-fecha_mov_destDGAJ" class="form-control" placeholder="Fecha de pase del expediente " />
                         </div>
+               </div>
+
               @endcan
 
               @can('EditarSumarisimaDGAL')
