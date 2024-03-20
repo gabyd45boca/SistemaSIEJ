@@ -91,7 +91,7 @@
             </div>
 
             <div class="col-md-6">
-                    <label class="form-label" for="multicol-primera_interv">Primera Intervencion</label>
+                    <label class="form-label" for="multicol-primera_interv">Primera intervencion</label>
                     <textarea name="primera_interv" id="multicol-primera_interv" class="form-control" placeholder="Escribir la primera intervención"></textarea>
              </div>
          
@@ -184,10 +184,9 @@
              
             
                 <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_reingreso_DGAJ"> Fecha de Reingreso</label>
+                  <label class="form-label" for="multicol-fecha_reingreso_DGAJ"> Fecha de Reingreso</label>
                   <input type="date" name="fecha_reingreso_DGAJ" id="multicol-fecha_reingreso_DGAJ" class="form-control" value="{{old('fecha_reingreso_DGAJ')}}" placeholder="Fecha de pase del expediente " />
-                </div>
-          
+                </div>          
 
                 <div class="col-md-6">
                   <label class="form-label" for="multicol-obs_reingreso_DGAJ">Observaciones del Reingreso</label>

@@ -31,7 +31,7 @@ return new class extends Migration
             $table->date('fecha_movimiento');
             $table->string('destino_pase'); 
             $table->text('observaciones')->nullable();
-            $table->string('tipo_mov'); 
+            $table->string('tipo_mov')->nullable(); ///sacar de la migracion
                         
             //personal instructor asuntos internos
             $table->string('apellido_nombre_DAI')->nullable();
