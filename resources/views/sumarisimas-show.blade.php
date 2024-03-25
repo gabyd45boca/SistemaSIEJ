@@ -113,7 +113,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_denuncia">Tipo de denuncia</label>
+                      <label class="form-label" for="multicol-tipo_denuncia">Tipo de Denuncia</label>
                       <span class="form-control" id="multicol-tipo_denuncia">{{$sumarisima->tipo_denuncia}}</span>
                     </div>
 
@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-primera_interv">Primera intervencion</label>
+                        <label class="form-label" for="multicol-primera_interv">Primera Intervencion</label>
                         <textarea class="form-control" id="multicol-primera_interv" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
                             {{ $sumarisima->primera_interv }}
                         </textarea>
@@ -135,7 +135,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+                        <label class="form-label" for="multicol-observaciones">Observaciones del Expediente</label>
                         <span class="form-control" id="multicol-observaciones">{{ $sumarisima->observaciones }}</span>
                     </div>
                     
@@ -223,7 +223,7 @@
                 
                        
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
+                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del Pase</label>
                           <span class="form-control" id="multicol-obs_pase_DGAJ">{{ $sumarisima->obs_pase_DGAJ}}</span>
                         </div>
                         
@@ -285,7 +285,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de la procedencia</label>
+                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de Procedencia</label>
                       <span class="form-control" id="multicol-obs_proced_AL">{{ $sumarisima->obs_proced_AL}}</span>
                     </div>
                   
@@ -300,7 +300,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+                      <label class="form-label" for="multicol-obs_pase_AL">Observaciones del Pase</label>
                       <span class="form-control" id="multicol-obs_pase_AL">{{ $sumarisima->obs_pase_AL}}</span>
                     </div>
                
@@ -360,7 +360,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_proced_SS">Observaciones de la procedencia</label>
+                      <label class="form-label" for="multicol-obs_proced_SS">Observaciones de Procedencia</label>
                       <span class="form-control" id="multicol-obs_proced_SS">{{ $sumarisima->obs_proced_SS}}</span>
                     </div>
                   
@@ -375,7 +375,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_pase_SS">Observaciones del pase</label>
+                      <label class="form-label" for="multicol-obs_pase_SS">Observaciones de Pase</label>
                       <span class="form-control" id="multicol-obs_pase_SS">{{ $sumarisima->obs_pase_SS}}</span>
                     </div>
                  
@@ -441,12 +441,12 @@
            
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de procedencia</label>
+                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de Procedencia</label>
                         <span class="form-control" id="multicol-obs_proced_DGRRHH">{{ $sumarisima->obs_proced_DGRRHH}}</span>
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
+                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones de Pase</label>
                         <span class="form-control" id="multicol-obs_pase_DGRRHH">{{ $sumarisima->obs_pase_DGRRHH}}</span>
                       </div>
 
@@ -469,7 +469,7 @@
             
     
                   <div class="pt-4">
-                      <button type="button" class="btn btn-secondary" onClick="location.href='/sumarios'">Volver</button>
+                      <button type="button" class="btn btn-secondary" onClick="location.href='/sumarisimas'">Volver</button>
                   </div>
       </form>
 

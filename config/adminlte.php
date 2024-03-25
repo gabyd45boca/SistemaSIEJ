@@ -378,47 +378,59 @@ return [
             ]
         ],
 
-        ['header' => 'SUMARIOS'],
+        ['header' => 'SUMARIOS',
+        'can'   => 'AdministracionSumarios',        
+        ],
+        
 
         [
             'text'       => 'Sumarios',
             'icon'       => 'fas fa-folder',
+            'can'   => 'AdministracionSumarios',
             'submenu'    => [
                 [
                     'text' => 'Lista de sumarios',
                     'icon'       => 'fas fa-file-alt',
-                    'url' => '/sumarios'
+                    'url' => '/sumarios',
+                    'can'   => 'ListarSumarios',
                 ],
                 [
                     'text' => 'Registrar Sumarios',
                     'icon'       => 'fas fa-file-alt',
                     'url' => '/sumarios/create',
-                    'can'   => 'AdmistracionDGAJ'
+                    'can'   => 'RegistrarSumarios'
                 ],
             ]
         ],
 
-        ['header' => 'SUMARISIMAS'],
+        ['header' => 'SUMARISIMAS',
+        'can'   => 'AdministracionSumarisimas',
+    
+        ],
 
         [
             'text'       => 'Sumarisimas',
             'icon'       => 'fas fa-folder',
+            'can'   => 'AdministracionSumarisimas',
             'submenu'    => [
                 [
                     'text' => 'Lista de sumarisimas',
                     'icon'       => 'fas fa-file-alt',
-                    'url' => '/sumarisimas'
+                    'url' => '/sumarisimas',
+                    'can'   => 'ListarSumarisimas'
                 ],
                 [
                     'text' => 'Registrar Sumarisimas',
                     'icon'       => 'fas fa-file-alt',
                     'url' => '/sumarisimas/create',
-                    'can'   => 'AdmistracionDGAJ'
+                    'can'   => 'RegistrarSumarisimas'
                 ],
             ]
             ],
         
-        ['header' => 'INFORMACION S. A.'],
+        ['header' => 'INFORMACION S. A.',
+        'can'   => 'AdministracionIsas',    
+        ],
 
         [
             'text'       => 'I. S. A.',
@@ -427,13 +439,14 @@ return [
                 [
                     'text' => 'Lista de I. S. A.',
                     'icon'       => 'fas fa-file-alt',
-                    'url' => '/isas'
+                    'url' => '/isas',
+                    'can'   => 'ListarIsas',
                 ],
                 [
                     'text' => 'Registrar I. S. A.',
                     'icon'       => 'fas fa-file-alt',
                     'url' => '/isas/create',
-                    'can'   => 'AdmistracionDGAJ'
+                    'can'   => 'RegistrarIsas'
                 ],
             ]
         ] 

@@ -20,10 +20,8 @@
 <div class="card">
   <h5 class="card-header">Lista de Usuarios</h5>
   
-  <div class="card-header">
-           
-    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrarse</a>
-              
+  <div class="card-header">     
+  <x-adminlte-button label="+ Usuario" theme="primary"  title="Nuevo Usuario" class="float-right" data-toggle="modal" data-target="#modalPurple"/>             
   </div>
   
   <div class="table-responsive text-nowrap">
@@ -68,6 +66,20 @@
     </table>
   </div>
 </div>
+
+<!--/ Basic Bootstrap Table -->
+
+<x-adminlte-modal id="modalPurple" title="Nuevo Usuario" theme="dark" icon="fas fa-user" size='lg' disable-animations>
+  <form action="{{ route('asignar.store') }}" method="post">
+    @csrf
+     <div class="row">
+      <x-adminlte-input name="nombre" label="Nombre" required placeholder="Escriba nombre del usuario" fgroup-class="col-md-6" disable-feedback/>
+      <x-adminlte-input name="email" label="Email" type="email" required placeholder="Escriba el correo electrónico del usuario" fgroup-class="col-md-6" disable-feedback/>
+      <x-adminlte-input name="password" label="Contraseña" type="password" required placeholder="Escriba la contraseña del usuario" fgroup-class="col-md-6" disable-feedback/>
+     </div>
+     <x-adminlte-button type="submit" label="Guardar" theme="primary"/> 
+  </form>
+</x-adminlte-modal>
       
 @endsection
 

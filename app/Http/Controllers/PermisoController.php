@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Validation\Rule;
 
 class PermisoController extends Controller
 {
@@ -34,19 +35,27 @@ class PermisoController extends Controller
         return view('permisos-create',compact('permiso'));
     }
 
-    
+        
+
     public function store(Request $request)
     {
-           $validator = $request -> validate ([
-           
-            'name'=> 'required',
-            'name'=> 'unique:permissions'
-                                               
-           ]);
+        // Validar la solicitud
+        $validator = $request->validate([
+            'nombre' => ['required', Rule::unique('permissions', 'name')]
+        ]);
+
+        // Verificar si la permisión ya existe
+        if (Permission::where('name', $request->input('nombre'))->exists()) {
+            return back()->withErrors(['nombre' => 'La permisión ya existe.'])->withInput();
+        }
+
+        // Crear la permisión si no existe
+        $permiso = Permission::create(['name' => $request->input('nombre')]);
         
-            $permiso = Permission::create(['name' => $request->input('nombre')]);
-            return back()->with('message','Registrado correctamente!');
+        // Redirigir con un mensaje de éxito
+        return back()->with('message', 'Registrado correctamente!');
     }
+
 
    
     public function show($permiso_id)

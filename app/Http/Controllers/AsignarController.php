@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
+
 
 class AsignarController extends Controller
 {
@@ -31,10 +34,32 @@ class AsignarController extends Controller
         //
     }
 
+ 
    
+
     public function store(Request $request)
     {
-        //
+        // Validar la solicitud
+        $validator = $request->validate([
+            'nombre' =>'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8' // Cambia las reglas de validación según tus requisitos
+        ]);
+    
+        // Verificar si el usuario ya existe
+        if (User::where('email', $request->input('email'))->exists()) {
+            return back()->withErrors(['email' => 'El email ya existe.'])->withInput();
+        }
+    
+        // Crear el usuario si no existe
+        $usuario = User::create([
+            'name' => $request->input('nombre'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')) // Encriptar la contraseña antes de guardarla
+        ]);
+        
+        // Redirigir con un mensaje de éxito
+        return back()->with('message', 'Usuario registrado correctamente!');
     }
 
    function show($id)
@@ -63,8 +88,11 @@ class AsignarController extends Controller
     }
 
     
-    public function destroy($id)
+    public function destroy($user_id)
     {
-        //
+        $user = User::find($user_id);
+        $user -> delete();
+    
+        return back()->with('message','Eliminado correctamente!');
     }
 }

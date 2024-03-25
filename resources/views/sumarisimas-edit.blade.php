@@ -499,7 +499,7 @@
           </div> 
 
               <hr class="my-4 mx-n4" />
-              <h4 class="fw-normal">8. Carga de movimientos y sugerencias del instructor de Asesoria Letrada</h4>
+              <h4 class="fw-normal">8. Carga de movimientos y sugerencias de la Secretaria de Seguridad</h4>
           <div class="row g-3">
 
                 <div class="col-md-6">
@@ -673,7 +673,7 @@
     
                   <div class="pt-4">
                       <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-                      <button type="button" class="btn btn-secondary" onClick="location.href='/sumarios'">Cancelar</button>
+                      <button type="button" class="btn btn-secondary" onClick="location.href='/sumarisimas'">Cancelar</button>
                   </div>
       </form>
 

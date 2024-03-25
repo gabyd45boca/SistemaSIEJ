@@ -50,7 +50,7 @@
             </div>
 
             <div class="col-md-6">
-                <label class="form-label" for="multicol-username"> Fecha de ingreso</label>
+                <label class="form-label" for="multicol-username"> Fecha de Ingreso</label>
                 <input type="date" name="fecha_ingreso" id="multicol-fecha_ingreso" class="form-control" value="{{old('fecha_ingreso')}}" placeholder="Fecha de inicio de actuaciones " required/>
             </div>
          
@@ -66,7 +66,7 @@
             </div>
 
             <div class="col-md-6">
-                 <label class="form-label" for="multicol-tipo_denuncia">Tipo de denuncia</label>
+                 <label class="form-label" for="multicol-tipo_denuncia">Tipo de Denuncia</label>
                 <x-adminlte-select2  name="tipo_denuncia" class="select2 form-select" value="{{old('tipo_denuncia')}}" required>
                     <option value="">Seleccionar el tipo</option>
                     <option value="Comparendo">Comparendo</option>
@@ -81,7 +81,7 @@
                  <label class="form-label" for="multicol-motivo">Motivo</label >
                 <x-adminlte-select2  name="motivo" class="select2 form-select" required >
                     <option value="">Seleccionar el tipo</option>
-                    <option value="Violencia de genero">Violencia de genero</option>
+                    <option value="Violencia de genero">Violencia de Genero</option>
                     <option value="Perdida Arma Reglamentaria">Perdida Arma Reglamentaria</option>
                     <option value="Falta al servicio">Falta al servicio</option>
                     <option value="Ebriedad">Ebriedad</option>
@@ -91,7 +91,7 @@
             </div>
 
             <div class="col-md-6">
-                    <label class="form-label" for="multicol-primera_interv">Primera intervencion</label>
+                    <label class="form-label" for="multicol-primera_interv">Primera Intervencion</label>
                     <textarea name="primera_interv" id="multicol-primera_interv" class="form-control" placeholder="Escribir la primera intervención"></textarea>
              </div>
          
@@ -101,7 +101,7 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+              <label class="form-label" for="multicol-observaciones">Observaciones del Expediente</label>
               <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Observaciones" />
             </div>
             
@@ -216,7 +216,7 @@
              
 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
+                  <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones de Pase</label>
                   <input type="text" name="obs_pase_DGAJ" id="multicol-obs_pase_DGAJ"value="{{old('obs_pase_DGAJ')}}"  class="form-control" placeholder="Escribir observaciones para el pase" />
                 </div>
               
@@ -290,7 +290,7 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-obs_proced_AL">Observaciones de procedencia</label>
+              <label class="form-label" for="multicol-obs_proced_AL">Observaciones de Procedencia</label>
               <input type="text" name="obs_proced_AL" id="multicol-obs_proced_AL" class="form-control" value="{{old('obs_proced_AL')}}" placeholder="Escribir observaciones de la procedencia" />
             </div>
           
@@ -311,7 +311,7 @@
           
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+              <label class="form-label" for="multicol-obs_pase_AL">Observaciones del Pase</label>
               <input type="text" name="obs_pase_AL" id="multicol-obs_pase_AL" value="{{old('obs_pase_AL')}}" class="form-control" placeholder="Escribir observaciones para el pase" />
             </div>
         
@@ -385,7 +385,7 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-obs_proced_SS">Observaciones de procedencia</label>
+              <label class="form-label" for="multicol-obs_proced_SS">Observaciones de Procedencia</label>
               <input type="text" name="obs_proced_SS" id="multicol-obs_proced_SS" class="form-control" value="{{old('obs_proced_SS')}}" placeholder="Escribir observaciones de la procedencia" />
             </div>
           
@@ -405,7 +405,7 @@
             </div>
       
             <div class="col-md-6">
-              <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+              <label class="form-label" for="multicol-obs_pase_AL">Observaciones del Pase</label>
               <input type="text" name="obs_pase_SS" id="multicol-obs_pase_SS" value="{{old('obs_pase_SS')}}" class="form-control" placeholder="Escribir observaciones para el pase" />
             </div>
                     
@@ -489,7 +489,7 @@
                       
            
               <div class="col-md-6">
-                <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
+                <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del Pase</label>
                 <input type="text" name="obs_pase_DGRRHH" id="multicol-obs_pase_DGRRHH" value="{{old('obs_pase_DGRRHH')}}" class="form-control" placeholder="Escribir observaciones para el pase" />
               </div>
 

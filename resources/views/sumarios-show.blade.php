@@ -128,29 +128,25 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_denun">Tipo de denuncia</label>
+                      <label class="form-label" for="multicol-tipo_denun">Tipo de Denuncia</label>
                       <span class="form-control" id="multicol-tipo_denun">{{ $sumario->tipo_denun }}</span>
                      </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Movimiento</label>
-                      <span class="form-control" id="multicol-tipo_denun">{{ $sumario->tipo_denun }}</span>
+                      <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Pase</label>
+                      <span class="form-control" id="multicol-fecha_movimiento">{{ $sumario->fecha_movimiento }}</span>
                     </div>
                     
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destino_pase">Destino de Pase</label>
+                      <label class="form-label" for="multicol-destino_pase">Lugar de Pase</label>
                       <span class="form-control" id="multicol-destino_pase">{{ $sumario->destino_pase }}</span>
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+                        <label class="form-label" for="multicol-observaciones">Observaciones del Expediente</label>
                         <span class="form-control" id="multicol-observaciones">{{ $sumario->observaciones }}</span>
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento Pase</label>
-                      <span class="form-control" id="multicol-tipo_mov">{{ $sumario->tipo_mov }}</span>
-                    </div>
+                  
                               
                   </div>
                               
@@ -209,24 +205,20 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_proceDAI"> Fecha de Movimiento Procedencia</label>
+                      <label class="form-label" for="multicol-fecha_mov_proceDAI">Fecha de Procedencia</label>
                       <span class="form-control" id="multicol-fecha_mov_proceDAI">{{ $sumario->fecha_mov_proceDAI }}</span>
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_DAI">Destino de Procedencia</label>
+                      <label class="form-label" for="multicol-destin_proceden_DAI">Lugar de Procedencia</label>
                       <span class="form-control" id="multicol-destin_proceden_DAI">{{ $sumario->destin_proceden_DAI }}</span>
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de la procedencia</label>
-                      <span class="form-control" id="multicol-destin_proceden_DAI">{{ $sumario->destin_proceden_DAI }}</span>
+                      <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de Procedencia</label>
+                      <span class="form-control" id="multicol-obs_proced_DAI">{{ $sumario->obs_proced_DAI }}</span>
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_proce_DAI">Tipo Movimiento Pase</label>
-                      <span class="form-control" id="multicol-tipo_mov_proce_DAI">{{ $sumario->tipo_mov_proce_DAI }}</span>
-                    </div>
+       
                     
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
@@ -242,12 +234,12 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_paseDAI"> Fecha de Movimiento Pase</label>
+                      <label class="form-label" for="multicol-fecha_mov_paseDAI">Fecha de Pase</label>
                       <span class="form-control" id="multicol-fecha_mov_paseDAI">{{ $sumario->fecha_mov_paseDAI}}</span>
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_DAI">Destino de Pase</label>
+                      <label class="form-label" for="multicol-destin_pase_DAI">Lugar de Pase</label>
                       <span class="form-control" id="multicol-destin_pase_DAI">{{ $sumario->destin_pase_DAI}}</span>
                     </div>
 
@@ -255,11 +247,7 @@
                       <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del pase</label>
                       <span class="form-control" id="multicol-obs_pase_DAI">{{ $sumario->obs_pase_DAI}}</span>
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_pase_DAI">Tipo Movimiento</label>
-                      <span class="form-control" id="multicol-tipo_mov_pase_DAI">{{ $sumario->tipo_mov_pase_DAI}}</span>
-                    </div>
+             
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-concluido_DAI">Concluido por Instruccion</label>
@@ -303,46 +291,36 @@
                         </div>
                     
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Movimiento</label>
+                          <label class="form-label" for="multicol-fecha_mov_proceDGAJ">Fecha de procedencia</label>
                           <span class="form-control" id="multicol-fecha_mov_proceDGAJ">{{ $sumario->fecha_mov_proceDGAJ}}</span>
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-destin_proced_DGAJ">Destino de Procedencia</label>
+                          <label class="form-label" for="multicol-destin_proced_DGAJ">Lugar de Procedencia</label>
                           <span class="form-control" id="multicol-destin_proced_DGAJ">{{ $sumario->destin_proced_DGAJ}}</span>
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-tipo_mov_proce_DGAJ">Tipo Movimiento</label>
-                          <span class="form-control" id="multicol-tipo_mov_proce_DGAJ">{{ $sumario->tipo_mov_proce_DGAJ}}</span>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DGAJ</label>
-                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                            <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
+                            <textarea class="form-control" id="multicol-sugerencia_DGAJ" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
                                 {{ $sumario->sugerencia_DGAJ }}
                             </textarea>
                         </div>
                        
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de la procedencia</label>
+                          <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de Procedencia</label>
                           <span class="form-control" id="multicol-obs_proced_DGAJ">{{ $sumario->obs_proced_DGAJ}}</span>
                         </div>
                         
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Movimiento</label>
+                          <label class="form-label" for="multicol-fecha_mov_destDGAJ">Fecha de Pase</label>
                           <span class="form-control" id="multicol-fecha_mov_destDGAJ">{{ $sumario->fecha_mov_destDGAJ}}</span>
                         </div>
 
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-destin_pase_DGAJ">Destino de Pase</label>
+                          <label class="form-label" for="multicol-destin_pase_DGAJ">Lugar de Pase</label>
                           <span class="form-control" id="multicol-destin_pase_DGAJ">{{ $sumario->destin_pase_DGAJ}}</span>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-tipo_mov_pase_DGAJ">Tipo Movimiento</label>
-                          <span class="form-control" id="multicol-tipo_mov_pase_DGAJ">{{ $sumario->tipo_mov_pase_DGAJ}}</span>
                         </div>
 
                         <div class="col-md-6">
@@ -395,19 +373,15 @@
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Movimiento</label>
+                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Procedencia</label>
                       <span class="form-control" id="multicol-fecha_mov_procAL">{{ $sumario->fecha_mov_procAL}}</span>
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_AL">Destino de Procedencia</label>
+                      <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
                       <span class="form-control" id="multicol-destin_proceden_AL">{{ $sumario->destin_proceden_AL}}</span>
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_proce_AL">Tipo Movimiento</label>
-                      <span class="form-control" id="multicol-tipo_mov_proce_AL">{{ $sumario->tipo_mov_proce_AL}}</span>
-                    </div>
+               
 
                     <div class="col-md-6">
                             <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia AL</label>
@@ -417,23 +391,18 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de la procedencia</label>
+                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de Procedencia</label>
                       <span class="form-control" id="multicol-obs_proced_AL">{{ $sumario->obs_proced_AL}}</span>
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Movimiento</label>
+                      <label class="form-label" for="multicol-fecha_mov_paseAL">Fecha de Pase</label>
                       <span class="form-control" id="multicol-fecha_mov_paseAL">{{ $sumario->fecha_mov_paseAL}}</span>
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_AL">Destino de Pase</label>
+                      <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
                       <span class="form-control" id="multicol-destin_pase_AL">{{ $sumario->destin_pase_AL}}</span>
-                    </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_pase_AL">Tipo Movimiento</label>
-                      <span class="form-control" id="multicol-tipo_mov_pase_AL">{{ $sumario->tipo_mov_pase_AL}}</span>
                     </div>
 
                     <div class="col-md-6">
@@ -484,55 +453,46 @@
                       </div>
                     
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Movimiento Procendencia</label>
+                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH">Fecha de Procedencia</label>
                         <span class="form-control" id="multicol-fecha_mov_proceDGRRHH">{{ $sumario->fecha_mov_proceDGRRHH}}</span>
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Destino de Procedencia</label>
+                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
                         <span class="form-control" id="multicol-destin_proceden_DGRRHH">{{ $sumario->destin_proceden_DGRRHH}}</span>
                       </div>
+    
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-tipo_mov_proce_DGRRHH">Tipo Movimiento Procedencia</label>
-                        <span class="form-control" id="multicol-tipo_mov_proce_DGRRHH">{{ $sumario->tipo_mov_proce_DGRRHH}}</span>
-                      </div>
-
-                      <div class="col-md-6">
-                            <label class="form-label" for="multicol-sugerencia_DAI">Resolucion Final</label>
-                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                            <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
+                            <textarea class="form-control" id="multicol-resol_final_DGRRHH" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
                                 {{ $sumario->resol_final_DGRRHH}}
                             </textarea>
                      </div>
            
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de la procedencia</label>
+                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de Procedencia</label>
                         <span class="form-control" id="multicol-obs_proced_DGRRHH">{{ $sumario->obs_proced_DGRRHH}}</span>
                       </div>
                     
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Movimiento Pase</label>
+                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH">Fecha de Pase</label>
                         <span class="form-control" id="multicol-fecha_mov_paseDGRRHH">{{ $sumario->fecha_mov_paseDGRRHH}}</span>
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_pase_DGRRHH">Destino de Pase</label>
+                        <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de Pase</label>
                         <span class="form-control" id="multicol-destin_pase_DGRRHH">{{ $sumario->destin_pase_DGRRHH}}</span>
                       </div>
-
-                      <div class="col-md-6">
-                        <label class="form-label" for="multicol-tipo_mov_pase_DGRRHH">Tipo Movimiento Pase</label>
-                        <span class="form-control" id="multicol-tipo_mov_pase_DGRRHH">{{ $sumario->tipo_mov_pase_DGRRHH}}</span>
-                      </div>
-
+                   
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
                         <span class="form-control" id="multicol-obs_pase_DGRRHH">{{ $sumario->obs_pase_DGRRHH}}</span>
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-concluido_DGRRHH">CONCLUIDO POR INSTRUCCION</label>
+                        <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>
                         <span class="form-control" id="multicol-concluido_DGRRHH">{{ $sumario->concluido_DGRRHH}}</span>
                       </div>
 

@@ -217,7 +217,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_denun">Tipo de denuncia</label>
+                      <label class="form-label" for="multicol-tipo_denun">Tipo de Denuncia</label>
                       <x-adminlte-select2  name="tipo_denun" value="{{ $sumario-> tipo_denun }}" required>
                         <option value="">Seleccionar el tipo</option>
                         <option value="Comparendo" @if ($sumario->tipo_denun == 'Comparendo') selected @endif 'Comparendo'>Comparendo</option>
@@ -229,7 +229,7 @@
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_movimiento"> Fecha de pase</label>
+                      <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Pase</label>
                       <input type="date" name="fecha_movimiento" value="{{ $sumario-> fecha_movimiento }}" id="multicol-fecha_movimiento" class="form-control" placeholder="Fecha de pase del expediente " required />
                     </div>
                     
@@ -244,7 +244,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+                        <label class="form-label" for="multicol-observaciones">Observaciones del Expediente</label>
                         <input type="text" name="observaciones" value="{{ $sumario-> observaciones}}" id="multicol-observaciones" class="form-control" placeholder="Escribir observaciones para el pase" />
                     </div>
            
@@ -330,12 +330,12 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_proceDAI"> Fecha de procedencia</label>
+                      <label class="form-label" for="multicol-fecha_mov_proceDAI"> Fecha de Procedencia</label>
                       <input type="date" name="fecha_mov_proceDAI" value="{{ $sumario-> fecha_mov_proceDAI }}" id="multicol-fecha_mov_proceDAI" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_DAI">Lugar de procedencia</label>
+                      <label class="form-label" for="multicol-destin_proceden_DAI">Lugar de Procedencia</label>
                       <x-adminlte-select2  name="destin_proceden_DAI" value="{{ $sumario-> destin_proceden_DAI }}" class="select2 form-select">
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Asuntos Judiciales" @if ($sumario->destin_proceden_DAI == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
@@ -345,7 +345,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de procedencia</label>
+                      <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de Procedencia</label>
                       <input type="text" name="obs_proced_DAI" value="{{ $sumario-> obs_proced_DAI }}" id="multicol-obs_proced_DAI" class="form-control" placeholder="Observaciones" />
                     </div>
                   
@@ -361,12 +361,12 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_paseDAI"> Fecha de pase</label>
+                      <label class="form-label" for="multicol-fecha_mov_paseDAI"> Fecha de Pase</label>
                       <input type="date" name="fecha_mov_paseDAI" value="{{ $sumario-> fecha_mov_paseDAI }}" id="multicol-fecha_mov_paseDAI" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_DAI">Lugar de pase</label>
+                      <label class="form-label" for="multicol-destin_pase_DAI">Lugar de Pase</label>
                       <x-adminlte-select2  name="destin_pase_DAI" value="{{ $sumario-> destin_pase_DAI }}" class="select2 form-select">
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Asuntos Judiciales" @if ($sumario->destin_proceden_DAI == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
@@ -376,7 +376,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del pase</label>
+                      <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del Pase</label>
                       <input type="text" name="obs_pase_DAI" value="{{ $sumario-> obs_pase_DAI }}" id="multicol-obs_pase_DAI" class="form-control" placeholder="Observaciones" />
                     </div>
 
@@ -440,12 +440,12 @@
                         </div>
                     
                         <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de procedencia</label>
+                        <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Procedencia</label>
                           <input type="date" name="fecha_mov_proceDGAJ" value="{{ $sumario-> fecha_mov_proceDGAJ }}" id="multicol-fecha_mov_proceDGAJ" class="form-control" placeholder="Fecha de pase del expediente " />
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-destin_proced_DGAJ">Lugar de procedencia</label>
+                          <label class="form-label" for="multicol-destin_proced_DGAJ">Lugar de Procedencia</label>
                           <x-adminlte-select2  name="destin_proced_DGAJ" value="{{ $sumario-> destin_proced_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccionar la dependencia</option>
                             <option value="Asuntos Internos" @if ($sumario->destin_proced_DGAJ == 'Asuntos Internos') selected @endif 'Asuntos Internos'>Asuntos Internos</option>
@@ -461,18 +461,18 @@
 
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de procedencia</label>
+                          <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de Procedencia</label>
                           <input type="text" name="obs_proced_DGAJ" value="{{ $sumario-> obs_proced_DGAJ }}" id="multicol-obs_proced_DGAJ" class="form-control" placeholder="Escribir observaciones de la procedencia" />
                         </div>
                         
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de pase</label>
+                          <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Pase</label>
                           <input type="date" name="fecha_mov_destDGAJ" value="{{ $sumario-> fecha_mov_destDGAJ }}" id="multicol-fecha_mov_destDGAJ" class="form-control" placeholder="Fecha de pase del expediente " />
                         </div>
 
 
                         <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_pase_DGAJ">Lugar de pase</label>
+                        <label class="form-label" for="multicol-destin_pase_DGAJ">Lugar de Pase</label>
                           <x-adminlte-select2  name="destin_pase_DGAJ" value="{{ $sumario-> destin_pase_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccionar la dependencia</option>
                             <option value="Asesoria Letrada" @if ($sumario->destin_pase_DGAJ == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
@@ -483,7 +483,7 @@
      
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
+                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del Pase</label>
                           <input type="text" name="obs_pase_DGAJ" value="{{ $sumario-> obs_pase_DGAJ }}" id="multicol-obs_pase_DGAJ" class="form-control" placeholder="Escribir observaciones para el pase" />
                         </div>
 
@@ -555,12 +555,12 @@
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de procedencia</label>
+                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Procedencia</label>
                       <input type="date" name="fecha_mov_procAL" value="{{ $sumario-> fecha_mov_procAL }}" id="multicol-fecha_mov_procAL" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_AL">Lugar de procedencia</label>
+                      <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
                       <x-adminlte-select2  name="destin_proceden_AL" value="{{ $sumario-> destin_proceden_AL }}" class="select2 form-select" >
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Asuntos Judiciales" @if ($sumario->destin_proceden_AL == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
@@ -576,17 +576,17 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de procedencia</label>
+                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de Procedencia</label>
                       <input type="text" name="obs_proced_AL" value="{{ $sumario-> obs_proced_AL }}" id="multicol-obs_proced_AL" class="form-control" placeholder="Escribir observaciones de la procedencia" />
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de pase</label>
+                      <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Pase</label>
                       <input type="date" name="fecha_mov_paseAL" value="{{ $sumario-> fecha_mov_paseAL }}" id="multicol-fecha_mov_paseAL" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_AL">Lugar de pase</label>
+                      <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
                       <x-adminlte-select2  name="destin_pase_AL" value="{{ $sumario-> destin_pase_AL }}" class="select2 form-select">
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Recursos Humanos" @if ($sumario->destin_pase_AL == 'Direccion General Recursos Humanos') selected @endif 'Direccion General Recursos Humanos'>Direccion General Recursos Humanos</option>
@@ -597,7 +597,7 @@
                  
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+                      <label class="form-label" for="multicol-obs_pase_AL">Observaciones del Pase</label>
                       <input type="text" name="obs_pase_AL" value="{{ $sumario-> obs_pase_AL}}" id="multicol-obs_pase_AL" class="form-control" placeholder="Escribir observaciones para el pase" />
                     </div>
 
@@ -669,12 +669,12 @@
                       </div>
                     
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de procedencia</label>
+                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Procedencia</label>
                         <input type="date" name="fecha_mov_proceDGRRHH" value="{{ $sumario-> fecha_mov_proceDGRRHH}}" id="multicol-fecha_mov_proceDGRRHH" class="form-control" placeholder="Fecha de pase del expediente " />
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de procedencia</label>
+                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
                         <x-adminlte-select2  name="destin_proceden_DGRRHH" value="{{ $sumario-> destin_proceden_DGRRHH}}" class="select2 form-select">
                           <option value="">Seleccionar la dependencia</option>
                           <option value="Asesoria Letrada" @if ($sumario->destin_proceden_DGRRHH == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
@@ -690,17 +690,17 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de procedencia</label>
+                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de Procedencia</label>
                         <input type="text" name="obs_proced_DGRRHH"  value="{{ $sumario-> obs_proced_DGRRHH}}" id="multicol-obs_proced_DGRRHH" class="form-control" placeholder="Escribir observaciones de la procedencia" />
                       </div>
                     
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de pase</label>
+                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Pase</label>
                         <input type="date" name="fecha_mov_paseDGRRHH" value="{{ $sumario-> fecha_mov_paseDGRRHH}}" id="multicol-fecha_mov_paseDGRRHH" class="form-control" placeholder="Fecha de pase del expediente " />
                       </div>
 
                       <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de pase</label>
+                      <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de Pase</label>
                         <x-adminlte-select2 name="destin_pase_DGRRHH" value="{{ $sumario-> destin_pase_DGRRHH}}" class="select2 form-select" >
                           <option value="">Seleccionar la dependencia</option>
                           <option value="Secretaria" @if ($sumario->destin_pase_DGRRHH == 'Secretaria') selected @endif 'Secretaria'>Secretaria</option>
@@ -711,12 +711,12 @@
                     
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
+                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del Pase</label>
                         <input type="text" name="obs_pase_DGRRHH" value="{{ $sumario-> obs_pase_DGRRHH}}" id="multicol-obs_pase_DGRRHH" class="form-control" placeholder="Escribir observaciones para el pase" />
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por instruccion</label>
+                        <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>
                         <x-adminlte-select2  name="concluido_DGRRHH" value="{{ $sumario-> concluido_DGRRHH}}" class="select2 form-select">
                           <option value="">Seleccione</option>
                           <option value="Si" @if ($sumario->concluido_DGRRHH == 'Si') selected @endif 'Si'>Si</option>

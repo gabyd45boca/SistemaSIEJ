@@ -31,8 +31,7 @@ return new class extends Migration
             $table->date('fecha_movimiento');
             $table->string('destino_pase'); 
             $table->text('observaciones')->nullable();
-            $table->string('tipo_mov')->nullable(); ///sacar de la migracion
-                        
+                                  
             //personal instructor asuntos internos
             $table->string('apellido_nombre_DAI')->nullable();
             $table->string('leg_pers_DAI')->nullable();
@@ -43,13 +42,11 @@ return new class extends Migration
             $table->date('fecha_mov_proceDAI')->nullable();
             $table->text('destin_proceden_DAI')->nullable();
             $table->text('obs_proced_DAI')->nullable();
-            $table->string('tipo_mov_proce_DAI')->nullable();
             $table->text('sugerencia_DAI')->nullable();
             $table->date('fecha_elev_inst_DAI')->nullable();
             $table->date('fecha_mov_paseDAI')->nullable();
             $table->string('destin_pase_DAI')->nullable();
             $table->string('obs_pase_DAI')->nullable();
-            $table->string('tipo_mov_pase_DAI')->nullable();
             $table->string('concluido_DAI')->nullable();
 
             //personal instructor direccion asuntos judicales
@@ -61,12 +58,10 @@ return new class extends Migration
             $table->text('reg_interno_DGAJ')->nullable();
             $table->date('fecha_mov_proceDGAJ')->nullable();
             $table->text('destin_proced_DGAJ')->nullable();
-            $table->string('tipo_mov_proce_DGAJ')->nullable();
             $table->text('sugerencia_DGAJ')->nullable();
             $table->text('obs_proced_DGAJ')->nullable();
             $table->date('fecha_mov_destDGAJ')->nullable();
             $table->string('destin_pase_DGAJ')->nullable();
-            $table->string('tipo_mov_pase_DGAJ')->nullable();
             $table->string('obs_pase_DGAJ')->nullable();
             $table->string('concluido_DGAJ')->nullable();
 
@@ -79,12 +74,10 @@ return new class extends Migration
             $table->text('reg_interno_AL')->nullable();
             $table->date('fecha_mov_procAL')->nullable();
             $table->text('destin_proceden_AL')->nullable();
-            $table->string('tipo_mov_proce_AL')->nullable();
             $table->text('sugerencia_AL')->nullable();
             $table->text('obs_proced_AL')->nullable();
             $table->date('fecha_mov_paseAL')->nullable();
             $table->string('destin_pase_AL')->nullable();
-            $table->string('tipo_mov_pase_AL')->nullable();
             $table->string('obs_pase_AL')->nullable();
             $table->string('concluido_AL')->nullable();
             
@@ -97,23 +90,14 @@ return new class extends Migration
             $table->text('reg_interno_DGRRHH')->nullable();
             $table->date('fecha_mov_proceDGRRHH')->nullable();
             $table->text('destin_proceden_DGRRHH')->nullable();
-            $table->string('tipo_mov_proce_DGRRHH')->nullable();
             $table->text('resol_final_DGRRHH')->nullable();
             $table->text('obs_proced_DGRRHH')->nullable();
             $table->date('fecha_mov_paseDGRRHH')->nullable();
             $table->string('destin_pase_DGRRHH')->nullable();
-            $table->string('tipo_mov_pase_DGRRHH')->nullable();
             $table->string('obs_pase_DGRRHH')->nullable();
             $table->string('concluido_DGRRHH')->nullable();
             $table->string('DGRRHH_N°')->nullable();
             $table->date('fecha_notificacion')->nullable();
-
-                       
-         /*   $table ->unsignedBigInteger('personal_id');
-            $table ->foreign('personal_id')->references('id')->on('personals');
-
-            $table ->unsignedBigInteger('personal_id');
-            $table ->foreign('personal_id')->references('id')->on('personals');*/
 
             $table->timestamps();  
 
