@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-deslindar_resp">Deslindar responsabilidad</label>
+              <label class="form-label" for="multicol-deslindar_resp">Deslindar Responsabilidad</label>
               <input type="text" name="deslindar_resp" id="multicol-deslindar_resp" class="form-control" value="{{old('deslindar_resp')}}" placeholder="Deslindar responsabilidad" required/>
             </div>
 
@@ -78,12 +78,12 @@
             </div>
                      
             <div class="col-md-6">
-              <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Movimiento</label>
+              <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Pase</label>
               <input type="date" name="fecha_movimiento" id="multicol-fecha_movimiento" class="form-control" value="{{old('fecha_movimiento')}}" placeholder="Fecha de pase del expediente " required />
             </div>
             
             <div class="col-md-6">
-              <label class="form-label" for="multicol-destino_pase">Destino de Pase</label>
+              <label class="form-label" for="multicol-destino_pase">Lugar de Pase</label>
               <x-adminlte-select2  name="destino_pase" value="{{old('destino_pase')}}" required>
                 <option value="">Seleccionar la dependencia</option>
                 <option value="Asuntos Interno">Asuntos Interno</option>
@@ -91,24 +91,15 @@
                 <option value="Departamental">Departamental</option>
               </x-adminlte-select2>
             </div>
+        
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
-              <x-adminlte-select2  name="tipo_mov" value="{{old('tipo_mov')}}" required>
-                <option value="">Seleccionar el tipo de movimiento</option>
-                <option value="Salida">Salida</option>
-                <option value="Ingreso">Ingreso</option>
-                <option value="ReIngreso">ReIngreso</option>
-              </x-adminlte-select2>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
+              <label class="form-label" for="multicol-observaciones">Observaciones del Expediente</label>
               <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Escribir observaciones para el pase" />
             </div>
 
             <div class="col-md-6">
-            <label class="form-label" for="multicol-elevado_por_instruccion">Elevado por instruccion</label>
+            <label class="form-label" for="multicol-elevado_por_instruccion">Elevado por Instruccion</label>
               <x-adminlte-select2  name="elevado_por_instruccion" value="{{old('elevado_por_instruccion')}}" class="select2 form-select" >
                 <option value="">Seleccione</option>
                 <option value="Si">Si</option>
@@ -117,7 +108,12 @@
             </div>
 
             <div class="col-md-6">
-            <label class="form-label" for="multicol-conversion_convalid">Conversion y convalidacion</label>
+                <label class="form-label" for="multicol-opinion_sede_inst">Opinion Sede Inst</label>
+                <textarea name="opinion_sede_inst" id="multicol-opinion_sede_inst" class="form-control" placeholder="Escribir la sugerencia">{{ old('opinion_sede_inst') }}</textarea>
+            </div>
+
+            <div class="col-md-6">
+            <label class="form-label" for="multicol-conversion_convalid">Conversion y Convalidacion</label>
               <x-adminlte-select2  name="conversion_convalid" value="{{old('conversion_convalid')}}" class="select2 form-select" >
                 <option value="">Seleccione</option>
                 <option value="Si">Si</option>
@@ -198,12 +194,12 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-fecha_mov_DAI"> Fecha de Movimiento Procedencia</label>
-              <input type="date" name="fecha_mov_DAI" id="multicol-fecha_mov_DAI" class="form-control" value="{{old('fecha_mov_DAI')}}" placeholder="Fecha de pase del expediente " />
+              <label class="form-label" for="multicol-fecha_mov_proceDAI"> Fecha de Procedencia</label>
+              <input type="date" name="fecha_mov_proceDAI" id="multicol-fecha_mov_proceDAI" class="form-control" value="{{old('fecha_mov_proceDAI')}}" placeholder="Fecha de pase del expediente " />
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-destin_proceden_DAI">Destino de Procedencia</label>
+              <label class="form-label" for="multicol-destin_proceden_DAI">Lugar de Procedencia</label>
               <x-adminlte-select2  name="destin_proceden_DAI" value="{{old('destin_proceden_DAI')}}"  class="select2 form-select">
                 <option value="">Seleccionar la dependencia</option>
                 <option value="Direccion General Asuntos Judiciales">Direccion General Asuntos Judiciales</option>
@@ -213,19 +209,10 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de procedencia</label>
+              <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de Procedencia</label>
               <input type="text" name="obs_proced_DAI" id="multicol-obs_proced_DAI" class="form-control" placeholder="Observaciones de la procedencia" />
             </div>
-
-            <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_mov_proce_DAI">Tipo Movimiento Procedencia</label>
-              <x-adminlte-select2  name="tipo_mov_proce_DAI"  value="{{old('tipo_mov_proce_DAI')}}" class="select2 form-select" >
-                <option value="">Seleccionar el tipo de movimiento</option>
-                <option value="salida">Salida</option>
-                <option value="ingreso">Ingreso</option>
-                <option value="reingreso">ReIngreso</option>
-              </x-adminlte-select2>
-            </div>
+         
             
             <div class="col-md-6">
                 <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
@@ -238,12 +225,12 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-fecha_movimien"> Fecha de Movimiento Pase</label>
-              <input type="date" name="fecha_movimien" id="multicol-fecha_movimien" class="form-control" value="{{old('fecha_movimien')}}" placeholder="Fecha de pase del expediente " />
+              <label class="form-label" for="multicol-fecha_mov_paseDAI"> Fecha de Pase</label>
+              <input type="date" name="fecha_mov_paseDAI" id="multicol-fecha_mov_paseDAI" class="form-control" value="{{old('fecha_mov_paseDAI')}}" placeholder="Fecha de pase del expediente " />
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-destin_pase_DAI">Destino de Pase</label>
+              <label class="form-label" for="multicol-destin_pase_DAI">Lugar de Pase</label>
               <x-adminlte-select2  name="destin_pase_DAI" value="{{old('destin_pase_DAI')}}" class="select2 form-select">
                 <option value="">Seleccionar la dependencia</option>
                 <option value="Direccion General Asuntos Judiciales">Direccion General Asuntos Judiciales</option>
@@ -253,19 +240,8 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del pase</label>
+              <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del Pase</label>
               <input type="text" name="obs_pase_DAI" id="multicol-obs_pase_DAI" class="form-control" value="{{old('obs_pase_DAI')}}" placeholder="Observaciones" />
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_mov_pase_DAI">Tipo Movimiento Pase</label>
-              <x-adminlte-select2  name="tipo_mov_pase_DAI" value="{{old('tipo_mov_pase_DAI')}}" class="select2 form-select" >
-                <option value="">Seleccionar el tipo de movimiento</option>
-                <option value="salida">Salida</option>
-                <option value="ingreso">Ingreso</option>
-                <option value="reingreso">ReIngreso</option>
-              </x-adminlte-select2>
-
             </div>
 
             <div class="col-md-6">
@@ -295,8 +271,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-leg_pers_DGAJ">Dependencia</label>
-                  <x-adminlte-select2  name="leg_pers_DGAJ"  class="select2 form-select" value="{{old('leg_pers_DGAJ')}}" >
+                  <label class="form-label" for="multicol-dependen_DGAJ">Dependencia</label>
+                  <x-adminlte-select2  name="dependen_DGAJ"  class="select2 form-select" value="{{old('dependen_DGAJ')}}" >
                     <option value="">Seleccionar la dependencia</option>
                     <option value="Direccion General de Asuntos Judiciales">Direccion General de Asuntos Judiciales</option>
                     <option value="D.S.C. N°1">D.S.C. N°1</option>
@@ -326,12 +302,12 @@
                 </div>
             
                 <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Movimiento procedencia</label>
+                <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Procedencia</label>
                   <input type="date" name="fecha_mov_proceDGAJ" id="multicol-fecha_mov_proceDGAJ" class="form-control" value="{{old('fecha_mov_proceDGAJ')}}" placeholder="Fecha de pase del expediente " />
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-destin_proced_DGAJ">Destino de Procedencia</label>
+                  <label class="form-label" for="multicol-destin_proced_DGAJ">Lugar de Procedencia</label>
                   <x-adminlte-select2  name="destin_proced_DGAJ" value="{{old('destin_proced_DGAJ')}}" class="select2 form-select" >
                     <option value="">Seleccionar la dependencia</option>
                     <option value="Asuntos Internos">Asuntos Internos</option>
@@ -339,24 +315,14 @@
                     <option value="DESTACAMENTO">DESTACAMENTO</option>
                   </x-adminlte-select2>
                 </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="multicol-tipo_mov_proce_DGAJ">Tipo Movimiento Procedencia</label>
-                  <x-adminlte-select2  name="tipo_mov_proce_DGAJ" value="{{old('tipo_mov_proce_DGAJ')}}" class="select2 form-select">
-                    <option value="">Seleccionar el tipo de movimiento</option>
-                    <option value="salida">Salida</option>
-                    <option value="ingreso">Ingreso</option>
-                    <option value="reingreso">ReIngreso</option>
-                  </x-adminlte-select2>
-                </div>
-
+               
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
                     <textarea name="sugerencia_DGAJ" id="multicol-sugerencia_DGAJ" class="form-control" placeholder="Escribir la sugerencia"></textarea>
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de procedencia</label>
+                  <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de Procedencia</label>
                   <input type="text" name="obs_proced_DGAJ" id="multicol-obs_proced_DGAJ" class="form-control" value="{{old('obs_proced_DGAJ')}}" placeholder="Escribir observaciones de la procedencia" />
                 </div>
                 
@@ -375,19 +341,9 @@
                     <option value="DESTACAMENTO">DESTACAMENTO</option>
                   </x-adminlte-select2>
                 </div>
-
+             
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-tipo_mov_pase_DGAJ">Tipo Movimiento Pase</label>
-                  <x-adminlte-select2  name="tipo_mov_pase_DGAJ" value="{{old('tipo_mov_pase_DGAJ')}}" class="select2 form-select" >
-                    <option value="">Seleccionar el tipo de movimiento</option>
-                    <option value="salida">Salida</option>
-                    <option value="ingreso">Ingreso</option>
-                    <option value="reingreso">ReIngreso</option>
-                  </x-adminlte-select2>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
+                  <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del Pase</label>
                   <input type="text" name="obs_pase_DGAJ" id="multicol-obs_pase_DGAJ"value="{{old('obs_pase_DGAJ')}}"  class="form-control" placeholder="Escribir observaciones para el pase" />
                 </div>
 
@@ -449,12 +405,12 @@
             </div>
           
             <div class="col-md-6">
-              <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Movimiento Procedencia</label>
+              <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Procedencia</label>
               <input type="date" name="fecha_mov_procAL" id="multicol-fecha_mov_procAL" class="form-control" value="{{old('fecha_mov_procAL')}}" placeholder="Fecha de pase del expediente " />
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-destin_proceden_AL">Destino de Procedencia</label>
+              <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
               <x-adminlte-select2  name="destin_proceden_AL" value="{{old('destin_proceden_AL')}}" class="select2 form-select" >
                 <option value="">Seleccionar la dependencia</option>
                 <option value="Direccion General de Asuntos Judiciales">Direccion General de Asuntos Judiciales</option>
@@ -464,32 +420,22 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_mov_proce_AL">Tipo Movimiento Procedencia</label>
-              <x-adminlte-select2 name="tipo_mov_proce_AL" class="select2 form-select" value="{{old('tipo_mov_proce_AL')}}" >
-                <option value="">Seleccionar el tipo de movimiento</option>
-                <option value="salida">Salida</option>
-                <option value="ingreso">Ingreso</option>
-                <option value="reingreso">ReIngreso</option>
-              </x-adminlte-select2>
-            </div>
-
-            <div class="col-md-6">
                 <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
                 <textarea name="sugerencia_AL" id="multicol-sugerencia_AL" class="form-control" placeholder="Escribir la sugerencia">{{ old('sugerencia_AL') }}</textarea>
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-obs_proced_AL">Observaciones de procedencia</label>
+              <label class="form-label" for="multicol-obs_proced_AL">Observaciones de Procedencia</label>
               <input type="text" name="obs_proced_AL" id="multicol-obs_proced_AL" class="form-control" value="{{old('obs_proced_AL')}}" placeholder="Escribir observaciones de la procedencia" />
             </div>
           
             <div class="col-md-6">
-              <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Movimiento Pase</label>
+              <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Pase</label>
               <input type="date" name="fecha_mov_paseAL" id="multicol-fecha_mov_paseAL" value="{{old('fecha_mov_paseAL')}}" class="form-control" placeholder="Fecha de pase del expediente " />
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-destin_pase_AL">Destino de Pase</label>
+              <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
               <x-adminlte-select2  name="destin_pase_AL" value="{{old('destin_pase_AL')}}" class="select2 form-select">
                 <option value="">Seleccionar la dependencia</option>
                 <option value="Direccion General Recursos Humanos">Direccion General Recursos Humanos</option>
@@ -499,17 +445,7 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_mov_pase_AL">Tipo Movimiento Pase</label>
-              <x-adminlte-select2  name="tipo_mov_pase_AL" value="{{old('tipo_mov_pase_AL')}}" class="select2 form-select" >
-                <option value="">Seleccionar el tipo de movimiento</option>
-                <option value="salida">Salida</option>
-                <option value="ingreso">Ingreso</option>
-                <option value="reingreso">ReIngreso</option>
-              </x-adminlte-select2>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+              <label class="form-label" for="multicol-obs_pase_AL">Observaciones del Pase</label>
               <input type="text" name="obs_pase_AL" id="multicol-obs_pase_AL" value="{{old('obs_pase_AL')}}" class="form-control" placeholder="Escribir observaciones para el pase" />
             </div>
 
@@ -569,12 +505,12 @@
               </div>
             
               <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Movimiento Procedencia</label>
+                <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Procedencia</label>
                 <input type="date" name="fecha_mov_proceDGRRHH" id="multicol-fecha_mov_proceDGRRHH" value="{{old('fecha_mov_proceDGRRHH')}}" class="form-control" placeholder="Fecha de pase del expediente " />
               </div>
 
               <div class="col-md-6">
-                <label class="form-label" for="multicol-destin_proceden_DGRRHH">Destino de Procedencia</label>
+                <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
                 <x-adminlte-select2  name="destin_proceden_DGRRHH" value="{{old('destin_proceden_DGRRHH')}}" class="select2 form-select">
                   <option value="">Seleccionar la dependencia</option>
                   <option value="Asesoria Letrada">Asesoria Letrada</option>
@@ -584,32 +520,22 @@
               </div>
 
               <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_mov_proce_DGRRHH">Tipo Movimiento Procedencia</label>
-                <x-adminlte-select2 name="tipo_mov_proce_DGRRHH" value="{{old('tipo_mov_proce_DGRRHH')}}" class="select2 form-select" >
-                  <option value="">Seleccionar el tipo de movimiento</option>
-                  <option value="salida">Salida</option>
-                  <option value="ingreso">Ingreso</option>
-                  <option value="reingreso">ReIngreso</option>
-                </x-adminlte-select2>
-              </div>
-
-              <div class="col-md-6">
                   <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
                   <textarea name="resol_final_DGRRHH" id="multicol-resol_final_DGRRHH" class="form-control" placeholder="Escribir la resolución final">{{ old('resol_final_DGRRHH') }}</textarea>
               </div>
 
               <div class="col-md-6">
-                <label class="form-label" for="multicol-observaciones">Observaciones de procedencia</label>
-                <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Escribir observaciones de la procedencia" />
+                <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de Procedencia</label>
+                <input type="text" name="obs_proced_DGRRHH" id="multicol-obs_proced_DGRRHH" class="form-control" value="{{old('obs_proced_DGRRHH')}}" placeholder="Escribir observaciones de la procedencia" />
               </div>
             
               <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Movimiento Pase</label>
+                <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Pase</label>
                 <input type="date" name="fecha_mov_paseDGRRHH" id="multicol-fecha_mov_paseDGRRHH" value="{{old('fecha_mov_paseDGRRHH')}}" class="form-control" placeholder="Fecha de pase del expediente " />
               </div>
 
               <div class="col-md-6">
-              <label class="form-label" for="multicol-destin_pase_DGRRHH">Destino de Pase</label>
+              <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de Pase</label>
                 <x-adminlte-select2 name="destin_pase_DGRRHH" value="{{old('destin_pase_DGRRHH')}}" class="select2 form-select" >
                   <option value="">Seleccionar la dependencia</option>
                   <option value="Secretaria">Secretaria</option>
@@ -619,17 +545,7 @@
               </div>
 
               <div class="col-md-6">
-              <label class="form-label" for="multicol-tipo_mov_pase_DGRRHH">Tipo Movimiento Pase</label>
-                <x-adminlte-select2  name="tipo_mov_pase_DGRRHH" value="{{old('tipo_mov_pase_DGRRHH')}}" class="select2 form-select">
-                  <option value="">Seleccionar el tipo de movimiento</option>
-                  <option value="salida">Salida</option>
-                  <option value="ingreso">Ingreso</option>
-                  <option value="reingreso">ReIngreso</option>
-                </x-adminlte-select2>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
+                <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del Pase</label>
                 <input type="text" name="obs_pase_DGRRHH" id="multicol-obs_pase_DGRRHH" value="{{old('obs_pase_DGRRHH')}}" class="form-control" placeholder="Escribir observaciones para el pase" />
               </div>
 
@@ -651,8 +567,6 @@
                 <label class="form-label" for="multicol-fecha_notificacion"> Fecha de Notificacion</label>
                 <input type="date" name="fecha_notificacion" id="multicol-fecha_notificacion" value="{{old('fecha_notificacion')}}" class="form-control" placeholder="Fecha de notificacion de la resolucion" />
               </div>
-
-
               
             </div>
 
