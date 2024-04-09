@@ -214,12 +214,12 @@
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Movimiento</label>
+                      <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Pase</label>
                       <input type="date" name="fecha_movimiento" value="{{ $isa-> fecha_movimiento }}" id="multicol-fecha_movimiento" class="form-control" placeholder="Fecha de pase del expediente " required />
                     </div>
                     
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destino_pase">Destino de Pase</label>
+                      <label class="form-label" for="multicol-destino_pase">Lugar de Pase</label>
                       <x-adminlte-select2  name="destino_pase" value="{{ $isa-> destino_pase }}" required>
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Asuntos Interno" @if ($isa->destino_pase == 'Asuntos Interno') selected @endif 'Asuntos Interno'>Asuntos Interno</option>
@@ -227,16 +227,7 @@
                         <option value="Departamental" @if ($isa->destino_pase == 'Departamental') selected @endif 'Departamental'>Departamental</option>
                       </x-adminlte-select2>
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov">Tipo Movimiento</label>
-                      <x-adminlte-select2  name="tipo_mov" value="{{ $isa-> tipo_mov }}" required>
-                        <option value="">Seleccionar el tipo de movimiento</option>
-                        <option value="Salida" @if ($isa->tipo_mov == 'Salida') selected @endif 'Salida'>Salida</option>
-                        <option value="Ingreso" @if ($isa->tipo_mov == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                        <option value="ReIngreso" @if ($isa->tipo_mov == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                      </x-adminlte-select2>
-                    </div>
+                
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
@@ -251,6 +242,12 @@
                         <option value="No" @if ($isa->elevado_por_instruccion == 'No') selected @endif 'No'>No</option>
                       </x-adminlte-select2>
                     </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="multicol-opinion_sede_inst">Opinion Sede Inst</label>
+                        <textarea name="opinion_sede_inst" id="multicol-opinion_sede_inst" class="form-control">{{ $isa->opinion_sede_inst }}</textarea>
+                    </div>
+                
 
                     <div class="col-md-6">
                     <label class="form-label" for="multicol-conversion_convalid">Conversion y convalidacion</label>
@@ -343,12 +340,12 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_proceDAI"> Fecha de Movimiento Procedencia</label>
+                      <label class="form-label" for="multicol-fecha_mov_proceDAI"> Fecha de Procedencia</label>
                       <input type="date" name="fecha_mov_proceDAI" value="{{ $isa-> fecha_mov_proceDAI }}" id="multicol-fecha_mov_proceDAI" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_DAI">Destino de Procedencia</label>
+                      <label class="form-label" for="multicol-destin_proceden_DAI">Lugar de Procedencia</label>
                       <x-adminlte-select2  name="destin_proceden_DAI" value="{{ $isa-> destin_proceden_DAI }}" class="select2 form-select">
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Asuntos Judiciales" @if ($isa->destin_proceden_DAI == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
@@ -361,16 +358,7 @@
                       <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de la procedencia</label>
                       <input type="text" name="obs_proced_DAI" value="{{ $isa-> obs_proced_DAI }}" id="multicol-obs_proced_DAI" class="form-control" placeholder="Observaciones" />
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_proce_DAI">Tipo Movimiento</label>
-                      <x-adminlte-select2  name="tipo_mov_proce_DAI" value="{{ $isa->tipo_mov_proce_DAI }}" class="select2 form-select" >
-                        <option value="">Seleccionar el tipo de movimiento</option>
-                        <option value="Salida" @if ($isa->tipo_mov_proce_DAI == 'Salida') selected @endif 'Salida'>Salida</option>
-                        <option value="Ingreso" @if ($isa->tipo_mov_proce_DAI == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                        <option value="ReIngreso" @if ($isa->tipo_mov_proce_DAI == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                      </x-adminlte-select2>
-                    </div>
+                  
                     
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia DAI</label>
@@ -383,12 +371,12 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_paseDAI"> Fecha de Movimiento Pase</label>
+                      <label class="form-label" for="multicol-fecha_mov_paseDAI"> Fecha de Pase</label>
                       <input type="date" name="fecha_mov_paseDAI" value="{{ $isa-> fecha_mov_paseDAI }}" id="multicol-fecha_mov_paseDAI" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_DAI">Destino de Pase</label>
+                      <label class="form-label" for="multicol-destin_pase_DAI">Lugar de Pase</label>
                       <x-adminlte-select2  name="destin_pase_DAI" value="{{ $isa-> destin_pase_DAI }}" class="select2 form-select">
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Asuntos Judiciales" @if ($isa->destin_proceden_DAI == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
@@ -398,19 +386,10 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del pase</label>
+                      <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del Pase</label>
                       <input type="text" name="obs_pase_DAI" value="{{ $isa-> obs_pase_DAI }}" id="multicol-obs_pase_DAI" class="form-control" placeholder="Observaciones" />
                     </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_pase_DAI">Tipo Movimiento</label>
-                      <x-adminlte-select2  name="tipo_mov_pase_DAI" value="{{ $isa-> tipo_mov_pase_DAI }}" class="select2 form-select" >
-                        <option value="">Seleccionar el tipo de movimiento</option>
-                        <option value="Salida" @if ($isa->tipo_mov_pase_DAI == 'Salida') selected @endif 'Salida'>Salida</option>
-                        <option value="Ingreso" @if ($isa->tipo_mov_pase_DAI == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                        <option value="ReIngreso" @if ($isa->tipo_mov_pase_DAI == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                      </x-adminlte-select2>
-                    </div>
+                    
 
                     <div class="col-md-6">
                     <label class="form-label" for="multicol-concluido_DAI">Concluido por Instruccion</label>
@@ -471,12 +450,12 @@
                         </div>
                     
                         <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Movimiento</label>
+                        <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Procedencia</label>
                           <input type="date" name="fecha_mov_proceDGAJ" value="{{ $isa-> fecha_mov_proceDGAJ }}" id="multicol-fecha_mov_proceDGAJ" class="form-control" placeholder="Fecha de pase del expediente " />
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-destin_proced_DGAJ">Destino de Procedencia</label>
+                          <label class="form-label" for="multicol-destin_proced_DGAJ">Lugar de Procedencia</label>
                           <x-adminlte-select2  name="destin_proced_DGAJ" value="{{ $isa-> destin_proced_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccionar la dependencia</option>
                             <option value="Asuntos Internos" @if ($isa->destin_proced_DGAJ == 'Asuntos Internos') selected @endif 'Asuntos Internos'>Asuntos Internos</option>
@@ -484,16 +463,7 @@
                             <option value="Departamental" @if ($isa->destin_proced_DGAJ == 'Departamental') selected @endif 'Departamental'>Departamental</option>
                           </x-adminlte-select2>
                         </div>
-
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-tipo_mov_proce_DGAJ">Tipo Movimiento</label>
-                          <x-adminlte-select2  name="tipo_mov_proce_DGAJ" value="{{ $isa-> tipo_mov_proce_DGAJ }}" class="select2 form-select">
-                            <option value="">Seleccionar el tipo de movimiento</option>
-                            <option value="Salida" @if ($isa->tipo_mov_proce_DGAJ == 'Salida') selected @endif 'Salida'>Salida</option>
-                            <option value="Ingreso" @if ($isa->tipo_mov_proce_DGAJ == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                            <option value="ReIngreso" @if ($isa->tipo_mov_proce_DGAJ == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                          </x-adminlte-select2>
-                        </div>
+                      
 
                         <div class="col-md-6">
                             <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
@@ -501,18 +471,18 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de la procedencia</label>
+                          <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de Procedencia</label>
                           <input type="text" name="obs_proced_DGAJ" value="{{ $isa-> obs_proced_DGAJ }}" id="multicol-obs_proced_DGAJ" class="form-control" placeholder="Escribir observaciones de la procedencia" />
                         </div>
                         
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Movimiento</label>
+                          <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Pase</label>
                           <input type="date" name="fecha_mov_destDGAJ" value="{{ $isa-> fecha_mov_destDGAJ }}" id="multicol-fecha_mov_destDGAJ" class="form-control" placeholder="Fecha de pase del expediente " />
                         </div>
 
 
                         <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_pase_DGAJ">Destino de Pase</label>
+                        <label class="form-label" for="multicol-destin_pase_DGAJ">Lugar de Pase</label>
                           <x-adminlte-select2  name="destin_pase_DGAJ" value="{{ $isa-> destin_pase_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccionar la dependencia</option>
                             <option value="Asesoria Letrada" @if ($isa->destin_pase_DGAJ == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
@@ -520,19 +490,10 @@
                             <option value="Departamental" @if ($isa->destin_pase_DGAJ == 'Departamental') selected @endif 'Departamental'>Departamental</option>
                           </x-adminlte-select2>
                         </div>
+                      
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-tipo_mov_pase_DGAJ">Tipo Movimiento</label>
-                          <x-adminlte-select2  name="tipo_mov_pase_DGAJ" value="{{ $isa-> tipo_mov_pase_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccionar el tipo de movimiento</option>
-                            <option value="Salida" @if ($isa->tipo_mov_pase_DGAJ == 'Salida') selected @endif 'Salida'>Salida</option>
-                            <option value="Ingreso" @if ($isa->tipo_mov_pase_DGAJ == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                            <option value="ReIngreso" @if ($isa->tipo_mov_pase_DGAJ == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                          </x-adminlte-select2>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
+                          <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del Pase</label>
                           <input type="text" name="obs_pase_DGAJ" value="{{ $isa-> obs_pase_DGAJ }}" id="multicol-obs_pase_DGAJ" class="form-control" placeholder="Escribir observaciones para el pase" />
                         </div>
 
@@ -604,12 +565,12 @@
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Movimiento</label>
+                      <label class="form-label" for="multicol-fecha_mov_procAL"> Fecha de Procedencia</label>
                       <input type="date" name="fecha_mov_procAL" value="{{ $isa-> fecha_mov_procAL }}" id="multicol-fecha_mov_procAL" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_AL">Destino de Procedencia</label>
+                      <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
                       <x-adminlte-select2  name="destin_proceden_AL" value="{{ $isa-> destin_proceden_AL }}" class="select2 form-select" >
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Asuntos Judiciales" @if ($isa->destin_proceden_AL == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
@@ -618,33 +579,24 @@
                       </x-adminlte-select2>
                     </div>
 
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_proce_AL">Tipo Movimiento</label>
-                      <x-adminlte-select2 name="tipo_mov_proce_AL" value="{{ $isa-> tipo_mov_proce_AL }}" class="select2 form-select" >
-                        <option value="">Seleccionar el tipo de movimiento</option>
-                        <option value="Salida" @if ($isa->tipo_mov_proce_AL == 'Salida') selected @endif 'Salida'>Salida</option>
-                        <option value="Ingreso" @if ($isa->tipo_mov_proce_AL == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                        <option value="ReIngreso" @if ($isa->tipo_mov_proce_AL == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                      </x-adminlte-select2>
-                    </div>
-
+                   
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
                         <textarea name="sugerencia_AL" id="multicol-sugerencia_AL" class="form-control">{{ $isa->sugerencia_AL }}</textarea>
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de la procedencia</label>
+                      <label class="form-label" for="multicol-obs_proced_AL">Observaciones de Procedencia</label>
                       <input type="text" name="obs_proced_AL" value="{{ $isa-> obs_proced_AL }}" id="multicol-obs_proced_AL" class="form-control" placeholder="Escribir observaciones de la procedencia" />
                     </div>
                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Movimiento</label>
+                      <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Pase</label>
                       <input type="date" name="fecha_mov_paseAL" value="{{ $isa-> fecha_mov_paseAL }}" id="multicol-fecha_mov_paseAL" class="form-control" placeholder="Fecha de pase del expediente " />
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_AL">Destino de Pase</label>
+                      <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
                       <x-adminlte-select2  name="destin_pase_AL" value="{{ $isa-> destin_pase_AL }}" class="select2 form-select">
                         <option value="">Seleccionar la dependencia</option>
                         <option value="Direccion General Recursos Humanos" @if ($isa->destin_pase_AL == 'Direccion General Recursos Humanos') selected @endif 'Direccion General Recursos Humanos'>Direccion General Recursos Humanos</option>
@@ -653,18 +605,9 @@
                       </x-adminlte-select2>
                     </div>
 
+                   
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_pase_AL">Tipo Movimiento</label>
-                      <x-adminlte-select2  name="tipo_mov_pase_AL" value="{{ $isa-> tipo_mov_pase_AL }}" class="select2 form-select" >
-                        <option value="">Seleccionar el tipo de movimiento</option>
-                        <option value="Salida" @if ($isa->tipo_mov_pase_AL == 'Salida') selected @endif 'Salida'>Salida</option>
-                        <option value="Ingreso" @if ($isa->tipo_mov_pase_AL == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                        <option value="ReIngreso" @if ($isa->tipo_mov_pase_AL == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                      </x-adminlte-select2>
-                    </div>
-
-                    <div class="col-md-6">
-                      <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
+                      <label class="form-label" for="multicol-obs_pase_AL">Observaciones del Pase</label>
                       <input type="text" name="obs_pase_AL" value="{{ $isa-> obs_pase_AL}}" id="multicol-obs_pase_AL" class="form-control" placeholder="Escribir observaciones para el pase" />
                     </div>
 
@@ -736,12 +679,12 @@
                       </div>
                     
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Movimiento Procendencia</label>
+                        <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Procedencia</label>
                         <input type="date" name="fecha_mov_proceDGRRHH" value="{{ $isa-> fecha_mov_proceDGRRHH}}" id="multicol-fecha_mov_proceDGRRHH" class="form-control" placeholder="Fecha de pase del expediente " />
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Destino de Procedencia</label>
+                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
                         <x-adminlte-select2  name="destin_proceden_DGRRHH" value="{{ $isa-> destin_proceden_DGRRHH}}" class="select2 form-select">
                           <option value="">Seleccionar la dependencia</option>
                           <option value="Asesoria Letrada" @if ($isa->destin_proceden_DGRRHH == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
@@ -750,33 +693,24 @@
                         </x-adminlte-select2>
                       </div>
 
-                      <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_proce_DGRRHH">Tipo Movimiento Procedencia</label>
-                        <x-adminlte-select2 name="tipo_mov_proce_DGRRHH" value="{{ $isa-> tipo_mov_proce_DGRRHH}}" class="select2 form-select" >
-                          <option value="">Seleccionar el tipo de movimiento</option>
-                          <option value="Salida" @if ($isa->tipo_mov_proce_DGRRHH == 'Salida') selected @endif 'Salida'>Salida</option>
-                          <option value="Ingreso" @if ($isa->tipo_mov_proce_DGRRHH == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                          <option value="ReIngreso" @if ($isa->tipo_mov_proce_DGRRHH == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                        </x-adminlte-select2>
-                      </div>
-
+                     
                       <div class="col-md-6">
                           <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
                           <textarea name="resol_final_DGRRHH" id="multicol-resol_final_DGRRHH" class="form-control">{{ $isa->resol_final_DGRRHH }}</textarea>
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de la procedencia</label>
+                        <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de Procedencia</label>
                         <input type="text" name="obs_proced_DGRRHH"  value="{{ $isa-> obs_proced_DGRRHH}}" id="multicol-obs_proced_DGRRHH" class="form-control" placeholder="Escribir observaciones de la procedencia" />
                       </div>
                     
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Movimiento Pase</label>
+                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Pase</label>
                         <input type="date" name="fecha_mov_paseDGRRHH" value="{{ $isa-> fecha_mov_paseDGRRHH}}" id="multicol-fecha_mov_paseDGRRHH" class="form-control" placeholder="Fecha de pase del expediente " />
                       </div>
 
                       <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_DGRRHH">Destino de Pase</label>
+                      <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de Pase</label>
                         <x-adminlte-select2 name="destin_pase_DGRRHH" value="{{ $isa-> destin_pase_DGRRHH}}" class="select2 form-select" >
                           <option value="">Seleccionar la dependencia</option>
                           <option value="Secretaria" @if ($isa->destin_pase_DGRRHH == 'Secretaria') selected @endif 'Secretaria'>Secretaria</option>
@@ -785,18 +719,9 @@
                         </x-adminlte-select2>
                       </div>
 
+                     
                       <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_mov_pase_DGRRHH">Tipo Movimiento Pase</label>
-                        <x-adminlte-select2  name="tipo_mov_pase_DGRRHH" value="{{ $isa-> tipo_mov_pase_DGRRHH}}" class="select2 form-select">
-                          <option value="">Seleccionar el tipo de movimiento</option>
-                          <option value="Salida" @if ($isa->tipo_mov_pase_DGRRHH == 'Salida') selected @endif 'Salida'>Salida</option>
-                          <option value="Ingreso" @if ($isa->tipo_mov_pase_DGRRHH == 'Ingreso') selected @endif 'Ingreso'>Ingreso</option>
-                          <option value="ReIngreso" @if ($isa->tipo_mov_pase_DGRRHH == 'ReIngreso') selected @endif 'ReIngreso'>ReIngreso</option>
-                        </x-adminlte-select2>
-                      </div>
-
-                      <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
+                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones de Pase</label>
                         <input type="text" name="obs_pase_DGRRHH" value="{{ $isa-> obs_pase_DGRRHH}}" id="multicol-obs_pase_DGRRHH" class="form-control" placeholder="Escribir observaciones para el pase" />
                       </div>
 

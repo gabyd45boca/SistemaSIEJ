@@ -12,7 +12,7 @@ class SumarisimasController extends Controller
   public function __construct(){
 
     $this->middleware('can:CrearSumarisima')->only('create');
-    $this->middleware('can:EliminarSumarisima')->only('create');
+    $this->middleware('can:EliminarSumarisima')->only('destroy');
    
 }     
     public function index(){
@@ -57,7 +57,7 @@ class SumarisimasController extends Controller
           'fecha_ingreso' => 'required',
           'fojas' =>'required',
           'motivo' => 'required',
-          'destino_proced'=> 'required',
+          'lugar_proced'=> 'required',
           'tipo_denuncia' => 'required',
                         
         ]);
@@ -65,39 +65,67 @@ class SumarisimasController extends Controller
         $sumarisima = new Sumarisima();
     
         $sumarisima->num_dj  = $request->num_dj;
+        $sumarisima->lugar_proced = $request->lugar_proced;
         $sumarisima->fecha_ingreso = $request->fecha_ingreso;
+        $sumarisima->fecha_inicio = $request->fecha_inicio;
         $sumarisima->fojas  = $request->fojas;
         $sumarisima->tipo_denuncia  = $request->tipo_denuncia;
         $sumarisima->motivo = $request->motivo;
-        $sumarisima->destino_proced = $request->destino_proced;
-    
-       /* $sumarisima->apellido_nombre_inf = $request->apellido_nombre_inf;
-        $sumarisima->leg_pers_inf = $request->leg_pers_inf;
-        $sumarisima->dependen_inf = $request->dependen_inf;
-        $sumarisima->jerarquia_inf = $request->jerarquia_inf;
-        $sumarisima->retirado = $request->retirado;
-        $sumarisima->detenido = $request->detenido;
-        $sumarisima->dispon_prev = $request->dispon_prev;
-        $sumarisima->levant_dispon_prev = $request->levant_dispon_prev;
-        $sumarisima->fecha_disp_prevent = $request->fecha_disp_prevent;
-        $sumarisima->fecha_levan_disp_prev = $request->fecha_levan_disp_prev;
-        $sumarisima->resol_disp_prev = $request->resol_disp_prev;
-        $sumarisima->resol_levan_disp_prev = $request->resol_levan_disp_prev;*/
-    
+        $sumarisima->primera_interv  = $request->primera_interv;
+        $sumarisima->fecha_pase  = $request->fecha_pase;
+        $sumarisima->observaciones  = $request->observaciones;
+        $sumarisima->lugar_pase = $request->lugar_pase;
+            /////////
+        $sumarisima->apellido_nombre_DGAJ = $request->apellido_nombre_DGAJ;
+        $sumarisima->leg_pers_DGAJ = $request->leg_pers_DGAJ;
+        $sumarisima->dependen_DGAJ = $request->dependen_DGAJ;
+        $sumarisima->jerarquia_DGAJ = $request->jerarquia_DGAJ;
+        $sumarisima->fecha_reingreso_DGAJ = $request->fecha_reingreso_DGAJ;
+        $sumarisima->obs_reingreso_DGAJ = $request->opinion_cierre_DGAJ;
+        $sumarisima->opinion_cierre_DGAJ = $request->opinion_cierre_DGAJ;
+        $sumarisima->fecha_pase_DGAJ = $request->fecha_pase_DGAJ;
+        $sumarisima->lugar_pase_DGAJ = $request->lugar_pase_DGAJ;
+        $sumarisima->obs_pase_DGAJ = $request->obs_pase_DGAJ;
+
         $sumarisima->apellido_nombre_AL = $request->apellido_nombre_AL;
         $sumarisima->leg_pers_AL = $request->leg_pers_AL;
-        $sumarisima->jerarquia_AL = $request->jerarquia_AL;
         $sumarisima->dependen_AL = $request->dependen_AL;
-    
-        $sumarisima->fecha_mov = $request->fecha_mov;
-        $sumarisima->destino_pase = $request->destino_pase;
-        $sumarisima->primera_interv = $request->primera_interv;
-        $sumarisima->tipo_mov = $request->tipo_mov;
-        $sumarisima->observaciones = $request->observaciones;
-        $sumarisima->fecha_reingreso = $request->fecha_reingreso;
-        $sumarisima->opinion_final = $request->opinion_final;
-        $sumarisima->fecha_egreso = $request->fecha_egreso;
-                    
+        $sumarisima->jerarquia_AL = $request->jerarquia_AL;
+        $sumarisima->reg_interno_AL = $request->reg_interno_AL;
+        $sumarisima->fecha_mov_procAL = $request->fecha_mov_procAL;
+        $sumarisima->destin_proceden_AL = $request->destin_proceden_AL;
+        $sumarisima->sugerencia_AL = $request->sugerencia_AL;
+        $sumarisima->obs_proced_AL = $request->obs_proced_AL;
+        $sumarisima->fecha_mov_paseAL = $request->fecha_mov_paseAL;
+        $sumarisima->destin_pase_AL = $request->destin_pase_AL;
+        $sumarisima->obs_pase_AL = $request->obs_pase_AL;
+
+        $sumarisima->apellido_nombre_SS = $request->apellido_nombre_SS;
+        $sumarisima->leg_pers_SS = $request->leg_pers_SS;
+        $sumarisima->dependen_SS = $request->dependen_SS;
+        $sumarisima->jerarquia_SS = $request->jerarquia_SS;
+        $sumarisima->reg_interno_SS = $request->reg_interno_SS;
+        $sumarisima->fecha_proced_SS = $request->fecha_proced_SS;
+        $sumarisima->lugar_proceden_SS = $request->lugar_proceden_SS;
+        $sumarisima->sugerencia_SS = $request->sugerencia_SS;
+        $sumarisima->obs_proced_SS = $request->obs_proced_SS;
+        $sumarisima->fecha_pase_SS = $request->fecha_pase_SS;
+        $sumarisima->lugar_pase_SS = $request->lugar_pase_SS;
+        $sumarisima->obs_pase_SS = $request->obs_pase_SS;
+
+        $sumarisima->apellido_nombre_DGRRHH = $request->apellido_nombre_DGRRHH;
+        $sumarisima->leg_pers_DGRRHH = $request->leg_pers_DGRRHH;
+        $sumarisima->dependen_DGRRHH = $request->dependen_DGRRHH;
+        $sumarisima->jerarquia_DGRRHH = $request->jerarquia_DGRRHH;
+        $sumarisima->reg_interno_DGRRHH = $request->reg_interno_DGRRHH;
+        $sumarisima->fecha_mov_proceDGRRHH = $request->fecha_mov_proceDGRRHH;
+        $sumarisima->destin_proceden_DGRRHH = $request->destin_proceden_DGRRHH;
+        $sumarisima->resol_final_DGRRHH = $request->resol_final_DGRRHH;
+        $sumarisima->obs_proced_DGRRHH = $request->obs_proced_DGRRHH;
+        $sumarisima->concluido_DGRRHH = $request->concluido_DGRRHH;
+        $sumarisima->DGRRHH_N° = $request->DGRRHH_N°;
+        $sumarisima->fecha_notificacion = $request->fecha_notificacion;
+                           
         $sumarisima->save();
 
         $sumarisima->infractors()->attach($request->input('apellido_nombre_inf'));
@@ -120,39 +148,67 @@ class SumarisimasController extends Controller
         
        $sumarisima = Sumarisima::find($request->sumarisima_id); 
     
-       $sumarisima->num_dj = $request->num_dj;
-       $sumarisima->fecha_ingreso = $request->fecha_ingreso;
-       $sumarisima->fojas  = $request->fojas;
-       $sumarisima->tipo_denuncia  = $request->tipo_denuncia;
-       $sumarisima->motivo = $request->motivo;
-       $sumarisima->destino_proced = $request->destino_proced;
-    
-      /* $sumarisima->apellido_nombre_inf = $request->apellido_nombre_inf;
-       $sumarisima->leg_pers_inf = $request->leg_pers_inf;
-       $sumarisima->dependen_inf = $request->dependen_inf;
-       $sumarisima->jerarquia_inf = $request->jerarquia_inf;
-       $sumarisima->retirado = $request->retirado;
-       $sumarisima->detenido = $request->detenido;
-       $sumarisima->dispon_prev = $request->dispon_prev;
-       $sumarisima->levant_dispon_prev = $request->levant_dispon_prev;
-       $sumarisima->fecha_disp_prevent = $request->fecha_disp_prevent;
-       $sumarisima->fecha_levan_disp_prev = $request->fecha_levan_disp_prev;
-       $sumarisima->resol_disp_prev = $request->resol_disp_prev;
-       $sumarisima->resol_levan_disp_prev = $request->resol_levan_disp_prev;*/
-    
-       $sumarisima->apellido_nombre_AL = $request->apellido_nombre_AL;
-       $sumarisima->leg_pers_AL = $request->leg_pers_AL;
-       $sumarisima->jerarquia_AL = $request->jerarquia_AL;
-       $sumarisima->dependen_AL = $request->dependen_AL;
-    
-       $sumarisima->fecha_mov = $request->fecha_mov;
-       $sumarisima->destino_pase = $request->destino_pase;
-       $sumarisima->primera_interv = $request->primera_interv;
-       $sumarisima->tipo_mov = $request->tipo_mov;
-       $sumarisima->observaciones = $request->observaciones;
-       $sumarisima->fecha_reingreso = $request->fecha_reingreso;
-       $sumarisima->opinion_final = $request->opinion_final;
-       $sumarisima->fecha_egreso = $request->fecha_egreso;
+       $sumarisima->num_dj  = $request->num_dj;
+        $sumarisima->lugar_proced = $request->lugar_proced;
+        $sumarisima->fecha_ingreso = $request->fecha_ingreso;
+        $sumarisima->fecha_inicio = $request->fecha_inicio;
+        $sumarisima->fojas  = $request->fojas;
+        $sumarisima->tipo_denuncia  = $request->tipo_denuncia;
+        $sumarisima->motivo = $request->motivo;
+        $sumarisima->primera_interv  = $request->primera_interv;
+        $sumarisima->fecha_pase  = $request->fecha_pase;
+        $sumarisima->observaciones  = $request->observaciones;
+        $sumarisima->lugar_pase = $request->lugar_pase;
+            /////////
+        $sumarisima->apellido_nombre_DGAJ = $request->apellido_nombre_DGAJ;
+        $sumarisima->leg_pers_DGAJ = $request->leg_pers_DGAJ;
+        $sumarisima->dependen_DGAJ = $request->dependen_DGAJ;
+        $sumarisima->jerarquia_DGAJ = $request->jerarquia_DGAJ;
+        $sumarisima->fecha_reingreso_DGAJ = $request->fecha_reingreso_DGAJ;
+        $sumarisima->obs_reingreso_DGAJ = $request->opinion_cierre_DGAJ;
+        $sumarisima->opinion_cierre_DGAJ = $request->opinion_cierre_DGAJ;
+        $sumarisima->fecha_pase_DGAJ = $request->fecha_pase_DGAJ;
+        $sumarisima->lugar_pase_DGAJ = $request->lugar_pase_DGAJ;
+        $sumarisima->obs_pase_DGAJ = $request->obs_pase_DGAJ;
+
+        $sumarisima->apellido_nombre_AL = $request->apellido_nombre_AL;
+        $sumarisima->leg_pers_AL = $request->leg_pers_AL;
+        $sumarisima->dependen_AL = $request->dependen_AL;
+        $sumarisima->jerarquia_AL = $request->jerarquia_AL;
+        $sumarisima->reg_interno_AL = $request->reg_interno_AL;
+        $sumarisima->fecha_mov_procAL = $request->fecha_mov_procAL;
+        $sumarisima->destin_proceden_AL = $request->destin_proceden_AL;
+        $sumarisima->sugerencia_AL = $request->sugerencia_AL;
+        $sumarisima->obs_proced_AL = $request->obs_proced_AL;
+        $sumarisima->fecha_mov_paseAL = $request->fecha_mov_paseAL;
+        $sumarisima->destin_pase_AL = $request->destin_pase_AL;
+        $sumarisima->obs_pase_AL = $request->obs_pase_AL;
+
+        $sumarisima->apellido_nombre_SS = $request->apellido_nombre_SS;
+        $sumarisima->leg_pers_SS = $request->leg_pers_SS;
+        $sumarisima->dependen_SS = $request->dependen_SS;
+        $sumarisima->jerarquia_SS = $request->jerarquia_SS;
+        $sumarisima->reg_interno_SS = $request->reg_interno_SS;
+        $sumarisima->fecha_proced_SS = $request->fecha_proced_SS;
+        $sumarisima->lugar_proceden_SS = $request->lugar_proceden_SS;
+        $sumarisima->sugerencia_SS = $request->sugerencia_SS;
+        $sumarisima->obs_proced_SS = $request->obs_proced_SS;
+        $sumarisima->fecha_pase_SS = $request->fecha_pase_SS;
+        $sumarisima->lugar_pase_SS = $request->lugar_pase_SS;
+        $sumarisima->obs_pase_SS = $request->obs_pase_SS;
+
+        $sumarisima->apellido_nombre_DGRRHH = $request->apellido_nombre_DGRRHH;
+        $sumarisima->leg_pers_DGRRHH = $request->leg_pers_DGRRHH;
+        $sumarisima->dependen_DGRRHH = $request->dependen_DGRRHH;
+        $sumarisima->jerarquia_DGRRHH = $request->jerarquia_DGRRHH;
+        $sumarisima->reg_interno_DGRRHH = $request->reg_interno_DGRRHH;
+        $sumarisima->fecha_mov_proceDGRRHH = $request->fecha_mov_proceDGRRHH;
+        $sumarisima->destin_proceden_DGRRHH = $request->destin_proceden_DGRRHH;
+        $sumarisima->resol_final_DGRRHH = $request->resol_final_DGRRHH;
+        $sumarisima->obs_proced_DGRRHH = $request->obs_proced_DGRRHH;
+        $sumarisima->concluido_DGRRHH = $request->concluido_DGRRHH;
+        $sumarisima->DGRRHH_N° = $request->DGRRHH_N°;
+        $sumarisima->fecha_notificacion = $request->fecha_notificacion;
        
        $sumarisima->save();
 

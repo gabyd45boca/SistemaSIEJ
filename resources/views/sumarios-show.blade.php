@@ -285,11 +285,7 @@
                   <h4 class="fw-normal">6. Movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
               <div class="row g-3">
 
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-reg_interno_DGAJ">Registro Interno</label>
-                          <span class="form-control" id="multicol-reg_interno_DGAJ">{{ $sumario->reg_interno_DGAJ}}</span>
-                        </div>
-                    
+                                          
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-fecha_mov_proceDGAJ">Fecha de procedencia</label>
                           <span class="form-control" id="multicol-fecha_mov_proceDGAJ">{{ $sumario->fecha_mov_proceDGAJ}}</span>

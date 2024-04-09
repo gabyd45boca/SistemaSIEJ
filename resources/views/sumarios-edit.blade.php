@@ -433,11 +433,7 @@
                   <hr class="my-4 mx-n4" />
                   <h4 class="fw-normal">6. Carga de movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
               <div class="row g-3">
-
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-reg_interno_DGAJ">Registro Interno</label>
-                            <input type="text" name="reg_interno_DGAJ" value="{{ $sumario-> reg_interno_DGAJ }}" id="multicol-reg_interno_DGAJ" class="form-control" placeholder="Registro interno" />
-                        </div>
+                      
                     
                         <div class="col-md-6">
                         <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Procedencia</label>

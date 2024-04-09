@@ -181,8 +181,8 @@
           <h4 class="fw-normal">4. Carga de movimientos y sugerencias del instructor de la Direccion de Asuntos Internos </h4>
         <div class="row g-3">
 
-          <div class="col-md-6">
-            <label class="form-label" for="multicol-reg_interno_DAI">Registro Interno</label>
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-reg_interno_DAI">Registro Interno</label>
               <input type="text" name="reg_interno_DAI" id="multicol-reg_interno_DAI" class="form-control" placeholder="Registro interno" />
             </div>
 
@@ -263,8 +263,8 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-leg_pers_DGAJ">Dependencia</label>
-                  <x-adminlte-select2  name="leg_pers_DGAJ"  class="select2 form-select" value="{{old('leg_pers_DGAJ')}}" >
+                  <label class="form-label" for="multicol-dependen_DGAJ">Dependencia</label>
+                  <x-adminlte-select2  name="dependen_DGAJ"  class="select2 form-select" value="{{old('dependen_DGAJ')}}" >
                     <option value="">Seleccionar la dependencia</option>
                     <option value="Direccion General de Asuntos Judiciales">Direccion General de Asuntos Judiciales</option>
                     <option value="D.S.C. N°1">D.S.C. N°1</option>
@@ -288,11 +288,7 @@
           <h4 class="fw-normal">6. Carga de movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
             <div class="row g-3">
 
-                <div class="col-md-6">
-                  <label class="form-label" for="multicol-reg_interno_DGAJ">Registro Interno</label>
-                    <input type="text" name="reg_interno_DGAJ" id="multicol-reg_interno_DGAJ" class="form-control"value="{{old('reg_interno_DGAJ')}}" placeholder="Registro interno" />
-                </div>
-            
+                            
                 <div class="col-md-6">
                 <label class="form-label" for="multicol-fecha_mov_proceDGAJ">Fecha de procedencia</label>
                   <input type="date" name="fecha_mov_proceDGAJ" id="multicol-fecha_mov_proceDGAJ" class="form-control" value="{{old('fecha_mov_proceDGAJ')}}" placeholder="Fecha de pase del expediente " />
@@ -520,8 +516,8 @@
               </div>
 
               <div class="col-md-6">
-                <label class="form-label" for="multicol-observaciones">Observaciones de Procedencia</label>
-                <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Escribir observaciones de la procedencia" />
+                <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de Procedencia</label>
+                <input type="text" name="obs_proced_DGRRHH" id="multicol-obs_proced_DGRRHH" class="form-control" value="{{old('obs_proced_DGRRHH')}}" placeholder="Escribir observaciones de la procedencia" />
               </div>
             
               <div class="col-md-6">

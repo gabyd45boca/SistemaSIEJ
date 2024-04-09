@@ -435,6 +435,7 @@ return [
         [
             'text'       => 'I. S. A.',
             'icon'       => 'fas fa-folder',
+            'can'   => 'AdministracionIsas', 
             'submenu'    => [
                 [
                     'text' => 'Lista de I. S. A.',
