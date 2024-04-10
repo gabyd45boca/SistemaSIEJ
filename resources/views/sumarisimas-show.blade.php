@@ -169,22 +169,22 @@
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-apellido_nombre_DAI">Apellido y Nombre</label>
-                      <span class="form-control" id="multicol-apellido_nombre_DAI">{{ $sumarisima->apellido_nombre_DAI }}</span>
+                      <span class="form-control" id="multicol-apellido_nombre_DAI">{{ $sumarisima->apellido_nombre_DGAJ }}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-leg_pers_DAI">Legajo Personal</label>
-                      <span class="form-control" id="multicol-leg_pers_DAI">{{ $sumarisima->leg_pers_DAI }}</span>
+                      <span class="form-control" id="multicol-leg_pers_DAI">{{$sumarisima->leg_pers_DGAJ}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-dependen_DAI">Dependencia</label>
-                      <span class="form-control" id="multicol-dependen_DAI">{{ $sumarisima->dependen_DAI }}</span>
+                      <span class="form-control" id="multicol-dependen_DAI">{{ $sumarisima->dependen_DGAJ}}</span>
                     </div>
 
                     <div class="col-md-6 select2-primary">
                           <label class="form-label" for="multicol-jerarquia_DAI">Jerarquia</label>
-                          <span class="form-control" id="multicol-jerarquia_DAI">{{ $sumarisima->jerarquia_DAI }}</span>
+                          <span class="form-control" id="multicol-jerarquia_DAI">{{ $sumarisima->jerarquia_DGAJ}}</span>
                     </div>
                             
 
@@ -193,12 +193,13 @@
                   <hr class="my-4 mx-n4" />
                   <h4 class="fw-normal">4. Movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
               <div class="row g-3">
-                                           
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-fecha_reingreso_DGAJ">Fecha de Reingreso</label>
-                          <span class="form-control" id="multicol-fecha_reingreso_DGAJ">{{ $sumarisima->fecha_reingreso_DGAJ}}</span>
-                        </div>
 
+                        <div class="col-md-6">
+                          <label class="form-label" for="multicol-fecha_pase_DGAJ">Fecha de Reingreso</label>
+                          <span class="form-control" id="multicol-fecha_pase_DGAJ">{{ $sumarisima->fecha_reingreso_DGAJ}}</span>
+                        </div>     
+                                           
+                       
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-obs_reingreso_DGAJ">Observaciones del Reingreso</label>
                           <span class="form-control" id="multicol-obs_reingreso_DGAJ">{{ $sumarisima->obs_reingreso_DGAJ}}</span>
@@ -428,27 +429,18 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Pase</label>
-                        <span class="form-control" id="multicol-fecha_mov_paseDGRRHH">{{ $sumarisima->fecha_mov_paseDGRRHH}}</span>
+                              <label class="form-label" for="multicol-sugerencia_DAI">Resolucion Final</label>
+                              <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
+                                  {{ $sumarisima->resol_final_DGRRHH}}
+                              </textarea>
                       </div>
-
-                      <div class="col-md-6">
-                            <label class="form-label" for="multicol-sugerencia_DAI">Resolucion Final</label>
-                            <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
-                                {{ $sumarisima->resol_final_DGRRHH}}
-                            </textarea>
-                     </div>
-           
+            
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de Procedencia</label>
                         <span class="form-control" id="multicol-obs_proced_DGRRHH">{{ $sumarisima->obs_proced_DGRRHH}}</span>
                       </div>
-
-                      <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones de Pase</label>
-                        <span class="form-control" id="multicol-obs_pase_DGRRHH">{{ $sumarisima->obs_pase_DGRRHH}}</span>
-                      </div>
+               
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>

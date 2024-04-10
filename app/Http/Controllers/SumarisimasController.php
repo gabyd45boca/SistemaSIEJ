@@ -141,14 +141,14 @@ class SumarisimasController extends Controller
         'fecha_ingreso' => 'required',
         'fojas' =>'required',
         'motivo' => 'required',
-        'destino_proced'=> 'required',
+        'lugar_proced'=> 'required',
         'tipo_denuncia' => 'required',
         
         ]);
         
        $sumarisima = Sumarisima::find($request->sumarisima_id); 
     
-       $sumarisima->num_dj  = $request->num_dj;
+        $sumarisima->num_dj  = $request->num_dj;
         $sumarisima->lugar_proced = $request->lugar_proced;
         $sumarisima->fecha_ingreso = $request->fecha_ingreso;
         $sumarisima->fecha_inicio = $request->fecha_inicio;
@@ -165,7 +165,7 @@ class SumarisimasController extends Controller
         $sumarisima->dependen_DGAJ = $request->dependen_DGAJ;
         $sumarisima->jerarquia_DGAJ = $request->jerarquia_DGAJ;
         $sumarisima->fecha_reingreso_DGAJ = $request->fecha_reingreso_DGAJ;
-        $sumarisima->obs_reingreso_DGAJ = $request->opinion_cierre_DGAJ;
+        $sumarisima->obs_reingreso_DGAJ = $request->obs_reingreso_DGAJ;
         $sumarisima->opinion_cierre_DGAJ = $request->opinion_cierre_DGAJ;
         $sumarisima->fecha_pase_DGAJ = $request->fecha_pase_DGAJ;
         $sumarisima->lugar_pase_DGAJ = $request->lugar_pase_DGAJ;
@@ -214,7 +214,7 @@ class SumarisimasController extends Controller
 
        $sumarisima->infractors()->sync($request->input('apellido_nombre_inf'));  
     
-       //return back()->with('message','Actualizado correctamente!');
+      
        return redirect()->route('sumarisimas')->with('message','Actualizado correctamente!');
       }
 
@@ -222,7 +222,7 @@ class SumarisimasController extends Controller
 
         $sumarisima = Sumarisima::find ($sumarisima_id);
         $sumarisima -> delete();
-        //return back();
+ 
         return redirect()->route('sumarisimas')->with('message','Eliminado correctamente!');
     
       }      

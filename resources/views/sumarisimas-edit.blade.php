@@ -32,7 +32,7 @@
                   </ul>
               </div>
           @endif
-      <form method= "POST" action="{{ route ('sumarios.update')}}" class="card-body">
+      <form method= "POST" action="{{ route ('sumarisimas.update')}}" class="card-body">
               @csrf
              
               <div class="hidden-view">
@@ -627,12 +627,7 @@
                           <option value="Departamental" @if ($sumarisima->destin_proceden_DGRRHH == 'Departamental') selected @endif 'Departamental'>Departamental</option>
                         </x-adminlte-select2>
                       </div>
-                    
-                      <div class="col-md-6">
-                        <label class="form-label" for="multicol-fecha_mov_paseDGRRHH"> Fecha de Pase</label>
-                        <input type="date" name="fecha_mov_paseDGRRHH" value="{{ $sumarisima-> fecha_mov_paseDGRRHH}}" id="multicol-fecha_mov_paseDGRRHH" value="{{old('fecha_mov_paseDGRRHH')}}" class="form-control" placeholder="Fecha de pase del expediente " />
-                      </div>
-                    
+                                                          
 
                       <div class="col-md-6">
                           <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
@@ -643,11 +638,7 @@
                         <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de la procedencia</label>
                         <input type="text" name="obs_proced_DGRRHH"  value="{{ $sumarisima-> obs_proced_DGRRHH}}" id="multicol-obs_proced_DGRRHH" class="form-control" placeholder="Escribir observaciones de la procedencia" />
                       </div>
-
-                      <div class="col-md-6">
-                        <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del pase</label>
-                        <input type="text" name="obs_pase_DGRRHH" value="{{ $sumarisima-> obs_pase_DGRRHH}}" id="multicol-obs_pase_DGRRHH" class="form-control" placeholder="Escribir observaciones para el pase" />
-                      </div>
+                   
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>

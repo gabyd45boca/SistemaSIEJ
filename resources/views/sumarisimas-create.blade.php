@@ -508,7 +508,7 @@
 
           <div class="pt-4">
               <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-              <button type="reset" class="btn btn-secondary" onClick="location.href='/sumarios'">Cancelar</button>
+              <button type="reset" class="btn btn-secondary" onClick="location.href='/sumarisimas'">Cancelar</button>
           </div>
    </form>
 
