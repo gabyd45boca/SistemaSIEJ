@@ -40,6 +40,16 @@
             </div>
 
             <div class="col-md-6">
+                <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
+                <x-adminlte-select2  name="lugar_proced" class="select2 form-select" required>
+                    <option value="">Seleccionar la dependencia</option>
+                    <option value="Comisaria Comunitaria">Comisaria Comunitaria</option>
+                    <option value="Departamental">Departamental</option>
+                    <option value="Destacamento">Destacamento</option>
+                </x-adminlte-select2>
+            </div>
+
+            <div class="col-md-6">
             <label class="form-label" for="multicol-username"> Fecha Ingreso</label>
               <input type="date" name="fecha_ingreso" id="multicol-fecha_ingreso" class="form-control" value="{{old('fecha_ingreso')}}" placeholder="Fecha de ingreso " required/>
             </div>
@@ -296,11 +306,7 @@
           <h4 class="fw-normal">6. Carga de movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
             <div class="row g-3">
 
-                <div class="col-md-6">
-                  <label class="form-label" for="multicol-reg_interno_DGAJ">Registro Interno</label>
-                    <input type="text" name="reg_interno_DGAJ" id="multicol-reg_interno_DGAJ" class="form-control"value="{{old('reg_interno_DGAJ')}}" placeholder="Registro interno" />
-                </div>
-            
+                          
                 <div class="col-md-6">
                 <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Procedencia</label>
                   <input type="date" name="fecha_mov_proceDGAJ" id="multicol-fecha_mov_proceDGAJ" class="form-control" value="{{old('fecha_mov_proceDGAJ')}}" placeholder="Fecha de pase del expediente " />

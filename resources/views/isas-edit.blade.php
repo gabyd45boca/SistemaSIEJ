@@ -37,7 +37,8 @@
              
               <div class="hidden-view">
               <x-adminlte-input type="hidden" name="isa_id"   value="{{$isa->id}}"/> 
-              <x-adminlte-input type="hidden" name="num_dja"   value="{{$isa->num_dja}}"/> 
+              <x-adminlte-input type="hidden" name="num_dja"   value="{{$isa->num_dja}}"/>
+              <x-adminlte-input type="hidden" name="lugar_proced"    value="{{$isa->lugar_proced}}"/>  
               <x-adminlte-input type="hidden" name="fecha_ingreso"    value="{{$isa->fecha_ingreso}}"/> 
               <x-adminlte-input type="hidden" name="num_dj"   value="{{$isa->num_dj}}"/> 
               <x-adminlte-input type="hidden" name="fecha_inicio"    value="{{$isa->fecha_inicio}}"/>
@@ -73,7 +74,6 @@
               <x-adminlte-input type="hidden" name="leg_pers_DGAJ"   value="{{$isa->leg_pers_DGAJ}}"/> 
               <x-adminlte-input type="hidden" name="dependen_DGAJ"    value="{{$isa->dependen_DGAJ}}"/> 
               <x-adminlte-input type="hidden" name="jerarquia_DGAJ"   value="{{$isa->jerarquia_DGAJ}}"/> 
-              <x-adminlte-input type="hidden" name="reg_interno_DGAJ"    value="{{$isa->reg_interno_DGAJ}}"/>
               <x-adminlte-input type="hidden" name="fecha_mov_proceDGAJ"   value="{{$isa->fecha_mov_proceDGAJ}}"/> 
               <x-adminlte-input type="hidden" name="destin_proced_DGAJ"    value="{{$isa->destin_proced_DGAJ}}"/> 
               <x-adminlte-input type="hidden" name="tipo_mov_proce_DGAJ"  value="{{$isa->tipo_mov_proce_DGAJ}}"/> 
@@ -174,6 +174,16 @@
                       <label class="form-label" for="multicol-username">N° DJA</label>
                       <input type="text" name= "num_dja" value="{{ $isa-> num_dja }}" id="multicol-num_dja" class="form-control" placeholder="Numero de DJA " required/>
                     </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
+                      <x-adminlte-select2  name="lugar_proced" value="{{ $isa-> lugar_proced }}" required>
+                        <option value="">Seleccionar la dependencia</option>
+                        <option value="Comisaria Comunitaria" @if ($isa->lugar_proced == 'Comisaria Comunitaria') selected @endif 'Comisaria Comunitaria'>Comisaria Comunitaria</option>
+                        <option value="Departamental" @if ($isa->lugar_proced == 'Departamental') selected @endif 'Departamental'>Departamental</option>
+                        <option value="Destacamento" @if ($isa->lugar_proced == 'Destacamento') selected @endif 'Departamental'>Destacamento</option>
+                      </x-adminlte-select2>
+                    </div>                    
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-username"> Fecha Ingreso</label>
@@ -444,11 +454,7 @@
                   <h4 class="fw-normal">6. Carga de movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
               <div class="row g-3">
 
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-reg_interno_DGAJ">Registro Interno</label>
-                            <input type="text" name="reg_interno_DGAJ" value="{{ $isa-> reg_interno_DGAJ }}" id="multicol-reg_interno_DGAJ" class="form-control" placeholder="Registro interno" />
-                        </div>
-                    
+                                          
                         <div class="col-md-6">
                         <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Procedencia</label>
                           <input type="date" name="fecha_mov_proceDGAJ" value="{{ $isa-> fecha_mov_proceDGAJ }}" id="multicol-fecha_mov_proceDGAJ" class="form-control" placeholder="Fecha de pase del expediente " />

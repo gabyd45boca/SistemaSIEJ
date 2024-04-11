@@ -60,6 +60,7 @@ class SumariosController extends Controller
 
             $validator = $request -> validate ([
             'num_dja'=> 'required|unique:sumarios',
+            'lugar_proced' => 'required',
             'fecha_ingreso' => 'required',
             'num_dj' => ['required','unique:sumarios'],
             'fecha_inicio' => 'required',
@@ -76,6 +77,7 @@ class SumariosController extends Controller
             $sumario =new Sumario();
                    
             $sumario->num_dja  = $request->num_dja;
+            $sumario->lugar_proced  = $request->lugar_proced;
             $sumario->fecha_ingreso = $request->fecha_ingreso;
             $sumario->num_dj  = $request->num_dj;
             $sumario->fecha_inicio = $request->fecha_inicio;
@@ -159,6 +161,7 @@ class SumariosController extends Controller
         // dd($request->all());
         $validator = $request -> validate ([
           'num_dja'=> 'required',
+          'lugar_proced' => 'required',
           'fecha_ingreso' => 'required',
           'num_dj' => 'required',
           'fecha_inicio' => 'required',
@@ -176,6 +179,7 @@ class SumariosController extends Controller
         $sumario = Sumario::find($request->sumario_id);
     
         $sumario->num_dja  = $request->num_dja;
+        $sumario->lugar_proced  = $request->lugar_proced;
         $sumario->fecha_ingreso = $request->fecha_ingreso;
         $sumario->num_dj  = $request->num_dj;
         $sumario->fecha_inicio = $request->fecha_inicio;

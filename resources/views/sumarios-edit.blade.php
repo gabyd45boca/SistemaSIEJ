@@ -38,6 +38,7 @@
               <div class="hidden-view">
               <x-adminlte-input type="hidden" name="sumario_id"   value="{{$sumario->id}}"/> 
               <x-adminlte-input type="hidden" name="num_dja"   value="{{$sumario->num_dja}}"/> 
+              <x-adminlte-input type="hidden" name="lugar_proced"    value="{{$sumario->lugar_proced}}"/> 
               <x-adminlte-input type="hidden" name="fecha_ingreso"    value="{{$sumario->fecha_ingreso}}"/> 
               <x-adminlte-input type="hidden" name="num_dj"   value="{{$sumario->num_dj}}"/> 
               <x-adminlte-input type="hidden" name="fecha_inicio"    value="{{$sumario->fecha_inicio}}"/>
@@ -171,6 +172,16 @@
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-username">N° DJA</label>
                       <input type="text" name= "num_dja" value="{{ $sumario-> num_dja }}" id="multicol-num_dja" class="form-control" placeholder="Numero de DJA " required/>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
+                      <x-adminlte-select2  name="lugar_proced" value="{{ $sumario-> lugar_proced }}" required>
+                        <option value="">Seleccionar la dependencia</option>
+                        <option value="Comisaria Comunitaria" @if ($sumario->lugar_proced == 'Comisaria Comunitaria') selected @endif 'Comisaria Comunitaria'>Comisaria Comunitaria</option>
+                        <option value="Departamental" @if ($sumario->lugar_proced == 'Departamental') selected @endif 'Departamental'>Departamental</option>
+                        <option value="Destacamento" @if ($sumario->lugar_proced == 'Destacamento') selected @endif 'Departamental'>Destacamento</option>
+                      </x-adminlte-select2>
                     </div>
 
                     <div class="col-md-6">

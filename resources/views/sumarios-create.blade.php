@@ -40,6 +40,16 @@
             </div>
 
             <div class="col-md-6">
+                <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
+                <x-adminlte-select2  name="lugar_proced" class="select2 form-select" required>
+                    <option value="">Seleccionar la dependencia</option>
+                    <option value="Comisaria Comunitaria">Comisaria Comunitaria</option>
+                    <option value="Departamental">Departamental</option>
+                    <option value="Destacamento">Destacamento</option>
+                </x-adminlte-select2>
+            </div>
+
+            <div class="col-md-6">
             <label class="form-label" for="multicol-username"> Fecha Ingreso</label>
               <input type="date" name="fecha_ingreso" id="multicol-fecha_ingreso" class="form-control" value="{{old('fecha_ingreso')}}" placeholder="Fecha de ingreso " required/>
             </div>

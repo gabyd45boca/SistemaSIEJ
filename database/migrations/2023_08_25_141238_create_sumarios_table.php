@@ -20,6 +20,7 @@ return new class extends Migration
             
             //expediente  
             $table->string('num_dja')->unique();
+            $table->string('lugar_proced');
             $table->date('fecha_ingreso');
             $table->string('num_dj')->unique();
             $table->date('fecha_inicio');

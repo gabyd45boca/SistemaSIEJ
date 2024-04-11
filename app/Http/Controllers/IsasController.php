@@ -61,6 +61,7 @@ class IsasController extends Controller
 
             $validator = $request -> validate ([
             'num_dja'=> 'required|unique:isas',
+            'lugar_proced' => 'required',
             'fecha_ingreso' => 'required',
             'num_dj' => ['required','unique:isas'],
             'fecha_inicio' => 'required',
@@ -75,6 +76,7 @@ class IsasController extends Controller
             $isa =new Isa();
                    
             $isa->num_dja  = $request->num_dja;
+            $isa->lugar_proced  = $request->lugar_proced;
             $isa->fecha_ingreso = $request->fecha_ingreso;
             $isa->num_dj  = $request->num_dj;
             $isa->fecha_inicio = $request->fecha_inicio;
@@ -108,7 +110,6 @@ class IsasController extends Controller
             $isa->leg_pers_DGAJ = $request->leg_pers_DGAJ;
             $isa->dependen_DGAJ = $request->dependen_DGAJ;
             $isa->jerarquia_DGAJ = $request->jerarquia_DGAJ;
-            $isa->reg_interno_DGAJ = $request->reg_interno_DGAJ;
             $isa->fecha_mov_proceDGAJ = $request->fecha_mov_proceDGAJ;
             $isa->destin_proced_DGAJ = $request->destin_proced_DGAJ;
             $isa->sugerencia_DGAJ = $request->sugerencia_DGAJ;
@@ -161,6 +162,7 @@ class IsasController extends Controller
         // dd($request->all());
         $validator = $request -> validate ([
           'num_dja'=> 'required',
+          'lugar_proced' => 'required',
           'fecha_ingreso' => 'required',
           'num_dj' => 'required',
           'fecha_inicio' => 'required',
@@ -176,6 +178,7 @@ class IsasController extends Controller
         $isa = Isa::find($request->isa_id);
     
         $isa->num_dja  = $request->num_dja;
+        $isa->lugar_proced  = $request->lugar_proced;
         $isa->fecha_ingreso = $request->fecha_ingreso;
         $isa->num_dj  = $request->num_dj;
         $isa->fecha_inicio = $request->fecha_inicio;
@@ -208,7 +211,6 @@ class IsasController extends Controller
         $isa->leg_pers_DGAJ = $request->leg_pers_DGAJ;
         $isa->jerarquia_DGAJ = $request->jerarquia_DGAJ;
         $isa->dependen_DGAJ = $request->dependen_DGAJ;
-        $isa->reg_interno_DGAJ = $request->reg_interno_DGAJ;
         $isa->fecha_mov_proceDGAJ = $request->fecha_mov_proceDGAJ;
         $isa->destin_proced_DGAJ = $request->destin_proced_DGAJ;
         $isa->sugerencia_DGAJ = $request->sugerencia_DGAJ;

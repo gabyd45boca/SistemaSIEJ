@@ -20,6 +20,7 @@ return new class extends Migration
 
              //expediente  
              $table->string('num_dja')->unique();
+             $table->string('lugar_proced');
              $table->date('fecha_ingreso');
              $table->string('num_dj')->unique();
              $table->date('fecha_inicio');
@@ -57,7 +58,6 @@ return new class extends Migration
              $table->string('dependen_DGAJ')->nullable(); //poner un select  filtrar por aqui las consultas        
              $table->string('jerarquia_DGAJ')->nullable(); //poner un select  filtrar por aqui las consultas           
              //carga movimientos direccion asuntos judicales
-             $table->text('reg_interno_DGAJ')->nullable();
              $table->date('fecha_mov_proceDGAJ')->nullable();
              $table->text('destin_proced_DGAJ')->nullable();
              $table->text('sugerencia_DGAJ')->nullable();

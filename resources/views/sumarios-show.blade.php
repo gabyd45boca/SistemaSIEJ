@@ -93,6 +93,11 @@
                     </div>
 
                     <div class="col-md-6">
+                      <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
+                      <span class="form-control" id="multicol-lugar_proced">{{ $sumario->lugar_proced }}</span>
+                    </div>
+
+                    <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_ingreso"> Fecha Ingreso</label>
                       <span class="form-control" id="multicol-fecha_ingreso">{{ $sumario-> fecha_ingreso }}</span>
                     </div>

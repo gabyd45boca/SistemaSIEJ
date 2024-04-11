@@ -210,9 +210,9 @@
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-primera_interv">Primera Intervencion</label>
-                        <textarea name="primera_interv"  value="{{ $sumarisima->primera_interv }}" id="multicol-primera_interv" class="form-control" placeholder="Escribir la primera intervención"></textarea>
+                        <textarea name="primera_interv" id="multicol-primera_interv" class="form-control">{{ $sumarisima->primera_interv }}</textarea>
                     </div>
-                      
+                     
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_pase"> Fecha de Pase</label>
                       <input type="date" name="fecha_pase" value="{{$sumarisima->fecha_pase}}" id="multicol-fecha_pase" class="form-control" value="{{old('fecha_pase')}}" placeholder="Fecha de pase del expediente " required />
