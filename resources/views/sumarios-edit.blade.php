@@ -321,9 +321,9 @@
                           <label class="form-label" for="multicol-jerarquia_DAI">Jerarquia</label>
                           <x-adminlte-select2  name="jerarquia_DAI" value="{{ $sumario-> jerarquia_DAI }}" class="select2 form-select" >
                             <option value="">Seleccionar la jerarquia</option>
-                            <option value="agente" @if ($sumario->jerarquia_DAI == 'agente') selected @endif 'agente'>agente</option>
-                            <option value="oficial_ayudante" @if ($sumario->jerarquia_DAI == 'oficial_ayudante') selected @endif 'oficial_ayudante'>oficial ayudante</option>
-                            <option value="comisario" @if ($sumario->jerarquia_DAI == 'comisario') selected @endif 'comisario'>comisario</option>
+                            <option value="Agente" @if ($sumario->jerarquia_DAI == 'Agente') selected @endif 'Agente'>Agente</option>
+                            <option value="Oficial ayudante" @if ($sumario->jerarquia_DAI == 'Oficial ayudante') selected @endif 'Oficial ayudante'>oficial ayudante</option>
+                            <option value="Comisario" @if ($sumario->jerarquia_DAI == 'Comisario') selected @endif 'Comisario'>Comisario</option>
                           </x-adminlte-select2>
                     </div>
                             
@@ -433,9 +433,9 @@
                           <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
                           <x-adminlte-select2  name="jerarquia_DGAJ"  value="{{ $sumario-> jerarquia_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccionar la jerarquia</option>
-                            <option value="agente" @if ($sumario->jerarquia_DGAJ == 'agente') selected @endif 'agente'>agente</option>
-                            <option value="oficial ayudante" @if ($sumario->jerarquia_DGAJ == 'oficial ayudante') selected @endif 'oficial ayudante'>oficial ayudante</option>
-                            <option value="comisario" @if ($sumario->jerarquia_DGAJ == 'comisario') selected @endif 'comisario'>comisario</option>
+                            <option value="Agente" @if ($sumario->jerarquia_DGAJ == 'Agente') selected @endif 'Agente'>Agente</option>
+                            <option value="Oficial ayudante" @if ($sumario->jerarquia_DGAJ == 'Oficial ayudante') selected @endif 'Oficial ayudante'>Oficial ayudante</option>
+                            <option value="Comisario" @if ($sumario->jerarquia_DGAJ == 'Comisario') selected @endif 'Comisario'>Comisario</option>
                           </x-adminlte-select2>
                         </div>
 
@@ -544,9 +544,9 @@
                           <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
                           <x-adminlte-select2  name="jerarquia_AL" value="{{ $sumario-> jerarquia_AL }}" class="select2 form-select">
                             <option value="">Seleccionar la jerarquia</option>
-                            <option value="agente" @if ($sumario->jerarquia_AL == 'agente') selected @endif 'agente'>agente</option>
-                            <option value="oficial_ayudante" @if ($sumario->jerarquia_AL == 'oficial_ayudante') selected @endif 'oficial_ayudante'>oficial ayudante</option>
-                            <option value="comisario" @if ($sumario->jerarquia_AL == 'comisario') selected @endif 'comisario'>comisario</option>
+                            <option value="Agente" @if ($sumario->jerarquia_AL == 'Agente') selected @endif 'Agente'>Agente</option>
+                            <option value="Oficial ayudante" @if ($sumario->jerarquia_AL == 'Oficial ayudante') selected @endif 'Oficial ayudante'>Oficial ayudante</option>
+                            <option value="Comisario" @if ($sumario->jerarquia_AL == 'Comisario') selected @endif 'Comisario'>Comisario</option>
                           </x-adminlte-select2>
                         </div>
 
@@ -570,9 +570,9 @@
                       <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
                       <x-adminlte-select2  name="destin_proceden_AL" value="{{ $sumario-> destin_proceden_AL }}" class="select2 form-select" >
                         <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion General Asuntos Judiciales" @if ($sumario->destin_proceden_AL == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
-                        <option value="Comisaria" @if ($sumario->destin_proceden_AL == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                        <option value="Departamental" @if ($sumario->destin_proceden_AL == 'Departamental') selected @endif 'Departamental'>Departamental</option>
+                        <option value="Direccion General de Asuntos Judiciales" @if ($sumario->destin_proceden_AL == 'Direccion General de Asuntos Judiciales') selected @endif 'Direccion General de Asuntos Judiciales'>Direccion General de Asuntos Judiciales</option>
+                        <option value="D.S.C. N°1" @if ($sumario->destin_proceden_AL == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
+                        <option value="DESTACAMENTO" @if ($sumario->destin_proceden_AL == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
                       </x-adminlte-select2>
                     </div>
                   
@@ -658,9 +658,9 @@
                       <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
                       <x-adminlte-select2  name="jerarquia_DGRRHH" value="{{ $sumario-> jerarquia_DGRRHH}}" class="select2 form-select" >
                         <option value="">Seleccionar la jerarquia</option>
-                        <option value="agente" @if ($sumario->jerarquia_DGRRHH == 'agente') selected @endif 'agente'>agente</option>
-                        <option value="oficial_ayudante" @if ($sumario->jerarquia_DGRRHH == 'oficial_ayudante') selected @endif 'oficial_ayudante'>oficial ayudante</option>
-                        <option value="comisario" @if ($sumario->jerarquia_DGRRHH == 'comisario') selected @endif 'comisario'>comisario</option>
+                        <option value="Agente" @if ($sumario->jerarquia_DGRRHH == 'Agente') selected @endif 'Agente'>Agente</option>
+                        <option value="Oficial ayudante" @if ($sumario->jerarquia_DGRRHH == 'Oficial ayudante') selected @endif 'Oficial ayudante'>Oficial ayudante</option>
+                        <option value="Comisario" @if ($sumario->jerarquia_DGRRHH == 'Comisario') selected @endif 'Comisario'>Comisario</option>
                       </x-adminlte-select2>
                     </div>
 

@@ -310,8 +310,8 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="multicol-opinion_cierre_DGAJ">Opinion de Cierre</label>
-                            <textarea name="opinion_cierre_DGAJ" value="{{ $sumarisima-> opinion_cierre_DGAJ}}" id="multicol-opinion_cierre_DGAJ" class="form-control" placeholder="Escribir la sugerencia"></textarea>
+                          <label class="form-label" for="multicol-opinion_cierre_DGAJ">Opinion de Cierre</label>
+                          <textarea name="opinion_cierre_DGAJ" id="multicol-opinion_cierre_DGAJ" class="form-control">{{ $sumarisima->opinion_cierre_DGAJ }}</textarea>
                         </div>
 
                         <div class="col-md-6">
@@ -335,13 +335,8 @@
                           <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
                           <input type="text" name="obs_pase_DGAJ" value="{{ $sumarisima-> obs_pase_DGAJ}}" id="multicol-obs_pase_DGAJ"value="{{old('obs_pase_DGAJ')}}"  class="form-control" placeholder="Escribir observaciones para el pase" />
                         </div>
-
-                                 
-                        
-                        <div class="col-md-6">
-                          <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Movimiento</label>
-                          <input type="date" name="fecha_mov_destDGAJ" value="{{ $sumarisima-> fecha_mov_destDGAJ }}" id="multicol-fecha_mov_destDGAJ" class="form-control" placeholder="Fecha de pase del expediente " />
-                        </div>
+           
+                     
                </div>
 
               @endcan

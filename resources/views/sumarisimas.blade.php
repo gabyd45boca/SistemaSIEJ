@@ -48,7 +48,7 @@
                     
                     <td>{{$sumarisima->apellido_nombre_AL}} </td>   
                     <td>{{$sumarisima->fecha_ingreso}}</td>
-                    <td>{{$sumarisima->concluido}}</td>      
+                    <td>{{$sumarisima->concluido_DGRRHH}}</td>      
                                          
                     <td>
                         <form action="{{route('sumarisimas.destroy', $sumarisima->id) }}" class="formEliminar" method="POST">

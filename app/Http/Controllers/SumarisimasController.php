@@ -81,7 +81,7 @@ class SumarisimasController extends Controller
         $sumarisima->dependen_DGAJ = $request->dependen_DGAJ;
         $sumarisima->jerarquia_DGAJ = $request->jerarquia_DGAJ;
         $sumarisima->fecha_reingreso_DGAJ = $request->fecha_reingreso_DGAJ;
-        $sumarisima->obs_reingreso_DGAJ = $request->opinion_cierre_DGAJ;
+        $sumarisima->obs_reingreso_DGAJ = $request->obs_reingreso_DGAJ;
         $sumarisima->opinion_cierre_DGAJ = $request->opinion_cierre_DGAJ;
         $sumarisima->fecha_pase_DGAJ = $request->fecha_pase_DGAJ;
         $sumarisima->lugar_pase_DGAJ = $request->lugar_pase_DGAJ;
