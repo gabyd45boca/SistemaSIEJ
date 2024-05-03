@@ -335,7 +335,7 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-concluido_DGAJ">Concluido por Instruccion</label>
+                          <label class="form-label" for="multicol-concluido_DGAJ">Concluido</label>
                           <span class="form-control" id="multicol-concluido_DGAJ">{{ $isa->concluido_DGAJ}}</span>
                         </div>
                     
@@ -418,7 +418,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-concluido_AL">Concluido por Instruccion</label>
+                      <label class="form-label" for="multicol-concluido_AL">Concluido </label>
                       <span class="form-control" id="multicol-concluido_AL">{{ $isa->concluido_AL}}</span>
                     </div>
                     
@@ -499,7 +499,7 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-concluido_DGRRHH">CONCLUIDO POR INSTRUCCION</label>
+                        <label class="form-label" for="multicol-concluido_DGRRHH">Concluido</label>
                         <span class="form-control" id="multicol-concluido_DGRRHH">{{ $isa->concluido_DGRRHH}}</span>
                       </div>
 

@@ -400,6 +400,12 @@ return [
                     'url' => '/sumarios/create',
                     'can'   => 'RegistrarSumarios'
                 ],
+                [
+                    'text' => 'Consultas Sumarios',
+                    'icon'       => 'fas fa-file-alt',
+                    'url' => '/sumarios/consulta',
+                    'can'   => 'ConsultarSumarios'
+                ],
             ]
         ],
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sumario;
 use App\Models\Infractor;
+use App\Models\Dependencia;
 use Spatie\Permission\Traits\HasRoles;
 
 class SumariosController extends Controller
@@ -29,8 +30,9 @@ class SumariosController extends Controller
 
         $sumarios = Sumario::all();
         $infractores = Infractor::all();
+        $dependencias = Dependencia::all();
        
-        return view('sumarios-create',compact('sumarios','infractores'));
+        return view('sumarios-create',compact('sumarios','infractores','dependencias'));
     }
 
 
@@ -44,14 +46,31 @@ class SumariosController extends Controller
         return view('sumarios-show',compact('sumario','infractores','infractores_ids'));
     }
 
+    public function consulta(){
+
+      //$sumarios = Sumario::where('motivo','=','Violencia de genero')->get();
+      //$sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
+      $sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
+
+
+
+      /*$infractores = Infractor::all();
+      $infractores_ids = $sumario->infractors()->pluck('infractors.id');*/ 
+     
+      return view('sumarios-consulta',compact('sumarios'));
+      
+  }
+
+
     public function edit($sumario_id){
 
       $sumario = Sumario::find($sumario_id);
+      $dependencias = Dependencia::all();
 
       $infractores = Infractor::all();
       $infractores_ids = $sumario->infractors()->pluck('infractors.id'); 
      
-      return view('sumarios-edit',compact('sumario','infractores','infractores_ids'));
+      return view('sumarios-edit',compact('sumario','infractores','infractores_ids','dependencias'));
   }
 
     public function store(Request $request){

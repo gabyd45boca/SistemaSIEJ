@@ -175,13 +175,13 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
-                      <x-adminlte-select2  name="lugar_proced" value="{{ $sumario-> lugar_proced }}" required>
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Comisaria Comunitaria" @if ($sumario->lugar_proced == 'Comisaria Comunitaria') selected @endif 'Comisaria Comunitaria'>Comisaria Comunitaria</option>
-                        <option value="Departamental" @if ($sumario->lugar_proced == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                        <option value="Destacamento" @if ($sumario->lugar_proced == 'Destacamento') selected @endif 'Departamental'>Destacamento</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
+                        <x-adminlte-select2 name="lugar_proced" value="{{ $sumario->lugar_proced }}" required>
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->lugar_proced == $dependencia->nombre_dep ? 'selected' : '' }}>{{ $dependencia->nombre_dep }}</option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
 
                     <div class="col-md-6">
@@ -245,14 +245,17 @@
                     </div>
                     
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destino_pase">Lugar de Pase</label>
-                      <x-adminlte-select2  name="destino_pase" value="{{ $sumario-> destino_pase }}" required>
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Asuntos Interno" @if ($sumario->destino_pase == 'Asuntos Interno') selected @endif 'Asuntos Interno'>Asuntos Interno</option>
-                        <option value="Comisaria" @if ($sumario->destino_pase == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                        <option value="Departamental" @if ($sumario->destino_pase == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-destino_pase">Lugar de Pase</label>
+                        <x-adminlte-select2 name="destino_pase" value="{{ $sumario->destino_pase }}" required>
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destino_pase == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                    {{ $dependencia->nombre_dep }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
+
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-observaciones">Observaciones del Expediente</label>
@@ -308,13 +311,15 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-dependen_DAI">Dependencia</label>
-                      <x-adminlte-select2  name="dependen_DAI" value="{{ $sumario-> dependen_DAI }}" >
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion de Asuntos Internos" @if ($sumario->dependen_DAI == 'Direccion de Asuntos Internos') selected @endif 'Direccion de Asuntos Internos'>Direccion de Asuntos Internos</option>
-                        <option value="Departmental" @if ($sumario->dependen_DAI == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                        <option value="Destacamento" @if ($sumario->dependen_DAI == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-dependen_DAI">Dependencia</label>
+                        <x-adminlte-select2 name="dependen_DAI" value="{{ $sumario->dependen_DAI }}">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->dependen_DAI == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                    {{ $dependencia->nombre_dep }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
 
                     <div class="col-md-6 select2-primary">
@@ -346,14 +351,17 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_DAI">Lugar de Procedencia</label>
-                      <x-adminlte-select2  name="destin_proceden_DAI" value="{{ $sumario-> destin_proceden_DAI }}" class="select2 form-select">
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion General Asuntos Judiciales" @if ($sumario->destin_proceden_DAI == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
-                        <option value="Comisaria" @if ($sumario->destin_proceden_DAI == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                        <option value="Departamental" @if ($sumario->destin_proceden_DAI == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-destin_proceden_DAI">Lugar de Procedencia</label>
+                        <x-adminlte-select2 name="destin_proceden_DAI" value="{{ $sumario->destin_proceden_DAI }}" class="select2 form-select">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destin_proceden_DAI == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                    {{ $dependencia->nombre_dep }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
+
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de Procedencia</label>
@@ -377,13 +385,15 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_DAI">Lugar de Pase</label>
-                      <x-adminlte-select2  name="destin_pase_DAI" value="{{ $sumario-> destin_pase_DAI }}" class="select2 form-select">
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion General Asuntos Judiciales" @if ($sumario->destin_proceden_DAI == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
-                        <option value="Comisaria" @if ($sumario->destin_proceden_DAI == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                        <option value="Departamental" @if ($sumario->destin_proceden_DAI == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-destin_pase_DAI">Lugar de Pase</label>
+                        <x-adminlte-select2 name="destin_pase_DAI" value="{{ $sumario->destin_pase_DAI }}" class="select2 form-select">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destin_pase_DAI == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                    {{ $dependencia->nombre_dep }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
 
                     <div class="col-md-6">
@@ -421,13 +431,16 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="multicol-dependen_DGAJ">Dependencia</label>
-                            <x-adminlte-select2  name="dependen_DGAJ" value="{{ $sumario-> dependen_DGAJ }}">
-                              <option value="">Seleccionar la dependencia</option>
-                              <option value="Direccion General de Asuntos Judiciales" @if ($sumario->dependen_DGAJ == 'Direccion General de Asuntos Judiciales') selected @endif 'Direccion General de Asuntos Judiciales'>Direccion General de Asuntos Judiciales</option>
-                              <option value="Departamental" @if ($sumario->dependen_DGAJ == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                              <option value="Destacamento" @if ($sumario->dependen_DGAJ == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
+                            <x-adminlte-select2 name="dependen_DGAJ" value="{{ $sumario->dependen_DGAJ }}">
+                                <option value="">Seleccionar la dependencia</option>
+                                @foreach($dependencias as $dependencia)
+                                    <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->dependen_DGAJ == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                        {{ $dependencia->nombre_dep }}
+                                    </option>
+                                @endforeach
                             </x-adminlte-select2>
                         </div>
+
 
                         <div class="col-md-6 select2-primary">
                           <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
@@ -452,13 +465,15 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-destin_proced_DGAJ">Lugar de Procedencia</label>
-                          <x-adminlte-select2  name="destin_proced_DGAJ" value="{{ $sumario-> destin_proced_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccionar la dependencia</option>
-                            <option value="Asuntos Internos" @if ($sumario->destin_proced_DGAJ == 'Asuntos Internos') selected @endif 'Asuntos Internos'>Asuntos Internos</option>
-                            <option value="Comisaria" @if ($sumario->destin_proced_DGAJ == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                            <option value="Departamental" @if ($sumario->destin_proced_DGAJ == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                          </x-adminlte-select2>
+                            <label class="form-label" for="multicol-destin_proced_DGAJ">Lugar de Procedencia</label>
+                            <x-adminlte-select2 name="destin_proced_DGAJ" value="{{ $sumario->destin_proced_DGAJ }}" class="select2 form-select">
+                                <option value="">Seleccionar la dependencia</option>
+                                @foreach($dependencias as $dependencia)
+                                    <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destin_proced_DGAJ == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                        {{ $dependencia->nombre_dep }}
+                                    </option>
+                                @endforeach
+                            </x-adminlte-select2>
                         </div>
                        
                         <div class="col-md-6">
@@ -479,15 +494,16 @@
 
 
                         <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_pase_DGAJ">Lugar de Pase</label>
-                          <x-adminlte-select2  name="destin_pase_DGAJ" value="{{ $sumario-> destin_pase_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccionar la dependencia</option>
-                            <option value="Asesoria Letrada" @if ($sumario->destin_pase_DGAJ == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
-                            <option value="Comisaria" @if ($sumario->destin_pase_DGAJ == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                            <option value="Departamental" @if ($sumario->destin_pase_DGAJ == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                          </x-adminlte-select2>
+                            <label class="form-label" for="multicol-destin_pase_DGAJ">Lugar de Pase</label>
+                            <x-adminlte-select2 name="destin_pase_DGAJ" value="{{ $sumario->destin_pase_DGAJ }}" class="select2 form-select">
+                                <option value="">Seleccionar la dependencia</option>
+                                @foreach($dependencias as $dependencia)
+                                    <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destin_pase_DGAJ == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                        {{ $dependencia->nombre_dep }}
+                                    </option>
+                                @endforeach
+                            </x-adminlte-select2>
                         </div>
-     
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del Pase</label>
@@ -495,7 +511,7 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-concluido_DGAJ">Concluido por Instruccion</label>
+                          <label class="form-label" for="multicol-concluido_DGAJ">Concluido</label>
                           <x-adminlte-select2 name="concluido_DGAJ" value="{{ $sumario-> concluido_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccione</option>
                             <option value="Si" @if ($sumario->concluido_DGAJ == 'Si') selected @endif 'Si'>Si</option>
@@ -531,13 +547,15 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
-                          <x-adminlte-select2  name="dependen_AL" value="{{ $sumario-> dependen_AL }}" class="select2 form-select">
-                            <option value="">Seleccionar la dependencia</option>
-                            <option value="Asesoria Letrada" @if ($sumario->dependen_AL == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
-                            <option value="Departmental" @if ($sumario->dependen_AL == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                            <option value="Destacamento" @if ($sumario->dependen_AL == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
-                          </x-adminlte-select2>
+                            <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
+                            <x-adminlte-select2 name="dependen_AL" value="{{ $sumario->dependen_AL }}" class="select2 form-select">
+                                <option value="">Seleccionar la dependencia</option>
+                                @foreach($dependencias as $dependencia)
+                                    <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->dependen_AL == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                        {{ $dependencia->nombre_dep }}
+                                    </option>
+                                @endforeach
+                            </x-adminlte-select2>
                         </div>
 
                         <div class="col-md-6 select2-primary">
@@ -567,15 +585,17 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
-                      <x-adminlte-select2  name="destin_proceden_AL" value="{{ $sumario-> destin_proceden_AL }}" class="select2 form-select" >
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion General de Asuntos Judiciales" @if ($sumario->destin_proceden_AL == 'Direccion General de Asuntos Judiciales') selected @endif 'Direccion General de Asuntos Judiciales'>Direccion General de Asuntos Judiciales</option>
-                        <option value="D.S.C. N°1" @if ($sumario->destin_proceden_AL == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
-                        <option value="DESTACAMENTO" @if ($sumario->destin_proceden_AL == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
+                        <x-adminlte-select2 name="destin_proceden_AL" value="{{ $sumario->destin_proceden_AL }}" class="select2 form-select">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destin_proceden_AL == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                    {{ $dependencia->nombre_dep }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
-                  
+                 
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
@@ -593,13 +613,15 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
-                      <x-adminlte-select2  name="destin_pase_AL" value="{{ $sumario-> destin_pase_AL }}" class="select2 form-select">
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion General Recursos Humanos" @if ($sumario->destin_pase_AL == 'Direccion General Recursos Humanos') selected @endif 'Direccion General Recursos Humanos'>Direccion General Recursos Humanos</option>
-                        <option value="Comisaria" @if ($sumario->destin_pase_AL == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                        <option value="Departamental" @if ($sumario->destin_pase_AL == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
+                        <x-adminlte-select2 name="destin_pase_AL" value="{{ $sumario->destin_pase_AL }}" class="select2 form-select">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destin_pase_AL == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                    {{ $dependencia->nombre_dep }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
                  
 
@@ -609,7 +631,7 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-concluido_AL">Concluido por Instruccion</label>
+                      <label class="form-label" for="multicol-concluido_AL">Concluido</label>
                       <x-adminlte-select2  name="concluido_AL" value="{{ $sumario-> concluido_AL }}" class="select2 form-select">
                         <option value="">Seleccione</option>
                         <option value="Si" @if ($sumario->concluido_AL == 'Si') selected @endif 'Si'>Si</option>
@@ -645,14 +667,16 @@
                     </div>
                     
                     <div class="col-md-6">
-                          <label class="form-label" for="multicol-dependen_DGRRHH">Dependencia</label>
-                          <x-adminlte-select2  name="dependen_DGRRHH" value="{{ $sumario-> dependen_DGRRHH }}" class="select2 form-select">
-                            <option value="">Seleccionar la dependencia</option>
-                            <option value="Direccion General de Recursos Humanos" @if ($sumario->dependen_DGRRHH == 'Direccion General de Recursos Humanos') selected @endif 'Direccion General de Recursos Humanos'>Direccion General de Recursos Humanos</option>
-                            <option value="Departamental" @if ($sumario->dependen_DGRRHH == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                            <option value="Destacamento" @if ($sumario->dependen_DGRRHH == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
-                          </x-adminlte-select2>
-                        </div>
+                      <label class="form-label" for="multicol-dependen_DGRRHH">Dependencia</label>
+                      <x-adminlte-select2 name="dependen_DGRRHH" class="select2 form-select">
+                          <option value="">Seleccionar la dependencia</option>
+                          @foreach($dependencias as $dependencia)
+                              <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->dependen_DGRRHH == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                  {{ $dependencia->nombre_dep }}
+                              </option>
+                          @endforeach
+                      </x-adminlte-select2>
+                  </div>
 
                     <div class="col-md-6 select2-primary">
                       <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
@@ -681,16 +705,18 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
-                        <x-adminlte-select2  name="destin_proceden_DGRRHH" value="{{ $sumario-> destin_proceden_DGRRHH}}" class="select2 form-select">
-                          <option value="">Seleccionar la dependencia</option>
-                          <option value="Asesoria Letrada" @if ($sumario->destin_proceden_DGRRHH == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
-                          <option value="Comisaria" @if ($sumario->destin_proceden_DGRRHH == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                          <option value="Departamental" @if ($sumario->destin_proceden_DGRRHH == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                        </x-adminlte-select2>
+                          <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
+                          <x-adminlte-select2 name="destin_proceden_DGRRHH" class="select2 form-select">
+                              <option value="">Seleccionar la dependencia</option>
+                              @foreach($dependencias as $dependencia)
+                                  <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destin_proceden_DGRRHH == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                      {{ $dependencia->nombre_dep }}
+                                  </option>
+                              @endforeach
+                          </x-adminlte-select2>
                       </div>
-                     
 
+                     
                       <div class="col-md-6">
                           <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>
                           <textarea name="resol_final_DGRRHH" id="multicol-resol_final_DGRRHH" class="form-control">{{ $sumario->resol_final_DGRRHH }}</textarea>
@@ -707,15 +733,16 @@
                       </div>
 
                       <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de Pase</label>
-                        <x-adminlte-select2 name="destin_pase_DGRRHH" value="{{ $sumario-> destin_pase_DGRRHH}}" class="select2 form-select" >
-                          <option value="">Seleccionar la dependencia</option>
-                          <option value="Secretaria" @if ($sumario->destin_pase_DGRRHH == 'Secretaria') selected @endif 'Secretaria'>Secretaria</option>
-                          <option value="Comisaria" @if ($sumario->destin_pase_DGRRHH == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                          <option value="Departamental" @if ($sumario->destin_pase_DGRRHH == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                        </x-adminlte-select2>
+                          <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de Pase</label>
+                          <x-adminlte-select2 name="destin_pase_DGRRHH" class="select2 form-select">
+                              <option value="">Seleccionar la dependencia</option>
+                              @foreach($dependencias as $dependencia)
+                                  <option value="{{ $dependencia->nombre_dep }}" {{ $sumario->destin_pase_DGRRHH == $dependencia->nombre_dep ? 'selected' : '' }}>
+                                      {{ $dependencia->nombre_dep }}
+                                  </option>
+                              @endforeach
+                          </x-adminlte-select2>
                       </div>
-                    
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del Pase</label>
@@ -723,7 +750,7 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>
+                        <label class="form-label" for="multicol-concluido_DGRRHH">Concluido</label>
                         <x-adminlte-select2  name="concluido_DGRRHH" value="{{ $sumario-> concluido_DGRRHH}}" class="select2 form-select">
                           <option value="">Seleccione</option>
                           <option value="Si" @if ($sumario->concluido_DGRRHH == 'Si') selected @endif 'Si'>Si</option>

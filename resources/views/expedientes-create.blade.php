@@ -38,10 +38,18 @@
                 <label class="form-label" for="multicol-origen_exp"> Fecha de ingreso</label>
                 <input type="date" name="fecha_ingreso_exp"  id="multicol-fecha_ingreso_exp" class="form-control" value="{{old('fecha_ingreso_exp')}}" placeholder="Escribir la fecha de ingreso del expediente" required/>
             </div>
-            
+           
+           
             <div class="col-md-6">
                 <label class="form-label" for="multicol-origen_exp">Origen</label>
-                <input type="text" name="origen_exp" id="multicol-origen_exp" class="form-control" value="{{old('origen_exp')}}" placeholder="Escribir el origen del expediente" required/>
+                <select name="origen_exp" class="form-control" id="multicol-origen_exp">
+                    <option value="">Seleccionar la dependencia de procedencia</option>
+                    @foreach($dependencias as $dependencia)
+                        <option value="{{ $dependencia->nombre_dep }}" {{ old('origen_exp') == $dependencia->nombre_dep ? 'selected' : '' }}>
+                            {{ $dependencia->nombre_dep }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="col-md-6">
@@ -63,13 +71,16 @@
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-procedencia_exp">Procedencia</label>
-                <x-adminlte-select2  name="procedencia_exp" class="select2 form-select" value="{{old('procedencia_exp')}}" >
+                <select name="procedencia_exp" class="form-control" id="multicol-procedencia_exp">
                     <option value="">Seleccionar la dependencia de procedencia</option>
-                    <option value="Comisaria comunitaria N° 5">Comisaria comunitaria N° 5</option>
-                    <option value="D.S.C. N°1">D.S.C. N°1</option>
-                    <option value="Destacamento">Destacamento</option>
-                </x-adminlte-select2>
+                    @foreach($dependencias as $dependencia)
+                        <option value="{{ $dependencia->nombre_dep }}" {{ old('procedencia_exp') == $dependencia->nombre_dep ? 'selected' : '' }}>
+                            {{ $dependencia->nombre_dep }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
+
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-iniciador_exp">Iniciador</label>
@@ -88,13 +99,16 @@
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-destino_exp">Destino</label>
-                <x-adminlte-select2  name="destino_exp"  class="select2 form-select" value="{{old('destino_exp')}}">
+                <select name="destino_exp" class="form-control" id="multicol-destino_exp">
                     <option value="">Seleccionar la dependencia de destino</option>
-                    <option value="Comisaria comunitaria N° 5">Comisaria comunitaria N° 5</option>
-                    <option value="D.S.C. N°1">D.S.C. N°1</option>
-                    <option value="Destacamento">Destacamento</option>
-                </x-adminlte-select2>
+                    @foreach($dependencias as $dependencia)
+                        <option value="{{ $dependencia->nombre_dep }}" {{ old('destino_exp') == $dependencia->nombre_dep ? 'selected' : '' }}>
+                            {{ $dependencia->nombre_dep }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
+
                          
             <div class="col-md-6">
                 <label class="form-label" for="multicol-observaciones_exp">Observaciones</label>

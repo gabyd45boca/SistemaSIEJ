@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expediente;
-
+use App\Models\Dependencia;
 class ExpedientesController extends Controller
 {
     public function __construct(){
@@ -24,9 +24,11 @@ class ExpedientesController extends Controller
     }
 
     public function create(){
+        $dependencias = Dependencia::all();
+
 
         $expediente = Expediente::all();
-        return view('expedientes-create',compact('expediente'));
+        return view('expedientes-create',compact('expediente','dependencias'));
     }
 
 
@@ -37,8 +39,11 @@ class ExpedientesController extends Controller
 
 
     public function edit($expediente_id){
+
+        $dependencias = Dependencia::all();
+
         $expediente = Expediente::find($expediente_id);
-        return view('expedientes-edit',compact('expediente'));
+        return view('expedientes-edit',compact('expediente','dependencias'));
     }
 
     public function store(Request $request){

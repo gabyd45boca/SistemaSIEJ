@@ -158,13 +158,13 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
-                      <x-adminlte-select2  name="lugar_proced" value="{{ $sumarisima-> lugar_proced }}" required>
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Comisaria Comunitaria" @if ($sumarisima->lugar_proced == 'Comisaria Comunitaria') selected @endif 'Comisaria Comunitaria'>Comisaria Comunitaria</option>
-                        <option value="Departamental" @if ($sumarisima->lugar_proced == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                        <option value="Destacamento" @if ($sumarisima->lugar_proced == 'Destacamento') selected @endif 'Departamental'>Destacamento</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
+                        <x-adminlte-select2 name="lugar_proced" value="{{ $sumarisima->lugar_proced }}" required>
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->lugar_proced == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
                             
                     <div class="col-md-6">
@@ -222,17 +222,17 @@
                         <label class="form-label" for="multicol-observaciones">Observaciones del expediente</label>
                         <input type="text" name="observaciones" value="{{ $sumarisima->observaciones}}" id="multicol-observaciones" class="form-control" placeholder="Escribir observaciones para el pase" />
                     </div>
-                                       
+                                    
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-lugar_pase">Lugar de Pase</label>
-                      <x-adminlte-select2  name="lugar_pase" value="{{ $sumarisima->lugar_pase }}" required>
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Asesoria Letrada" @if ($sumarisima->lugar_pase == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
-                        <option value="Comisaria" @if ($sumarisima->lugar_pase == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                        <option value="Departamental" @if ($sumarisima->lugar_pase == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-lugar_pase">Lugar de Pase</label>
+                        <x-adminlte-select2 name="lugar_pase" value="{{ $sumarisima->lugar_pase }}" required>
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep}}" @if ($sumarisima->lugar_pase == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
-                   
+                  
                               
                   </div>
                               
@@ -275,11 +275,11 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="multicol-dependen_DGAJ">Dependencia</label>
-                            <x-adminlte-select2  name="dependen_DGAJ" value="{{ $sumarisima-> dependen_DGAJ }}">
-                              <option value="">Seleccionar la dependencia</option>
-                              <option value="Direccion General de Asuntos Judiciales" @if ($sumarisima->dependen_DGAJ == 'Direccion General de Asuntos Judiciales') selected @endif 'Direccion General de Asuntos Judiciales'>Direccion General de Asuntos Judiciales</option>
-                              <option value="Departamental" @if ($sumarisima->dependen_DGAJ == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                              <option value="Destacamento" @if ($sumarisima->dependen_DGAJ == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
+                            <x-adminlte-select2 name="dependen_DGAJ" value="{{ $sumarisima->dependen_DGAJ }}">
+                                <option value="">Seleccionar la dependencia</option>
+                                @foreach($dependencias as $dependencia)
+                                    <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->dependen_DGAJ == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                                @endforeach
                             </x-adminlte-select2>
                         </div>
 
@@ -321,16 +321,16 @@
 
                 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-lugar_pase_DGAJ">Lugar de Pase</label>
-                          <x-adminlte-select2  name="lugar_pase_DGAJ" value="{{ $sumarisima-> lugar_pase_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccionar la dependencia</option>
-                            <option value="Asesoria Letrada" @if ($sumarisima->lugar_pase_DGAJ == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
-                            <option value="D.S.C. N°1" @if ($sumarisima->lugar_pase_DGAJ == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
-                            <option value="DESTACAMENTO" @if ($sumarisima->lugar_pase_DGAJ == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
-                          </x-adminlte-select2>
+                            <label class="form-label" for="multicol-lugar_pase_DGAJ">Lugar de Pase</label>
+                            <x-adminlte-select2 name="lugar_pase_DGAJ" value="{{ $sumarisima->lugar_pase_DGAJ }}" class="select2 form-select">
+                                <option value="">Seleccionar la dependencia</option>
+                                @foreach($dependencias as $dependencia)
+                                    <option value="{{$dependencia->nombre_dep }}" @if ($sumarisima->lugar_pase_DGAJ == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                                @endforeach
+                            </x-adminlte-select2>
                         </div>
 
-
+                        
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del pase</label>
                           <input type="text" name="obs_pase_DGAJ" value="{{ $sumarisima-> obs_pase_DGAJ}}" id="multicol-obs_pase_DGAJ"value="{{old('obs_pase_DGAJ')}}"  class="form-control" placeholder="Escribir observaciones para el pase" />
@@ -366,13 +366,13 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
-                          <x-adminlte-select2  name="dependen_AL" value="{{ $sumarisima-> dependen_AL }}" class="select2 form-select">
-                            <option value="">Seleccionar la dependencia</option>
-                            <option value="Asesoria Letrada" @if ($sumarisima->dependen_AL == 'Asesoria Letrada') selected @endif 'Asesoria Letrada'>Asesoria Letrada</option>
-                            <option value="Departmental" @if ($sumarisima->dependen_AL == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                            <option value="Destacamento" @if ($sumarisima->dependen_AL == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
-                          </x-adminlte-select2>
+                            <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
+                            <x-adminlte-select2 name="dependen_AL" value="{{ $sumarisima->dependen_AL }}" class="select2 form-select">
+                                <option value="">Seleccionar la dependencia</option>
+                                @foreach($dependencias as $dependencia)
+                                    <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->dependen_AL == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                                @endforeach
+                            </x-adminlte-select2>
                         </div>
 
                         <div class="col-md-6 select2-primary">
@@ -402,15 +402,15 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
-                      <x-adminlte-select2  name="destin_proceden_AL" value="{{ $sumarisima-> destin_proceden_AL }}" class="select2 form-select" >
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion General Asuntos Judiciales" @if ($sumarisima->destin_proceden_AL == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
-                        <option value="Comisaria" @if ($sumarisima->destin_proceden_AL == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                        <option value="Departamental" @if ($sumarisima->destin_proceden_AL == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
+                        <x-adminlte-select2 name="destin_proceden_AL" value="{{ $sumarisima->destin_proceden_AL }}" class="select2 form-select">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{  $dependencia->nombre_dep }}" @if ($sumarisima->destin_proceden_AL ==  $dependencia->nombre_dep) selected @endif>{{  $dependencia->nombre_dep }}</option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
-                
+              
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
@@ -428,15 +428,14 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
-                      <x-adminlte-select2  name="destin_pase_AL" value="{{ $sumarisima-> destin_pase_AL }}" class="select2 form-select">
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Secretaria de Seguridad" @if ($sumarisima->destin_pase_AL == 'Secretaria de Seguridad') selected @endif 'Secretaria de Seguridad'>Secretaria de Seguridad/option>
-                        <option value="D.S.C. N°1" @if ($sumarisima->destin_pase_AL == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
-                        <option value="DESTACAMENTO" @if ($sumarisima->destin_pase_AL == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
+                        <x-adminlte-select2 name="destin_pase_AL" value="{{ $sumarisima->destin_pase_AL }}" class="select2 form-select">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->destin_pase_AL == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep}}</option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
-       
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-obs_pase_AL">Observaciones del pase</label>
@@ -472,13 +471,13 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-dependen_SS">Dependencia</label>
-                      <x-adminlte-select2  name="dependen_SS" value="{{ $sumarisima-> dependen_SS }}" class="select2 form-select">
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Direccion General de RRHH" @if ($sumarisima->dependen_SS == 'Direccion General de RRHH') selected @endif 'Direccion General de RRHH'>Direccion General de RRHH</option>
-                        <option value="D.S.C. N°1" @if ($sumarisima->dependen_SS == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
-                        <option value="DESTACAMENTO" @if ($sumarisima->dependen_SS == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-dependen_SS">Dependencia</label>
+                        <x-adminlte-select2 name="dependen_SS" value="{{ $sumarisima->dependen_SS }}" class="select2 form-select">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->dependen_SS == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
 
                     <div class="col-md-6 select2-primary">
@@ -508,15 +507,15 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-lugar_proceden_SS">Lugar de Procedencia</label>
-                  <x-adminlte-select2  name="lugar_proceden_SS" value="{{ $sumarisima-> lugar_proceden_SS }}" class="select2 form-select" >
-                    <option value="">Seleccionar la dependencia</option>
-                    <option value="Direccion General Asuntos Judiciales" @if ($sumarisima->lugar_proceden_SS == 'Direccion General Asuntos Judiciales') selected @endif 'Direccion General Asuntos Judiciales'>Direccion General Asuntos Judiciales</option>
-                    <option value="Comisaria" @if ($sumarisima->lugar_proceden_SS == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                    <option value="Departamental" @if ($sumarisima->lugar_proceden_SS == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                  </x-adminlte-select2>
+                    <label class="form-label" for="multicol-lugar_proceden_SS">Lugar de Procedencia</label>
+                    <x-adminlte-select2 name="lugar_proceden_SS" value="{{ $sumarisima->lugar_proceden_SS }}" class="select2 form-select">
+                        <option value="">Seleccionar la dependencia</option>
+                        @foreach($dependencias as $dependencia)
+                            <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->lugar_proceden_SS == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                        @endforeach
+                    </x-adminlte-select2>
                 </div>
-            
+          
 
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-sugerencia_SS">Sugerencia AL</label>
@@ -534,15 +533,15 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-lugar_pase_SS">Lugar de Pase</label>
-                  <x-adminlte-select2  name="lugar_pase_SS" value="{{ $sumarisima-> lugar_pase_SS }}" class="select2 form-select">
-                    <option value="">Seleccionar la dependencia</option>
-                    <option value="Direccion General Recursos Humanos" @if ($sumarisima->lugar_pase_SS == 'Direccion General Recursos Humanos') selected @endif 'Direccion General Recursos Humanos'>Direccion General Recursos Humanos/option>
-                    <option value="D.S.C. N°1" @if ($sumarisima->lugar_pase_SS == 'D.S.C. N°1') selected @endif 'D.S.C. N°1'>D.S.C. N°1</option>
-                    <option value="DESTACAMENTO" @if ($sumarisima->lugar_pase_SS == 'DESTACAMENTO') selected @endif 'DESTACAMENTO'>DESTACAMENTO</option>
-                  </x-adminlte-select2>
+                    <label class="form-label" for="multicol-lugar_pase_SS">Lugar de Pase</label>
+                    <x-adminlte-select2 name="lugar_pase_SS" value="{{ $sumarisima->lugar_pase_SS }}" class="select2 form-select">
+                        <option value="">Seleccionar la dependencia</option>
+                        @foreach($dependencias as $dependencia)
+                            <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->lugar_pase_SS == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                        @endforeach
+                    </x-adminlte-select2>
                 </div>
-   
+
 
                 <div class="col-md-6">
                   <label class="form-label" for="multicol-obs_pase_SS">Observaciones del pase</label>
@@ -578,14 +577,14 @@
                     </div>
                     
                     <div class="col-md-6">
-                          <label class="form-label" for="multicol-dependen_DGRRHH">Dependencia</label>
-                          <x-adminlte-select2  name="dependen_DGRRHH" value="{{ $sumarisima-> dependen_DGRRHH }}" class="select2 form-select">
+                        <label class="form-label" for="multicol-dependen_DGRRHH">Dependencia</label>
+                        <x-adminlte-select2 name="dependen_DGRRHH" class="select2 form-select">
                             <option value="">Seleccionar la dependencia</option>
-                            <option value="Direccion General de Recursos Humanos" @if ($sumarisima->dependen_DGRRHH == 'Direccion General de Recursos Humanos') selected @endif 'Direccion General de Recursos Humanos'>Direccion General de Recursos Humanos</option>
-                            <option value="Departamental" @if ($sumarisima->dependen_DGRRHH == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                            <option value="Destacamento" @if ($sumarisima->dependen_DGRRHH == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
-                          </x-adminlte-select2>
-                        </div>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->dependen_DGRRHH == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                            @endforeach
+                        </x-adminlte-select2>
+                    </div>
 
                     <div class="col-md-6 select2-primary">
                       <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
@@ -614,15 +613,15 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
-                        <x-adminlte-select2  name="destin_proceden_DGRRHH" value="{{ $sumarisima-> destin_proceden_DGRRHH}}" class="select2 form-select">
-                          <option value="">Seleccionar la dependencia</option>
-                          <option value="Secretaria de Seguridad" @if ($sumarisima->destin_proceden_DGRRHH == 'Secretaria de Seguridad') selected @endif 'Secretaria de Seguridad'>Secretaria de Seguridad</option>
-                          <option value="Comisaria" @if ($sumarisima->destin_proceden_DGRRHH == 'Comisaria') selected @endif 'Comisaria'>Comisaria</option>
-                          <option value="Departamental" @if ($sumarisima->destin_proceden_DGRRHH == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                        </x-adminlte-select2>
+                          <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
+                          <x-adminlte-select2 name="destin_proceden_DGRRHH" class="select2 form-select">
+                              <option value="">Seleccionar la dependencia</option>
+                              @foreach($dependencias as $dependencia)
+                                  <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->destin_proceden_DGRRHH == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                              @endforeach
+                          </x-adminlte-select2>
                       </div>
-                                                          
+                                                         
 
                       <div class="col-md-6">
                           <label class="form-label" for="multicol-resol_final_DGRRHH">Resolucion Final</label>

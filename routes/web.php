@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/sumarios/edit/{sumario_id}',[App\Http\Controllers\SumariosController::class,'edit'])->name('sumarios.edit');    
     Route::post('/sumarios/update',[App\Http\Controllers\SumariosController::class,'update'])->name('sumarios.update');  
     Route::delete('/sumarios/destroy/{sumario_id}',[App\Http\Controllers\SumariosController::class,'destroy'])->name('sumarios.destroy');
+    
+    Route::get('/sumarios/consulta/',[App\Http\Controllers\SumariosController::class,'consulta'])->name('sumarios.consulta');
 
     //sumarisimas///////////////////////////
     ////////////////////////////////////////

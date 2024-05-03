@@ -46,6 +46,19 @@
             </div>
 
             <div class="col-md-6">
+                <label class="form-label" for="multicol-origen_exp">Origen</label>
+                <select name="origen_exp" class="form-control" id="multicol-origen_exp">
+                    <option value="">Seleccionar la dependencia de procedencia</option>
+                    @foreach($dependencias as $dependencia)
+                        <option value="{{ $dependencia->nombre_dep }}" {{ $expediente->origen_exp == $dependencia->nombre_dep ? 'selected' : '' }}>
+                            {{ $dependencia->nombre_dep }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+
+            <div class="col-md-6">
                  <label class="form-label" for="multicol-tipo_exp">Tipo</label>
                 <x-adminlte-select2  name="tipo_exp" value="{{ $expediente-> tipo_exp}}" class="select2 form-select">
                     <option value="">Seleccionar el tipo de expediente</option>
@@ -64,13 +77,16 @@
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-procedencia_exp">Procedencia</label>
-                <x-adminlte-select2  name="procedencia_exp" value="{{ $expediente-> procedencia_exp}}" class="select2 form-select" >
+                <select name="procedencia_exp" class="form-control" id="multicol-procedencia_exp">
                     <option value="">Seleccionar la dependencia de procedencia</option>
-                    <option value="Comisaria Comunitaria" @if ($expediente->procedencia_exp == 'Comisaria Comunitaria') selected @endif 'Comisaria Comunitaria'>Comisaria Comunitaria</option>
-                    <option value="Departamental" @if ($expediente->procedencia_exp == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                    <option value="Destacamento" @if ($expediente->procedencia_exp == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
-                </x-adminlte-select2>
+                    @foreach($dependencias as $dependencia)
+                        <option value="{{ $dependencia->nombre_dep }}" {{ $expediente->procedencia_exp == $dependencia->nombre_dep ? 'selected' : '' }}>
+                            {{ $dependencia->nombre_dep }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
+
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-iniciador_exp">Iniciador</label>

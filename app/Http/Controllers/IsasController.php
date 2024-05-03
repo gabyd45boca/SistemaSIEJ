@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Isa;
 use App\Models\Infractor;
+use App\Models\Dependencia;
 use Spatie\Permission\Traits\HasRoles;
 
 
@@ -30,8 +31,10 @@ class IsasController extends Controller
 
         $isas = Isa::all();
         $infractores = Infractor::all();
+
+        $dependencias = Dependencia::all();
        
-        return view('isas-create',compact('isas','infractores'));
+        return view('isas-create',compact('isas','infractores','dependencias'));
     }
 
 
@@ -49,10 +52,12 @@ class IsasController extends Controller
 
       $isa = Isa::find($isa_id);
 
+      $dependencias = Dependencia::all();
+
       $infractores = Infractor::all();
       $infractores_ids = $isa->infractors()->pluck('infractors.id'); 
      
-      return view('isas-edit',compact('isa','infractores','infractores_ids'));
+      return view('isas-edit',compact('isa','infractores','infractores_ids','dependencias'));
   }
 
     public function store(Request $request){

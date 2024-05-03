@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sumarisima;
 use App\Models\Infractor;
+use App\Models\Dependencia;
 
 class SumarisimasController extends Controller
 {
@@ -27,8 +28,9 @@ class SumarisimasController extends Controller
 
         $sumarisimas = Sumarisima::all();
         $infractores = Infractor::all();
+        $dependencias = Dependencia::all();
        
-        return view('sumarisimas-create',compact('sumarisimas','infractores'));
+        return view('sumarisimas-create',compact('sumarisimas','infractores','dependencias'));
     }
 
     public function show($sumarisima_id){
@@ -45,10 +47,12 @@ class SumarisimasController extends Controller
 
       $sumarisima = Sumarisima::find($sumarisima_id);
 
+      $dependencias = Dependencia::all();
+
       $infractores = Infractor::all();
       $infractores_ids = $sumarisima->infractors()->pluck('infractors.id'); 
      
-      return view('sumarisimas-edit',compact('sumarisima','infractores','infractores_ids'));
+      return view('sumarisimas-edit',compact('sumarisima','infractores','infractores_ids','dependencias'));
   }
 
     public function store(Request $request)  {
