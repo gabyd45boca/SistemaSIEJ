@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Infractor;
+use App\Models\Dependencia;
 
 class InfractorsController extends Controller
 {
@@ -26,8 +27,9 @@ class InfractorsController extends Controller
     public function create(){
 
         $infractores = Infractor::all();
+        $dependencias = Dependencia::all();
        
-        return view('infractores-create',compact('infractores'));
+        return view('infractores-create',compact('infractores','dependencias'));
     }
 
 
@@ -41,8 +43,9 @@ class InfractorsController extends Controller
     public function edit($infractor_id){
 
       $infractor = Infractor::find($infractor_id);
+      $dependencias = Dependencia::all();
      
-      return view('infractores-edit',compact('infractor'));
+      return view('infractores-edit',compact('infractor','dependencias'));
   }
 
     public function store(Request $request){

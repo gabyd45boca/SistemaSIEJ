@@ -48,13 +48,13 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-dependen_inf">Dependencia</label>
-                      <x-adminlte-select2  name="dependen_inf" value="{{ $infractor-> dependen_inf }}">
-                        <option value="">Seleccionar la dependencia</option>
-                        <option value="Comisaria Comunitaria" @if ($infractor->dependen_inf == 'Comisaria Comunitaria') selected @endif 'Comisaria Comunitaria'>Comisaria Comunitaria</option>
-                        <option value="Departamental" @if ($infractor->dependen_inf == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                        <option value="Destacamento" @if ($infractor->dependen_inf == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-dependen_inf">Dependencia</label>
+                        <select name="dependen_inf" class="form-control" id="multicol-dependen_inf">
+                            <option value="">Seleccionar la dependencia</option>
+                            @foreach($dependencias as $dependencia)
+                                <option value="{{ $dependencia->nombre_dep }}" @if ($infractor->dependen_inf == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="col-md-6 select2-primary">

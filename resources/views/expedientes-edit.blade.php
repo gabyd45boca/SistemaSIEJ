@@ -39,12 +39,8 @@
                 <label class="form-label" for="multicol-origen_exp"> Fecha de ingreso</label>
                 <input type="date" name="fecha_ingreso_exp" value="{{ $expediente-> fecha_ingreso_exp }}" id="multicol-fecha_ingreso_exp" class="form-control" placeholder="Escribir la fecha de ingreso del expediente" required/>
             </div>
-            
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-origen_exp">Origen</label>
-                <input type="text" name="origen_exp" id="multicol-origen_exp" value="{{ $expediente-> origen_exp}}" class="form-control" placeholder="Escribir el origen del expediente" required/>
-            </div>
-
+           
+          
             <div class="col-md-6">
                 <label class="form-label" for="multicol-origen_exp">Origen</label>
                 <select name="origen_exp" class="form-control" id="multicol-origen_exp">
@@ -102,16 +98,20 @@
                 <label class="form-label" for="multicol-fecha_salida_exp"> Fecha de salida</label>
                 <input type="date" name="fecha_salida_exp" value="{{ $expediente-> fecha_salida_exp}}" id="multicol-fecha_salida_exp" class="form-control" placeholder="Escribir fecha de salida" required/>
             </div>
+          
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-destino_exp">Destino</label>
-                <x-adminlte-select2  name="destino_exp" value="{{ $expediente-> destino_exp}}" class="select2 form-select" >
-                    <option value="">Seleccionar la dependencia de destino</option>
-                    <option value="Comisaria Comunitaria" @if ($expediente->destino_exp == 'Comisaria Comunitaria') selected @endif 'Comisaria Comunitaria'>Comisaria Comunitaria</option>
-                    <option value="Departamental" @if ($expediente->destino_exp == 'Departamental') selected @endif 'Departamental'>Departamental</option>
-                    <option value="Destacamento" @if ($expediente->destino_exp == 'Destacamento') selected @endif 'Destacamento'>Destacamento</option>
-                </x-adminlte-select2>
+                <select name="destino_exp" class="form-control" id="multicol-destino_exp">
+                    <option value="">Seleccionar la dependencia de procedencia</option>
+                    @foreach($dependencias as $dependencia)
+                        <option value="{{ $dependencia->nombre_dep }}" {{ $expediente->destino_exp == $dependencia->nombre_dep ? 'selected' : '' }}>
+                            {{ $dependencia->nombre_dep }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
+
                          
             <div class="col-md-6">
                 <label class="form-label" for="multicol-observaciones_exp">Observaciones</label>

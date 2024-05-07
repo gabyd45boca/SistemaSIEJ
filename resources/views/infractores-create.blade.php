@@ -40,15 +40,18 @@
               <label class="form-label" for="multicol-leg_pers_inf">Legajo Personal</label>
               <input type="text" name= "leg_pers_inf" id="multicol-leg_pers_inf" value="{{old('leg_pers_inf')}}" class="form-control" placeholder="Escribir el legajo personal" />
             </div>
+           
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-dependen_inf">Dependencia</label>
-              <x-adminlte-select2  name="dependen_inf" value="{{old('dependen_inf')}}" >
-                <option value="">Seleccionar la dependencia</option>
-                <option value="Comisaria Comunitaria">Comisaria Comunitaria</option>
-                <option value="Departamental">Departamental</option>
-                <option value="Destacamento">Destacamento</option>
-              </x-adminlte-select2>
+                <label class="form-label" for="multicol-dependen_inf">Dependencia</label>
+                <x-adminlte-select2 name="dependen_inf">
+                    <option value="">Seleccionar la dependencia</option>
+                    @foreach($dependencias as $dependencia)
+                        <option value="{{ $dependencia->nombre_dep }}" {{ old('dependen_inf') == $dependencia->nombre_dep ? 'selected' : '' }}>
+                            {{ $dependencia->nombre_dep }}
+                        </option>
+                    @endforeach
+                </x-adminlte-select2>
             </div>
 
             <div class="col-md-6 select2-primary">
