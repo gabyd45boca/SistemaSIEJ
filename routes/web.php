@@ -13,6 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\IsasController;
+use App\Http\Controllers\SancionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -112,4 +113,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/isas/edit/{isa_id}',[App\Http\Controllers\IsasController::class,'edit'])->name('isas.edit');    
     Route::post('/isas/update',[App\Http\Controllers\IsasController::class,'update'])->name('isas.update');  
     Route::delete('/isas/destroy/{isa_id}',[App\Http\Controllers\IsasController::class,'destroy'])->name('isas.destroy');
+
+     //Sancion directa///////////////////////////////////
+    ///////////////////////////////////////////
+
+    Route::get('/sancion', [App\Http\Controllers\SancionController::class,'index'])->name('sancion');
+    Route::get('/sancion/create', [App\Http\Controllers\SancionController::class,'create'])->name('sancion.create');
+    Route::post('/sancion/store',[App\Http\Controllers\SancionController::class,'store'])->name('sancion.store');
+    Route::get('/sancion/show/{sancion_id}',[App\Http\Controllers\SancionController::class,'show'])->name('sancion.show');
+    Route::get('/sancion/edit/{sancion_id}',[App\Http\Controllers\SancionController::class,'edit'])->name('sancion.edit');    
+    Route::post('/sancion/update',[App\Http\Controllers\SancionController::class,'update'])->name('sancion.update');  
+    Route::delete('/sancion/destroy/{sancion_id}',[App\Http\Controllers\SancionController::class,'destroy'])->name('sancion.destroy');
 });

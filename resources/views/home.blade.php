@@ -103,28 +103,7 @@
 
     </div> 
     <hr class="my-4 mx-n4" />
-    
-    <div class="input-daterange datepicker row align-items-center">
-    <div class="col">
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                </div>
-                <input class="form-control" placeholder="Start date" type="text" value="06/18/2020">
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                </div>
-                <input class="form-control" placeholder="End date" type="text" value="06/22/2020">
-            </div>
-        </div>
-    </div>
+     
 </div>
 
 
@@ -137,41 +116,6 @@
 
 @section('js')
 <script src="/assets-old/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-   </script>
-   // <block:setup:1>
-const data = {
-  labels: [
-    'Red',
-    'Blue',
-    'Yellow'
-  ],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
-    ],
-    hoverOffset: 4
-  }]
-};
-// </block:setup>
-
-// <block:config:0>
-const config = {
-  type: 'doughnut',
-  data: data,
-};
-// </block:config>
-
-module.exports = {
-  actions: [],
-  config: config,
-};
- 
-    </script>
-  
 
 @endsection
 

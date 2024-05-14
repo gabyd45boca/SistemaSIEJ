@@ -456,7 +456,33 @@ return [
                     'can'   => 'RegistrarIsas'
                 ],
             ]
-        ] 
+            ],
+
+            ['header' => 'SANCION DIRECTA',
+            'can'   => 'AdministracionSancionDirecta',    
+            ],
+    
+            [
+                'text'       => 'Sancion Directa',
+                'icon'       => 'fas fa-folder',
+                'can'   => 'AdministracionSancionDirecta', 
+                'submenu'    => [
+                    [
+                        'text' => 'Lista de Sancion Directa',
+                        'icon'       => 'fas fa-file-alt',
+                        'url' => '/sancion',
+                        'can'   => 'ListarSD',
+                    ],
+                    [
+                        'text' => 'Registrar Sancion Directa',
+                        'icon'       => 'fas fa-file-alt',
+                        'url' => '/sancion/create',
+                        'can'   => 'RegistrarSD'
+                    ],
+                ]
+            ] 
+        
+        
 
 
     ],

@@ -3,7 +3,7 @@
 @section('title', 'SIEA')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Registrar Sumarisima</h1>
+    <h1 class="m-0 text-dark">Registrar Sancion Directa</h1>
 @endsection
 
 @section('styles')
@@ -29,7 +29,7 @@
      
      <div class="card mb-4">
     
-  <form method="POST" action="{{ route ('sumarisimas.store')}}" class="card-body">
+  <form method="POST" action="{{ route ('sancion.store')}}" class="card-body">
        @csrf
        <h4 class="fw-normal">1. Carga de datos del expediente</h4>
       <div class="row g-3">
@@ -545,7 +545,7 @@
 
           <div class="pt-4">
               <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-              <button type="reset" class="btn btn-secondary" onClick="location.href='/sumarisimas'">Cancelar</button>
+              <button type="reset" class="btn btn-secondary" onClick="location.href='/sancion'">Cancelar</button>
           </div>
    </form>
 
