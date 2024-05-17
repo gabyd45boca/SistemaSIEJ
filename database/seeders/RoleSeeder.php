@@ -61,7 +61,13 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'ListarIsas'])->syncRoles([$Administrador, $DGAJUDICIALES,  $DGAINTERNOS,  $DGALETRADA, $DGRRHUMANOS]);
         Permission::create(['name' => 'RegistrarIsas'])->syncRoles([$Administrador, $DGAJUDICIALES]);
         Permission::create(['name' => 'RegistrarSumarisimas'])->syncRoles([$Administrador, $DGAJUDICIALES]);
-          
+        
+        Permission::create(['name' => 'ConsultarSumarios'])->syncRoles([$Administrador, $DGAJUDICIALES]);
+        Permission::create(['name' => 'AdministracionSancionDirecta'])->syncRoles([$Administrador, $DGAJUDICIALES]);
+        Permission::create(['name' => 'ListarSD'])->syncRoles([$Administrador, $DGAJUDICIALES]);
+        Permission::create(['name' => 'RegistrarSD'])->syncRoles([$Administrador, $DGAJUDICIALES]);
+        Permission::create(['name' => 'EliminarSancion'])->syncRoles([$Administrador, $DGAJUDICIALES]);
+        Permission::create(['name' => 'CrearSancion'])->syncRoles([$Administrador, $DGAJUDICIALES]);
 
     }
 }

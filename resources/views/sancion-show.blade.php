@@ -32,15 +32,15 @@
                   </ul>
               </div>
           @endif
-      <form method= "POST" action="{{ route ('sumarisimas.update')}}" class="card-body">
+      <form method= "POST" action="{{ route ('sancion.update')}}" class="card-body">
               @csrf
              
               <div class="hidden-view">
-              <x-adminlte-input type="hidden" name="sumarisima_id"   value="{{$sumarisima->id}}"/> 
+              <x-adminlte-input type="hidden" name="sancion_id"   value="{{$sanciones->id}}"/> 
               </div>
 
             <div class="table-responsive text-nowrap">
-              <table id="sumarisimas" class="table table-stripted shadow-lg mt-4" with-buttons>
+              <table id="sanciones" class="table table-stripted shadow-lg mt-4" with-buttons>
               <thead class="bg-dark text-white">
               <tr>
                 <th>ID</th>
@@ -58,24 +58,24 @@
 
               <tbody class="table-border-bottom-0">
               <tr>
-              <td>{{$sumarisima->id}}</td>   
-                    <td>{{$sumarisima->num_dja}} </td>   
-                    <td>{{$sumarisima->num_dj}}</td>   
-                    <td>{{$sumarisima->motivo}} </td>
+              <td>{{$sanciones->id}}</td>   
+                    <td>{{$sanciones->num_dja}} </td>   
+                    <td>{{$sanciones->num_dj}}</td>   
+                    <td>{{$sanciones->motivo}} </td>
                                 <td>
-                                    @foreach ($sumarisima->infractors as $infractor)
+                                    @foreach ($sanciones->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>
                                     @endforeach
                                 </td>
                    
                                 <td>
-                                    @foreach ($sumarisima->infractors as $infractor)
+                                    @foreach ($sanciones->infractors as $infractor)
                                     {{$infractor->apellido_nombre_inf}} <br>
                                     @endforeach
                                 </td>   
-                    <td>{{$sumarisima->tipo_denun}}</td>   
-                    <td>{{$sumarisima->fecha_ingreso}}</td>  
-                    <td>{{$sumarisima->infraccion}}</td>
+                    <td>{{$sanciones->tipo_denun}}</td>   
+                    <td>{{$sanciones->fecha_ingreso}}</td>  
+                    <td>{{$sanciones->infraccion}}</td>
               </tr>
               </tbody>
               </table>
@@ -89,59 +89,59 @@
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-num_dj"> N° DJ</label>
-                      <span class="form-control" id="multicol-num_dj">{{$sumarisima-> num_dj}}</span>
+                      <span class="form-control" id="multicol-num_dj">{{$sanciones-> num_dj}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
-                      <span class="form-control" id="multicol-lugar_proced">{{ $sumarisima->lugar_proced }}</span>
+                      <span class="form-control" id="multicol-lugar_proced">{{ $sanciones->lugar_proced }}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_ingreso">Fecha de ingreso</label>
-                      <span class="form-control" id="multicol-fecha_ingreso">{{$sumarisima-> fecha_ingreso}}</span>
+                      <span class="form-control" id="multicol-fecha_ingreso">{{$sanciones-> fecha_ingreso}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_inicio"> Fecha Inicio de Actuaciones</label>
-                      <span class="form-control" id="multicol-fecha_inicio">{{$sumarisima-> fecha_inicio}}</span>
+                      <span class="form-control" id="multicol-fecha_inicio">{{$sanciones-> fecha_inicio}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fojas">Fojas</label>
-                      <span class="form-control" id="multicol-fojas">{{ $sumarisima-> fojas }}</span>
+                      <span class="form-control" id="multicol-fojas">{{ $sanciones-> fojas }}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-tipo_denuncia">Tipo de Denuncia</label>
-                      <span class="form-control" id="multicol-tipo_denuncia">{{$sumarisima->tipo_denuncia}}</span>
+                      <span class="form-control" id="multicol-tipo_denuncia">{{$sanciones->tipo_denuncia}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-motivo">Motivo</label>
-                      <span class="form-control" id="multicol-motivo">{{ $sumarisima-> motivo }}</span>
+                      <span class="form-control" id="multicol-motivo">{{ $sanciones-> motivo }}</span>
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-primera_interv">Primera Intervencion</label>
                         <textarea class="form-control" id="multicol-primera_interv" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
-                            {{ $sumarisima->primera_interv }}
+                            {{ $sanciones->primera_interv }}
                         </textarea>
                     </div>
                  
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_pase">Fecha de Pase</label>
-                      <span class="form-control" id="multicol-fecha_pase">{{ $sumarisima->fecha_pase }}</span>
+                      <span class="form-control" id="multicol-fecha_pase">{{ $sanciones->fecha_pase }}</span>
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-observaciones">Observaciones del Expediente</label>
-                        <span class="form-control" id="multicol-observaciones">{{ $sumarisima->observaciones }}</span>
+                        <span class="form-control" id="multicol-observaciones">{{ $sanciones->observaciones }}</span>
                     </div>
                     
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-lugar_pase">Lugar de Pase</label>
-                      <span class="form-control" id="multicol-lugar_pase">{{ $sumarisima->lugar_pase }}</span>
+                      <span class="form-control" id="multicol-lugar_pase">{{ $sanciones->lugar_pase }}</span>
                     </div>
                        
                   </div>
@@ -154,7 +154,7 @@
                           <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
                           <br>
                           <span class="card" id="multicol-tipo_mov">
-                              @foreach ($sumarisima->infractors as $infractor)
+                              @foreach ($sanciones->infractors as $infractor)
                               {{$infractor->apellido_nombre_inf}} Lp:{{$infractor->leg_pers_inf }}, 
                               @endforeach
                           </span>
@@ -169,22 +169,22 @@
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-apellido_nombre_DAI">Apellido y Nombre</label>
-                      <span class="form-control" id="multicol-apellido_nombre_DAI">{{ $sumarisima->apellido_nombre_DGAJ }}</span>
+                      <span class="form-control" id="multicol-apellido_nombre_DAI">{{ $sanciones->apellido_nombre_DGAJ }}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-leg_pers_DAI">Legajo Personal</label>
-                      <span class="form-control" id="multicol-leg_pers_DAI">{{$sumarisima->leg_pers_DGAJ}}</span>
+                      <span class="form-control" id="multicol-leg_pers_DAI">{{$sanciones->leg_pers_DGAJ}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-dependen_DAI">Dependencia</label>
-                      <span class="form-control" id="multicol-dependen_DAI">{{ $sumarisima->dependen_DGAJ}}</span>
+                      <span class="form-control" id="multicol-dependen_DAI">{{ $sanciones->dependen_DGAJ}}</span>
                     </div>
 
                     <div class="col-md-6 select2-primary">
                           <label class="form-label" for="multicol-jerarquia_DAI">Jerarquia</label>
-                          <span class="form-control" id="multicol-jerarquia_DAI">{{ $sumarisima->jerarquia_DGAJ}}</span>
+                          <span class="form-control" id="multicol-jerarquia_DAI">{{ $sanciones->jerarquia_DGAJ}}</span>
                     </div>
                             
 
@@ -196,36 +196,36 @@
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-fecha_pase_DGAJ">Fecha de Reingreso</label>
-                          <span class="form-control" id="multicol-fecha_pase_DGAJ">{{ $sumarisima->fecha_reingreso_DGAJ}}</span>
+                          <span class="form-control" id="multicol-fecha_pase_DGAJ">{{ $sanciones->fecha_reingreso_DGAJ}}</span>
                         </div>     
                                            
                        
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-obs_reingreso_DGAJ">Observaciones del Reingreso</label>
-                          <span class="form-control" id="multicol-obs_reingreso_DGAJ">{{ $sumarisima->obs_reingreso_DGAJ}}</span>
+                          <span class="form-control" id="multicol-obs_reingreso_DGAJ">{{ $sanciones->obs_reingreso_DGAJ}}</span>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label" for="multicol-opinion_cierre_DGAJ">Opinion de Cierre</label>
                             <textarea class="form-control" id="multicol-opinion_cierre_DGAJ" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
-                                {{ $sumarisima->opinion_cierre_DGAJ }}
+                                {{ $sanciones->opinion_cierre_DGAJ }}
                             </textarea>
                         </div>
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-fecha_pase_DGAJ">Fecha de Pase</label>
-                          <span class="form-control" id="multicol-fecha_pase_DGAJ">{{ $sumarisima->fecha_pase_DGAJ}}</span>
+                          <span class="form-control" id="multicol-fecha_pase_DGAJ">{{ $sanciones->fecha_pase_DGAJ}}</span>
                         </div>                        
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-lugar_pase_DGAJ">Lugar de Pase</label>
-                          <span class="form-control" id="multicol-lugar_pase_DGAJ">{{ $sumarisima->lugar_pase_DGAJ}}</span>
+                          <span class="form-control" id="multicol-lugar_pase_DGAJ">{{ $sanciones->lugar_pase_DGAJ}}</span>
                         </div>
                 
                        
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del Pase</label>
-                          <span class="form-control" id="multicol-obs_pase_DGAJ">{{ $sumarisima->obs_pase_DGAJ}}</span>
+                          <span class="form-control" id="multicol-obs_pase_DGAJ">{{ $sanciones->obs_pase_DGAJ}}</span>
                         </div>
                         
                     
@@ -239,22 +239,22 @@
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-apellido_nombre_AL">Apellido y Nombre</label>
-                          <span class="form-control" id="multicol-apellido_nombre_AL">{{ $sumarisima->apellido_nombre_AL}}</span>
+                          <span class="form-control" id="multicol-apellido_nombre_AL">{{ $sanciones->apellido_nombre_AL}}</span>
                         </div>
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-leg_pers_AL">Legajo Personal</label>
-                          <span class="form-control" id="multicol-leg_pers_AL">{{ $sumarisima->leg_pers_AL}}</span>
+                          <span class="form-control" id="multicol-leg_pers_AL">{{ $sanciones->leg_pers_AL}}</span>
                         </div>
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
-                          <span class="form-control" id="multicol-dependen_AL">{{ $sumarisima->dependen_AL}}</span>
+                          <span class="form-control" id="multicol-dependen_AL">{{ $sanciones->dependen_AL}}</span>
                         </div>
 
                         <div class="col-md-6 select2-primary">
                           <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
-                          <span class="form-control" id="multicol-jerarquia_AL">{{ $sumarisima->jerarquia_AL}}</span>
+                          <span class="form-control" id="multicol-jerarquia_AL">{{ $sanciones->jerarquia_AL}}</span>
                         </div>
 
               </div> 
@@ -265,44 +265,44 @@
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-reg_interno_AL">Registro Interno</label>
-                        <span class="form-control" id="multicol-reg_interno_AL">{{ $sumarisima->reg_interno_AL}}</span>
+                        <span class="form-control" id="multicol-reg_interno_AL">{{ $sanciones->reg_interno_AL}}</span>
                     </div>
                   
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_mov_procAL">Fecha de Procedencia</label>
-                      <span class="form-control" id="multicol-fecha_mov_procAL">{{ $sumarisima->fecha_mov_procAL}}</span>
+                      <span class="form-control" id="multicol-fecha_mov_procAL">{{ $sanciones->fecha_mov_procAL}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
-                      <span class="form-control" id="multicol-destin_proceden_AL">{{ $sumarisima->destin_proceden_AL}}</span>
+                      <span class="form-control" id="multicol-destin_proceden_AL">{{ $sanciones->destin_proceden_AL}}</span>
                     </div>
 
                     <div class="col-md-6">
                             <label class="form-label" for="multicol-sugerencia_DAI">Sugerencia AL</label>
                             <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
-                                {{ $sumarisima->sugerencia_AL }}
+                                {{ $sanciones->sugerencia_AL }}
                             </textarea>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-obs_proced_AL">Observaciones de Procedencia</label>
-                      <span class="form-control" id="multicol-obs_proced_AL">{{ $sumarisima->obs_proced_AL}}</span>
+                      <span class="form-control" id="multicol-obs_proced_AL">{{ $sanciones->obs_proced_AL}}</span>
                     </div>
                   
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_mov_paseAL">Fecha de Pase</label>
-                      <span class="form-control" id="multicol-fecha_mov_paseAL">{{ $sumarisima->fecha_mov_paseAL}}</span>
+                      <span class="form-control" id="multicol-fecha_mov_paseAL">{{ $sanciones->fecha_mov_paseAL}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
-                      <span class="form-control" id="multicol-destin_pase_AL">{{ $sumarisima->destin_pase_AL}}</span>
+                      <span class="form-control" id="multicol-destin_pase_AL">{{ $sanciones->destin_pase_AL}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-obs_pase_AL">Observaciones del Pase</label>
-                      <span class="form-control" id="multicol-obs_pase_AL">{{ $sumarisima->obs_pase_AL}}</span>
+                      <span class="form-control" id="multicol-obs_pase_AL">{{ $sanciones->obs_pase_AL}}</span>
                     </div>
                
                     
@@ -314,22 +314,22 @@
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-apellido_nombre_SS">Apellido y Nombre</label>
-                          <span class="form-control" id="multicol-apellido_nombre_SS">{{ $sumarisima->apellido_nombre_SS}}</span>
+                          <span class="form-control" id="multicol-apellido_nombre_SS">{{ $sanciones->apellido_nombre_SS}}</span>
                         </div>
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-leg_pers_SS">Legajo Personal</label>
-                          <span class="form-control" id="multicol-leg_pers_SS">{{ $sumarisima->leg_pers_SS}}</span>
+                          <span class="form-control" id="multicol-leg_pers_SS">{{ $sanciones->leg_pers_SS}}</span>
                         </div>
 
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-dependen_SS">Dependencia</label>
-                          <span class="form-control" id="multicol-dependen_SS">{{ $sumarisima->dependen_SS}}</span>
+                          <span class="form-control" id="multicol-dependen_SS">{{ $sanciones->dependen_SS}}</span>
                         </div>
 
                         <div class="col-md-6 select2-primary">
                           <label class="form-label" for="multicol-jerarquia_SS">Jerarquia</label>
-                          <span class="form-control" id="multicol-jerarquia_SS">{{ $sumarisima->jerarquia_SS}}</span>
+                          <span class="form-control" id="multicol-jerarquia_SS">{{ $sanciones->jerarquia_SS}}</span>
                         </div>
 
               </div> 
@@ -340,44 +340,44 @@
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-reg_interno_SS">Registro Interno</label>
-                        <span class="form-control" id="multicol-reg_interno_SS">{{ $sumarisima->reg_interno_SS}}</span>
+                        <span class="form-control" id="multicol-reg_interno_SS">{{ $sanciones->reg_interno_SS}}</span>
                     </div>
                   
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_proced_SS">Fecha de Procedencia</label>
-                      <span class="form-control" id="multicol-fecha_proced_SS">{{ $sumarisima->fecha_proced_SS}}</span>
+                      <span class="form-control" id="multicol-fecha_proced_SS">{{ $sanciones->fecha_proced_SS}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-lugar_proceden_SS">Lugar de Procedencia</label>
-                      <span class="form-control" id="multicol-lugar_proceden_SS">{{ $sumarisima->lugar_proceden_SS}}</span>
+                      <span class="form-control" id="multicol-lugar_proceden_SS">{{ $sanciones->lugar_proceden_SS}}</span>
                     </div>
 
                     <div class="col-md-6">
                             <label class="form-label" for="multicol-sugerencia_SS">Sugerencia </label>
                             <textarea class="form-control" id="multicol-sugerencia_SS" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
-                                {{ $sumarisima->sugerencia_SS }}
+                                {{ $sanciones->sugerencia_SS }}
                             </textarea>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-obs_proced_SS">Observaciones de Procedencia</label>
-                      <span class="form-control" id="multicol-obs_proced_SS">{{ $sumarisima->obs_proced_SS}}</span>
+                      <span class="form-control" id="multicol-obs_proced_SS">{{ $sanciones->obs_proced_SS}}</span>
                     </div>
                   
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_pase_SS">Fecha de Pase</label>
-                      <span class="form-control" id="multicol-fecha_pase_SS">{{ $sumarisima->fecha_pase_SS}}</span>
+                      <span class="form-control" id="multicol-fecha_pase_SS">{{ $sanciones->fecha_pase_SS}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-lugar_pase_SS">Lugar de Pase</label>
-                      <span class="form-control" id="multicol-lugar_pase_SS">{{ $sumarisima->lugar_pase_SS}}</span>
+                      <span class="form-control" id="multicol-lugar_pase_SS">{{ $sanciones->lugar_pase_SS}}</span>
                     </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-obs_pase_SS">Observaciones de Pase</label>
-                      <span class="form-control" id="multicol-obs_pase_SS">{{ $sumarisima->obs_pase_SS}}</span>
+                      <span class="form-control" id="multicol-obs_pase_SS">{{ $sanciones->obs_pase_SS}}</span>
                     </div>
                  
                     
@@ -389,22 +389,22 @@
               <div class="row g-3">
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-apellido_nombre_DGRRHH">Apellido y Nombre</label>
-                        <span class="form-control" id="multicol-apellido_nombre_DGRRHH">{{ $sumarisima->apellido_nombre_DGRRHH}}</span>
+                        <span class="form-control" id="multicol-apellido_nombre_DGRRHH">{{ $sanciones->apellido_nombre_DGRRHH}}</span>
                       </div>
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-leg_pers_DGRRHH">Legajo Personal</label>
-                      <span class="form-control" id="multicol-leg_pers_DGRRHH">{{ $sumarisima->leg_pers_DGRRHH}}</span>
+                      <span class="form-control" id="multicol-leg_pers_DGRRHH">{{ $sanciones->leg_pers_DGRRHH}}</span>
                     </div>
                     
                     <div class="col-md-6">
                           <label class="form-label" for="multicol-dependen_DGRRHH">Dependencia</label>
-                          <span class="form-control" id="multicol-dependen_DGRRHH">{{ $sumarisima->dependen_DGRRHH}}</span>
+                          <span class="form-control" id="multicol-dependen_DGRRHH">{{ $sanciones->dependen_DGRRHH}}</span>
                     </div>
 
                     <div class="col-md-6 select2-primary">
                       <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
-                      <span class="form-control" id="multicol-jerarquia_DGRRHH">{{ $sumarisima->jerarquia_DGRRHH}}</span>
+                      <span class="form-control" id="multicol-jerarquia_DGRRHH">{{ $sanciones->jerarquia_DGRRHH}}</span>
                     </div>
 
               </div> 
@@ -415,53 +415,53 @@
 
                       <div class="col-md-6">
                           <label class="form-label" for="multicol-reg_interno_DGRRHH">Registro Interno</label>
-                          <span class="form-control" id="multicol-reg_interno_DGRRHH">{{ $sumarisima->reg_interno_DGRRHH}}</span>
+                          <span class="form-control" id="multicol-reg_interno_DGRRHH">{{ $sanciones->reg_interno_DGRRHH}}</span>
                       </div>
                     
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-fecha_mov_proceDGRRHH"> Fecha de Procedencia</label>
-                        <span class="form-control" id="multicol-fecha_mov_proceDGRRHH">{{ $sumarisima->fecha_mov_proceDGRRHH}}</span>
+                        <span class="form-control" id="multicol-fecha_mov_proceDGRRHH">{{ $sanciones->fecha_mov_proceDGRRHH}}</span>
                       </div>
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
-                        <span class="form-control" id="multicol-destin_proceden_DGRRHH">{{ $sumarisima->destin_proceden_DGRRHH}}</span>
+                        <span class="form-control" id="multicol-destin_proceden_DGRRHH">{{ $sanciones->destin_proceden_DGRRHH}}</span>
                       </div>
 
                       <div class="col-md-6">
                               <label class="form-label" for="multicol-sugerencia_DAI">Resolucion Final</label>
                               <textarea class="form-control" id="multicol-sugerencia_DAI" style="white-space: pre-line; max-height: 100px; overflow-y: auto;" readonly>
-                                  {{ $sumarisima->resol_final_DGRRHH}}
+                                  {{ $sanciones->resol_final_DGRRHH}}
                               </textarea>
                       </div>
             
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-obs_proced_DGRRHH">Observaciones de Procedencia</label>
-                        <span class="form-control" id="multicol-obs_proced_DGRRHH">{{ $sumarisima->obs_proced_DGRRHH}}</span>
+                        <span class="form-control" id="multicol-obs_proced_DGRRHH">{{ $sanciones->obs_proced_DGRRHH}}</span>
                       </div>
                
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>
-                        <span class="form-control" id="multicol-concluido_DGRRHH">{{ $sumarisima->concluido_DGRRHH}}</span>
+                        <span class="form-control" id="multicol-concluido_DGRRHH">{{ $sanciones->concluido_DGRRHH}}</span>
                       </div>
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
-                        <span class="form-control" id="multicol-DGRRHH_N°">{{ $sumarisima->DGRRHH_N°}}</span>
+                        <span class="form-control" id="multicol-DGRRHH_N°">{{ $sanciones->DGRRHH_N°}}</span>
                       </div>
 
                       <div class="col-md-6">
                         <label class="form-label" for="multicol-fecha_notificacion"> Fecha de Notificacion</label>
-                        <span class="form-control" id="multicol-fecha_notificacion">{{ $sumarisima->fecha_notificacion}}</span>
+                        <span class="form-control" id="multicol-fecha_notificacion">{{ $sanciones->fecha_notificacion}}</span>
                       </div>
                       
               </div>
             
     
                   <div class="pt-4">
-                      <button type="button" class="btn btn-secondary" onClick="location.href='/sumarisimas'">Volver</button>
+                      <button type="button" class="btn btn-secondary" onClick="location.href='/sancion'">Volver</button>
                   </div>
       </form>
 
