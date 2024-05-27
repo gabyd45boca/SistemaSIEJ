@@ -182,16 +182,16 @@
                       <label class="form-label" for="multicol-username">Fojas</label>
                       <input type="text" name="fojas" value="{{ $sanciones-> fojas }}" id="multicol-fojas" class="form-control" placeholder="Cantidad de fojas" required/>
                     </div> 
-AQUI QUEDEE
+
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-tipo_denuncia">Tipo de denuncia</label>
                       <x-adminlte-select2  name="tipo_denuncia" value="{{ $sanciones-> tipo_denuncia }}" required>
                         <option value="">Seleccionar el tipo</option>
-                        <option value="Comparendo" @if ($sumarisima->tipo_denuncia == 'Comparendo') selected @endif 'Comparendo'>Comparendo</option>
-                        <option value="Denuncia" @if ($sumarisima->tipo_denuncia == 'Denuncia') selected @endif 'Denuncia'>Denuncia</option>
-                        <option value="Oficio" @if ($sumarisima->tipo_denuncia == 'Oficio') selected @endif 'Oficio'>Oficio</option>
-                        <option value="Exposicion" @if ($sumarisima->tipo_denuncia == 'exposicion') selected @endif 'Exposicion'>Exposicion</option>
-                        <option value="Otro" @if ($sumarisima->tipo_denuncia == 'Otro') selected @endif 'Otro'>Otro</option>
+                        <option value="Comparendo" @if ($sanciones->tipo_denuncia == 'Comparendo') selected @endif 'Comparendo'>Comparendo</option>
+                        <option value="Denuncia" @if ($sanciones->tipo_denuncia == 'Denuncia') selected @endif 'Denuncia'>Denuncia</option>
+                        <option value="Oficio" @if ($sanciones->tipo_denuncia == 'Oficio') selected @endif 'Oficio'>Oficio</option>
+                        <option value="Exposicion" @if ($sanciones->tipo_denuncia == 'exposicion') selected @endif 'Exposicion'>Exposicion</option>
+                        <option value="Otro" @if ($sanciones->tipo_denuncia == 'Otro') selected @endif 'Otro'>Otro</option>
                       </x-adminlte-select2>
                     </div>                  
 
@@ -199,18 +199,18 @@ AQUI QUEDEE
                       <label class="form-label" for="multicol-motivo">Motivo</label>
                       <x-adminlte-select2 name="motivo" value="{{ $sanciones->motivo }}" required>
                         <option value="">Seleccionar el tipo</option>
-                        <option value="Violencia de genero" @if ($sumarisima->motivo == 'Violencia de genero') selected @endif 'Violencia de genero' >Violencia de genero</option>
-                        <option value="Perdida Arma Reglamentaria" @if ($sumarisima->motivo == 'Perdida Arma Reglamentaria') selected @endif 'Perdida Arma Reglamentaria'>Perdida Arma Reglamentaria</option>
-                        <option value="Falta al servicio" @if ($sumarisima->motivo == 'Falta al servicio') selected @endif 'Falta al servicio'>Falta al servicio</option>
-                        <option value="Ebriedad" @if ($sumarisima->motivo == 'Ebriedad') selected @endif 'Ebriedad'>Ebriedad</option>
-                        <option value="Ausentismo Laboral" @if ($sumarisima->motivo == 'Ausentismo Laboral') selected @endif 'Ausentismo Laboral'>Ausentismo Laboral</option>
-                        <option value="Otro" @if ($sumarisima->motivo == 'Otro') selected @endif 'Otro'>Otro</option>
+                        <option value="Violencia de genero" @if ($sanciones->motivo == 'Violencia de genero') selected @endif 'Violencia de genero' >Violencia de genero</option>
+                        <option value="Perdida Arma Reglamentaria" @if ($sanciones->motivo == 'Perdida Arma Reglamentaria') selected @endif 'Perdida Arma Reglamentaria'>Perdida Arma Reglamentaria</option>
+                        <option value="Falta al servicio" @if ($sanciones->motivo == 'Falta al servicio') selected @endif 'Falta al servicio'>Falta al servicio</option>
+                        <option value="Ebriedad" @if ($sanciones->motivo == 'Ebriedad') selected @endif 'Ebriedad'>Ebriedad</option>
+                        <option value="Ausentismo Laboral" @if ($sanciones->motivo == 'Ausentismo Laboral') selected @endif 'Ausentismo Laboral'>Ausentismo Laboral</option>
+                        <option value="Otro" @if ($sanciones->motivo == 'Otro') selected @endif 'Otro'>Otro</option>
                       </x-adminlte-select2>
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-primera_interv">Primera Intervencion</label>
-                        <textarea name="primera_interv" id="multicol-primera_interv" class="form-control">{{ $sumarisima->primera_interv }}</textarea>
+                        <textarea name="primera_interv" id="multicol-primera_interv" class="form-control">{{ $sanciones->primera_interv }}</textarea>
                     </div>
                      
                     <div class="col-md-6">
@@ -228,7 +228,7 @@ AQUI QUEDEE
                         <x-adminlte-select2 name="lugar_pase" value="{{ $sanciones->lugar_pase }}" required>
                             <option value="">Seleccionar la dependencia</option>
                             @foreach($dependencias as $dependencia)
-                                <option value="{{ $dependencia->nombre_dep}}" @if ($sumarisima->lugar_pase == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                                <option value="{{ $dependencia->nombre_dep}}" @if ($sanciones->lugar_pase == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
                             @endforeach
                         </x-adminlte-select2>
                     </div>
@@ -258,7 +258,7 @@ AQUI QUEDEE
                   @endcan 
                
   
-              @can('EditarSumarisimaDGAJ')  
+              @can('EditarSancionDGAJ')  
                   <hr class="my-4 mx-n4" />
                   <h4 class="fw-normal">3. Carga de datos del personal instructor de la Direccion General de Asuntos Judiciales</h4>
               <div class="row g-3">
@@ -278,7 +278,7 @@ AQUI QUEDEE
                             <x-adminlte-select2 name="dependen_DGAJ" value="{{ $sanciones->dependen_DGAJ }}">
                                 <option value="">Seleccionar la dependencia</option>
                                 @foreach($dependencias as $dependencia)
-                                    <option value="{{ $dependencia->nombre_dep }}" @if ($sumarisima->dependen_DGAJ == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
+                                    <option value="{{ $dependencia->nombre_dep }}" @if ($sanciones->dependen_DGAJ == $dependencia->nombre_dep) selected @endif>{{ $dependencia->nombre_dep }}</option>
                                 @endforeach
                             </x-adminlte-select2>
                         </div>
@@ -287,9 +287,9 @@ AQUI QUEDEE
                           <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
                           <x-adminlte-select2  name="jerarquia_DGAJ"  value="{{ $sanciones-> jerarquia_DGAJ }}" class="select2 form-select" >
                             <option value="">Seleccionar la jerarquia</option>
-                            <option value="agente" @if ($sumarisima->jerarquia_DGAJ == 'agente') selected @endif 'agente'>agente</option>
-                            <option value="oficial ayudante" @if ($sumarisima->jerarquia_DGAJ == 'oficial ayudante') selected @endif 'oficial ayudante'>oficial ayudante</option>
-                            <option value="comisario" @if ($sumarisima->jerarquia_DGAJ == 'comisario') selected @endif 'comisario'>comisario</option>
+                            <option value="agente" @if ($sanciones->jerarquia_DGAJ == 'agente') selected @endif 'agente'>agente</option>
+                            <option value="oficial ayudante" @if ($sanciones->jerarquia_DGAJ == 'oficial ayudante') selected @endif 'oficial ayudante'>oficial ayudante</option>
+                            <option value="comisario" @if ($sanciones->jerarquia_DGAJ == 'comisario') selected @endif 'comisario'>comisario</option>
                           </x-adminlte-select2>
                         </div>
 
@@ -446,7 +446,7 @@ AQUI QUEDEE
               </div>
               @endcan
 
-              @can('EditarSumarisimaSS')
+              @can('EditarSancionSS')
               
               <div class="hidden-view">
                 <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Infractores" multiple>
@@ -552,7 +552,7 @@ AQUI QUEDEE
           </div>
           @endcan
 
-              @can('EditarSumarisimaDGRRHH')
+              @can('EditarSancionDGRRHH')
               
                  <div class="hidden-view">
                     <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Infractores" multiple>
@@ -638,8 +638,8 @@ AQUI QUEDEE
                         <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instruccion</label>
                         <x-adminlte-select2  name="concluido_DGRRHH" value="{{ $sanciones-> concluido_DGRRHH}}" class="select2 form-select">
                           <option value="">Seleccione</option>
-                          <option value="Si" @if ($sumarisima->concluido_DGRRHH == 'Si') selected @endif 'Si'>Si</option>
-                          <option value="No" @if ($sumarisima->concluido_DGRRHH == 'No') selected @endif 'No'>No</option>
+                          <option value="Si" @if ($sanciones->concluido_DGRRHH == 'Si') selected @endif 'Si'>Si</option>
+                          <option value="No" @if ($sanciones->concluido_DGRRHH == 'No') selected @endif 'No'>No</option>
                         </x-adminlte-select2>
                       </div>
                

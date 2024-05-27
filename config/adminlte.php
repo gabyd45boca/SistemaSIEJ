@@ -315,20 +315,20 @@ return [
         [
             'text'       => 'Roles',
             'url'        => '/roles',
-            'icon'       => 'fas fa-file',
+            'icon'       => 'fas fa-user-lock',
             'can'   => 'AdministracionUsuario'           
         ],       
          
         [   'text'       => 'Permisos',
             'url'        => '/permisos',
-            'icon'       => 'fas fa-file',
+            'icon'       => 'fas fa-key',
             'can'   => 'AdministracionUsuario'                           
             
         ],
 
         [   'text'       => 'Usuarios',
             'url'        => '/usuarios',
-            'icon'       => 'fas fa-file',
+            'icon'       => 'fas fa-user',
             'can'   => 'AdministracionUsuario'                           
             
         ],
@@ -340,17 +340,17 @@ return [
 
         [
             'text'       => 'Expedientes',
-            'icon'       => 'fas fa-folder',
+            'icon'       => 'fas fa-folder-open',
             'can'   => 'AdmistracionDGAJ',
             'submenu'    => [
                 [
                     'text' => 'Lista de expedientes',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-list-ul',
                     'url' => '/expedientes'
                 ],
                 [
                     'text' => 'Registrar expediente',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-file-signature',
                     'url' => '/expedientes/create'
                 ],
             ]
@@ -362,17 +362,17 @@ return [
 
         [
             'text'       => 'Infractores',
-            'icon'       => 'fas fa-folder',
+            'icon'       => 'fas fa-folder-open',
             'can'   => 'AdmistracionDGAJ',
             'submenu'    => [
                 [
                     'text' => 'Lista de Infractores',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-list-ul',
                     'url' => '/infractores'
                 ],
                 [
                     'text' => 'Registrar Infractores',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-file-signature',
                     'url' => '/infractores/create'
                 ],
             ]
@@ -385,24 +385,24 @@ return [
 
         [
             'text'       => 'Sumarios',
-            'icon'       => 'fas fa-folder',
+            'icon'       => 'fas fa-folder-open',
             'can'   => 'AdministracionSumarios',
             'submenu'    => [
                 [
                     'text' => 'Lista de sumarios',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-list-ul',
                     'url' => '/sumarios',
                     'can'   => 'ListarSumarios',
                 ],
                 [
                     'text' => 'Registrar Sumarios',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-file-signature',
                     'url' => '/sumarios/create',
                     'can'   => 'RegistrarSumarios'
                 ],
                 [
                     'text' => 'Consultas Sumarios',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-chart-pie',
                     'url' => '/sumarios/consulta',
                     'can'   => 'ConsultarSumarios'
                 ],
@@ -416,18 +416,18 @@ return [
 
         [
             'text'       => 'Sumarisimas',
-            'icon'       => 'fas fa-folder',
+            'icon'       => 'fas fa-folder-open',
             'can'   => 'AdministracionSumarisimas',
             'submenu'    => [
                 [
                     'text' => 'Lista de sumarisimas',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-list-ul',
                     'url' => '/sumarisimas',
                     'can'   => 'ListarSumarisimas'
                 ],
                 [
                     'text' => 'Registrar Sumarisimas',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-file-signature',
                     'url' => '/sumarisimas/create',
                     'can'   => 'RegistrarSumarisimas'
                 ],
@@ -440,18 +440,18 @@ return [
 
         [
             'text'       => 'I. S. A.',
-            'icon'       => 'fas fa-folder',
+            'icon'       => 'fas fa-folder-open',
             'can'   => 'AdministracionIsas', 
             'submenu'    => [
                 [
                     'text' => 'Lista de I. S. A.',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-list-ul',
                     'url' => '/isas',
                     'can'   => 'ListarIsas',
                 ],
                 [
                     'text' => 'Registrar I. S. A.',
-                    'icon'       => 'fas fa-file-alt',
+                    'icon'       => 'fas fa-file-signature',
                     'url' => '/isas/create',
                     'can'   => 'RegistrarIsas'
                 ],
@@ -464,18 +464,18 @@ return [
     
             [
                 'text'       => 'Sancion Directa',
-                'icon'       => 'fas fa-folder',
+                'icon'       => 'fas fa-folder-open',
                 'can'   => 'AdministracionSancionDirecta', 
                 'submenu'    => [
                     [
                         'text' => 'Lista de Sancion Directa',
-                        'icon'       => 'fas fa-file-alt',
+                        'icon'       => 'fas fa-list-ul',
                         'url' => '/sancion',
                         'can'   => 'ListarSD',
                     ],
                     [
                         'text' => 'Registrar Sancion Directa',
-                        'icon'       => 'fas fa-file-alt',
+                        'icon'       => 'fas fa-file-signature',
                         'url' => '/sancion/create',
                         'can'   => 'RegistrarSD'
                     ],
