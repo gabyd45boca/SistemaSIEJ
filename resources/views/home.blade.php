@@ -18,7 +18,7 @@
             <span class="info-box-icon"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">VIOLENCIA DE GENERO</span>
-                <span class="info-box-number">20</span>
+                <span class="info-box-number">{{$sumarios1->count()}}</span>
             </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <span class="info-box-icon"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">USO INDEBIDO DE ARMA REGLAMENTARIA</span>
-                <span class="info-box-number">10</span>
+                <span class="info-box-number">{{$sumarios2->count()}}</span>
             </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
             <span class="info-box-icon"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">EBRIEDAD</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-number">{{$sumarios4->count()}}</span>
             </div>
             </div>
         </div>
