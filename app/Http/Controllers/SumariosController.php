@@ -15,7 +15,6 @@ class SumariosController extends Controller
 
         $this->middleware('can:CrearSumario')->only('create');
         $this->middleware('can:EliminarSumario')->only('destroy');
-
        
     }     
 
@@ -47,39 +46,35 @@ class SumariosController extends Controller
     }
 
     public function consulta(){
-
       //$sumarios = Sumario::where('motivo','=','Violencia de genero')->get();
       //$sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
       $sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-
-
-
       /*$infractores = Infractor::all();
       $infractores_ids = $sumario->infractors()->pluck('infractors.id');*/ 
      
       return view('sumarios-consulta',compact('sumarios'));
-      
+ 
     }
 
 
-      public function NumGenerales(){
+    public function NumGenerales(){
 
-        //$sumarios = Sumario::where('motivo','=','Violencia de genero')->get();
-        //$sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-        $sumarios1 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-        $sumarios2 = Sumario::where('motivo','LIKE','Perdida Arma Reglamentaria')->get();
-        $sumarios3 = Sumario::where('motivo','LIKE','Falta al servicio')->get();
-        $sumarios4 = Sumario::where('motivo','LIKE','Ebriedad')->get();
-        $sumarios5 = Sumario::where('motivo','LIKE','Ausentismo Laboral')->get();
-        //$sumarios6 = Sumario::where('motivo','LIKE','Otro')->get();
-       // $sumarios7 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-       // $sumarios8 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-        /*$infractores = Infractor::all();
-        $infractores_ids = $sumario->infractors()->pluck('infractors.id');*/ 
+      //$sumarios = Sumario::where('motivo','=','Violencia de genero')->get();
+      //$sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
+      $sumarios1 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
+      $sumarios2 = Sumario::where('motivo','LIKE','Perdida Arma Reglamentaria')->get();
+      $sumarios3 = Sumario::where('motivo','LIKE','Falta al servicio')->get();
+      $sumarios4 = Sumario::where('motivo','LIKE','Ebriedad')->get();
+      $sumarios5 = Sumario::where('motivo','LIKE','Ausentismo Laboral')->get();
+      //$sumarios6 = Sumario::where('motivo','LIKE','Otro')->get();
+      // $sumarios7 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
+      // $sumarios8 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
+      /*$infractores = Infractor::all();
+      $infractores_ids = $sumario->infractors()->pluck('infractors.id');*/ 
+    
+      return view('home',compact('sumarios1','sumarios2','sumarios3','sumarios4',
+      'sumarios5'));
       
-        return view('home',compact('sumarios1','sumarios2','sumarios3','sumarios4',
-        'sumarios5'));
-        
     }
 
 
