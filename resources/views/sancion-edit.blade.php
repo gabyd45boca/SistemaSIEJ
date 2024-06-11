@@ -196,16 +196,15 @@
                     </div>                  
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-motivo">Motivo</label>
-                      <x-adminlte-select2 name="motivo" value="{{ $sanciones->motivo }}" required>
-                        <option value="">Seleccionar el tipo</option>
-                        <option value="Violencia de genero" @if ($sanciones->motivo == 'Violencia de genero') selected @endif 'Violencia de genero' >Violencia de genero</option>
-                        <option value="Perdida Arma Reglamentaria" @if ($sanciones->motivo == 'Perdida Arma Reglamentaria') selected @endif 'Perdida Arma Reglamentaria'>Perdida Arma Reglamentaria</option>
-                        <option value="Falta al servicio" @if ($sanciones->motivo == 'Falta al servicio') selected @endif 'Falta al servicio'>Falta al servicio</option>
-                        <option value="Ebriedad" @if ($sanciones->motivo == 'Ebriedad') selected @endif 'Ebriedad'>Ebriedad</option>
-                        <option value="Ausentismo Laboral" @if ($sanciones->motivo == 'Ausentismo Laboral') selected @endif 'Ausentismo Laboral'>Ausentismo Laboral</option>
-                        <option value="Otro" @if ($sanciones->motivo == 'Otro') selected @endif 'Otro'>Otro</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-motivo">Motivo</label>
+                        <x-adminlte-select2 name="motivo" required>
+                            <option value="">Seleccionar el tipo</option>
+                            @foreach($motivos as $motivo)
+                                <option value="{{ $motivo->nombre_mot }}" {{ $sanciones->motivo == $motivo->nombre_mot ? 'selected' : '' }}>
+                                    {{ $motivo->nombre_mot }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
 
                     <div class="col-md-6">

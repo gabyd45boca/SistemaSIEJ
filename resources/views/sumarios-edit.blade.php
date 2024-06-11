@@ -210,16 +210,15 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-motivo">Motivo</label>
-                      <x-adminlte-select2 name="motivo" value="{{ $sumario->motivo }}" required>
-                        <option value="">Seleccionar el tipo</option>
-                        <option value="Violencia de genero" @if ($sumario->motivo == 'Violencia de genero') selected @endif 'Violencia de genero' >Violencia de genero</option>
-                        <option value="Perdida Arma Reglamentaria" @if ($sumario->motivo == 'Perdida Arma Reglamentaria') selected @endif 'Perdida Arma Reglamentaria'>Perdida Arma Reglamentaria</option>
-                        <option value="Falta al servicio" @if ($sumario->motivo == 'Falta al servicio') selected @endif 'Falta al servicio'>Falta al servicio</option>
-                        <option value="Ebriedad" @if ($sumario->motivo == 'Ebriedad') selected @endif 'Ebriedad'>Ebriedad</option>
-                        <option value="Ausentismo Laboral" @if ($sumario->motivo == 'Ausentismo Laboral') selected @endif 'Ausentismo Laboral'>Ausentismo Laboral</option>
-                        <option value="Otro" @if ($sumario->motivo == 'Otro') selected @endif 'Otro'>Otro</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-motivo">Motivo</label>
+                        <x-adminlte-select2 name="motivo" required>
+                            <option value="">Seleccionar el tipo</option>
+                            @foreach($motivos as $motivo)
+                                <option value="{{ $motivo->nombre_mot }}" {{ $sumario->motivo == $motivo->nombre_mot ? 'selected' : '' }}>
+                                    {{ $motivo->nombre_mot }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
 
                     <div class="col-md-6">
@@ -228,16 +227,17 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_denun">Tipo de Denuncia</label>
-                      <x-adminlte-select2  name="tipo_denun" value="{{ $sumario-> tipo_denun }}" required>
-                        <option value="">Seleccionar el tipo</option>
-                        <option value="Comparendo" @if ($sumario->tipo_denun == 'Comparendo') selected @endif 'Comparendo'>Comparendo</option>
-                        <option value="Denuncia" @if ($sumario->tipo_denun == 'Denuncia') selected @endif 'Denuncia'>Denuncia</option>
-                        <option value="Oficio" @if ($sumario->tipo_denun == 'Oficio') selected @endif 'Oficio'>Oficio</option>
-                        <option value="Exposicion" @if ($sumario->tipo_denun == 'exposicion') selected @endif 'Exposicion'>Exposicion</option>
-                        <option value="Otro" @if ($sumario->tipo_denun == 'Otro') selected @endif 'Otro'>Otro</option>
-                      </x-adminlte-select2>
+                        <label class="form-label" for="multicol-tipo_denun">Tipo de Denuncia</label>
+                        <x-adminlte-select2 name="tipo_denun" required>
+                            <option value="">Seleccionar el tipo</option>
+                            @foreach($tipo_denuncias as $tipo_denuncia)
+                                <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ $sumario->tipo_denun == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
+                                    {{ $tipo_denuncia->nombre_tipoDen}}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
+
                   
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Pase</label>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Sumario;
 use App\Models\Infractor;
 use App\Models\Dependencia;
+use App\Models\Motivo;
+use App\Models\TipoDenuncia;
 use Spatie\Permission\Traits\HasRoles;
 
 class SumariosController extends Controller
@@ -30,8 +32,10 @@ class SumariosController extends Controller
         $sumarios = Sumario::all();
         $infractores = Infractor::all();
         $dependencias = Dependencia::all();
+        $motivos = Motivo::all();
+        $tipo_denuncias = TipoDenuncia::all();
        
-        return view('sumarios-create',compact('sumarios','infractores','dependencias'));
+        return view('sumarios-create',compact('tipo_denuncias','sumarios','infractores','dependencias','motivos'));
     }
 
 
@@ -82,11 +86,13 @@ class SumariosController extends Controller
 
       $sumario = Sumario::find($sumario_id);
       $dependencias = Dependencia::all();
+      $motivos = Motivo::all();
+      $tipo_denuncias = TipoDenuncia::all();
 
       $infractores = Infractor::all();
       $infractores_ids = $sumario->infractors()->pluck('infractors.id'); 
      
-      return view('sumarios-edit',compact('sumario','infractores','infractores_ids','dependencias'));
+      return view('sumarios-edit',compact('tipo_denuncias','motivos','sumario','infractores','infractores_ids','dependencias'));
     }
 
     public function store(Request $request){

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('jerarquias', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo_jer')->unique(); 
+            $table->string('nombre_jer');
+           
             $table->timestamps();
         });
     }

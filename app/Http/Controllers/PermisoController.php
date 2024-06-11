@@ -23,8 +23,7 @@ class PermisoController extends Controller
     {
         $permisos = Permission::all();
         return view('permisos',compact('permisos'));
-        
-       
+         
     }
 
     

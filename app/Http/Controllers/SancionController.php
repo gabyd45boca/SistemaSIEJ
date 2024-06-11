@@ -5,6 +5,9 @@ use App\Models\Sumarisima;
 use App\Models\Infractor;
 use App\Models\Dependencia;
 use App\Models\Sancione;
+use App\Models\Motivo;
+use App\Models\TipoDenuncia;
+
 
 
 use Illuminate\Http\Request;
@@ -30,8 +33,10 @@ class SancionController extends Controller
         $sanciones = Sancione::all();
         $infractores = Infractor::all();
         $dependencias = Dependencia::all();
+        $motivos = Motivo::all();
+        $tipo_denuncias = TipoDenuncia::all();
        
-        return view('sancion-create',compact('sanciones','infractores','dependencias'));
+        return view('sancion-create',compact('tipo_denuncias','motivos','sanciones','infractores','dependencias'));
     }
 
     public function show($sancion_id){
@@ -49,11 +54,13 @@ class SancionController extends Controller
         $sanciones = Sancione::find($sancion_id);
   
         $dependencias = Dependencia::all();
+        $motivos = Motivo::all();
+        $tipo_denuncias = TipoDenuncia::all();
   
         $infractores = Infractor::all();
         $infractores_ids = $sanciones->infractors()->pluck('infractors.id'); 
        
-        return view('sancion-edit',compact('sanciones','infractores','infractores_ids','dependencias'));
+        return view('sancion-edit',compact('tipo_denuncias','motivos','sanciones','infractores','infractores_ids','dependencias'));
     }
 
     public function store(Request $request)  {

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('tipo_denuncias', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo_tipoDen')->unique(); 
+            $table->string('nombre_tipoDen');
+
             $table->timestamps();
         });
     }

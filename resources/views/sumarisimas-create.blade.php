@@ -83,14 +83,13 @@
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-motivo">Motivo</label>
-                <x-adminlte-select2 name="motivo" class="select2 form-select" required>
-                    <option value="" {{ old('motivo') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
-                    <option value="Violencia de genero" {{ old('motivo') == 'Violencia de genero' ? 'selected' : '' }}>Violencia de Genero</option>
-                    <option value="Perdida Arma Reglamentaria" {{ old('motivo') == 'Perdida Arma Reglamentaria' ? 'selected' : '' }}>Perdida Arma Reglamentaria</option>
-                    <option value="Falta al servicio" {{ old('motivo') == 'Falta al servicio' ? 'selected' : '' }}>Falta al servicio</option>
-                    <option value="Ebriedad" {{ old('motivo') == 'Ebriedad' ? 'selected' : '' }}>Ebriedad</option>
-                    <option value="Ausentismo Laboral" {{ old('motivo') == 'Ausentismo Laboral' ? 'selected' : '' }}>Ausentismo Laboral</option>
-                    <option value="Otro" {{ old('motivo') == 'Otro' ? 'selected' : '' }}>Otro</option>
+                <x-adminlte-select2 name="motivo" required>
+                    <option value="">Seleccionar el tipo</option>
+                    @foreach($motivos as $motivo)
+                        <option value="{{ $motivo->nombre_mot }}" {{ old('motivo') == $motivo->nombre_mot ? 'selected' : '' }}>
+                            {{ $motivo->nombre_mot }}
+                        </option>
+                    @endforeach
                 </x-adminlte-select2>
             </div>
 
