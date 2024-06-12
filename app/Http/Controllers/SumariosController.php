@@ -8,6 +8,8 @@ use App\Models\Infractor;
 use App\Models\Dependencia;
 use App\Models\Motivo;
 use App\Models\TipoDenuncia;
+use App\Models\Jerarquia;
+
 use Spatie\Permission\Traits\HasRoles;
 
 class SumariosController extends Controller
@@ -34,8 +36,9 @@ class SumariosController extends Controller
         $dependencias = Dependencia::all();
         $motivos = Motivo::all();
         $tipo_denuncias = TipoDenuncia::all();
+        $jerarquias = Jerarquia::all();
        
-        return view('sumarios-create',compact('tipo_denuncias','sumarios','infractores','dependencias','motivos'));
+        return view('sumarios-create',compact('jerarquias','tipo_denuncias','sumarios','infractores','dependencias','motivos'));
     }
 
 
@@ -88,11 +91,12 @@ class SumariosController extends Controller
       $dependencias = Dependencia::all();
       $motivos = Motivo::all();
       $tipo_denuncias = TipoDenuncia::all();
+      $jerarquias = Jerarquia::all();
 
       $infractores = Infractor::all();
       $infractores_ids = $sumario->infractors()->pluck('infractors.id'); 
      
-      return view('sumarios-edit',compact('tipo_denuncias','motivos','sumario','infractores','infractores_ids','dependencias'));
+      return view('sumarios-edit',compact('jerarquias','tipo_denuncias','motivos','sumario','infractores','infractores_ids','dependencias'));
     }
 
     public function store(Request $request){

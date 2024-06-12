@@ -27,6 +27,7 @@ return new class extends Migration
              $table->integer('fojas');
              $table->string('deslindar_resp');
              $table->string('motivo'); //poner un select  filtrar por violencia de genero, accidente, arma, .. 
+             $table->string('tipo_denun');
              $table->date('fecha_movimiento');
              $table->string('destino_pase'); 
              $table->text('observaciones')->nullable();

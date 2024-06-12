@@ -184,16 +184,17 @@
                     </div> 
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-tipo_denuncia">Tipo de denuncia</label>
-                      <x-adminlte-select2  name="tipo_denuncia" value="{{ $sanciones-> tipo_denuncia }}" required>
-                        <option value="">Seleccionar el tipo</option>
-                        <option value="Comparendo" @if ($sanciones->tipo_denuncia == 'Comparendo') selected @endif 'Comparendo'>Comparendo</option>
-                        <option value="Denuncia" @if ($sanciones->tipo_denuncia == 'Denuncia') selected @endif 'Denuncia'>Denuncia</option>
-                        <option value="Oficio" @if ($sanciones->tipo_denuncia == 'Oficio') selected @endif 'Oficio'>Oficio</option>
-                        <option value="Exposicion" @if ($sanciones->tipo_denuncia == 'exposicion') selected @endif 'Exposicion'>Exposicion</option>
-                        <option value="Otro" @if ($sanciones->tipo_denuncia == 'Otro') selected @endif 'Otro'>Otro</option>
-                      </x-adminlte-select2>
-                    </div>                  
+                        <label class="form-label" for="multicol-tipo_denuncia">Tipo de Denuncia</label>
+                        <x-adminlte-select2 name="tipo_denuncia" class="select2 form-select" required>
+                            <option value="" {{ old('tipo_denuncia') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
+                            @foreach($tipo_denuncias as $tipo_denuncia)
+                                <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ old('tipo_denuncia') == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
+                                    {{ $tipo_denuncia->nombre_tipoDen }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
+                    </div>
+                      
 
                     <div class="col-md-6">
                         <label class="form-label" for="multicol-motivo">Motivo</label>

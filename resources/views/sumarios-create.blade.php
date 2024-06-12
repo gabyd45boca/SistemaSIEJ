@@ -187,12 +187,14 @@
 
 
             <div class="col-md-6 select2-primary">
-                <label class="form-label" for="multicol-jerarquia_DAI">Jerarquia</label>
+                <label class="form-label" for="multicol-jerarquia_DAI">Jerarquía</label>
                 <x-adminlte-select2 name="jerarquia_DAI">
-                    <option value="">Seleccionar la jerarquia</option>
-                    <option value="Agente" {{ old('jerarquia_DAI') == 'Agente' ? 'selected' : '' }}>Agente</option>
-                    <option value="Oficial ayudante" {{ old('jerarquia_DAI') == 'Oficial ayudante' ? 'selected' : '' }}>Oficial ayudante</option>
-                    <option value="Comisario" {{ old('jerarquia_DAI') == 'Comisario' ? 'selected' : '' }}>Comisario</option>
+                    <option value="">Seleccionar la jerarquía</option>
+                    @foreach($jerarquias as $jerarquia)
+                        <option value="{{ $jerarquia->nombre_jer }}" {{ old('jerarquia_DAI') == $jerarquia->nombre_jer ? 'selected' : '' }}>
+                            {{ $jerarquia->nombre_jer }}
+                        </option>
+                    @endforeach
                 </x-adminlte-select2>
             </div>
 

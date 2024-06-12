@@ -72,11 +72,11 @@
                 <label class="form-label" for="multicol-tipo_denuncia">Tipo de Denuncia</label>
                 <x-adminlte-select2 name="tipo_denuncia" class="select2 form-select" required>
                     <option value="" {{ old('tipo_denuncia') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
-                    <option value="Comparendo" {{ old('tipo_denuncia') == 'Comparendo' ? 'selected' : '' }}>Comparendo</option>
-                    <option value="Denuncia" {{ old('tipo_denuncia') == 'Denuncia' ? 'selected' : '' }}>Denuncia</option>
-                    <option value="Oficio" {{ old('tipo_denuncia') == 'Oficio' ? 'selected' : '' }}>Oficio</option>
-                    <option value="Exposicion" {{ old('tipo_denuncia') == 'Exposicion' ? 'selected' : '' }}>Exposicion</option>
-                    <option value="Otro" {{ old('tipo_denuncia') == 'Otro' ? 'selected' : '' }}>Otro</option>
+                    @foreach($tipo_denuncias as $tipo_denuncia)
+                        <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ old('tipo_denuncia') == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
+                            {{ $tipo_denuncia->nombre_tipoDen }}
+                        </option>
+                    @endforeach
                 </x-adminlte-select2>
             </div>
 

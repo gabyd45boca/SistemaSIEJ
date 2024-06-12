@@ -188,7 +188,7 @@
                         <x-adminlte-select2 name="tipo_denun" required>
                             <option value="">Seleccionar el tipo</option>
                             @foreach($tipo_denuncias as $tipo_denuncia)
-                                <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ $sumario->tipo_denun == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
+                                <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ $sumarisima->tipo_denun == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
                                     {{ $tipo_denuncia->nombre_tipoDen}}
                                 </option>
                             @endforeach
