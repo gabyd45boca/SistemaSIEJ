@@ -8,6 +8,7 @@ use App\Models\Infractor;
 use App\Models\Dependencia;
 use App\Models\Motivo;
 use App\Models\TipoDenuncia;
+use App\Models\Jerarquia;
 use Spatie\Permission\Traits\HasRoles;
 
 
@@ -37,8 +38,9 @@ class IsasController extends Controller
         $dependencias = Dependencia::all();
         $motivos = Motivo::all();
         $tipo_denuncias = TipoDenuncia::all();
+        $jerarquias = Jerarquia::all();
        
-        return view('isas-create',compact('tipo_denuncias','motivos','isas','infractores','dependencias'));
+        return view('isas-create',compact('jerarquias','tipo_denuncias','motivos','isas','infractores','dependencias'));
     }
 
 
@@ -59,11 +61,12 @@ class IsasController extends Controller
       $dependencias = Dependencia::all();
       $motivos = Motivo::all();
       $tipo_denuncias = TipoDenuncia::all();
+      $jerarquias = Jerarquia::all();
 
       $infractores = Infractor::all();
       $infractores_ids = $isa->infractors()->pluck('infractors.id'); 
      
-      return view('isas-edit',compact('tipo_denuncias','motivos','isa','infractores','infractores_ids','dependencias'));
+      return view('isas-edit',compact('jerarquias','tipo_denuncias','motivos','isa','infractores','infractores_ids','dependencias'));
   }
 
     public function store(Request $request){

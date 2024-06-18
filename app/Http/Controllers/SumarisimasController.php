@@ -8,6 +8,7 @@ use App\Models\Infractor;
 use App\Models\Dependencia;
 use App\Models\Motivo;
 use App\Models\TipoDenuncia;
+use App\Models\Jerarquia;
 
 class SumarisimasController extends Controller
 {
@@ -33,8 +34,9 @@ class SumarisimasController extends Controller
         $dependencias = Dependencia::all();
         $motivos = Motivo::all();
         $tipo_denuncias = TipoDenuncia::all();
+        $jerarquias = Jerarquia::all();
        
-        return view('sumarisimas-create',compact('tipo_denuncias','motivos','sumarisimas','infractores','dependencias'));
+        return view('sumarisimas-create',compact('jerarquias','tipo_denuncias','motivos','sumarisimas','infractores','dependencias'));
     }
 
     public function show($sumarisima_id){
@@ -54,11 +56,12 @@ class SumarisimasController extends Controller
       $dependencias = Dependencia::all();
       $motivos = Motivo::all();
       $tipo_denuncias = TipoDenuncia::all();
+      $jerarquias = Jerarquia::all();
 
       $infractores = Infractor::all();
       $infractores_ids = $sumarisima->infractors()->pluck('infractors.id'); 
      
-      return view('sumarisimas-edit',compact('tipo_denuncias','motivos','sumarisima','infractores','infractores_ids','dependencias'));
+      return view('sumarisimas-edit',compact( 'jerarquias','tipo_denuncias','motivos','sumarisima','infractores','infractores_ids','dependencias'));
   }
 
     public function store(Request $request)  {

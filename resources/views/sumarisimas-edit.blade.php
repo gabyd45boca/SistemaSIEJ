@@ -284,12 +284,14 @@
                         </div>
 
                         <div class="col-md-6 select2-primary">
-                          <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
-                          <x-adminlte-select2  name="jerarquia_DGAJ"  value="{{ $sumarisima-> jerarquia_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccionar la jerarquia</option>
-                            <option value="agente" @if ($sumarisima->jerarquia_DGAJ == 'agente') selected @endif 'agente'>agente</option>
-                            <option value="oficial ayudante" @if ($sumarisima->jerarquia_DGAJ == 'oficial ayudante') selected @endif 'oficial ayudante'>oficial ayudante</option>
-                            <option value="comisario" @if ($sumarisima->jerarquia_DGAJ == 'comisario') selected @endif 'comisario'>comisario</option>
+                          <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquía</label>
+                          <x-adminlte-select2 name="jerarquia_DGAJ" class="select2 form-select">
+                              <option value="">Seleccionar la jerarquía</option>
+                              @foreach($jerarquias as $jerarquia)
+                                  <option value="{{ $jerarquia->nombre_jer }}" @if ($sumarisima->jerarquia_DGAJ == $jerarquia->nombre_jer) selected @endif>
+                                      {{ $jerarquia->nombre_jer }}
+                                  </option>
+                              @endforeach
                           </x-adminlte-select2>
                         </div>
 
@@ -376,14 +378,16 @@
                         </div>
 
                         <div class="col-md-6 select2-primary">
-                          <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
-                          <x-adminlte-select2  name="jerarquia_AL" value="{{ $sumarisima-> jerarquia_AL }}" class="select2 form-select">
-                            <option value="">Seleccionar la jerarquia</option>
-                            <option value="agente" @if ($sumarisima->jerarquia_AL == 'agente') selected @endif 'agente'>agente</option>
-                            <option value="oficial_ayudante" @if ($sumarisima->jerarquia_AL == 'oficial_ayudante') selected @endif 'oficial_ayudante'>oficial ayudante</option>
-                            <option value="comisario" @if ($sumarisima->jerarquia_AL == 'comisario') selected @endif 'comisario'>comisario</option>
+                          <label class="form-label" for="multicol-jerarquia_AL">Jerarquía</label>
+                          <x-adminlte-select2 name="jerarquia_AL" class="select2 form-select">
+                              <option value="">Seleccionar la jerarquía</option>
+                              @foreach($jerarquias as $jerarquia)
+                                  <option value="{{ $jerarquia->nombre_jer }}" @if ($sumarisima->jerarquia_AL == $jerarquia->nombre_jer) selected @endif>
+                                      {{ $jerarquia->nombre_jer }}
+                                  </option>
+                              @endforeach
                           </x-adminlte-select2>
-                        </div>
+                      </div>
 
               </div> 
 
@@ -481,14 +485,17 @@
                     </div>
 
                     <div class="col-md-6 select2-primary">
-                      <label class="form-label" for="multicol-jerarquia_SS">Jerarquia</label>
-                      <x-adminlte-select2  name="jerarquia_SS" value="{{ $sumarisima-> jerarquia_SS }}" class="select2 form-select">
-                        <option value="">Seleccionar la jerarquia</option>
-                        <option value="agente" @if ($sumarisima->jerarquia_SS == 'agente') selected @endif 'agente'>agente</option>
-                        <option value="oficial_ayudante" @if ($sumarisima->jerarquia_SS == 'oficial_ayudante') selected @endif 'oficial_ayudante'>oficial ayudante</option>
-                        <option value="comisario" @if ($sumarisima->jerarquia_SS == 'comisario') selected @endif 'comisario'>comisario</option>
+                      <label class="form-label" for="multicol-jerarquia_SS">Jerarquía</label>
+                      <x-adminlte-select2 name="jerarquia_SS" class="select2 form-select">
+                          <option value="">Seleccionar la jerarquía</option>
+                          @foreach($jerarquias as $jerarquia)
+                              <option value="{{ $jerarquia->nombre_jer }}" @if ($sumarisima->jerarquia_SS == $jerarquia->nombre_jer) selected @endif>
+                                  {{ $jerarquia->nombre_jer }}
+                              </option>
+                          @endforeach
                       </x-adminlte-select2>
-                    </div>
+                  </div>
+
 
           </div> 
 
@@ -587,14 +594,17 @@
                     </div>
 
                     <div class="col-md-6 select2-primary">
-                      <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
-                      <x-adminlte-select2  name="jerarquia_DGRRHH" value="{{ $sumarisima-> jerarquia_DGRRHH}}" class="select2 form-select" >
-                        <option value="">Seleccionar la jerarquia</option>
-                        <option value="agente" @if ($sumarisima->jerarquia_DGRRHH == 'agente') selected @endif 'agente'>agente</option>
-                        <option value="oficial_ayudante" @if ($sumarisima->jerarquia_DGRRHH == 'oficial_ayudante') selected @endif 'oficial_ayudante'>oficial ayudante</option>
-                        <option value="comisario" @if ($sumarisima->jerarquia_DGRRHH == 'comisario') selected @endif 'comisario'>comisario</option>
+                      <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquía</label>
+                      <x-adminlte-select2 name="jerarquia_DGRRHH" class="select2 form-select">
+                          <option value="">Seleccionar la jerarquía</option>
+                          @foreach($jerarquias as $jerarquia)
+                              <option value="{{ $jerarquia->nombre_jer }}" @if ($sumarisima->jerarquia_DGRRHH == $jerarquia->nombre_jer) selected @endif>
+                                  {{ $jerarquia->nombre_jer }}
+                              </option>
+                          @endforeach
                       </x-adminlte-select2>
-                    </div>
+                  </div>
+
 
               </div> 
 

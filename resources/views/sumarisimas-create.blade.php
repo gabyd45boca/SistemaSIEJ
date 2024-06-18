@@ -178,14 +178,16 @@
 
 
                 <div class="col-md-6 select2-primary">
-                  <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
-                  <x-adminlte-select2 name="jerarquia_DGAJ" class="select2 form-select">
-                      <option value="">Seleccionar la jerarquia</option>
-                      <option value="Agente" {{ old('jerarquia_DGAJ') == 'Agente' ? 'selected' : '' }}>Agente</option>
-                      <option value="Oficial ayudante" {{ old('jerarquia_DGAJ') == 'Oficial ayudante' ? 'selected' : '' }}>Oficial ayudante</option>
-                      <option value="Comisario" {{ old('jerarquia_DGAJ') == 'Comisario' ? 'selected' : '' }}>Comisario</option>
-                  </x-adminlte-select2>
-               </div>
+                    <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquía</label>
+                    <x-adminlte-select2 name="jerarquia_DGAJ" class="select2 form-select">
+                        <option value="">Seleccionar la jerarquía</option>
+                        @foreach($jerarquias as $jerarquia)
+                            <option value="{{ $jerarquia->nombre_jer }}" {{ old('jerarquia_DGAJ') == $jerarquia->nombre_jer ? 'selected' : '' }}>
+                                {{ $jerarquia->nombre_jer }}
+                            </option>
+                        @endforeach
+                    </x-adminlte-select2>
+                </div>
 
 
           </div> 
@@ -267,15 +269,16 @@
 
 
                 <div class="col-md-6 select2-primary">
-                  <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
-                  <x-adminlte-select2 name="jerarquia_AL" class="select2 form-select">
-                      <option value="">Seleccionar la jerarquia</option>
-                      <option value="Agente" {{ old('jerarquia_AL') == 'Agente' ? 'selected' : '' }}>Agente</option>
-                      <option value="Oficial ayudante" {{ old('jerarquia_AL') == 'Oficial ayudante' ? 'selected' : '' }}>Oficial ayudante</option>
-                      <option value="Comisario" {{ old('jerarquia_AL') == 'Comisario' ? 'selected' : '' }}>Comisario</option>
-                  </x-adminlte-select2>
-               </div>
-
+                    <label class="form-label" for="multicol-jerarquia_AL">Jerarquía</label>
+                    <x-adminlte-select2 name="jerarquia_AL" class="select2 form-select">
+                        <option value="" {{ old('jerarquia_AL') == '' ? 'selected' : '' }}>Seleccionar la jerarquía</option>
+                        @foreach($jerarquias as $jerarquia)
+                            <option value="{{ $jerarquia->nombre_jer }}" {{ old('jerarquia_AL') == $jerarquia->nombre_jer ? 'selected' : '' }}>
+                                {{ $jerarquia->nombre_jer }}
+                            </option>
+                        @endforeach
+                    </x-adminlte-select2>
+                </div>
 
             </div> 
 
@@ -367,14 +370,16 @@
                         @endforeach
                     </x-adminlte-select2>
                 </div>
-
+                
                 <div class="col-md-6 select2-primary">
-                    <label class="form-label" for="multicol-jerarquia_SS">Jerarquia</label>
+                    <label class="form-label" for="multicol-jerarquia_SS">Jerarquía</label>
                     <x-adminlte-select2 name="jerarquia_SS" class="select2 form-select">
-                        <option value="">Seleccionar la jerarquia</option>
-                        <option value="Agente" {{ old('jerarquia_SS') == 'Agente' ? 'selected' : '' }}>Agente</option>
-                        <option value="Oficial ayudante" {{ old('jerarquia_SS') == 'Oficial ayudante' ? 'selected' : '' }}>Oficial ayudante</option>
-                        <option value="Comisario" {{ old('jerarquia_SS') == 'Comisario' ? 'selected' : '' }}>Comisario</option>
+                        <option value="" {{ old('jerarquia_SS') == '' ? 'selected' : '' }}>Seleccionar la jerarquía</option>
+                        @foreach($jerarquias as $jerarquia)
+                            <option value="{{ $jerarquia->nombre_jer }}" {{ old('jerarquia_SS') == $jerarquia->nombre_jer ? 'selected' : '' }}>
+                                {{ $jerarquia->nombre_jer }}
+                            </option>
+                        @endforeach
                     </x-adminlte-select2>
                 </div>
 
@@ -469,12 +474,14 @@
             </div>
 
             <div class="col-md-6 select2-primary">
-                <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
+                <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquía</label>
                 <x-adminlte-select2 name="jerarquia_DGRRHH" class="select2 form-select">
-                    <option value="" {{ old('jerarquia_DGRRHH') == '' ? 'selected' : '' }}>Seleccionar la jerarquia</option>
-                    <option value="Agente" {{ old('jerarquia_DGRRHH') == 'Agente' ? 'selected' : '' }}>Agente</option>
-                    <option value="Oficial ayudante" {{ old('jerarquia_DGRRHH') == 'Oficial ayudante' ? 'selected' : '' }}>Oficial ayudante</option>
-                    <option value="Comisario" {{ old('jerarquia_DGRRHH') == 'Comisario' ? 'selected' : '' }}>Comisario</option>
+                    <option value="" {{ old('jerarquia_DGRRHH') == '' ? 'selected' : '' }}>Seleccionar la jerarquía</option>
+                    @foreach($jerarquias as $jerarquia)
+                        <option value="{{ $jerarquia->nombre_jer }}" {{ old('jerarquia_DGRRHH') == $jerarquia->nombre_jer ? 'selected' : '' }}>
+                            {{ $jerarquia->nombre_jer }}
+                        </option>
+                    @endforeach
                 </x-adminlte-select2>
             </div>
 
