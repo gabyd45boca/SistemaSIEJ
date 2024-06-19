@@ -154,7 +154,7 @@
             </div>  
               <br>
               <br>                  
-                  @can('EditarSumarioDGAJ')
+                  @can('EditarIsaDGAJ')
                 
 
                   <h4 class="fw-normal">1. Carga de datos del expediente</h4>
@@ -297,7 +297,7 @@
                   </div>
                   @endcan 
 
-                  @can('EditarSumarioDGAI')
+                  @can('EditarIsaDGAI')
                   
                   <div class="hidden-view">
                     <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Infractores" multiple>
@@ -334,13 +334,15 @@
                     </div>
 
                     <div class="col-md-6 select2-primary">
-                          <label class="form-label" for="multicol-jerarquia_DAI">Jerarquia</label>
-                          <x-adminlte-select2  name="jerarquia_DAI" value="{{ $isa-> jerarquia_DAI }}" class="select2 form-select" >
-                            <option value="">Seleccionar la jerarquia</option>
-                            <option value="Agente" @if ($isa->jerarquia_DAI == 'Agente') selected @endif 'Agente'>Agente</option>
-                            <option value="Oficial ayudante" @if ($isa->jerarquia_DAI == 'Oficial ayudante') selected @endif 'Oficial ayudante'>Oficial ayudante</option>
-                            <option value="Comisario" @if ($isa->jerarquia_DAI == 'Comisario') selected @endif 'Comisario'>Comisario</option>
-                          </x-adminlte-select2>
+                        <label class="form-label" for="multicol-jerarquia_DAI">Jerarquía</label>
+                        <x-adminlte-select2 name="jerarquia_DAI" class="select2 form-select">
+                            <option value="">Seleccionar la jerarquía</option>
+                            @foreach($jerarquias as $jerarquia)
+                                <option value="{{ $jerarquia->nombre_jer }}" @if ($isa->jerarquia_DAI == $jerarquia->nombre_jer) selected @endif>
+                                    {{ $jerarquia->nombre_jer }}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
                     </div>
                             
 
@@ -426,7 +428,7 @@
               @endcan
 
   
-              @can('EditarSumarioDGAJ')  
+              @can('EditarIsaDGAJ')  
                   <hr class="my-4 mx-n4" />
                   <h4 class="fw-normal">5. Carga de datos del personal instructor de la Direccion General de Asuntos Judiciales</h4>
               <div class="row g-3">
@@ -454,14 +456,17 @@
                         </div>
 
                         <div class="col-md-6 select2-primary">
-                          <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquia</label>
-                          <x-adminlte-select2  name="jerarquia_DGAJ"  value="{{ $isa-> jerarquia_DGAJ }}" class="select2 form-select" >
-                            <option value="">Seleccionar la jerarquia</option>
-                            <option value="Agente" @if ($isa->jerarquia_DAI == 'Agente') selected @endif 'Agente'>Agente</option>
-                            <option value="Oficial ayudante" @if ($isa->jerarquia_DAI == 'Oficial ayudante') selected @endif 'Oficial ayudante'>Oficial ayudante</option>
-                            <option value="Comisario" @if ($isa->jerarquia_DAI == 'Comisario') selected @endif 'Comisario'>Comisario</option>
+                          <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquía</label>
+                          <x-adminlte-select2 name="jerarquia_DGAJ" class="select2 form-select">
+                              <option value="">Seleccionar la jerarquía</option>
+                              @foreach($jerarquias as $jerarquia)
+                                  <option value="{{ $jerarquia->nombre_jer }}" @if ($isa->jerarquia_DGAJ == $jerarquia->nombre_jer) selected @endif>
+                                      {{ $jerarquia->nombre_jer }}
+                                  </option>
+                              @endforeach
                           </x-adminlte-select2>
-                        </div>
+                      </div>
+
 
               </div> 
 
@@ -534,7 +539,7 @@
               </div>
               @endcan
 
-              @can('EditarSumarioDGAL')
+              @can('EditarIsaDGAL')
               
                   <div class="hidden-view">
                     <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Infractores" multiple>
@@ -572,14 +577,16 @@
 
 
                         <div class="col-md-6 select2-primary">
-                          <label class="form-label" for="multicol-jerarquia_AL">Jerarquia</label>
-                          <x-adminlte-select2  name="jerarquia_AL" value="{{ $isa-> jerarquia_AL }}" class="select2 form-select">
-                            <option value="">Seleccionar la jerarquia</option>
-                            <option value="Agente" @if ($isa->jerarquia_AL == 'Agente') selected @endif 'Agente'>Agente</option>
-                            <option value="Oficial ayudante" @if ($isa->jerarquia_AL == 'Oficial ayudante') selected @endif 'Oficial ayudante'>Oficial ayudante</option>
-                            <option value="Comisario" @if ($isa->jerarquia_AL == 'Comisario') selected @endif 'Comisario'>Comisario</option>
+                          <label class="form-label" for="multicol-jerarquia_AL">Jerarquía</label>
+                          <x-adminlte-select2 name="jerarquia_AL" class="select2 form-select">
+                              <option value="">Seleccionar la jerarquía</option>
+                              @foreach($jerarquias as $jerarquia)
+                                  <option value="{{ $jerarquia->nombre_jer }}" @if ($isa->jerarquia_AL == $jerarquia->nombre_jer) selected @endif>
+                                      {{ $jerarquia->nombre_jer }}
+                                  </option>
+                              @endforeach
                           </x-adminlte-select2>
-                        </div>
+                      </div>
 
               </div> 
 
@@ -654,7 +661,7 @@
               </div>
               @endcan
 
-              @can('EditarSumarioDGRRHH')
+              @can('EditarIsaDGRRHH')
               
                  <div class="hidden-view">
                     <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Infractores" multiple>
@@ -692,12 +699,14 @@
 
 
                     <div class="col-md-6 select2-primary">
-                      <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquia</label>
-                      <x-adminlte-select2  name="jerarquia_DGRRHH" value="{{ $isa-> jerarquia_DGRRHH}}" class="select2 form-select" >
-                        <option value="">Seleccionar la jerarquia</option>
-                        <option value="Agente" @if ($isa->jerarquia_DGRRHH == 'Agente') selected @endif 'Agente'>Agente</option>
-                        <option value="Oficial ayudante" @if ($isa->jerarquia_DGRRHH == 'Oficial ayudante') selected @endif 'Oficial ayudante'>Oficial ayudante</option>
-                        <option value="Comisario" @if ($isa->jerarquia_DGRRHH == 'Comisario') selected @endif 'Comisario'>Comisario</option>
+                      <label class="form-label" for="multicol-jerarquia_DGRRHH">Jerarquía</label>
+                      <x-adminlte-select2 name="jerarquia_DGRRHH" class="select2 form-select">
+                          <option value="">Seleccionar la jerarquía</option>
+                          @foreach($jerarquias as $jerarquia)
+                              <option value="{{ $jerarquia->nombre_jer }}" @if ($isa->jerarquia_DGRRHH == $jerarquia->nombre_jer) selected @endif>
+                                  {{ $jerarquia->nombre_jer }}
+                              </option>
+                          @endforeach
                       </x-adminlte-select2>
                     </div>
 
