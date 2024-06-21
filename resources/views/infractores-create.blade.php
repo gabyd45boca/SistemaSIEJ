@@ -55,13 +55,15 @@
             </div>
 
             <div class="col-md-6 select2-primary">
-                  <label class="form-label" for="multicol-jerarquia_inf">Jerarquia</label>
-                  <x-adminlte-select2  name="jerarquia_inf" value="{{old('jerarquia_inf')}}" class="select2 form-select" >
-                    <option value="">Seleccionar la jerarquia</option>
-                    <option value="Agente">Agente</option>
-                    <option value="Oficial ayudante">Oficial ayudante</option>
-                    <option value="Comisario">Comisario</option>
-                  </x-adminlte-select2>
+                    <label class="form-label" for="multicol-jerarquia_inf">Jerarquía</label>
+                    <x-adminlte-select2 name="jerarquia_inf" class="select2 form-select">
+                        <option value="">Seleccionar la jerarquía</option>
+                        @foreach($jerarquias as $jerarquia)
+                            <option value="{{ $jerarquia->nombre_jer }}" {{ old('jerarquia_inf') == $jerarquia->nombre_jer ? 'selected' : '' }}>
+                                {{ $jerarquia->nombre_jer }}
+                            </option>
+                        @endforeach
+                    </x-adminlte-select2>
             </div>
 
             <div class="col-md-6">

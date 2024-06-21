@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Infractor;
 use App\Models\Dependencia;
+use App\Models\Jerarquia;
+
 
 class InfractorsController extends Controller
 {
@@ -28,8 +30,9 @@ class InfractorsController extends Controller
 
         $infractores = Infractor::all();
         $dependencias = Dependencia::all();
+        $jerarquias = Jerarquia::all();
        
-        return view('infractores-create',compact('infractores','dependencias'));
+        return view('infractores-create',compact('jerarquias','infractores','dependencias'));
     }
 
 
@@ -44,8 +47,10 @@ class InfractorsController extends Controller
 
       $infractor = Infractor::find($infractor_id);
       $dependencias = Dependencia::all();
+      $jerarquias = Jerarquia::all();
+
      
-      return view('infractores-edit',compact('infractor','dependencias'));
+      return view('infractores-edit',compact('jerarquias','infractor','dependencias'));
   }
 
     public function store(Request $request){

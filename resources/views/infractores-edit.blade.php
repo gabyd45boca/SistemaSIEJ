@@ -56,16 +56,20 @@
                             @endforeach
                         </select>
                     </div>
+                
 
                     <div class="col-md-6 select2-primary">
-                          <label class="form-label" for="multicol-jerarquia_inf">Jerarquia</label>
-                          <x-adminlte-select2  name="jerarquia_inf" value="{{ $infractor-> jerarquia_inf }}" class="select2 form-select" >
-                            <option value="">Seleccionar la jerarquia</option>
-                            <option value="agente" @if ($infractor->jerarquia_inf == 'agente') selected @endif 'agente'>agente</option>
-                            <option value="oficial_ayudante" @if ($infractor->jerarquia_inf == 'oficial ayudante') selected @endif 'oficial ayudante'>oficial ayudante</option>
-                            <option value="comisario" @if ($infractor->jerarquia_inf == 'comisario') selected @endif 'comisario'>comisario</option>
-                          </x-adminlte-select2>
+                      <label class="form-label" for="multicol-jerarquia_inf">Jerarquía</label>
+                      <x-adminlte-select2 name="jerarquia_inf" class="select2 form-select">
+                          <option value="">Seleccionar la jerarquía</option>
+                          @foreach($jerarquias as $jerarquia)
+                              <option value="{{ $jerarquia->nombre_jer }}" @if ($infractor->jerarquia_inf == $jerarquia->nombre_jer) selected @endif>
+                                  {{ $jerarquia->nombre_jer }}
+                              </option>
+                          @endforeach
+                      </x-adminlte-select2>
                     </div>
+ 
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-retirado">Retirado</label>
