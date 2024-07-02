@@ -44,9 +44,12 @@ class SumarisimasController extends Controller
         $sumarisima = Sumarisima::find($sumarisima_id);
 
         $infractores = Infractor::all();
-        $infractores_ids = $sumarisima->infractors()->pluck('infractors.id'); 
+        $infractores_ids = $sumarisima->infractors()->pluck('infractors.id');
+
+        $motivos = Motivo::all();
+        $motivos_ids = $sumarisima->motivos()->pluck('motivos.id');        
        
-        return view('sumarisimas-show',compact('sumarisima','infractores','infractores_ids'));
+        return view('sumarisimas-show',compact('motivos','motivos_ids','sumarisima','infractores','infractores_ids'));
     }
 
     public function edit($sumarisima_id){
@@ -59,17 +62,20 @@ class SumarisimasController extends Controller
       $jerarquias = Jerarquia::all();
 
       $infractores = Infractor::all();
-      $infractores_ids = $sumarisima->infractors()->pluck('infractors.id'); 
+      $infractores_ids = $sumarisima->infractors()->pluck('infractors.id');
+      
+      $motivos = Motivo::all();
+      $motivos_ids = $sumarisima->motivos()->pluck('motivos.id');      
      
-      return view('sumarisimas-edit',compact( 'jerarquias','tipo_denuncias','motivos','sumarisima','infractores','infractores_ids','dependencias'));
-  }
+      return view('sumarisimas-edit',compact('motivos','motivos_ids','jerarquias','tipo_denuncias','motivos','sumarisima','infractores','infractores_ids','dependencias'));
+    }
 
     public function store(Request $request)  {
         $validator = $request -> validate ([
           'num_dj'=> 'required|unique:sumarisimas',
           'fecha_ingreso' => 'required',
           'fojas' =>'required',
-          'motivo' => 'required',
+         // 'motivo' => 'required',
           'lugar_proced'=> 'required',
           'tipo_denuncia' => 'required',
                         
@@ -83,7 +89,7 @@ class SumarisimasController extends Controller
         $sumarisima->fecha_inicio = $request->fecha_inicio;
         $sumarisima->fojas  = $request->fojas;
         $sumarisima->tipo_denuncia  = $request->tipo_denuncia;
-        $sumarisima->motivo = $request->motivo;
+       // $sumarisima->motivo = $request->motivo;
         $sumarisima->primera_interv  = $request->primera_interv;
         $sumarisima->fecha_pase  = $request->fecha_pase;
         $sumarisima->observaciones  = $request->observaciones;
@@ -141,8 +147,9 @@ class SumarisimasController extends Controller
                            
         $sumarisima->save();
 
+        $sumarisima->motivos()->attach($request->input('nombre_mot'));
         $sumarisima->infractors()->attach($request->input('apellido_nombre_inf'));
-
+      
         return redirect()->route('sumarisimas')->with('message','Registrado correctamente!');
     
       }
@@ -153,7 +160,7 @@ class SumarisimasController extends Controller
         'num_dj'=> 'required',
         'fecha_ingreso' => 'required',
         'fojas' =>'required',
-        'motivo' => 'required',
+        //'motivo' => 'required',
         'lugar_proced'=> 'required',
         'tipo_denuncia' => 'required',
         
@@ -167,7 +174,7 @@ class SumarisimasController extends Controller
         $sumarisima->fecha_inicio = $request->fecha_inicio;
         $sumarisima->fojas  = $request->fojas;
         $sumarisima->tipo_denuncia  = $request->tipo_denuncia;
-        $sumarisima->motivo = $request->motivo;
+       // $sumarisima->motivo = $request->motivo;
         $sumarisima->primera_interv  = $request->primera_interv;
         $sumarisima->fecha_pase  = $request->fecha_pase;
         $sumarisima->observaciones  = $request->observaciones;
@@ -225,9 +232,9 @@ class SumarisimasController extends Controller
        
        $sumarisima->save();
 
-       $sumarisima->infractors()->sync($request->input('apellido_nombre_inf'));  
-    
-      
+       $sumarisima->motivos()->sync($request->input('nombre_mot'));  
+       $sumarisima->infractors()->sync($request->input('apellido_nombre_inf'));
+            
        return redirect()->route('sumarisimas')->with('message','Actualizado correctamente!');
       }
 

@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('motivos', function (Blueprint $table) {
-            $table->id();
+           // $table->id();
+
+            $table->bigIncrements('id');
+            
             $table->string('codigo_mot')->unique(); 
             $table->string('nombre_mot');
 

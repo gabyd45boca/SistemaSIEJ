@@ -118,8 +118,13 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-motivo">Motivo</label>
-                      <span class="form-control" id="multicol-motivo">{{ $sumarisima-> motivo }}</span>
+                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                          <br>
+                          <span class="card" id="multicol-nombre_mot">
+                              @foreach ($sumarisima->motivos as $motivo)
+                              {{$motivo->nombre_mot}} 
+                              @endforeach
+                          </span>
                     </div>
 
                     <div class="col-md-6">
@@ -325,7 +330,7 @@
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-dependen_SS">Dependencia</label>
                           <span class="form-control" id="multicol-dependen_SS">{{ $sumarisima->dependen_SS}}</span>
-                        </div>
+                        </  |div>
 
                         <div class="col-md-6 select2-primary">
                           <label class="form-label" for="multicol-jerarquia_SS">Jerarquia</label>
@@ -335,7 +340,7 @@
               </div> 
 
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">8. Movimientos y sugerencias del instructor de Asesoria Letrada</h4>
+                  <h4 class="fw-normal">8. Movimientos y sugerencias del instructor de la Secretaria de Seguridad</h4>
               <div class="row g-3">
 
                     <div class="col-md-6">
@@ -475,6 +480,7 @@
 <script>
   $(document).ready(()=>{});
   $('#apellido_nombre_inf').selectpicker('val',@json($infractores_ids));
+  $('#nombre_mot').selectpicker('val',@json($motivos_ids));
 </script>
 
 @endsection

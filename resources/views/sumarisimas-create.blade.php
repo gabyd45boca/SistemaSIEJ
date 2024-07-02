@@ -82,15 +82,20 @@
 
 
             <div class="col-md-6">
-                <label class="form-label" for="multicol-motivo">Motivo</label>
-                <x-adminlte-select2 name="motivo" required>
-                    <option value="">Seleccionar el tipo</option>
-                    @foreach($motivos as $motivo)
-                        <option value="{{ $motivo->nombre_mot }}" {{ old('motivo') == $motivo->nombre_mot ? 'selected' : '' }}>
-                            {{ $motivo->nombre_mot }}
-                        </option>
-                    @endforeach
-                </x-adminlte-select2>
+              <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+              <x-adminlte-select name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" title="Seleccionar motivos" data-style="btn-primary" multiple required>
+                  @foreach ($motivos as $motivo) 
+                      <option value="{{$motivo->id}}" {{ collect(old('motivo'))->contains($motivo->id) ? 'selected' : '' }}>
+                          {{$motivo->nombre_mot}} 
+                      </option>
+                  @endforeach
+              </x-adminlte-select>
+
+              @if ($errors->has('motivo'))
+                  <span class="text-danger">
+                      <strong>{{$errors->first('motivo') }}</strong>
+                  </span>
+              @endif  
             </div>
 
 

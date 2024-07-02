@@ -27,4 +27,9 @@ class Infractor extends Model
 
         return $this->belongsToMany(Isa::class)->withTimestamps();
     }
+
+    public function sanciones(){
+
+        return $this->belongsToMany(Sancione::class)->withTimestamps();
+    }
 }

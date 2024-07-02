@@ -13,20 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('infractor_sumario', function (Blueprint $table) {
+        Schema::create('motivo_isa', function (Blueprint $table) {
             //$table->id();
-
             $table->bigIncrements('id');
           
 
-             //sumario  
-             $table->unsignedBigInteger('sumario_id');
-             $table->foreign('sumario_id')->references('id')->on('sumarios')->onDelete('cascade');
-                        
-             //infractor   
-             $table->unsignedBigInteger('infractor_id');
-             $table->foreign('infractor_id')->references('id')->on('infractors')->onDelete('cascade');
- 
+            //isa  
+            $table->unsignedBigInteger('isa_id');
+            $table->foreign('isa_id')->references('id')->on('isas')->onDelete('cascade');
+           
+            //motivos   
+            $table->unsignedBigInteger('motivo_id');
+            $table->foreign('motivo_id')->references('id')->on('motivos')->onDelete('cascade');
+           
             $table->timestamps();
         });
     }
@@ -38,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('infractor_sumario');
+        Schema::dropIfExists('motivo_isa');
     }
 };

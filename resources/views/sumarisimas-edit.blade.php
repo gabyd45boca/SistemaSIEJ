@@ -43,7 +43,7 @@
               <x-adminlte-input type="hidden" name="fecha_inicio"    value="{{$sumarisima->fecha_inicio}}"/>
               <x-adminlte-input type="hidden" name="fojas"   value="{{$sumarisima->fojas}}"/> 
               <x-adminlte-input type="hidden" name="tipo_denuncia"    value="{{$sumarisima->tipo_denuncia}}"/> 
-              <x-adminlte-input type="hidden" name="motivo"  value="{{$sumarisima->motivo}}"/> 
+           
               <x-adminlte-input type="hidden" name="primera_interv"  value="{{$sumarisima->primera_interv}}"/>
               <x-adminlte-input type="hidden" name="fecha_pase"  value="{{$sumarisima->fecha_pase}}"/> 
               <x-adminlte-input type="hidden" name="observaciones"  value="{{$sumarisima->observaciones}}"/> 
@@ -188,24 +188,25 @@
                         <x-adminlte-select2 name="tipo_denun" required>
                             <option value="">Seleccionar el tipo</option>
                             @foreach($tipo_denuncias as $tipo_denuncia)
-                                <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ $sumarisima->tipo_denun == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
+                                <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ $sumarisima->tipo_denuncia == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
                                     {{ $tipo_denuncia->nombre_tipoDen}}
                                 </option>
                             @endforeach
                         </x-adminlte-select2>
                     </div>
-       
-
+                
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-motivo">Motivo</label>
-                        <x-adminlte-select2 name="motivo" required>
-                            <option value="">Seleccionar el tipo</option>
-                            @foreach($motivos as $motivo)
-                                <option value="{{ $motivo->nombre_mot }}" {{ $sumarisima->motivo == $motivo->nombre_mot ? 'selected' : '' }}>
-                                    {{ $motivo->nombre_mot }}
-                                </option>
-                            @endforeach
-                        </x-adminlte-select2>
+                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                          <x-adminlte-select  name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Motivos" multiple required >
+                              @foreach ($motivos as $motivo) 
+                              <option value="{{$motivo->id}}">{{$motivo->nombre_mot}}</option>
+                              @endforeach
+                          </x-adminlte-select>
+                          @if ($errors->has('nombre_mot'))
+                          <span class="text-danger">
+                              <strong>{{$errors->first('nombre_mot') }}</strong>
+                          </span>
+                          @endif  
                     </div>
 
                     <div class="col-md-6">
@@ -682,6 +683,7 @@
 <script>
   $(document).ready(()=>{});
   $('#apellido_nombre_inf').selectpicker('val',@json($infractores_ids));
+  $('#nombre_mot').selectpicker('val',@json($motivos_ids));
 </script>
 
 @endsection

@@ -121,10 +121,16 @@
                       <label class="form-label" for="multicol-infraccion">Infraccion</label>
                       <span class="form-control" id="multicol-infraccion">{{ $sumario-> infraccion }}</span>
                     </div>
+                  
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-motivo">Motivo</label>
-                      <span class="form-control" id="multicol-motivo">{{ $sumario-> motivo }}</span>
+                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                          <br>
+                          <span class="card" id="multicol-nombre_mot">
+                              @foreach ($sumario->motivos as $motivo)
+                              {{$motivo->nombre_mot}} 
+                              @endforeach
+                          </span>
                     </div>
 
                     <div class="col-md-6">
@@ -525,6 +531,7 @@
 <script>
   $(document).ready(()=>{});
   $('#apellido_nombre_inf').selectpicker('val',@json($infractores_ids));
+  $('#nombre_mot').selectpicker('val',@json($motivos_ids));
 </script>
 
 @endsection

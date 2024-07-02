@@ -78,34 +78,39 @@
             </div>
 
             <div class="col-md-6">
-                <label class="form-label" for="multicol-motivo">Motivo</label>
-                <x-adminlte-select2 name="motivo" required>
-                    <option value="">Seleccionar el tipo</option>
-                    @foreach($motivos as $motivo)
-                        <option value="{{ $motivo->nombre_mot }}" {{ old('motivo') == $motivo->nombre_mot ? 'selected' : '' }}>
-                            {{ $motivo->nombre_mot }}
+              <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+              <x-adminlte-select name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" title="Seleccionar motivos" data-style="btn-primary" multiple required>
+                  @foreach ($motivos as $motivo) 
+                      <option value="{{$motivo->id}}" {{ collect(old('motivo'))->contains($motivo->id) ? 'selected' : '' }}>
+                          {{$motivo->nombre_mot}} 
+                      </option>
+                  @endforeach
+              </x-adminlte-select>
+
+              @if ($errors->has('motivo'))
+                  <span class="text-danger">
+                      <strong>{{$errors->first('motivo') }}</strong>
+                  </span>
+              @endif  
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="form-label" for="multicol-extracto">Extracto</label>
+                <input type="text" name="extracto" id="multicol-extracto" class="form-control" value="{{old('extracto')}}" placeholder="Extracto" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label" for="multicol-tipo_denun">Tipo de Denuncia</label>
+                <x-adminlte-select2 name="tipo_denun" required>
+                    <option value="" {{ old('tipo_denun') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
+                    @foreach($tipo_denuncias as $tipo_denuncia)
+                        <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ old('tipo_denun') == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
+                            {{ $tipo_denuncia->nombre_tipoDen }}
                         </option>
                     @endforeach
                 </x-adminlte-select2>
             </div>
-
-
-               <div class="col-md-6">
-                   <label class="form-label" for="multicol-extracto">Extracto</label>
-                   <input type="text" name="extracto" id="multicol-extracto" class="form-control" value="{{old('extracto')}}" placeholder="Extracto" />
-               </div>
-
-               <div class="col-md-6">
-                    <label class="form-label" for="multicol-tipo_denun">Tipo de Denuncia</label>
-                    <x-adminlte-select2 name="tipo_denun" required>
-                        <option value="" {{ old('tipo_denun') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
-                        @foreach($tipo_denuncias as $tipo_denuncia)
-                            <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ old('tipo_denun') == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
-                                {{ $tipo_denuncia->nombre_tipoDen }}
-                            </option>
-                        @endforeach
-                    </x-adminlte-select2>
-               </div>
 
           
             <div class="col-md-6">

@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
     //sumarios///////////////////////////////////
     ///////////////////////////////////////////
 
+    Route::get('/sumarios/filtrado', [App\Http\Controllers\SumariosController::class,'filtrado'])->name('sumarios.filtrado');
+
     Route::get('/sumarios', [App\Http\Controllers\SumariosController::class,'index'])->name('sumarios');
     Route::get('/sumarios/create', [App\Http\Controllers\SumariosController::class,'create'])->name('sumarios.create');
     Route::post('/sumarios/store',[App\Http\Controllers\SumariosController::class,'store'])->name('sumarios.store');
@@ -57,7 +59,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/sumarios/destroy/{sumario_id}',[App\Http\Controllers\SumariosController::class,'destroy'])->name('sumarios.destroy');
     
     Route::get('/sumarios/consulta/',[App\Http\Controllers\SumariosController::class,'consulta'])->name('sumarios.consulta');
-    Route::get('home/',[App\Http\Controllers\SumariosController::class,'NumGenerales'])->name('sumarios.NumGenerales');
+    //Route::get('home/',[App\Http\Controllers\SumariosController::class,'NumGenerales'])->name('sumarios.NumGenerales');
+    
     //sumarisimas///////////////////////////
     ////////////////////////////////////////
 
@@ -124,4 +127,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/sancion/edit/{sancion_id}',[App\Http\Controllers\SancionController::class,'edit'])->name('sancion.edit');    
     Route::post('/sancion/update',[App\Http\Controllers\SancionController::class,'update'])->name('sancion.update');  
     Route::delete('/sancion/destroy/{sancion_id}',[App\Http\Controllers\SancionController::class,'destroy'])->name('sancion.destroy');
+    
 });

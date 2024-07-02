@@ -8,6 +8,39 @@
 
 @section('content')
 
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+               @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+     @endif
+
+     <form method="GET" action="/sumarios/filtrado">
+        <div class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label">Fecha Inicial</label>
+                <x-adminlte-input type="date" name="fechaInicial" value="{{ request('fechaInicial', old('fechaInicial')) }}" class="form-control"/>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Fecha Final</label>
+                <x-adminlte-input type="date" name="fechaFinal" value="{{ request('fechaFinal', old('fechaFinal')) }}" class="form-control"/>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+            </div>
+            <div class="col-md-2">
+                <a href="/sumarios" class="btn btn-secondary w-100">Restablecer</a>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
 <!-- Basic Bootstrap Table --> 
 <div class="card">
   <h5 class="card-header">Lista de Sumarios</h5>

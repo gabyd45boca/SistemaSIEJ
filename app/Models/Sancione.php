@@ -13,4 +13,9 @@ class Sancione extends Model
 
         return $this->belongsToMany(Infractor::class)->withTimestamps();
     }
+
+    public function motivos(){
+
+        return $this->belongsToMany(Motivo::class)->withTimestamps();
+    }
 }

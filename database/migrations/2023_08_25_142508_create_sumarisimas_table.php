@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('fecha_inicio')->nullable();
             $table->integer('fojas');
             $table->string('tipo_denuncia')->require();//poner un select para filtrar por aqui las consultas
-            $table->string('motivo')->require();//poner un select para filtrar por aqui las consultas
+          //  $table->string('motivo')->require();//poner un select para filtrar por aqui las consultas
             $table->text('primera_interv')->nullable();
             $table->date('fecha_pase')->nullable();
             $table->text('observaciones')->nullable();

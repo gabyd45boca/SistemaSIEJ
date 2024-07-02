@@ -44,7 +44,7 @@
               <x-adminlte-input type="hidden" name="fecha_inicio"    value="{{$sumario->fecha_inicio}}"/>
               <x-adminlte-input type="hidden" name="fojas"   value="{{$sumario->fojas}}"/> 
               <x-adminlte-input type="hidden" name="infraccion"    value="{{$sumario->infraccion}}"/> 
-              <x-adminlte-input type="hidden" name="motivo"  value="{{$sumario->motivo}}"/> 
+            
               <x-adminlte-input type="hidden" name="tipo_denun"  value="{{$sumario->tipo_denun}}"/>
               <x-adminlte-input type="hidden" name="fecha_movimiento"  value="{{$sumario->fecha_movimiento}}"/> 
               <x-adminlte-input type="hidden" name="destino_pase"  value="{{$sumario->destino_pase}}"/> 
@@ -210,15 +210,17 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-motivo">Motivo</label>
-                        <x-adminlte-select2 name="motivo" required>
-                            <option value="">Seleccionar el tipo</option>
-                            @foreach($motivos as $motivo)
-                                <option value="{{ $motivo->nombre_mot }}" {{ $sumario->motivo == $motivo->nombre_mot ? 'selected' : '' }}>
-                                    {{ $motivo->nombre_mot }}
-                                </option>
-                            @endforeach
-                        </x-adminlte-select2>
+                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                          <x-adminlte-select  name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Motivos" multiple required >
+                              @foreach ($motivos as $motivo) 
+                              <option value="{{$motivo->id}}">{{$motivo->nombre_mot}}</option>
+                              @endforeach
+                          </x-adminlte-select>
+                          @if ($errors->has('nombre_mot'))
+                          <span class="text-danger">
+                              <strong>{{$errors->first('nombre_mot') }}</strong>
+                          </span>
+                          @endif  
                     </div>
 
                     <div class="col-md-6">
@@ -798,6 +800,7 @@
 <script>
   $(document).ready(()=>{});
   $('#apellido_nombre_inf').selectpicker('val',@json($infractores_ids));
+  $('#nombre_mot').selectpicker('val',@json($motivos_ids));
 </script>
 
 @endsection

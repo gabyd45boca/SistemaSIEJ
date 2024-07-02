@@ -25,8 +25,9 @@ class SumariosController extends Controller
     public function index(){
 
         $sumarios = Sumario::all();
+        $motivos = Motivo::all();
         
-        return view('sumarios',compact('sumarios'));
+        return view('sumarios',compact('sumarios','motivos'));
     }
 
     public function create(){
@@ -47,41 +48,57 @@ class SumariosController extends Controller
         $sumario = Sumario::find($sumario_id);
 
         $infractores = Infractor::all();
-        $infractores_ids = $sumario->infractors()->pluck('infractors.id'); 
+        $infractores_ids = $sumario->infractors()->pluck('infractors.id');
+        
+        $motivos = Motivo::all();
+        $motivos_ids = $sumario->motivos()->pluck('motivos.id');   
        
-        return view('sumarios-show',compact('sumario','infractores','infractores_ids'));
+        return view('sumarios-show',compact('motivos','motivos_ids','sumario','infractores','infractores_ids'));
     }
 
     public function consulta(){
+
       //$sumarios = Sumario::where('motivo','=','Violencia de genero')->get();
       //$sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-      $sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-      /*$infractores = Infractor::all();
-      $infractores_ids = $sumario->infractors()->pluck('infractors.id');*/ 
-     
-      return view('sumarios-consulta',compact('sumarios'));
- 
+      $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
+      $sumarios2 = Sumario::where('motivo','LIKE','AUSENTISMO LABORAL')->get();
+      $sumarios3 = Sumario::where('motivo','LIKE','PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA')->get();
+      $sumarios4 = Sumario::where('motivo','LIKE','SINIESTRO VIAL')->get();
+      $sumarios5 = Sumario::where('motivo','LIKE','ABUSO SEXUAL')->get();
+      $sumarios6 = Sumario::where('motivo','LIKE','EBRIEDAD')->get();
+      $sumarios7 = Sumario::where('motivo','LIKE','IRREGULARIDADES EN SERVICIO ADICIONAL')->get();
+      $sumarios8 = Sumario::where('motivo','LIKE','IRREGULARIDADES CON COMBUSTIBLE')->get();
+      $sumarios9 = Sumario::where('motivo','LIKE','USO INDEBIDO DEL CELULAR')->get();
+      $sumarios10 = Sumario::where('motivo','LIKE','USO INDEBIDO DE ARMA REGLAMENTARIA')->get();
+      $sumarios11 = Sumario::where('motivo','LIKE','SUPUESTA INFRACCION AL ART. 205 DEL C.P.A')->get();
+      $sumarios12 = Sumario::where('motivo','LIKE','OTRO')->get();
+
+      $sumarios = Sumario::all();
+         
+      return view('sumarios-consulta',compact('sumarios','sumarios1','sumarios2','sumarios3','sumarios4','sumarios5',
+                                 'sumarios6','sumarios7','sumarios8','sumarios9','sumarios10',
+                                 'sumarios11','sumarios12'));
     }
 
 
-    public function NumGenerales(){
-
-      //$sumarios = Sumario::where('motivo','=','Violencia de genero')->get();
-      //$sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-      $sumarios1 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-      $sumarios2 = Sumario::where('motivo','LIKE','Perdida Arma Reglamentaria')->get();
-      $sumarios3 = Sumario::where('motivo','LIKE','Falta al servicio')->get();
-      $sumarios4 = Sumario::where('motivo','LIKE','Ebriedad')->get();
-      $sumarios5 = Sumario::where('motivo','LIKE','Ausentismo Laboral')->get();
-      //$sumarios6 = Sumario::where('motivo','LIKE','Otro')->get();
-      // $sumarios7 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-      // $sumarios8 = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-      /*$infractores = Infractor::all();
-      $infractores_ids = $sumario->infractors()->pluck('infractors.id');*/ 
-    
-      return view('home',compact('sumarios1','sumarios2','sumarios3','sumarios4',
-      'sumarios5'));
+    public function filtrado(Request $request, Motivo $motivos){
       
+      $validator = $request -> validate ([
+        'fechaInicial' => 'required',
+        'fechaFinal' => 'required',
+                                                
+        ]);
+ 
+      $fechaInicial = $request->fechaInicial;
+      $fechaFinal = $request->fechaFinal;
+      $motivo = $request->motivo;
+
+      $sumarios = Sumario::whereDate('fecha_ingreso','>=',$fechaInicial)
+                          ->whereDate('fecha_ingreso','<=',$fechaFinal)
+                       //   ->where('motivo','LIKE',$motivo)
+                          ->get();
+      
+      return view('sumarios',compact('sumarios'));                    
     }
 
 
@@ -94,10 +111,14 @@ class SumariosController extends Controller
       $jerarquias = Jerarquia::all();
 
       $infractores = Infractor::all();
-      $infractores_ids = $sumario->infractors()->pluck('infractors.id'); 
+      $infractores_ids = $sumario->infractors()->pluck('infractors.id');
+      
+      $motivos = Motivo::all();
+      $motivos_ids = $sumario->motivos()->pluck('motivos.id');  
      
-      return view('sumarios-edit',compact('jerarquias','tipo_denuncias','motivos','sumario','infractores','infractores_ids','dependencias'));
+      return view('sumarios-edit',compact('motivos','motivos_ids','jerarquias','tipo_denuncias','motivos','sumario','infractores','infractores_ids','dependencias'));
     }
+    
 
     public function store(Request $request){
 
@@ -111,7 +132,7 @@ class SumariosController extends Controller
             'fecha_inicio' => 'required',
             'fojas' =>'required',
             'infraccion' => 'required',
-            'motivo' => 'required',
+          //  'motivo' => 'required',
             'tipo_denun' => 'required',
             'fecha_movimiento' =>'required' ,
             'destino_pase' =>'required' ,
@@ -128,7 +149,7 @@ class SumariosController extends Controller
             $sumario->fecha_inicio = $request->fecha_inicio;
             $sumario->fojas = $request->fojas;
             $sumario->infraccion = $request->infraccion;
-            $sumario->motivo = $request->motivo;
+           // $sumario->motivo = $request->motivo;
             $sumario->extracto = $request->extracto;
             $sumario->tipo_denun = $request->tipo_denun;
             $sumario->fecha_movimiento = $request->fecha_movimiento;
@@ -196,6 +217,7 @@ class SumariosController extends Controller
             $sumario->save();
 
             //dd($request->all());
+            $sumario->motivos()->attach($request->input('nombre_mot'));
             $sumario->infractors()->attach($request->input('apellido_nombre_inf'));
                           
             return redirect()->route('sumarios')->with('message','Registrado correctamente!');
@@ -212,7 +234,7 @@ class SumariosController extends Controller
           'fecha_inicio' => 'required',
           'fojas' =>'required',
           'infraccion' => 'required',
-          'motivo' => 'required',
+        //  'motivo' => 'required',
           'tipo_denun' => 'required',
           'fecha_movimiento' =>'required' ,
           'destino_pase' =>'required' ,
@@ -230,7 +252,7 @@ class SumariosController extends Controller
         $sumario->fecha_inicio = $request->fecha_inicio;
         $sumario->fojas = $request->fojas;
         $sumario->infraccion = $request->infraccion;
-        $sumario->motivo = $request->motivo; 
+      //  $sumario->motivo = $request->motivo; 
         $sumario->extracto = $request->extracto;
         $sumario->tipo_denun = $request->tipo_denun;
         $sumario->fecha_movimiento = $request->fecha_movimiento;
@@ -300,6 +322,7 @@ class SumariosController extends Controller
 
         //$sumario->update($request->all());
 
+        $sumario->motivos()->sync($request->input('nombre_mot'));  
         $sumario->infractors()->sync($request->input('apellido_nombre_inf'));  
 
         return redirect()->route('sumarios')->with('message','Actualizado correctamente!');
