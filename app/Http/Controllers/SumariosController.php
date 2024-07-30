@@ -26,8 +26,9 @@ class SumariosController extends Controller
 
         $sumarios = Sumario::all();
         $motivos = Motivo::all();
+        $infractores = Infractor::all();
         
-        return view('sumarios',compact('sumarios','motivos'));
+        return view('sumarios',compact('infractores','sumarios','motivos'));
     }
 
     public function create(){
@@ -57,24 +58,68 @@ class SumariosController extends Controller
     }
 
     public function consulta(){
+    
+     /* $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
+     
 
-      //$sumarios = Sumario::where('motivo','=','Violencia de genero')->get();
-      //$sumarios = Sumario::where('motivo','LIKE','Violencia de genero')->get();
-      $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
-      $sumarios2 = Sumario::where('motivo','LIKE','AUSENTISMO LABORAL')->get();
-      $sumarios3 = Sumario::where('motivo','LIKE','PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA')->get();
-      $sumarios4 = Sumario::where('motivo','LIKE','SINIESTRO VIAL')->get();
-      $sumarios5 = Sumario::where('motivo','LIKE','ABUSO SEXUAL')->get();
-      $sumarios6 = Sumario::where('motivo','LIKE','EBRIEDAD')->get();
-      $sumarios7 = Sumario::where('motivo','LIKE','IRREGULARIDADES EN SERVICIO ADICIONAL')->get();
-      $sumarios8 = Sumario::where('motivo','LIKE','IRREGULARIDADES CON COMBUSTIBLE')->get();
-      $sumarios9 = Sumario::where('motivo','LIKE','USO INDEBIDO DEL CELULAR')->get();
-      $sumarios10 = Sumario::where('motivo','LIKE','USO INDEBIDO DE ARMA REGLAMENTARIA')->get();
-      $sumarios11 = Sumario::where('motivo','LIKE','SUPUESTA INFRACCION AL ART. 205 DEL C.P.A')->get();
-      $sumarios12 = Sumario::where('motivo','LIKE','OTRO')->get();
+      $motivosBuscados = ['VIOLENCIA DE GENERO', 'ROBO', 'FRAUDE'];
+
+      $sumarios = Sumario::whereHas('motivos', function($query) use ($motivosBuscados) {
+          $query->whereIn('nombre_mot', $motivosBuscados);
+      })->get();*/
+
+
+      $sumarios1 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'VIOLENCIA DE GENERO');
+       })->get();
+
+      $sumarios2 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'AUSENTISMO LABORAL');
+       })->get();
+
+      $sumarios3 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA');
+       })->get();
+      
+      $sumarios4 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'SINIESTRO VIAL');
+       })->get();
+          
+       $sumarios5 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'ABUSO SEXUAL');
+       })->get();
+
+      $sumarios6 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'EBRIEDAD');
+       })->get();
+
+      $sumarios7 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES EN SERVICIO ADICIONAL');
+       })->get();
+      
+      $sumarios8 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES CON COMBUSTIBLE');
+       })->get();
+
+       $sumarios9 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DEL CELULAR');
+       })->get();
+
+      $sumarios10 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DE ARMA REGLAMENTARIA');
+       })->get();
+
+      $sumarios11 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'SUPUESTA INFRACCION AL ART. 205 DEL C.P.A');
+       })->get();
+      
+      $sumarios12 = Sumario::whereHas('motivos', function($query) {
+        $query->where('nombre_mot', 'LIKE', 'OTRO');
+       })->get();
+               
 
       $sumarios = Sumario::all();
-         
+        
       return view('sumarios-consulta',compact('sumarios','sumarios1','sumarios2','sumarios3','sumarios4','sumarios5',
                                  'sumarios6','sumarios7','sumarios8','sumarios9','sumarios10',
                                  'sumarios11','sumarios12'));

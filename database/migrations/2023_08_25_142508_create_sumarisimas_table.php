@@ -56,12 +56,12 @@ return new class extends Migration
             $table->string('destin_pase_AL')->nullable();
             $table->string('obs_pase_AL')->nullable();
 
-            //personal instructor secreteria seguridad
+            //personal instructor secreteria gral
             $table->string('apellido_nombre_SS')->nullable();
             $table->string('leg_pers_SS')->nullable();
             $table->string('dependen_SS')->nullable(); //poner un select  filtrar por aqui las consultas        
             $table->string('jerarquia_SS')->nullable(); //poner un select  filtrar por aqui las consultas
-            //carga movimientos secreteria seguridad
+            //carga movimientos secreteria gral
             $table->text('reg_interno_SS')->nullable();
             $table->date('fecha_proced_SS')->nullable();
             $table->text('lugar_proceden_SS')->nullable();

@@ -33,7 +33,11 @@
 
                     <td>{{$sumarisima->id}}</td>   
                     <td>{{$sumarisima->num_dj}} </td>   
-                    <td>{{$sumarisima->motivo}}</td>   
+                                <td>
+                                    @foreach ($sumarisima->motivos as $motivo)
+                                    {{$motivo->nombre_mot}} <br>
+                                    @endforeach
+                                </td>   
                                 <td>
                                     @foreach ($sumarisima->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>

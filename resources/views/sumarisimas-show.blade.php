@@ -330,7 +330,7 @@
                         <div class="col-md-6">
                           <label class="form-label" for="multicol-dependen_SS">Dependencia</label>
                           <span class="form-control" id="multicol-dependen_SS">{{ $sumarisima->dependen_SS}}</span>
-                        </  |div>
+                        </div>
 
                         <div class="col-md-6 select2-primary">
                           <label class="form-label" for="multicol-jerarquia_SS">Jerarquia</label>

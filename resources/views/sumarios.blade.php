@@ -68,7 +68,11 @@
                     <td>{{$sumario->id}}</td>   
                     <td>{{$sumario->num_dja}} </td>   
                     <td>{{$sumario->num_dj}}</td>   
-                    <td>{{$sumario->motivo}} </td>
+                                <td>
+                                    @foreach ($sumario->motivos as $motivo)
+                                    {{$motivo->nombre_mot}} <br>
+                                    @endforeach
+                                </td>
                                 <td>
                                     @foreach ($sumario->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>
