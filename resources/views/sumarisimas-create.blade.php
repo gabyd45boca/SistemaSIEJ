@@ -85,7 +85,7 @@
               <label class="form-label" for="multicol-nombre_mot">Motivo</label>
               <x-adminlte-select name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" title="Seleccionar motivos" data-style="btn-primary" multiple required>
                   @foreach ($motivos as $motivo) 
-                      <option value="{{$motivo->id}}" {{ collect(old('motivo'))->contains($motivo->id) ? 'selected' : '' }}>
+                      <option value="{{$motivo->id}}" {{ collect(old('nombre_mot'))->contains($motivo->id) ? 'selected' : '' }}>
                           {{$motivo->nombre_mot}} 
                       </option>
                   @endforeach

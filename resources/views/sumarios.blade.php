@@ -34,14 +34,15 @@
             <div class="col-md-2">
                 <a href="/sumarios" class="btn btn-secondary w-100">Restablecer</a>
             </div>
+
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success  w-100" onclick="exportExcel()">Exportar Excel</button>
+            </div>
+         
         </div>
     </form>
 
-
-
-
-
-<!-- Basic Bootstrap Table --> 
+    <!-- Basic Bootstrap Table --> 
 <div class="card">
   <h5 class="card-header">Lista de Sumarios</h5>
   <div class="table-responsive text-nowrap">
@@ -132,6 +133,15 @@
    <script> src="https://code.jquery.com/jquery-3.7.0.js" </script>
    <script> src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" </script>
    <script> src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js" </script>
+
+   <script>
+    function exportExcel() {
+        const fechaInicial = document.getElementById('fechaInicial').value;
+        const fechaFinal = document.getElementById('fechaFinal').value;
+        const url = `/sumarios/export?start_date=${fechaInicial}&end_date=${fechaFinal}`;
+        window.location.href = url;
+    }
+   </script>
 
    <script>
       $(document).ready(function(){

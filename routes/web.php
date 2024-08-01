@@ -17,6 +17,7 @@ use App\Http\Controllers\SancionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,6 +61,8 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/sumarios/consulta/',[App\Http\Controllers\SumariosController::class,'consulta'])->name('sumarios.consulta');
     //Route::get('home/',[App\Http\Controllers\SumariosController::class,'NumGenerales'])->name('sumarios.NumGenerales');
+    Route::get('/sumarios/export', [App\Http\Controllers\SumariosController::class, 'export'])->name('sumarios.export');
+
     
     //sumarisimas///////////////////////////
     ////////////////////////////////////////

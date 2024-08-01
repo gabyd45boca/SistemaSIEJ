@@ -9,6 +9,8 @@ use App\Models\Dependencia;
 use App\Models\Motivo;
 use App\Models\TipoDenuncia;
 use App\Models\Jerarquia;
+use App\Exports\SumariosExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Spatie\Permission\Traits\HasRoles;
 
@@ -20,8 +22,17 @@ class SumariosController extends Controller
         $this->middleware('can:CrearSumario')->only('create');
         $this->middleware('can:EliminarSumario')->only('destroy');
        
-    }     
+    }
+    
+    public function export(Request $request)
+    {
+      
+      $fechaInicial = $request->query('start_date');
+      $fechaFinal = $request->query('end_date');
 
+        return Excel::download(new SumariosExport($fechaInicial, $fechaFinal), 'sumarios.xlsx');
+    }
+    
     public function index(){
 
         $sumarios = Sumario::all();
@@ -58,16 +69,11 @@ class SumariosController extends Controller
     }
 
     public function consulta(){
-    
-     /* $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
-     
-
-      $motivosBuscados = ['VIOLENCIA DE GENERO', 'ROBO', 'FRAUDE'];
-
-      $sumarios = Sumario::whereHas('motivos', function($query) use ($motivosBuscados) {
+         /* $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
+          $motivosBuscados = ['VIOLENCIA DE GENERO', 'ROBO', 'FRAUDE'];
+          $sumarios = Sumario::whereHas('motivos', function($query) use ($motivosBuscados) {
           $query->whereIn('nombre_mot', $motivosBuscados);
       })->get();*/
-
 
       $sumarios1 = Sumario::whereHas('motivos', function($query) {
         $query->where('nombre_mot', 'LIKE', 'VIOLENCIA DE GENERO');
@@ -126,7 +132,7 @@ class SumariosController extends Controller
     }
 
 
-    public function filtrado(Request $request, Motivo $motivos){
+    public function filtrado(Request $request){
       
       $validator = $request -> validate ([
         'fechaInicial' => 'required',
@@ -136,11 +142,11 @@ class SumariosController extends Controller
  
       $fechaInicial = $request->fechaInicial;
       $fechaFinal = $request->fechaFinal;
-      $motivo = $request->motivo;
+      
 
       $sumarios = Sumario::whereDate('fecha_ingreso','>=',$fechaInicial)
                           ->whereDate('fecha_ingreso','<=',$fechaFinal)
-                       //   ->where('motivo','LIKE',$motivo)
+                      
                           ->get();
       
       return view('sumarios',compact('sumarios'));                    
