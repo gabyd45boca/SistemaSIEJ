@@ -26,7 +26,7 @@ return new class extends Migration
             $table->date('fecha_inicio');
             $table->integer('fojas');
             $table->string('infraccion');
-          //  $table->string('motivo'); //poner un select  filtrar por violencia de genero, accidente, arma, .. 
+         // $table->string('motivo'); //poner un select  filtrar por violencia de genero, accidente, arma, .. 
             $table->text('extracto');
             $table->string('tipo_denun'); //poner un select filtrar por denuncia, exposicion, oficio, comparendo, otro
             $table->date('fecha_movimiento');

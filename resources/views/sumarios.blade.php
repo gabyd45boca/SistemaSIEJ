@@ -134,7 +134,7 @@
    <script> src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" </script>
    <script> src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js" </script>
 
-   <script>
+   <script> //captura las fechas para exportacion
     function exportExcel() {
         const fechaInicial = document.getElementById('fechaInicial').value;
         const fechaFinal = document.getElementById('fechaFinal').value;

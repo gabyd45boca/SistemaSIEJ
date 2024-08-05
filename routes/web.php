@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sumarios/consulta/',[App\Http\Controllers\SumariosController::class,'consulta'])->name('sumarios.consulta');
     //Route::get('home/',[App\Http\Controllers\SumariosController::class,'NumGenerales'])->name('sumarios.NumGenerales');
     Route::get('/sumarios/export', [App\Http\Controllers\SumariosController::class, 'export'])->name('sumarios.export');
+    Route::get('/sumarios/motivos-data', [App\Http\Controllers\SumariosController::class, 'getMotivosData'])->name('sumarios.motivosData');
 
     
     //sumarisimas///////////////////////////

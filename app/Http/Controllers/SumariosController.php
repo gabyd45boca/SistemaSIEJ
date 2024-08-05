@@ -23,6 +23,16 @@ class SumariosController extends Controller
         $this->middleware('can:EliminarSumario')->only('destroy');
        
     }
+
+    public function getMotivosData()
+    {
+        $motivos = Sumario::select('motivos.nombre_mot', \DB::raw('count(*) as total'))
+                          ->join('motivos', 'sumarios.id', '=', 'motivos.id')
+                          ->groupBy('motivos.nombre_mot')
+                          ->get();
+
+        return response()->json($motivos);
+    }
     
     public function export(Request $request)
     {
