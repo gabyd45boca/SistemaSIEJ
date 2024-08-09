@@ -194,13 +194,14 @@
                         },
                         options: {
                             responsive: true,
+                            //maintainAspectRatio: false, // para reducir el grafico
                             plugins: {
                                 legend: {
                                     position: 'top',
                                 },
                                 title: {
                                     display: true,
-                                    text: 'Sumarios por Motivo'
+                                   // text: 'Sumarios por Motivo'
                                 }
                             }
                         }

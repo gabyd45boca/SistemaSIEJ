@@ -18,4 +18,9 @@ class Sumario extends Model
 
         return $this->belongsToMany(Motivo::class)->withTimestamps();
     }
+
+    public function tipo_denuncias(){
+
+        return $this->belongsToMany(TipoDenuncia::class)->withTimestamps();
+    }
 }
