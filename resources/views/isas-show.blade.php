@@ -61,7 +61,11 @@
                     <td>{{$isa->id}}</td>   
                     <td>{{$isa->num_dja}} </td>   
                     <td>{{$isa->num_dj}}</td>   
-                    <td>{{$isa->motivo}} </td>
+                                <td>
+                                    @foreach ($isa->motivos as $motivo)
+                                    {{$motivo->nombre_mot}} <br>
+                                    @endforeach
+                                </td>   
                                 <td>
                                     @foreach ($isa->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>
@@ -124,8 +128,13 @@
 
                    
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-motivo">Motivo</label>
-                      <span class="form-control" id="multicol-motivo">{{ $isa-> motivo }}</span>
+                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                          <br>
+                          <span class="card" id="multicol-nombre_mot">
+                              @foreach ($isa->motivos as $motivo)
+                              {{$motivo->nombre_mot}}, 
+                              @endforeach
+                          </span>
                     </div>
 
                     <div class="col-md-6">

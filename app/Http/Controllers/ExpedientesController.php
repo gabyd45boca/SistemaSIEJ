@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Expediente;
 use App\Models\Dependencia;
+use App\Models\TipoDenuncia;
 class ExpedientesController extends Controller
 {
     public function __construct(){
@@ -17,6 +18,35 @@ class ExpedientesController extends Controller
        
     }
 
+     //////////////////////////////////////////////////////////////////
+    /////////   REINGRESOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function mostrarFormularioReingreso($id)
+      {
+          // Encontrar el sumario original
+          $expedientes = Expediente::findOrFail($id);
+          ////////////
+          //$sumario = Sumario::find($sumario_id);
+          $dependencias = Dependencia::all();
+          $tipo_denuncias = TipoDenuncia::all();
+         // Mostrar la vista con el formulario para crear un reingreso
+         return view('expedientes-create-reingreso',compact('tipo_denuncias',
+          'expedientes','dependencias'));
+      }
+    
+    
+      public function storeReingreso(Request $request, $id)
+      {
+          // Encontrar el expediente original
+          $expedienteOriginal = Expediente::findOrFail($id);
+          $nuevoExpediente = $expedienteOriginal->crearReingreso($request->all());
+                 
+           //dd($request->all());              
+          return redirect()->route('expedientes')->with('message','Registrado correctamente!');
+     
+      }
+
     public function index(){
 
         $expedientes = Expediente::all();
@@ -25,10 +55,10 @@ class ExpedientesController extends Controller
 
     public function create(){
         $dependencias = Dependencia::all();
-
+        $tipo_denuncias = TipoDenuncia::all();
 
         $expediente = Expediente::all();
-        return view('expedientes-create',compact('expediente','dependencias'));
+        return view('expedientes-create',compact('tipo_denuncias','expediente','dependencias'));
     }
 
 
@@ -41,9 +71,10 @@ class ExpedientesController extends Controller
     public function edit($expediente_id){
 
         $dependencias = Dependencia::all();
+        $tipo_denuncias = TipoDenuncia::all();
 
         $expediente = Expediente::find($expediente_id);
-        return view('expedientes-edit',compact('expediente','dependencias'));
+        return view('expedientes-edit',compact('tipo_denuncias','expediente','dependencias'));
     }
 
     public function store(Request $request){
@@ -89,7 +120,7 @@ class ExpedientesController extends Controller
             'num_orden_exp'=> 'required',
             'fecha_ingreso_exp' => 'required',
             'origen_exp' => 'required',
-            'tipo_exp' => 'required',
+           // 'tipo_exp' => 'required',
             'fojas_exp' =>'required',
             'procedencia_exp' => 'required',
             'iniciador_exp' => 'required',

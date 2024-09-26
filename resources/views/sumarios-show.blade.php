@@ -128,7 +128,7 @@
                           <br>
                           <span class="card" id="multicol-nombre_mot">
                               @foreach ($sumario->motivos as $motivo)
-                              {{$motivo->nombre_mot}} 
+                              {{$motivo->nombre_mot}}, 
                               @endforeach
                           </span>
                     </div>

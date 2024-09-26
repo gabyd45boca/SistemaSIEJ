@@ -51,9 +51,9 @@
         <tr>
           <th>ID</th>
           <th>N° DJA</th>
-          <th>N° DJ</th>
+          <th>N° DJA ORIGINAL</th>
           <th>MOTIVO</th>
-          <th>LEGAJO</th>
+          <th>LEGAJO PERSONAL</th>
           <th>INFRACTOR</th>
           <th>TIPO DENUNCIA</th>
           <th>FECHA INGRESO</th>
@@ -68,7 +68,7 @@
 
                     <td>{{$sumario->id}}</td>   
                     <td>{{$sumario->num_dja}} </td>   
-                    <td>{{$sumario->num_dj}}</td>   
+                    <td>{{$sumario->num_dja_original}}</td>   
                                 <td>
                                     @foreach ($sumario->motivos as $motivo)
                                     {{$motivo->nombre_mot}} <br>
@@ -101,14 +101,19 @@
                             <a href="{{ route('sumarios.edit', $sumario->id) }}" class="btn btn-primary btn-sm" title="Editar">
                                 <i class="fas fa-edit"></i>
                             </a> 
-
+                            @can('Reingreso') 
+                            <a href="{{ route('sumarios.reingreso.create', $sumario->id) }}" class="btn btn-success btn-sm" title="Reingreso">
+                                <i class="fas fa-redo-alt"></i>
+                            </a>
+                            @endcan
                             @can('EliminarSumario') 
                                 <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             @endcan
                         </form> 
-                  </td>
+                    </td>
+
 
               </tr>
          @endforeach

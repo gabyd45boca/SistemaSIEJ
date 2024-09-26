@@ -3,7 +3,7 @@
 @section('title', 'SIEA')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Registrar Sumarisima</h1>
+    <h1 class="m-0 text-dark">Reingreso Sumarisima</h1>
 @endsection
 
 @section('styles')
@@ -29,15 +29,16 @@
      
      <div class="card mb-4">
     
-  <form method="POST" action="{{ route ('sumarisimas.store')}}" class="card-body">
+  <form method="POST" action="{{ route ('sumarisimas.reingreso.store', $sumarisima->id)}}" class="card-body">
        @csrf
        <h4 class="fw-normal">1. Carga de datos del expediente</h4>
       <div class="row g-3">
 
             <div class="col-md-6">
-                <label class="form-label" for="num_dj"> N° DJ</label>
-                <input type="text" name="num_dj" id="num_dj" class="form-control" placeholder="Numero de DJ" value="{{old('num_dj')}}" required/>
+                <label class="form-label" for="multicol-num_dj"> N° DJ ORIGINAL</label>
+                <span class="form-control" id="multicol-num_dj">{{$sumarisima-> num_dj}}</span>
             </div>
+
             
             <div class="col-md-6">
                 <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>

@@ -17,19 +17,23 @@ return new class extends Migration
            // $table->id();
            
             $table->bigIncrements('id');
+             // Referencia al sumario original (puede ser NULL)
+             $table->unsignedBigInteger('isa_original_id')->nullable();
+             $table->unsignedInteger('version')->default(0); 
 
              //expediente  
              $table->string('num_dja')->unique();
-             $table->string('lugar_proced');
-             $table->date('fecha_ingreso');
-             $table->string('num_dj')->unique();
-             $table->date('fecha_inicio');
-             $table->integer('fojas');
-             $table->string('deslindar_resp');
+             $table->string('num_dja_original')->nullable();//
+             $table->string('lugar_proced')->nullable();
+             $table->date('fecha_ingreso')->nullable();
+             $table->string('num_dj')->nullable();
+             $table->date('fecha_inicio')->nullable();
+             $table->integer('fojas')->nullable();
+             $table->string('deslindar_resp')->nullable();
             // $table->string('motivo'); //poner un select  filtrar por violencia de genero, accidente, arma, .. 
-             $table->string('tipo_denun');
-             $table->date('fecha_movimiento');
-             $table->string('destino_pase'); 
+             $table->string('tipo_denun')->nullable();
+             $table->date('fecha_movimiento')->nullable();
+             $table->string('destino_pase')->nullable(); 
              $table->text('observaciones')->nullable();
              $table->string('elevado_por_instruccion')->nullable();//boolean
              $table->text('opinion_sede_inst')->nullable();
@@ -101,7 +105,9 @@ return new class extends Migration
              $table->string('concluido_DGRRHH')->nullable();
              $table->string('DGRRHH_N°')->nullable();
              $table->date('fecha_notificacion')->nullable();
-                        
+
+            // Llave foránea para asegurar que sumario_original_id se refiere a un sumario válido
+            $table->foreign('isa_original_id')->references('id')->on('isas')->onDelete('cascade');                        
         
              $table->timestamps(); 
 

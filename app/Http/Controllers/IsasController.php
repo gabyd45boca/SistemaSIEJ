@@ -21,7 +21,53 @@ class IsasController extends Controller
         $this->middleware('can:EliminarSumario')->only('destroy');
 
        
-    }     
+    }
+    
+     //////////////////////////////////////////////////////////////////
+    /////////   REINGRESOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function mostrarFormularioReingreso($id)
+      {
+          // Encontrar la isa original
+          $isa = Isa::findOrFail($id);
+          ////////////
+          $dependencias = Dependencia::all();
+          $motivos = Motivo::all();
+          $tipo_denuncias = TipoDenuncia::all();
+          $jerarquias = Jerarquia::all();
+
+          $infractores = Infractor::all();
+          $infractores_ids = $isa->infractors()->pluck('infractors.id');
+          
+          $motivos = Motivo::all();
+          $motivos_ids = $isa->motivos()->pluck('motivos.id');  
+
+          // Mostrar la vista con el formulario para crear un reingreso
+       
+         return view('isas-create-reingreso',compact('motivos','motivos_ids','jerarquias','tipo_denuncias',
+         'isa','infractores','infractores_ids','dependencias'));
+      }
+    
+    
+      public function storeReingreso(Request $request, $id)
+      {
+          // Encontrar la isa original
+          $isaOriginal = Isa::findOrFail($id);
+          $nuevoIsa= $isaOriginal->crearReingreso($request->all());
+               
+          $nuevoIsa->motivos()->attach($request->input('nombre_mot'));
+          $nuevoIsa->infractors()->attach($request->input('apellido_nombre_inf'));
+           //dd($request->all());              
+          return redirect()->route('isas')->with('message','Registrado correctamente!');
+     
+      }
+
+
+     //////////////////////////////////////////////////////////////////
+    /////////   CRUD SUMARIOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////  
+    
 
     public function index(){
 
@@ -49,9 +95,12 @@ class IsasController extends Controller
         $isa = Isa::find($isa_id);
 
         $infractores = Infractor::all();
-        $infractores_ids = $isa->infractors()->pluck('infractors.id'); 
+        $infractores_ids = $isa->infractors()->pluck('infractors.id');
+        
+        $motivos = Motivo::all();
+        $motivos_ids = $isa->motivos()->pluck('motivos.id');   
        
-        return view('isas-show',compact('isa','infractores','infractores_ids'));
+        return view('isas-show',compact('motivos','motivos_ids','isa','infractores','infractores_ids'));
     }
 
     public function edit($isa_id){
@@ -64,9 +113,12 @@ class IsasController extends Controller
       $jerarquias = Jerarquia::all();
 
       $infractores = Infractor::all();
-      $infractores_ids = $isa->infractors()->pluck('infractors.id'); 
+      $infractores_ids = $isa->infractors()->pluck('infractors.id');
+      
+      $motivos = Motivo::all();
+      $motivos_ids = $isa->motivos()->pluck('motivos.id');  
      
-      return view('isas-edit',compact('jerarquias','tipo_denuncias','motivos','isa','infractores','infractores_ids','dependencias'));
+      return view('isas-edit',compact('motivos','motivos_ids','jerarquias','tipo_denuncias','motivos','isa','infractores','infractores_ids','dependencias'));
   }
 
     public function store(Request $request){
@@ -81,7 +133,6 @@ class IsasController extends Controller
             'fecha_inicio' => 'required',
             'fojas' =>'required',
             'deslindar_resp' =>'required',
-            'motivo' => 'required',
             'fecha_movimiento' =>'required' ,
             'destino_pase' =>'required' ,
                                                  
@@ -96,7 +147,8 @@ class IsasController extends Controller
             $isa->fecha_inicio = $request->fecha_inicio;
             $isa->fojas = $request->fojas;
             $isa->deslindar_resp = $request->deslindar_resp;
-            $isa->motivo = $request->motivo;
+          //  $isa->motivo = $request->motivo;
+            $isa->tipo_denun = $request->tipo_denun;
             $isa->fecha_movimiento = $request->fecha_movimiento;
             $isa->destino_pase = $request->destino_pase;
             $isa->observaciones = $request->observaciones;
@@ -166,6 +218,7 @@ class IsasController extends Controller
             $isa->save();
 
             //dd($request->all());
+            $isa->motivos()->attach($request->input('nombre_mot'));
             $isa->infractors()->attach($request->input('apellido_nombre_inf'));
                           
             return redirect()->route('isas')->with('message','Registrado correctamente!');
@@ -182,7 +235,7 @@ class IsasController extends Controller
           'fecha_inicio' => 'required',
           'fojas' =>'required',
           'deslindar_resp' =>'required',
-          'motivo' => 'required',
+        //  'motivo' => 'required',
           'fecha_movimiento' =>'required' ,
           'destino_pase' =>'required' ,
                                               
@@ -198,7 +251,8 @@ class IsasController extends Controller
         $isa->fecha_inicio = $request->fecha_inicio;
         $isa->fojas = $request->fojas;
         $isa->deslindar_resp = $request->deslindar_resp;
-        $isa->motivo = $request->motivo;
+      //  $isa->motivo = $request->motivo;
+        $isa->tipo_denun = $request->tipo_denun;
         $isa->fecha_movimiento = $request->fecha_movimiento;
         $isa->destino_pase = $request->destino_pase;
         $isa->observaciones = $request->observaciones;
@@ -268,7 +322,7 @@ class IsasController extends Controller
         $isa->save();
 
         //$isa->update($request->all());
-
+        $isa->motivos()->sync($request->input('nombre_mot'));  
         $isa->infractors()->sync($request->input('apellido_nombre_inf'));  
 
         return redirect()->route('isas')->with('message','Actualizado correctamente!');

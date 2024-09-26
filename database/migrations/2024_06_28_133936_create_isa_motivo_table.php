@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('motivo_isa', function (Blueprint $table) {
+        Schema::create('isa_motivo', function (Blueprint $table) {
             //$table->id();
             $table->bigIncrements('id');
           
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('motivo_isa');
+        Schema::dropIfExists('isa_motivo');
     }
 };

@@ -20,7 +20,51 @@ class SancionController extends Controller
         $this->middleware('can:CrearSancion')->only('create');
         $this->middleware('can:EliminarSancion')->only('destroy');
       
-    }  
+    }
+    
+     //////////////////////////////////////////////////////////////////
+    /////////   REINGRESOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function mostrarFormularioReingreso($id)
+      {
+          // Encontrar la sancion original
+          $sancione = Sancione::findOrFail($id);
+          ////////////
+         
+          $dependencias = Dependencia::all();
+          $motivos = Motivo::all();
+          $tipo_denuncias = TipoDenuncia::all();
+          $jerarquias = Jerarquia::all();
+
+          $infractores = Infractor::all();
+          $infractores_ids = $sancione->infractors()->pluck('infractors.id');
+          
+          $motivos = Motivo::all();
+          $motivos_ids = $sancione->motivos()->pluck('motivos.id');  
+
+          // Mostrar la vista con el formulario para crear un reingreso
+       
+         return view('sancion-create-reingreso',compact('motivos','motivos_ids','jerarquias','tipo_denuncias',
+          'motivos','sancione','infractores','infractores_ids','dependencias'));
+      }
+
+      public function storeReingreso(Request $request, $id)
+      {
+          // Encontrar la sancion original
+          $sancionOriginal = Sancione::findOrFail($id);
+          $nuevoSancion = $sancionOriginal->crearReingreso($request->all());
+               
+          $nuevoSancion->motivos()->attach($request->input('nombre_mot'));
+          $nuevoSancion->infractors()->attach($request->input('apellido_nombre_inf'));
+           //dd($request->all());              
+          return redirect()->route('sancion')->with('message','Registrado correctamente!');
+     
+      }
+    
+     //////////////////////////////////////////////////////////////////
+    /////////   CRUD SANCIONES ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////  
     
     public function index(){
 
@@ -33,6 +77,7 @@ class SancionController extends Controller
 
         $sanciones = Sancione::all();
         $infractores = Infractor::all();
+
         $dependencias = Dependencia::all();
         $motivos = Motivo::all();
         $tipo_denuncias = TipoDenuncia::all();
@@ -44,11 +89,14 @@ class SancionController extends Controller
     public function show($sancion_id){
 
         $sanciones = Sancione::find($sancion_id);
-
+        
         $infractores = Infractor::all();
-        $infractores_ids = $sanciones->infractors()->pluck('infractors.id'); 
-       
-        return view('sancion-show',compact('sanciones','infractores','infractores_ids'));
+        $infractores_ids = $sanciones->infractors()->pluck('infractors.id');
+        
+        $motivos = Motivo::all();
+        $motivos_ids = $sanciones->motivos()->pluck('motivos.id');   
+              
+        return view('sancion-show',compact('sanciones','infractores','infractores_ids','motivos_ids','motivos'));
     }
 
     public function edit($sancion_id){
@@ -61,9 +109,12 @@ class SancionController extends Controller
         $jerarquias = Jerarquia::all();
   
         $infractores = Infractor::all();
-        $infractores_ids = $sanciones->infractors()->pluck('infractors.id'); 
+        $infractores_ids = $sanciones->infractors()->pluck('infractors.id');
+        
+        $motivos = Motivo::all();
+        $motivos_ids = $sanciones->motivos()->pluck('motivos.id');  
        
-        return view('sancion-edit',compact('jerarquias','tipo_denuncias','motivos','sanciones','infractores','infractores_ids','dependencias'));
+        return view('sancion-edit',compact('motivos','motivos_ids','jerarquias','tipo_denuncias','sanciones','infractores','infractores_ids','dependencias'));
     }
 
     public function store(Request $request)  {
@@ -71,7 +122,6 @@ class SancionController extends Controller
           'num_dj'=> 'required|unique:sanciones',
           'fecha_ingreso' => 'required',
           'fojas' =>'required',
-          'motivo' => 'required',
           'lugar_proced'=> 'required',
           'tipo_denuncia' => 'required',
                         
@@ -85,7 +135,7 @@ class SancionController extends Controller
         $sanciones->fecha_inicio = $request->fecha_inicio;
         $sanciones->fojas  = $request->fojas;
         $sanciones->tipo_denuncia  = $request->tipo_denuncia;
-        $sanciones->motivo = $request->motivo;
+      //  $sanciones->motivo = $request->motivo;
         $sanciones->primera_interv  = $request->primera_interv;
         $sanciones->fecha_pase  = $request->fecha_pase;
         $sanciones->observaciones  = $request->observaciones;
@@ -143,6 +193,7 @@ class SancionController extends Controller
                            
         $sanciones->save();
 
+        $sanciones->motivos()->attach($request->input('nombre_mot'));
         $sanciones->infractors()->attach($request->input('apellido_nombre_inf'));
 
         return redirect()->route('sancion')->with('message','Registrado correctamente!');
@@ -155,7 +206,7 @@ class SancionController extends Controller
         'num_dj'=> 'required',
         'fecha_ingreso' => 'required',
         'fojas' =>'required',
-        'motivo' => 'required',
+       // 'motivo' => 'required',
         'lugar_proced'=> 'required',
         'tipo_denuncia' => 'required',
         
@@ -169,7 +220,7 @@ class SancionController extends Controller
         $sanciones->fecha_inicio = $request->fecha_inicio;
         $sanciones->fojas  = $request->fojas;
         $sanciones->tipo_denuncia  = $request->tipo_denuncia;
-        $sanciones->motivo = $request->motivo;
+      //  $sanciones->motivo = $request->motivo;
         $sanciones->primera_interv  = $request->primera_interv;
         $sanciones->fecha_pase  = $request->fecha_pase;
         $sanciones->observaciones  = $request->observaciones;
@@ -227,9 +278,9 @@ class SancionController extends Controller
        
        $sanciones->save();
 
+       $sanciones->motivos()->sync($request->input('nombre_mot'));  
        $sanciones->infractors()->sync($request->input('apellido_nombre_inf'));  
-    
-      
+          
        return redirect()->route('sancion')->with('message','Actualizado correctamente!');
       }
 

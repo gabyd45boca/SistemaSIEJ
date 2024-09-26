@@ -22,16 +22,15 @@
             </ul>
         </div>
      @endif
-  <form method= "POST" action="{{ route ('expedientes.store')}}" class="card-body">
+  <form method= "POST" action="{{ route ('expedientes.reingreso.store', $expedientes->id)}}" class="card-body">
         @csrf
       
-
         <h6 class="fw-normal">1. Carga de datos del expediente</h6>
     <div class="row g-3">
     
             <div class="col-md-6">
-                <label class="form-label" for="multicol-num_orden_exp"> N° Orden</label>
-                <input type="text" name="num_orden_exp"  id="multicol-num_orden_exp" class="form-control" value="{{old('num_orden_exp')}}" placeholder="Escribir el N° de Orden del expediente"/> 
+                      <label class="form-label" for="multicol-num_orden_exp">N° Orden</label>
+                      <span class="form-control" id="multicol-num_orden_exp">{{ $expedientes-> num_orden_exp}}</span>
             </div>
            
             <div class="col-md-6">

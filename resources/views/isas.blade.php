@@ -17,13 +17,13 @@
         <tr>
           <th>ID</th>
           <th>N° DJA</th>
-          <th>N° DJ</th>
+          <th>N° DJA ORIGINAL</th>
           <th>MOTIVO</th>
-          <th>LEGAJO</th>
+          <th>LEGAJO PERSONAL</th>
           <th>INFRACTOR</th>
+          <th>TIPO DENUNCIA</th>
           <th>CONVERSION CONVALIDAR</th>
           <th>FECHA INGRESO</th>
-          <th>ELEVADO INSTRUCCION</th>
           <th>ACCION</th>
 
         </tr>
@@ -34,8 +34,12 @@
 
                     <td>{{$isa->id}}</td>   
                     <td>{{$isa->num_dja}} </td>   
-                    <td>{{$isa->num_dj}}</td>   
-                    <td>{{$isa->motivo}} </td>
+                    <td>{{$isa->num_dja_original}}</td>   
+                                <td>
+                                    @foreach ($isa->motivos as $motivo)
+                                    {{$motivo->nombre_mot}} <br>
+                                    @endforeach
+                                </td>
                                 <td>
                                     @foreach ($isa->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>
@@ -47,24 +51,28 @@
                                     {{$infractor->apellido_nombre_inf}} <br>
                                     @endforeach
                                 </td>   
-                    <td>{{$isa->conversion_convalid}}</td>   
+                    <td>{{$isa->tipo_denun}}</td>
+                    <td>{{$isa->conversion_convalid}}</td>      
                     <td>{{$isa->fecha_ingreso}}</td>  
-                    <td>{{$isa->elevado_por_instruccion}}</td>
-                    
+                                      
                     <td> 
                         <form action="{{route('isas.destroy', $isa->id) }}" class="formEliminar" method="POST">
-                          
+                            @csrf
+                            @method('delete')
+
                           <a href="{{ route ('isas.show', $isa->id) }}" class="btn btn-secondary btn-sm" title="Ver"> 
                            <i class="fas fa-eye"></i>
                           </a>
 
                           <a href="{{ route ('isas.edit', $isa->id) }}" class="btn btn-primary btn-sm" title="Editar"> 
                            <i class="fas fa-edit"></i>
-                          </a> 
+                          </a>
+                          @can('Reingreso')   
+                          <a href="{{ route('isas.reingreso.create', $isa->id) }}" class="btn btn-success btn-sm" title="Reingreso">
+                                <i class="fas fa-redo-alt"></i>
+                            </a>
+                          @endcan  
              
-                          @csrf
-                          @method('delete')
-
                           @can('EliminarIsa') 
                              <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
                                     <i class="fas fa-trash"></i>

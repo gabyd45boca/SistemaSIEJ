@@ -16,11 +16,12 @@
       <thead class="bg-dark text-white">
         <tr>
           <th>ID</th>
-          <th>N° DJ</th>
+          <th>N° DJA</th>
+          <th>N° DJA ORIGINAL</th>
           <th>MOTIVO</th>
           <th>LEGAJO PERSONAL</th>
           <th>INFRACTOR</th>
-          <th>INSTRUCTOR</th>
+          <th>TIPO DENUNCIA</th>
           <th>FECHA INGRESO</th>
           <th>CONCLUIDO</th>
           <th>ACCION</th>
@@ -32,8 +33,13 @@
              <tr>
 
                     <td>{{$sancion->id}}</td>   
-                    <td>{{$sancion->num_dj}} </td>   
-                    <td>{{$sancion->motivo}}</td>   
+                    <td>{{$sancion->num_dj}} </td>
+                    <td>{{$sancion->num_dj_original}}</td>      
+                                <td>
+                                    @foreach ($sancion->motivos as $motivo)
+                                    {{$motivo->nombre_mot}} <br>
+                                    @endforeach
+                                </td>
                                 <td>
                                     @foreach ($sancion->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>
@@ -46,21 +52,28 @@
                                     @endforeach
                                 </td>
                     
-                    <td>{{$sancion->apellido_nombre_AL}} </td>   
+                    <td>{{$sancion->tipo_denuncia}} </td>   
                     <td>{{$sancion->fecha_ingreso}}</td>
                     <td>{{$sancion->concluido_DGRRHH}}</td>      
                                          
                     <td>
                         <form action="{{route('sancion.destroy', $sancion->id) }}" class="formEliminar" method="POST">
-                          <a href="{{ route ('sancion.show', $sancion->id) }}" class="btn btn-secondary btn-sm" title="Ver" > 
-                            <i class="fas fa-eye"></i>
-                          </a>
-                          <a href="{{ route ('sancion.edit', $sancion->id) }}" class="btn btn-primary btn-sm" title="Editar"> 
-                            <i class="fas fa-edit"></i>
-                          </a>
                           @csrf
                           @method('delete')
 
+                          <a href="{{ route ('sancion.show', $sancion->id) }}" class="btn btn-secondary btn-sm" title="Ver" > 
+                            <i class="fas fa-eye"></i>
+                          </a>
+
+                          <a href="{{ route ('sancion.edit', $sancion->id) }}" class="btn btn-primary btn-sm" title="Editar"> 
+                            <i class="fas fa-edit"></i>
+                          </a>
+                          @can('Reingreso') 
+                          <a href="{{ route('sancion.reingreso.create', $sancion->id) }}" class="btn btn-success btn-sm" title="Reingreso">
+                                <i class="fas fa-redo-alt"></i>
+                          </a>                          
+                          @endcan
+                          
                           @can('EliminarSancion') 
                               <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
                                     <i class="fas fa-trash"></i>

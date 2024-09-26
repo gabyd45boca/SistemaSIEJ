@@ -63,8 +63,10 @@ Route::middleware('auth')->group(function () {
     //Route::get('home/',[App\Http\Controllers\SumariosController::class,'NumGenerales'])->name('sumarios.NumGenerales');
     Route::get('/sumarios/export', [App\Http\Controllers\SumariosController::class, 'export'])->name('sumarios.export');
     Route::get('/sumarios/motivos-data', [App\Http\Controllers\SumariosController::class, 'getMotivosData'])->name('sumarios.motivosData');
-
     
+    Route::get('/sumarios/{id}/reingresos/create', [App\Http\Controllers\SumariosController::class, 'mostrarFormularioReingreso'])->name('sumarios.reingreso.create');
+    Route::post('/sumarios/{id}/reingresos/store', [App\Http\Controllers\SumariosController::class, 'storeReingreso'])->name('sumarios.reingreso.store');
+   
     //sumarisimas///////////////////////////
     ////////////////////////////////////////
 
@@ -75,6 +77,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/sumarisimas/edit/{sumarisima_id}',[App\Http\Controllers\SumarisimasController::class,'edit'])->name('sumarisimas.edit');    
     Route::post('/sumarisimas/update',[App\Http\Controllers\SumarisimasController::class,'update'])->name('sumarisimas.update');  
     Route::delete('/sumarisimas/destroy/{sumarisima_id}',[App\Http\Controllers\SumarisimasController::class,'destroy'])->name('sumarisimas.destroy');
+
+    Route::get('/sumarisimas/{id}/reingresos/create', [App\Http\Controllers\SumarisimasController::class, 'mostrarFormularioReingreso'])->name('sumarisimas.reingreso.create');
+    Route::post('/sumarisimas/{id}/reingresos/store', [App\Http\Controllers\SumarisimasController::class, 'storeReingreso'])->name('sumarisimas.reingreso.store');
     
     //infractores///////////////////////////
     ////////////////////////////////////////
@@ -97,6 +102,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/expedientes/edit/{expediente_id}',[App\Http\Controllers\ExpedientesController::class,'edit'])->name('expedientes.edit');  
     Route::post('/expedientes/update',[App\Http\Controllers\ExpedientesController::class,'update'])->name('expedientes.update');  
     Route::delete('/expedientes/destroy/{expediente_id}',[App\Http\Controllers\ExpedientesController::class,'destroy'])->name('expedientes.destroy');
+
+    Route::get('/expedientes/{id}/reingresos/create', [App\Http\Controllers\ExpedientesController::class, 'mostrarFormularioReingreso'])->name('expedientes.reingreso.create');
+    Route::post('/expedientes/{id}/reingresos/store', [App\Http\Controllers\ExpedientesController::class, 'storeReingreso'])->name('expedientes.reingreso.store');
 
      //roles///////////////////////////
     ////////////////////////////////////////
@@ -121,6 +129,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/isas/update',[App\Http\Controllers\IsasController::class,'update'])->name('isas.update');  
     Route::delete('/isas/destroy/{isa_id}',[App\Http\Controllers\IsasController::class,'destroy'])->name('isas.destroy');
 
+    Route::get('/isas/{id}/reingresos/create', [App\Http\Controllers\IsasController::class, 'mostrarFormularioReingreso'])->name('isas.reingreso.create');
+    Route::post('/isas/{id}/reingresos/store', [App\Http\Controllers\IsasController::class, 'storeReingreso'])->name('isas.reingreso.store');
+
      //Sancion directa///////////////////////////////////
     ///////////////////////////////////////////
 
@@ -132,4 +143,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/sancion/update',[App\Http\Controllers\SancionController::class,'update'])->name('sancion.update');  
     Route::delete('/sancion/destroy/{sancion_id}',[App\Http\Controllers\SancionController::class,'destroy'])->name('sancion.destroy');
     
+    Route::get('/sancion/{id}/reingresos/create', [App\Http\Controllers\SancionController::class, 'mostrarFormularioReingreso'])->name('sancion.reingreso.create');
+    Route::post('/sancion/{id}/reingresos/store', [App\Http\Controllers\SancionController::class, 'storeReingreso'])->name('sancion.reingreso.store');
 });

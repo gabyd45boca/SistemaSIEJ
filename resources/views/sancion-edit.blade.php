@@ -184,28 +184,29 @@
                     </div> 
 
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-tipo_denuncia">Tipo de Denuncia</label>
-                        <x-adminlte-select2 name="tipo_denuncia" class="select2 form-select" required>
-                            <option value="" {{ old('tipo_denuncia') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
+                        <label class="form-label" for="multicol-tipo_denun">Tipo de Denuncia</label>
+                        <x-adminlte-select2 name="tipo_denuncia" required>
+                            <option value="">Seleccionar el tipo</option>
                             @foreach($tipo_denuncias as $tipo_denuncia)
-                                <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ old('tipo_denuncia') == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
-                                    {{ $tipo_denuncia->nombre_tipoDen }}
+                                <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ $sanciones->tipo_denun == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
+                                    {{ $tipo_denuncia->nombre_tipoDen}}
                                 </option>
                             @endforeach
                         </x-adminlte-select2>
                     </div>
-                      
-
+                
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-motivo">Motivo</label>
-                        <x-adminlte-select2 name="motivo" required>
-                            <option value="">Seleccionar el tipo</option>
-                            @foreach($motivos as $motivo)
-                                <option value="{{ $motivo->nombre_mot }}" {{ $sanciones->motivo == $motivo->nombre_mot ? 'selected' : '' }}>
-                                    {{ $motivo->nombre_mot }}
-                                </option>
-                            @endforeach
-                        </x-adminlte-select2>
+                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                          <x-adminlte-select  name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Motivos" multiple required >
+                              @foreach ($motivos as $motivo) 
+                              <option value="{{$motivo->id}}">{{$motivo->nombre_mot}}</option>
+                              @endforeach
+                          </x-adminlte-select>
+                          @if ($errors->has('nombre_mot'))
+                          <span class="text-danger">
+                              <strong>{{$errors->first('nombre_mot') }}</strong>
+                          </span>
+                          @endif  
                     </div>
 
                     <div class="col-md-6">
@@ -461,7 +462,7 @@
               </div>
 
               <hr class="my-4 mx-n4" />
-              <h4 class="fw-normal">7. Carga de datos del personal instructor de la Secretaria de Seguridad</h4>
+              <h4 class="fw-normal">7. Carga de datos del personal instructor de la Secretaria General</h4>
           <div class="row g-3">
 
                     <div class="col-md-6">
@@ -500,7 +501,7 @@
           </div> 
 
               <hr class="my-4 mx-n4" />
-              <h4 class="fw-normal">8. Carga de movimientos y sugerencias de la Secretaria de Seguridad</h4>
+              <h4 class="fw-normal">8. Carga de movimientos y sugerencias de la Secretaria General</h4>
           <div class="row g-3">
 
                 <div class="col-md-6">
@@ -681,6 +682,8 @@
 <script>
   $(document).ready(()=>{});
   $('#apellido_nombre_inf').selectpicker('val',@json($infractores_ids));
+  $('#nombre_mot').selectpicker('val',@json($motivos_ids));
+
 </script>
 
 @endsection

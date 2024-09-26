@@ -14,14 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sumarisimas', function (Blueprint $table) {
-            $table->id();
+            //$table->id();
+            $table->bigIncrements('id');
+            // Referencia al sumario original (puede ser NULL)
+            $table->unsignedBigInteger('sumarisima_original_id')->nullable();
+            $table->unsignedInteger('version')->default(0); 
+
             //expediente
             $table->string('num_dj')->unique();
-            $table->string('lugar_proced');
-            $table->date('fecha_ingreso');
+            $table->string('num_dj_original')->nullable();
+            $table->string('lugar_proced')->nullable();
+            $table->date('fecha_ingreso')->nullable();
             $table->date('fecha_inicio')->nullable();
-            $table->integer('fojas');
-            $table->string('tipo_denuncia')->require();//poner un select para filtrar por aqui las consultas
+            $table->integer('fojas')->nullable();
+            $table->string('tipo_denuncia')->nullable();//poner un select para filtrar por aqui las consultas
           //  $table->string('motivo')->require();//poner un select para filtrar por aqui las consultas
             $table->text('primera_interv')->nullable();
             $table->date('fecha_pase')->nullable();
@@ -85,7 +91,10 @@ return new class extends Migration
             $table->string('concluido_DGRRHH')->nullable();
             $table->string('DGRRHH_N°')->nullable();
             $table->date('fecha_notificacion')->nullable();
-                 
+
+            // Llave foránea para asegurar que parent_id se refiere a una sumarisima válida
+            $table->foreign('sumarisima_original_id')->references('id')->on('sumarisimas')->onDelete('cascade');
+                
             $table->timestamps();
 
         });

@@ -3,7 +3,7 @@
 @section('title', 'SIEA')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Registrar Sumarisima</h1>
+    <h1 class="m-0 text-dark">Reingreso Sancion Directa</h1>
 @endsection
 
 @section('styles')
@@ -29,15 +29,17 @@
      
      <div class="card mb-4">
     
-  <form method="POST" action="{{ route ('sumarisimas.store')}}" class="card-body">
+  <form method="POST" action="{{ route ('sancion.reingreso.store', $sancione->id)}}" class="card-body">
        @csrf
        <h4 class="fw-normal">1. Carga de datos del expediente</h4>
       <div class="row g-3">
+        
 
             <div class="col-md-6">
-                <label class="form-label" for="num_dj"> N° DJ</label>
-                <input type="text" name="num_dj" id="num_dj" class="form-control" placeholder="Numero de DJ" value="{{old('num_dj')}}" required/>
+                      <label class="form-label" for="multicol-num_dj">N° DJ ORIGINAL</label>
+                      <span class="form-control" id="multicol-num_dj">{{$sancione-> num_dj}}</span>
             </div>
+
             
             <div class="col-md-6">
                 <label class="form-label" for="multicol-lugar_proced">Lugar de Procedencia</label>
@@ -194,7 +196,6 @@
                     </x-adminlte-select2>
                 </div>
 
-
           </div> 
 
           <hr class="my-4 mx-n4" />
@@ -271,7 +272,6 @@
                         @endforeach
                     </x-adminlte-select2>
                 </div>
-
 
                 <div class="col-md-6 select2-primary">
                     <label class="form-label" for="multicol-jerarquia_AL">Jerarquía</label>
@@ -375,7 +375,7 @@
                         @endforeach
                     </x-adminlte-select2>
                 </div>
-                
+
                 <div class="col-md-6 select2-primary">
                     <label class="form-label" for="multicol-jerarquia_SS">Jerarquía</label>
                     <x-adminlte-select2 name="jerarquia_SS" class="select2 form-select">
@@ -556,7 +556,7 @@
 
           <div class="pt-4">
               <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-              <button type="reset" class="btn btn-secondary" onClick="location.href='/sumarisimas'">Cancelar</button>
+              <button type="reset" class="btn btn-secondary" onClick="location.href='/sancion'">Cancelar</button>
           </div>
    </form>
 

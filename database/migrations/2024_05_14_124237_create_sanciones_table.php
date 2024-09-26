@@ -14,15 +14,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sanciones', function (Blueprint $table) {
-            $table->id();
+            //$table->id();
+
+            $table->bigIncrements('id');
+            // Referencia al sumario original (puede ser NULL)
+            $table->unsignedBigInteger('sancion_original_id')->nullable();
+            $table->unsignedInteger('version')->default(0); 
 
              //expediente
              $table->string('num_dj')->unique();
-             $table->string('lugar_proced');
-             $table->date('fecha_ingreso');
+             $table->string('num_dj_original')->nullable();//
+             $table->string('lugar_proced')->nullable();
+             $table->date('fecha_ingreso')->nullable();
              $table->date('fecha_inicio')->nullable();
-             $table->integer('fojas');
-             $table->string('tipo_denuncia')->require();//poner un select para filtrar por aqui las consultas
+             $table->integer('fojas')->nullable();
+             $table->string('tipo_denuncia')->nullable();//poner un select para filtrar por aqui las consultas
            //  $table->string('motivo')->require();//poner un select para filtrar por aqui las consultas
              $table->text('primera_interv')->nullable();
              $table->date('fecha_pase')->nullable();
@@ -87,6 +93,8 @@ return new class extends Migration
              $table->string('DGRRHH_N°')->nullable();
              $table->date('fecha_notificacion')->nullable();
              
+              // Llave foránea para asegurar que sumario_original_id se refiere a un sumario válido
+            $table->foreign('sancion_original_id')->references('id')->on('sanciones')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -16,6 +16,9 @@ use Spatie\Permission\Traits\HasRoles;
 
 class SumariosController extends Controller
 {
+     //////////////////////////////////////////////////////////////////
+    ///////// CONTROL ACCESOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////    
 
     public function __construct(){
 
@@ -24,6 +27,52 @@ class SumariosController extends Controller
        
     }
 
+    //////////////////////////////////////////////////////////////////
+    /////////   REINGRESOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function mostrarFormularioReingreso($id)
+      {
+          // Encontrar el sumario original
+          $sumario = Sumario::findOrFail($id);
+          ////////////
+          //$sumario = Sumario::find($sumario_id);
+          $dependencias = Dependencia::all();
+          $motivos = Motivo::all();
+          $tipo_denuncias = TipoDenuncia::all();
+          $jerarquias = Jerarquia::all();
+
+          $infractores = Infractor::all();
+          $infractores_ids = $sumario->infractors()->pluck('infractors.id');
+          
+          $motivos = Motivo::all();
+          $motivos_ids = $sumario->motivos()->pluck('motivos.id');  
+
+          // Mostrar la vista con el formulario para crear un reingreso
+         // return view('sumarios.create-reingreso', compact('sumario'));
+         return view('sumarios-create-reingreso',compact('motivos','motivos_ids','jerarquias','tipo_denuncias',
+          'motivos','sumario','infractores','infractores_ids','dependencias'));
+      }
+    
+    
+      public function storeReingreso(Request $request, $id)
+      {
+          // Encontrar el sumario original
+          $sumarioOriginal = Sumario::findOrFail($id);
+          $nuevoSumario = $sumarioOriginal->crearReingreso($request->all());
+               
+          $nuevoSumario->motivos()->attach($request->input('nombre_mot'));
+          $nuevoSumario->infractors()->attach($request->input('apellido_nombre_inf'));
+           //dd($request->all());              
+          return redirect()->route('sumarios')->with('message','Registrado correctamente!');
+     
+      }
+      
+
+     //////////////////////////////////////////////////////////////////
+    ////////// TORTA ESTADISTICA ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
     public function getMotivosData()
     {
         $motivos = Sumario::select('motivos.nombre_mot', \DB::raw('count(*) as total'))
@@ -31,9 +80,14 @@ class SumariosController extends Controller
                           ->groupBy('motivos.nombre_mot')
                           ->get();
 
+                        //  dd($motivos); // Verifica los resultados aquí
         return response()->json($motivos);
     }
     
+     //////////////////////////////////////////////////////////////////
+    ///////// EXPORTACION EXCEL ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
     public function export(Request $request)
     {
       
@@ -42,6 +96,103 @@ class SumariosController extends Controller
 
         return Excel::download(new SumariosExport($fechaInicial, $fechaFinal), 'sumarios.xlsx');
     }
+
+     //////////////////////////////////////////////////////////////////
+    ///////// CONSULTAS POR MOTIVOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function consulta(){
+              /* $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
+              $motivosBuscados = ['VIOLENCIA DE GENERO', 'ROBO', 'FRAUDE'];
+              $sumarios = Sumario::whereHas('motivos', function($query) use ($motivosBuscados) {
+              $query->whereIn('nombre_mot', $motivosBuscados);
+          })->get();*/
+
+          $sumarios1 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'violencia de genero');
+            })->get();
+
+          $sumarios2 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'AUSENTISMO LABORAL');
+            })->get();
+
+          $sumarios3 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA');
+            })->get();
+          
+          $sumarios4 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'SINIESTRO VIAL');
+            })->get();
+              
+            $sumarios5 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'abuso sexual');
+            })->get();
+
+          $sumarios6 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'EBRIEDAD');
+            })->get();
+
+          $sumarios7 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES EN SERVICIO ADICIONAL');
+            })->get();
+          
+          $sumarios8 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES CON COMBUSTIBLE');
+            })->get();
+
+            $sumarios9 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DEL CELULAR');
+            })->get();
+
+          $sumarios10 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DE ARMA REGLAMENTARIA');
+            })->get();
+
+          $sumarios11 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'SUPUESTA INFRACCION AL ART. 205 DEL C.P.A');
+            })->get();
+          
+          $sumarios12 = Sumario::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'OTRO');
+            })->get();
+                    
+
+          $sumarios = Sumario::all();
+            
+          return view('sumarios-consulta',compact('sumarios','sumarios1','sumarios2','sumarios3','sumarios4','sumarios5',
+                                      'sumarios6','sumarios7','sumarios8','sumarios9','sumarios10',
+                                      'sumarios11','sumarios12'));
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ///////// FILTRADO DE FECHAS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+
+      public function filtrado(Request $request){
+        
+        $validator = $request -> validate ([
+          'fechaInicial' => 'required',
+          'fechaFinal' => 'required',
+                                                  
+          ]);
+
+        $fechaInicial = $request->fechaInicial;
+        $fechaFinal = $request->fechaFinal;
+        
+
+        $sumarios = Sumario::whereDate('fecha_ingreso','>=',$fechaInicial)
+                            ->whereDate('fecha_ingreso','<=',$fechaFinal)
+                        
+                            ->get();
+        
+        return view('sumarios',compact('sumarios'));                    
+      }
+
+
+     //////////////////////////////////////////////////////////////////
+    /////////   CRUD SUMARIOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
     
     public function index(){
 
@@ -56,6 +207,7 @@ class SumariosController extends Controller
 
         $sumarios = Sumario::all();
         $infractores = Infractor::all();
+        
         $dependencias = Dependencia::all();
         $motivos = Motivo::all();
         $tipo_denuncias = TipoDenuncia::all();
@@ -78,90 +230,7 @@ class SumariosController extends Controller
         return view('sumarios-show',compact('motivos','motivos_ids','sumario','infractores','infractores_ids'));
     }
 
-    public function consulta(){
-         /* $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
-          $motivosBuscados = ['VIOLENCIA DE GENERO', 'ROBO', 'FRAUDE'];
-          $sumarios = Sumario::whereHas('motivos', function($query) use ($motivosBuscados) {
-          $query->whereIn('nombre_mot', $motivosBuscados);
-      })->get();*/
-
-      $sumarios1 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'VIOLENCIA DE GENERO');
-       })->get();
-
-      $sumarios2 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'AUSENTISMO LABORAL');
-       })->get();
-
-      $sumarios3 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA');
-       })->get();
-      
-      $sumarios4 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'SINIESTRO VIAL');
-       })->get();
-          
-       $sumarios5 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'ABUSO SEXUAL');
-       })->get();
-
-      $sumarios6 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'EBRIEDAD');
-       })->get();
-
-      $sumarios7 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES EN SERVICIO ADICIONAL');
-       })->get();
-      
-      $sumarios8 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES CON COMBUSTIBLE');
-       })->get();
-
-       $sumarios9 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DEL CELULAR');
-       })->get();
-
-      $sumarios10 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DE ARMA REGLAMENTARIA');
-       })->get();
-
-      $sumarios11 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'SUPUESTA INFRACCION AL ART. 205 DEL C.P.A');
-       })->get();
-      
-      $sumarios12 = Sumario::whereHas('motivos', function($query) {
-        $query->where('nombre_mot', 'LIKE', 'OTRO');
-       })->get();
-               
-
-      $sumarios = Sumario::all();
-        
-      return view('sumarios-consulta',compact('sumarios','sumarios1','sumarios2','sumarios3','sumarios4','sumarios5',
-                                 'sumarios6','sumarios7','sumarios8','sumarios9','sumarios10',
-                                 'sumarios11','sumarios12'));
-    }
-
-
-    public function filtrado(Request $request){
-      
-      $validator = $request -> validate ([
-        'fechaInicial' => 'required',
-        'fechaFinal' => 'required',
-                                                
-        ]);
- 
-      $fechaInicial = $request->fechaInicial;
-      $fechaFinal = $request->fechaFinal;
-      
-
-      $sumarios = Sumario::whereDate('fecha_ingreso','>=',$fechaInicial)
-                          ->whereDate('fecha_ingreso','<=',$fechaFinal)
-                      
-                          ->get();
-      
-      return view('sumarios',compact('sumarios'));                    
-    }
-
+   
 
     public function edit($sumario_id){
 
@@ -177,7 +246,7 @@ class SumariosController extends Controller
       $motivos = Motivo::all();
       $motivos_ids = $sumario->motivos()->pluck('motivos.id');  
      
-      return view('sumarios-edit',compact('motivos','motivos_ids','jerarquias','tipo_denuncias','motivos','sumario','infractores','infractores_ids','dependencias'));
+      return view('sumarios-edit',compact('motivos','motivos_ids','jerarquias','tipo_denuncias','sumario','infractores','infractores_ids','dependencias'));
     }
     
 
@@ -193,7 +262,6 @@ class SumariosController extends Controller
             'fecha_inicio' => 'required',
             'fojas' =>'required',
             'infraccion' => 'required',
-          //  'motivo' => 'required',
             'tipo_denun' => 'required',
             'fecha_movimiento' =>'required' ,
             'destino_pase' =>'required' ,

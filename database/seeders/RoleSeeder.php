@@ -29,7 +29,7 @@ class RoleSeeder extends Seeder
         $DGAINTERNOS = Role::create(['name' => 'DGAINTERNOS']);
         $DGALETRADA = Role::create(['name' => 'DGALETRADA']);
         $DGRRHUMANOS = Role::create(['name' => 'DGRRHUMANOS']);
-        $SECRETARIA_SEGURIDAD = Role::create(['name' => 'SECRETARIA_SEGURIDAD']);
+        $SECRETARIA_GENERAL = Role::create(['name' => 'SECRETARIA_GENERAL']);
         
         // Creamos los permisos
         Permission::create(['name' => 'EditarSumarioDGAJ'])->syncRoles([$Administrador, $DGAJUDICIALES]);
@@ -51,12 +51,12 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'EditarSumarisimaDGAJ'])->syncRoles([$Administrador, $DGAJUDICIALES]);
         Permission::create(['name' => 'EditarSumarisimaDGAL'])->syncRoles([$Administrador, $DGALETRADA]);
         Permission::create(['name' => 'EditarSumarisimaDGRRHH'])->syncRoles([$Administrador, $DGRRHUMANOS]);
-        Permission::create(['name' => 'EditarSumarisimaSS'])->syncRoles([$Administrador, $SECRETARIA_SEGURIDAD]);
-        Permission::create(['name' => 'AdministracionSumarisimas'])->syncRoles([$Administrador, $DGAJUDICIALES, $DGALETRADA, $DGRRHUMANOS, $SECRETARIA_SEGURIDAD]);
+        Permission::create(['name' => 'EditarSumarisimaSS'])->syncRoles([$Administrador, $SECRETARIA_GENERAL]);
+        Permission::create(['name' => 'AdministracionSumarisimas'])->syncRoles([$Administrador, $DGAJUDICIALES, $DGALETRADA, $DGRRHUMANOS, $SECRETARIA_GENERAL]);
         Permission::create(['name' => 'AdministracionSumarios'])->syncRoles([$Administrador, $DGAJUDICIALES,  $DGAINTERNOS,  $DGALETRADA, $DGRRHUMANOS]);
         Permission::create(['name' => 'ListarSumarios'])->syncRoles([$Administrador, $DGAJUDICIALES,  $DGAINTERNOS,  $DGALETRADA, $DGRRHUMANOS]);
         Permission::create(['name' => 'RegistrarSumarios'])->syncRoles([$Administrador, $DGAJUDICIALES]);
-        Permission::create(['name' => 'ListarSumarisimas'])->syncRoles([$Administrador, $DGAJUDICIALES, $DGALETRADA, $DGRRHUMANOS, $SECRETARIA_SEGURIDAD]);
+        Permission::create(['name' => 'ListarSumarisimas'])->syncRoles([$Administrador, $DGAJUDICIALES, $DGALETRADA, $DGRRHUMANOS, $SECRETARIA_GENERAL]);
         Permission::create(['name' => 'AdministracionIsas'])->syncRoles([$Administrador, $DGAJUDICIALES,  $DGAINTERNOS,  $DGALETRADA, $DGRRHUMANOS]);
         Permission::create(['name' => 'ListarIsas'])->syncRoles([$Administrador, $DGAJUDICIALES,  $DGAINTERNOS,  $DGALETRADA, $DGRRHUMANOS]);
         Permission::create(['name' => 'RegistrarIsas'])->syncRoles([$Administrador, $DGAJUDICIALES]);
@@ -71,10 +71,11 @@ class RoleSeeder extends Seeder
         
         Permission::create(['name' => 'EditarSancionDGAJ'])->syncRoles([$Administrador, $DGAJUDICIALES]);
         Permission::create(['name' => 'EditarSancionDGAL'])->syncRoles([$Administrador, $DGALETRADA]);
-        Permission::create(['name' => 'EditarSancionSS'])->syncRoles([$Administrador, $SECRETARIA_SEGURIDAD]);
+        Permission::create(['name' => 'EditarSancionSS'])->syncRoles([$Administrador, $SECRETARIA_GENERAL]);
         Permission::create(['name' => 'EditarSancionDGRRHH'])->syncRoles([$Administrador, $DGRRHUMANOS]);
         Permission::create(['name' => 'EditarIsaDGAJ'])->syncRoles([$Administrador, $DGAJUDICIALES]);
-
+        Permission::create(['name' => 'Reingreso'])->syncRoles([$Administrador, $DGAJUDICIALES]);
+        
         Permission::create(['name' => 'EditarIsaDGAI'])->syncRoles([$Administrador, $DGAINTERNOS]);
         Permission::create(['name' => 'EditarIsaDGAL'])->syncRoles([$Administrador, $DGALETRADA]);
         Permission::create(['name' => 'EditarIsaDGRRHH'])->syncRoles([$Administrador, $DGRRHUMANOS]);

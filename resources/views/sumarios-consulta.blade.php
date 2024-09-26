@@ -162,8 +162,13 @@
             fetch("{{ route('sumarios.motivosData') }}")
                 .then(response => response.json())
                 .then(data => {
-                    const labels = data.map(item => item.nombre_mot);
-                    const counts = data.map(item => item.total);
+                    data = data.filter(item => item.nombre_mot); // Filtra motivos vacíos
+                    console.log(data); // Verifica los datos aquí
+                    const labels = data.map(item => item.nombre_mot);//labels: Extrae los nombres de los motivos 
+                    //(nombre_mot) de cada objeto en el arreglo data 
+                    //y los guarda en un arreglo labels. Estos serán las etiquetas del gráfico.
+                    const counts = data.map(item => item.total);//Extrae el total de sumarios por motivo (total) 
+                    //y los guarda en el arreglo counts. Estos valores serán representados en el gráfico.
 
                     const ctx = document.getElementById('motivosChart').getContext('2d');
                     new Chart(ctx, {

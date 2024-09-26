@@ -44,7 +44,7 @@
               <x-adminlte-input type="hidden" name="fecha_inicio"    value="{{$isa->fecha_inicio}}"/>
               <x-adminlte-input type="hidden" name="fojas"   value="{{$isa->fojas}}"/> 
               <x-adminlte-input type="hidden" name="deslindar_resp"    value="{{$isa->deslindar_resp}}"/> 
-              <x-adminlte-input type="hidden" name="motivo"  value="{{$isa->motivo}}"/> 
+              <x-adminlte-input type="hidden" name="tipo_denun"  value="{{$isa->tipo_denun}}"/>
               <x-adminlte-input type="hidden" name="fecha_movimiento"  value="{{$isa->fecha_movimiento}}"/> 
               <x-adminlte-input type="hidden" name="destino_pase"  value="{{$isa->destino_pase}}"/> 
               <x-adminlte-input type="hidden" name="observaciones"  value="{{$isa->observaciones}}"/> 
@@ -119,12 +119,12 @@
                 <th>N° DJA</th>
                 <th>N° DJ</th>
                 <th>MOTIVO</th>
-                <th>LEGAJO</th>
+                <th>LEGAJO PERSONAL</th>
                 <th>INFRACTOR</th>
+                <th>TIPO DENUNCIA</th>
                 <th>CONVERSION CONVALIDAR</th>
                 <th>FECHA INGRESO</th>
-                <th>ELEVADO INSTRUCCION</th>
-                
+                     
               </tr>
               </thead>
 
@@ -132,8 +132,12 @@
               <tr>
               <td>{{$isa->id}}</td>   
                     <td>{{$isa->num_dja}} </td>   
-                    <td>{{$isa->num_dj}}</td>   
-                    <td>{{$isa->motivo}} </td>
+                    <td>{{$isa->num_dj}}</td>
+                                <td>
+                                    @foreach ($isa->motivos as $motivo)
+                                    {{$motivo->nombre_mot}} <br>
+                                    @endforeach
+                                </td>   
                                 <td>
                                     @foreach ($isa->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>
@@ -204,15 +208,17 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" for="multicol-motivo">Motivo</label>
-                        <x-adminlte-select2 name="motivo" required>
-                            <option value="">Seleccionar el tipo</option>
-                            @foreach($motivos as $motivo)
-                                <option value="{{ $motivo->nombre_mot }}" {{ $isa->motivo == $motivo->nombre_mot ? 'selected' : '' }}>
-                                    {{ $motivo->nombre_mot }}
-                                </option>
-                            @endforeach
-                        </x-adminlte-select2>
+                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                          <x-adminlte-select  name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Motivos" multiple required >
+                              @foreach ($motivos as $motivo) 
+                              <option value="{{$motivo->id}}">{{$motivo->nombre_mot}}</option>
+                              @endforeach
+                          </x-adminlte-select>
+                          @if ($errors->has('nombre_mot'))
+                          <span class="text-danger">
+                              <strong>{{$errors->first('nombre_mot') }}</strong>
+                          </span>
+                          @endif  
                     </div>
 
                     <div class="col-md-6">
@@ -809,6 +815,7 @@
 <script>
   $(document).ready(()=>{});
   $('#apellido_nombre_inf').selectpicker('val',@json($infractores_ids));
+  $('#nombre_mot').selectpicker('val',@json($motivos_ids));
 </script>
 
 @endsection

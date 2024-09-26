@@ -462,7 +462,7 @@
               </div>
 
               <hr class="my-4 mx-n4" />
-              <h4 class="fw-normal">7. Carga de datos del personal instructor de la Secretaria de Seguridad</h4>
+              <h4 class="fw-normal">7. Carga de datos del personal instructor de la Secretaria General</h4>
           <div class="row g-3">
 
                     <div class="col-md-6">
@@ -501,7 +501,7 @@
           </div> 
 
               <hr class="my-4 mx-n4" />
-              <h4 class="fw-normal">8. Carga de movimientos y sugerencias de la Secretaria de Seguridad</h4>
+              <h4 class="fw-normal">8. Carga de movimientos y sugerencias de la Secretaria General</h4>
           <div class="row g-3">
 
                 <div class="col-md-6">

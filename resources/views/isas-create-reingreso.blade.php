@@ -3,7 +3,7 @@
 @section('title', 'SIEJ')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Registrar Isa</h1>
+    <h1 class="m-0 text-dark">Reingreso Isa</h1>
 @endsection
 
 @section('styles')
@@ -29,14 +29,14 @@
      
      <div class="card mb-4">
     
-  <form method="POST" action="{{ route ('isas.store')}}" class="card-body">
+  <form method="POST" action="{{ route ('isas.reingreso.store',$isa->id)}}" class="card-body">
        @csrf
        <h4 class="fw-normal">1. Carga de datos del expediente</h4>
       <div class="row g-3">
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-num_dja">N° DJA</label>
-              <input type="text" name="num_dja" id="multicol-num_dja" class="form-control" placeholder="Numero de DJA " value="{{old('num_dja')}}" required/>
+                      <label class="form-label" for="multicol-username">N° DJA ORIGINAL</label>
+                      <span class="form-control" id="multicol-num_dja">{{ $isa-> num_dja}}</span>
             </div>
 
             <div class="col-md-6">
@@ -95,7 +95,7 @@
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-tipo_denuncia">Tipo de Denuncia</label>
-                <x-adminlte-select2 name="tipo_denun" class="select2 form-select" required>
+                <x-adminlte-select2 name="tipo_denuncia" class="select2 form-select" required>
                     <option value="" {{ old('tipo_denuncia') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
                     @foreach($tipo_denuncias as $tipo_denuncia)
                         <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ old('tipo_denuncia') == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>

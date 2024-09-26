@@ -18,7 +18,55 @@ class SumarisimasController extends Controller
     $this->middleware('can:CrearSumarisima')->only('create');
     $this->middleware('can:EliminarSumarisima')->only('destroy');
    
-}     
+  }
+  
+  
+  //////////////////////////////////////////////////////////////////
+    /////////   REINGRESOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function mostrarFormularioReingreso($id)
+      {
+          // Encontrar el sumario original
+          $sumarisima = Sumarisima::findOrFail($id);
+          ////////////
+         
+          $dependencias = Dependencia::all();
+          $motivos = Motivo::all();
+          $tipo_denuncias = TipoDenuncia::all();
+          $jerarquias = Jerarquia::all();
+
+          $infractores = Infractor::all();
+          $infractores_ids = $sumarisima->infractors()->pluck('infractors.id');
+          
+          $motivos = Motivo::all();
+          $motivos_ids = $sumarisima->motivos()->pluck('motivos.id');  
+
+          // Mostrar la vista con el formulario para crear un reingreso
+          // return view('sumarios.create-reingreso', compact('sumario'));
+          return view('sumarisimas-create-reingreso',compact('motivos','motivos_ids','jerarquias','tipo_denuncias',
+          'motivos','sumarisima','infractores','infractores_ids','dependencias'));
+      }
+    
+    
+      public function storeReingreso(Request $request, $id)
+      {
+          // Encontrar el sumario original
+          $sumarisimaOriginal = Sumarisima::findOrFail($id);
+          $nuevoSumarisima = $sumarisimaOriginal->crearReingreso($request->all());
+               
+          $nuevoSumarisima->motivos()->attach($request->input('nombre_mot'));
+          $nuevoSumarisima->infractors()->attach($request->input('apellido_nombre_inf'));
+           //dd($request->all());              
+          return redirect()->route('sumarisimas')->with('message','Registrado correctamente!');
+     
+      }
+
+
+        //////////////////////////////////////////////////////////////////
+    /////////   CRUD SUMARISIMAS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+      
     public function index(){
 
        $sumarisimas = Sumarisima::all();

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'SIEJ')
+@section('title', 'SIEA')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Registrar Isa</h1>
+    <h1 class="m-0 text-dark">Reingreso Sumario</h1>
 @endsection
 
 @section('styles')
@@ -29,14 +29,15 @@
      
      <div class="card mb-4">
     
-  <form method="POST" action="{{ route ('isas.store')}}" class="card-body">
+  <form method="POST" action="{{ route ('sumarios.reingreso.store', $sumario->id)}}" class="card-body">
        @csrf
-       <h4 class="fw-normal">1. Carga de datos del expediente</h4>
+       
+      <h4 class="fw-normal">1. Carga de datos del expediente</h4>
       <div class="row g-3">
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-num_dja">N° DJA</label>
-              <input type="text" name="num_dja" id="multicol-num_dja" class="form-control" placeholder="Numero de DJA " value="{{old('num_dja')}}" required/>
+                      <label class="form-label" for="multicol-username">N° DJA ORIGINAL</label>
+                      <span class="form-control" id="multicol-num_dja">{{ $sumario-> num_dja}}</span>
             </div>
 
             <div class="col-md-6">
@@ -44,12 +45,13 @@
                 <x-adminlte-select2 name="lugar_proced" class="select2 form-select" required>
                     <option value="">Seleccionar la dependencia</option>
                     @foreach($dependencias as $dependencia)
-                        <option value="{{ $dependencia->nombre_dep }}" {{ old('lugar_proced') == $dependencia->nombre_dep ? 'selected' : '' }}>
+                        <option value="{{ $dependencia-> nombre_dep }}" {{ old('lugar_proced') == $dependencia->nombre_dep ? 'selected' : '' }}>
                             {{ $dependencia->nombre_dep }}
                         </option>
                     @endforeach
                 </x-adminlte-select2>
             </div>
+
 
             <div class="col-md-6">
             <label class="form-label" for="multicol-username"> Fecha Ingreso</label>
@@ -57,7 +59,7 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-username"> N° DJ</label>
+              <label class="form-label" for="multicol-num_dj"> N° DJ</label>
               <input type="text" name="num_dj" id="multicol-num_dj" class="form-control" placeholder="Numero de DJ" value="{{old('num_dj')}}" required/>
             </div>
 
@@ -72,8 +74,8 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label" for="multicol-deslindar_resp">Deslindar Responsabilidad</label>
-              <input type="text" name="deslindar_resp" id="multicol-deslindar_resp" class="form-control" value="{{old('deslindar_resp')}}" placeholder="Deslindar responsabilidad" required/>
+              <label class="form-label" for="multicol-infraccion">Infraccion</label>
+              <input type="text" name="infraccion" id="multicol-infraccion" class="form-control" value="{{old('infraccion')}}" placeholder="Infraccion cometida" required/>
             </div>
 
             <div class="col-md-6">
@@ -93,18 +95,25 @@
               @endif  
             </div>
 
+
             <div class="col-md-6">
-                <label class="form-label" for="multicol-tipo_denuncia">Tipo de Denuncia</label>
-                <x-adminlte-select2 name="tipo_denun" class="select2 form-select" required>
-                    <option value="" {{ old('tipo_denuncia') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
+                <label class="form-label" for="multicol-extracto">Extracto</label>
+                <input type="text" name="extracto" id="multicol-extracto" class="form-control" value="{{old('extracto')}}" placeholder="Extracto" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label" for="multicol-tipo_denun">Tipo de Denuncia</label>
+                <x-adminlte-select2 name="tipo_denun" required>
+                    <option value="" {{ old('tipo_denun') == '' ? 'selected' : '' }}>Seleccionar el tipo</option>
                     @foreach($tipo_denuncias as $tipo_denuncia)
-                        <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ old('tipo_denuncia') == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
+                        <option value="{{ $tipo_denuncia->nombre_tipoDen }}" {{ old('tipo_denun') == $tipo_denuncia->nombre_tipoDen ? 'selected' : '' }}>
                             {{ $tipo_denuncia->nombre_tipoDen }}
                         </option>
                     @endforeach
                 </x-adminlte-select2>
             </div>
-                     
+
+          
             <div class="col-md-6">
               <label class="form-label" for="multicol-fecha_movimiento"> Fecha de Pase</label>
               <input type="date" name="fecha_movimiento" id="multicol-fecha_movimiento" class="form-control" value="{{old('fecha_movimiento')}}" placeholder="Fecha de pase del expediente " required />
@@ -113,7 +122,7 @@
             <div class="col-md-6">
                 <label class="form-label" for="multicol-destino_pase">Lugar de Pase</label>
                 <x-adminlte-select2 name="destino_pase" required>
-                    <option value="">Seleccionar la dependencia</option>
+                    <option value="" {{ old('destino_pase') == '' ? 'selected' : '' }}>Seleccionar el lugar de pase</option>
                     @foreach($dependencias as $dependencia)
                         <option value="{{ $dependencia->nombre_dep }}" {{ old('destino_pase') == $dependencia->nombre_dep ? 'selected' : '' }}>
                             {{ $dependencia->nombre_dep }}
@@ -121,61 +130,37 @@
                     @endforeach
                 </x-adminlte-select2>
             </div>
-        
 
             <div class="col-md-6">
               <label class="form-label" for="multicol-observaciones">Observaciones del Expediente</label>
-              <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Escribir observaciones para el pase" />
+              <input type="text" name="observaciones" id="multicol-observaciones" class="form-control" value="{{old('observaciones')}}" placeholder="Observaciones" />
             </div>
-
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-elevado_por_instruccion">Elevado por Instrucción</label>
-                <x-adminlte-select2 name="elevado_por_instruccion" class="select2 form-select">
-                    <option value="" {{ old('elevado_por_instruccion') == '' ? 'selected' : '' }}>Seleccione</option>
-                    <option value="Si" {{ old('elevado_por_instruccion') == 'Si' ? 'selected' : '' }}>Si</option>
-                    <option value="No" {{ old('elevado_por_instruccion') == 'No' ? 'selected' : '' }}>No</option>
-                </x-adminlte-select2>
-            </div>
-
-
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-opinion_sede_inst">Opinion Sede Inst</label>
-                <textarea name="opinion_sede_inst" id="multicol-opinion_sede_inst" class="form-control" placeholder="Escribir la sugerencia">{{ old('opinion_sede_inst') }}</textarea>
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label" for="multicol-conversion_convalid">Conversion y Convalidacion</label>
-                <x-adminlte-select2 name="conversion_convalid" class="select2 form-select">
-                    <option value="" {{ old('conversion_convalid') == "" ? 'selected' : '' }}>Seleccione</option>
-                    <option value="Si" {{ old('conversion_convalid') == "Si" ? 'selected' : '' }}>Si</option>
-                    <option value="No" {{ old('conversion_convalid') == "No" ? 'selected' : '' }}>No</option>
-                </x-adminlte-select2>
-            </div>
-
-                                
+        
+                      
           </div>
 
           <hr class="my-4 mx-n4" />
-          <h4 class="fw-normal">2. Carga de datos del personal infractor</h4>
+          <h4 class="fw-normal">2. Carga del personal infractor</h4>
           <div class="row g-3">
             
-              <div class="col-md-12">
-                  <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
-                  <x-adminlte-select name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" title="Seleccionar infractores" data-style="btn-primary" multiple required>
-                      @foreach ($infractores as $infractor)
-                      <option value="{{$infractor->id}}" {{ (collect(old('apellido_nombre_inf'))->contains($infractor->id)) ? 'selected' : '' }}>
+          <div class="col-md-12">
+              <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
+              <x-adminlte-select name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" title="Seleccionar infractores" data-style="btn-primary" multiple required>
+                  @foreach ($infractores as $infractor) 
+                      <option value="{{$infractor->id}}" {{ collect(old('apellido_nombre_inf'))->contains($infractor->id) ? 'selected' : '' }}>
                           {{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}
                       </option>
-                      @endforeach
-                  </x-adminlte-select>
+                  @endforeach
+              </x-adminlte-select>
 
-                  @if ($errors->has('apellido_nombre_inf'))
+              @if ($errors->has('apellido_nombre_inf'))
                   <span class="text-danger">
                       <strong>{{$errors->first('apellido_nombre_inf') }}</strong>
                   </span>
-                  @endif
-              </div>
-                     
+              @endif  
+          </div>
+
+                      
 
           </div>
 
@@ -218,16 +203,15 @@
                     @endforeach
                 </x-adminlte-select2>
             </div>
-                    
 
           </div> 
 
           <hr class="my-4 mx-n4" />
           <h4 class="fw-normal">4. Carga de movimientos y sugerencias del instructor de la Direccion de Asuntos Internos </h4>
-          <div class="row g-3">
+        <div class="row g-3">
 
-          <div class="col-md-6">
-            <label class="form-label" for="multicol-reg_interno_DAI">Registro Interno</label>
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-reg_interno_DAI">Registro Interno</label>
               <input type="text" name="reg_interno_DAI" id="multicol-reg_interno_DAI" class="form-control" value="{{old('reg_interno_DAI')}}" placeholder="Registro interno" />
             </div>
 
@@ -238,7 +222,7 @@
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-destin_proceden_DAI">Lugar de Procedencia</label>
-                <x-adminlte-select2 name="destin_proceden_DAI" class="select2 form-select">
+                <x-adminlte-select2 name="destin_proceden_DAI">
                     <option value="">Seleccionar la dependencia</option>
                     @foreach($dependencias as $dependencia)
                         <option value="{{ $dependencia->nombre_dep }}" {{ old('destin_proceden_DAI') == $dependencia->nombre_dep ? 'selected' : '' }}>
@@ -247,7 +231,6 @@
                     @endforeach
                 </x-adminlte-select2>
             </div>
-
 
             <div class="col-md-6">
               <label class="form-label" for="multicol-obs_proced_DAI">Observaciones de Procedencia</label>
@@ -287,17 +270,18 @@
               <label class="form-label" for="multicol-obs_pase_DAI">Observaciones del Pase</label>
               <input type="text" name="obs_pase_DAI" id="multicol-obs_pase_DAI" class="form-control" value="{{old('obs_pase_DAI')}}" placeholder="Observaciones" />
             </div>
-
+           
             <div class="col-md-6">
                 <label class="form-label" for="multicol-concluido_DAI">Concluido por Instruccion</label>
                 <x-adminlte-select2 name="concluido_DAI" class="select2 form-select">
-                    <option value="">Seleccione</option>
+                    <option value="" {{ old('concluido_DAI') == '' ? 'selected' : '' }}>Seleccione</option>
                     <option value="Si" {{ old('concluido_DAI') == 'Si' ? 'selected' : '' }}>Si</option>
                     <option value="No" {{ old('concluido_DAI') == 'No' ? 'selected' : '' }}>No</option>
                 </x-adminlte-select2>
             </div>
 
-          </div>
+
+         </div>
 
           <hr class="my-4 mx-n4" />
           <h4 class="fw-normal">5. Carga de datos del personal instructor de la Direccion General de Asuntos Judiciales</h4>
@@ -325,6 +309,7 @@
                     </x-adminlte-select2>
                 </div>
 
+
                 <div class="col-md-6 select2-primary">
                     <label class="form-label" for="multicol-jerarquia_DGAJ">Jerarquía</label>
                     <x-adminlte-select2 name="jerarquia_DGAJ" class="select2 form-select">
@@ -337,15 +322,16 @@
                     </x-adminlte-select2>
                 </div>
 
+
           </div> 
 
           <hr class="my-4 mx-n4" />
           <h4 class="fw-normal">6. Carga de movimientos y sugerencias del instructor de la Direccion General de Asuntos Judiciales </h4>
             <div class="row g-3">
 
-                          
+                            
                 <div class="col-md-6">
-                <label class="form-label" for="multicol-fecha_mov_proceDGAJ"> Fecha de Procedencia</label>
+                <label class="form-label" for="multicol-fecha_mov_proceDGAJ">Fecha de procedencia</label>
                   <input type="date" name="fecha_mov_proceDGAJ" id="multicol-fecha_mov_proceDGAJ" class="form-control" value="{{old('fecha_mov_proceDGAJ')}}" placeholder="Fecha de pase del expediente " />
                 </div>
 
@@ -360,12 +346,12 @@
                         @endforeach
                     </x-adminlte-select2>
                 </div>
-               
+
+      
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-sugerencia_DGAJ">Sugerencia DGAJ</label>
                     <textarea name="sugerencia_DGAJ" id="multicol-sugerencia_DGAJ" class="form-control" placeholder="Escribir la sugerencia">{{ old('sugerencia_DGAJ') }}</textarea>
                 </div>
-
 
                 <div class="col-md-6">
                   <label class="form-label" for="multicol-obs_proced_DGAJ">Observaciones de Procedencia</label>
@@ -373,7 +359,7 @@
                 </div>
                 
                 <div class="col-md-6">
-                  <label class="form-label" for="multicol-fecha_mov_destDGAJ"> Fecha de Movimiento Pase</label>
+                  <label class="form-label" for="multicol-fecha_mov_destDGAJ">Fecha de Pase</label>
                   <input type="date" name="fecha_mov_destDGAJ" id="multicol-fecha_mov_destDGAJ" class="form-control" value="{{old('fecha_mov_destDGAJ')}}" placeholder="Fecha de pase del expediente " />
                 </div>
 
@@ -389,25 +375,25 @@
                         @endforeach
                     </x-adminlte-select2>
                 </div>
-             
+
                 <div class="col-md-6">
                   <label class="form-label" for="multicol-obs_pase_DGAJ">Observaciones del Pase</label>
                   <input type="text" name="obs_pase_DGAJ" id="multicol-obs_pase_DGAJ"value="{{old('obs_pase_DGAJ')}}"  class="form-control" placeholder="Escribir observaciones para el pase" />
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label" for="multicol-concluido_DGAJ">Concluido por Instrucción</label>
+                    <label class="form-label" for="multicol-concluido_DGAJ">Concluido</label>
                     <x-adminlte-select2 name="concluido_DGAJ" class="select2 form-select">
-                        <option value="">Seleccione</option>
+                        <option value="" {{ old('concluido_DGAJ') == '' ? 'selected' : '' }}>Seleccione</option>
                         <option value="Si" {{ old('concluido_DGAJ') == 'Si' ? 'selected' : '' }}>Si</option>
                         <option value="No" {{ old('concluido_DGAJ') == 'No' ? 'selected' : '' }}>No</option>
                     </x-adminlte-select2>
                 </div>
 
-            
+                
              </div>
 
-          
+             
           <hr class="my-4 mx-n4" />
           <h4 class="fw-normal">7. Carga de datos del personal instructor de Asesoria Letrada</h4>
           <div class="row g-3">
@@ -425,7 +411,7 @@
                 <div class="col-md-6">
                     <label class="form-label" for="multicol-dependen_AL">Dependencia</label>
                     <x-adminlte-select2 name="dependen_AL" class="select2 form-select">
-                        <option value="">Seleccionar la dependencia</option>
+                        <option value="" {{ old('dependen_AL') == '' ? 'selected' : '' }}>Seleccionar la dependencia</option>
                         @foreach($dependencias as $dependencia)
                             <option value="{{ $dependencia->nombre_dep }}" {{ old('dependen_AL') == $dependencia->nombre_dep ? 'selected' : '' }}>
                                 {{ $dependencia->nombre_dep }}
@@ -465,7 +451,7 @@
             <div class="col-md-6">
                 <label class="form-label" for="multicol-destin_proceden_AL">Lugar de Procedencia</label>
                 <x-adminlte-select2 name="destin_proceden_AL" class="select2 form-select">
-                    <option value="">Seleccionar la dependencia</option>
+                    <option value="" {{ old('destin_proceden_AL') == '' ? 'selected' : '' }}>Seleccionar la dependencia</option>
                     @foreach($dependencias as $dependencia)
                         <option value="{{ $dependencia->nombre_dep }}" {{ old('destin_proceden_AL') == $dependencia->nombre_dep ? 'selected' : '' }}>
                             {{ $dependencia->nombre_dep }}
@@ -473,7 +459,7 @@
                     @endforeach
                 </x-adminlte-select2>
             </div>
-
+          
             <div class="col-md-6">
                 <label class="form-label" for="multicol-sugerencia_AL">Sugerencia AL</label>
                 <textarea name="sugerencia_AL" id="multicol-sugerencia_AL" class="form-control" placeholder="Escribir la sugerencia">{{ old('sugerencia_AL') }}</textarea>
@@ -485,14 +471,14 @@
             </div>
           
             <div class="col-md-6">
-              <label class="form-label" for="multicol-fecha_mov_paseAL"> Fecha de Pase</label>
+              <label class="form-label" for="multicol-fecha_mov_paseAL">Fecha de Pase</label>
               <input type="date" name="fecha_mov_paseAL" id="multicol-fecha_mov_paseAL" value="{{old('fecha_mov_paseAL')}}" class="form-control" placeholder="Fecha de pase del expediente " />
             </div>
 
             <div class="col-md-6">
                 <label class="form-label" for="multicol-destin_pase_AL">Lugar de Pase</label>
                 <x-adminlte-select2 name="destin_pase_AL" class="select2 form-select">
-                    <option value="">Seleccionar la dependencia</option>
+                    <option value="" {{ old('destin_pase_AL') == '' ? 'selected' : '' }}>Seleccionar la dependencia</option>
                     @foreach($dependencias as $dependencia)
                         <option value="{{ $dependencia->nombre_dep }}" {{ old('destin_pase_AL') == $dependencia->nombre_dep ? 'selected' : '' }}>
                             {{ $dependencia->nombre_dep }}
@@ -507,7 +493,7 @@
             </div>
 
             <div class="col-md-6">
-                <label class="form-label" for="multicol-concluido_AL">Concluido por Instrucción</label>
+                <label class="form-label" for="multicol-concluido_AL">Concluido</label>
                 <x-adminlte-select2 name="concluido_AL" class="select2 form-select">
                     <option value="" {{ old('concluido_AL') == '' ? 'selected' : '' }}>Seleccione</option>
                     <option value="Si" {{ old('concluido_AL') == 'Si' ? 'selected' : '' }}>Si</option>
@@ -556,6 +542,7 @@
             </div>
 
 
+
           </div> 
 
           <hr class="my-4 mx-n4" />
@@ -573,16 +560,16 @@
               </div>
 
               <div class="col-md-6">
-                    <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
-                    <x-adminlte-select2 name="destin_proceden_DGRRHH" class="select2 form-select">
-                        <option value="" {{ old('destin_proceden_DGRRHH') == '' ? 'selected' : '' }}>Seleccionar la dependencia</option>
-                        @foreach($dependencias as $dependencia)
-                            <option value="{{ $dependencia->nombre_dep }}" {{ old('destin_proceden_DGRRHH') == $dependencia->nombre_dep ? 'selected' : '' }}>
-                                {{ $dependencia->nombre_dep }}
-                            </option>
-                        @endforeach
-                    </x-adminlte-select2>
-                </div>
+                  <label class="form-label" for="multicol-destin_proceden_DGRRHH">Lugar de Procedencia</label>
+                  <x-adminlte-select2 name="destin_proceden_DGRRHH" class="select2 form-select">
+                      <option value="" {{ old('destin_proceden_DGRRHH') == '' ? 'selected' : '' }}>Seleccionar la dependencia</option>
+                      @foreach($dependencias as $dependencia)
+                          <option value="{{ $dependencia->nombre_dep }}" {{ old('destin_proceden_DGRRHH') == $dependencia->nombre_dep ? 'selected' : '' }}>
+                              {{ $dependencia->nombre_dep }}
+                          </option>
+                      @endforeach
+                  </x-adminlte-select2>
+              </div>
 
 
               <div class="col-md-6">
@@ -601,17 +588,17 @@
               </div>
 
               <div class="col-md-6">
-                <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de Pase</label>
-                <x-adminlte-select2 name="destin_pase_DGRRHH" class="select2 form-select">
-                    <option value="" {{ old('destin_pase_DGRRHH') == '' ? 'selected' : '' }}>Seleccionar la dependencia</option>
-                    @foreach($dependencias as $dependencia)
-                        <option value="{{ $dependencia->nombre_dep }}" {{ old('destin_pase_DGRRHH') == $dependencia->nombre_dep ? 'selected' : '' }}>
-                            {{ $dependencia->nombre_dep }}
-                        </option>
-                    @endforeach
-                </x-adminlte-select2>
+                  <label class="form-label" for="multicol-destin_pase_DGRRHH">Lugar de Pase</label>
+                  <x-adminlte-select2 name="destin_pase_DGRRHH" class="select2 form-select">
+                      <option value="" {{ old('destin_pase_DGRRHH') == '' ? 'selected' : '' }}>Seleccionar la dependencia</option>
+                      @foreach($dependencias as $dependencia)
+                          <option value="{{ $dependencia->nombre_dep }}" {{ old('destin_pase_DGRRHH') == $dependencia->nombre_dep ? 'selected' : '' }}>
+                              {{ $dependencia->nombre_dep }}
+                          </option>
+                      @endforeach
+                  </x-adminlte-select2>
               </div>
-
+            
 
               <div class="col-md-6">
                 <label class="form-label" for="multicol-obs_pase_DGRRHH">Observaciones del Pase</label>
@@ -619,13 +606,14 @@
               </div>
 
               <div class="col-md-6">
-                  <label class="form-label" for="multicol-concluido_DGRRHH">Concluido por Instrucción</label>
+                  <label class="form-label" for="multicol-concluido_DGRRHH">Concluido</label>
                   <x-adminlte-select2 name="concluido_DGRRHH" class="select2 form-select">
                       <option value="" {{ old('concluido_DGRRHH') == '' ? 'selected' : '' }}>Seleccione</option>
                       <option value="Si" {{ old('concluido_DGRRHH') == 'Si' ? 'selected' : '' }}>Si</option>
                       <option value="No" {{ old('concluido_DGRRHH') == 'No' ? 'selected' : '' }}>No</option>
                   </x-adminlte-select2>
               </div>
+
 
               <div class="col-md-6">
                 <label class="form-label" for="multicol-DGRRHH_N°">DGRRHH N°</label>
@@ -641,7 +629,7 @@
 
           <div class="pt-4">
               <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
-              <button type="reset" class="btn btn-secondary" onClick="location.href='/isas'">Cancelar</button>
+              <button type="reset" class="btn btn-secondary" onClick="location.href='/sumarios'">Cancelar</button>
           </div>
    </form>
 

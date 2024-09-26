@@ -17,10 +17,11 @@
         <tr>
           <th>ID</th>
           <th>N° DJ</th>
+          <th>N° DJ ORIGINAL</th>
           <th>MOTIVO</th>
           <th>LEGAJO PERSONAL</th>
           <th>INFRACTOR</th>
-          <th>INSTRUCTOR</th>
+          <th>TIPO DENUNCIA</th>
           <th>FECHA INGRESO</th>
           <th>CONCLUIDO</th>
           <th>ACCION</th>
@@ -32,7 +33,8 @@
              <tr>
 
                     <td>{{$sumarisima->id}}</td>   
-                    <td>{{$sumarisima->num_dj}} </td>   
+                    <td>{{$sumarisima->num_dj}} </td>
+                    <td>{{$sumarisima->num_dj_original}}</td>      
                                 <td>
                                     @foreach ($sumarisima->motivos as $motivo)
                                     {{$motivo->nombre_mot}} <br>
@@ -50,20 +52,26 @@
                                     @endforeach
                                 </td>
                     
-                    <td>{{$sumarisima->apellido_nombre_AL}} </td>   
+                    <td>{{$sumarisima->tipo_denuncia}} </td>   
                     <td>{{$sumarisima->fecha_ingreso}}</td>
                     <td>{{$sumarisima->concluido_DGRRHH}}</td>      
                                          
                     <td>
                         <form action="{{route('sumarisimas.destroy', $sumarisima->id) }}" class="formEliminar" method="POST">
+                          @csrf
+                          @method('delete')
                           <a href="{{ route ('sumarisimas.show', $sumarisima->id) }}" class="btn btn-secondary btn-sm" title="Ver" > 
                             <i class="fas fa-eye"></i>
                           </a>
+
                           <a href="{{ route ('sumarisimas.edit', $sumarisima->id) }}" class="btn btn-primary btn-sm" title="Editar"> 
                             <i class="fas fa-edit"></i>
                           </a>
-                          @csrf
-                          @method('delete')
+                          @can('Reingreso') 
+                          <a href="{{ route('sumarisimas.reingreso.create', $sumarisima->id) }}" class="btn btn-success btn-sm" title="Reingreso">
+                                <i class="fas fa-redo-alt"></i>
+                          </a>
+                          @endcan
 
                           @can('EliminarSumarisima') 
                               <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">

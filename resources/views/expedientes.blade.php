@@ -17,6 +17,7 @@
         <tr>
           <th>ID</th>
           <th>N° ORDEN</th>
+          <th>N° ORDEN ORIGINAL</th>
           <th>FECHA INGRESO</th>
           <th>ORIGEN</th>
           <th>TIPO</th>
@@ -26,7 +27,6 @@
           <th>EXTRACTO</th>
           <th>FECHA SALIDA</th>
           <th>DESTINO</th>
-          <th>OBSERVACIONES</th>
           <th>ACCION</th>
 
         </tr>
@@ -36,7 +36,8 @@
              <tr>
 
                     <td>{{$expediente->id}}</td>   
-                    <td>{{$expediente->num_orden_exp}} </td>   
+                    <td>{{$expediente->num_orden_exp}} </td>
+                    <td>{{$expediente->num_orden_exp_original}}</td>          
                     <td>{{$expediente->fecha_ingreso_exp}}</td>   
                     <td>{{$expediente->origen_exp}} </td>   
                     <td>{{$expediente->tipo_exp}}</td>   
@@ -46,10 +47,12 @@
                     <td>{{$expediente->extracto_exp}}</td>   
                     <td>{{$expediente->fecha_salida_exp}} </td>   
                     <td>{{$expediente->destino_exp}}</td>
-                    <td>{{$expediente->observaciones_exp}}</td>            
+                        
               
                     <td>
                         <form action="{{route('expedientes.destroy', $expediente->id) }}" class="formEliminar" method="POST">
+                        @csrf
+                        @method('delete')
                           <a href="{{ route ('expedientes.show', $expediente->id) }}" class="btn btn-secondary btn-sm" title="Ver"> 
                            <i class="fas fa-eye"></i>
                           </a>
@@ -57,8 +60,11 @@
                           <a href="{{ route ('expedientes.edit', $expediente->id) }}" class="btn btn-primary btn-sm" title="Editar"> 
                            <i class="fas fa-edit"></i>
                           </a>
-                          @csrf
-                          @method('delete')
+
+                          <a href="{{ route('expedientes.reingreso.create', $expediente->id) }}" class="btn btn-success btn-sm" title="Reingreso">
+                                <i class="fas fa-redo-alt"></i>
+                            </a>
+                         
                           <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
                            <i class="fas fa-trash"></i>
                           </button>

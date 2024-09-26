@@ -118,8 +118,13 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-motivo">Motivo</label>
-                      <span class="form-control" id="multicol-motivo">{{ $sanciones-> motivo }}</span>
+                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                          <br>
+                          <span class="card" id="multicol-nombre_mot">
+                              @foreach ($sanciones->motivos as $motivo)
+                              {{$motivo->nombre_mot}}, 
+                              @endforeach
+                          </span>
                     </div>
 
                     <div class="col-md-6">
@@ -309,7 +314,7 @@
               </div>
 
               <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">7. Datos del personal instructor de la Secretaria de Seguridad</h4>
+                  <h4 class="fw-normal">7. Datos del personal instructor de la Secretaria General</h4>
               <div class="row g-3">
 
                         <div class="col-md-6">
@@ -335,7 +340,7 @@
               </div> 
 
                   <hr class="my-4 mx-n4" />
-                  <h4 class="fw-normal">8. Movimientos y sugerencias del instructor de Asesoria Letrada</h4>
+                  <h4 class="fw-normal">8. Movimientos y sugerencias del instructor de la Secretaria General</h4>
               <div class="row g-3">
 
                     <div class="col-md-6">
@@ -475,6 +480,7 @@
 <script>
   $(document).ready(()=>{});
   $('#apellido_nombre_inf').selectpicker('val',@json($infractores_ids));
+  $('#nombre_mot').selectpicker('val',@json($motivos_ids));
 </script>
 
 @endsection
