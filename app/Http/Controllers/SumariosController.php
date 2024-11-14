@@ -241,7 +241,7 @@ class SumariosController extends Controller
       $jerarquias = Jerarquia::all();
 
       $infractores = Infractor::all();
-      $infractores_ids = $sumario->infractors()->pluck('infractors.id');
+      $infractores_ids = $sumario->infractors()->pluck('infractors.id')->toArray();
       
       $motivos = Motivo::all();
       $motivos_ids = $sumario->motivos()->pluck('motivos.id');  

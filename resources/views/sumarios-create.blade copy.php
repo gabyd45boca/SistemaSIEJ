@@ -142,23 +142,27 @@
           <h4 class="fw-normal">2. Carga del personal infractor</h4>
           <div class="row g-3">
             
-                <div class="col-md-12">
-                        <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
-                        <x-adminlte-select2 name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control" data-placeholder="Seleccionar infractores" multiple required>
-                            @foreach ($infractores as $infractor) 
-                                <option value="{{$infractor->id}}" {{ collect(old('apellido_nombre_inf'))->contains($infractor->id) ? 'selected' : '' }}>
-                                    {{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}
-                                </option>
-                            @endforeach
-                        </x-adminlte-select2>
+          <div class="col-md-12">
+              <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
+              <x-adminlte-select name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" title="Seleccionar infractores" data-style="btn-primary" multiple required>
+                  @foreach ($infractores as $infractor) 
+                      <option value="{{$infractor->id}}" {{ collect(old('apellido_nombre_inf'))->contains($infractor->id) ? 'selected' : '' }}>
+                          {{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}
+                      </option>
+                  @endforeach
+              </x-adminlte-select>
 
-                        @if ($errors->has('apellido_nombre_inf'))
-                            <span class="text-danger">
-                                <strong>{{$errors->first('apellido_nombre_inf') }}</strong>
-                            </span>
-                        @endif  
-                </div>
+              @if ($errors->has('apellido_nombre_inf'))
+                  <span class="text-danger">
+                      <strong>{{$errors->first('apellido_nombre_inf') }}</strong>
+                  </span>
+              @endif  
           </div>
+
+                      
+
+          </div>
+
 
           <hr class="my-4 mx-n4" />
           <h4 class="fw-normal">3. Carga de datos del personal instructor de la Direccion de Asuntos Internos</h4>
