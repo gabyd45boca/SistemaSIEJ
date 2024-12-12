@@ -79,13 +79,13 @@
 
             <div class="col-md-6">
               <label class="form-label" for="multicol-nombre_mot">Motivo</label>
-              <x-adminlte-select name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" title="Seleccionar motivos" data-style="btn-primary" multiple required>
+              <x-adminlte-select2 name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" title="Seleccionar motivos" data-style="btn-primary" multiple required>
                   @foreach ($motivos as $motivo) 
                       <option value="{{$motivo->id}}" {{ collect(old('nombre_mot'))->contains($motivo->id) ? 'selected' : '' }}>
                           {{$motivo->nombre_mot}} 
                       </option>
                   @endforeach
-              </x-adminlte-select>
+              </x-adminlte-select2>
 
               @if ($errors->has('motivo'))
                   <span class="text-danger">
