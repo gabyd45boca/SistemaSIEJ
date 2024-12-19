@@ -37,10 +37,14 @@
                   <div class="row g-3">
                     
                     <div class="col-md-6">
-                      <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombre</label>
-                      <span class="form-control" id="multicol-apellido_nombre_inf">{{ $infractor-> apellido_nombre_inf}}</span>
+                      <label class="form-label" for="multicol-apellido_inf">Apellido</label>
+                      <span class="form-control" id="multicol-apellido_inf">{{ $infractor-> apellido_inf}}</span>
                     </div>
 
+                    <div class="col-md-6">
+                      <label class="form-label" for="multicol-nombre_inf">Nombres</label>
+                      <span class="form-control" id="multicol-nombre_inf">{{ $infractor-> nombre_inf}}</span>
+                    </div>
                                              
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-leg_pers_inf">Legajo Personal</label>

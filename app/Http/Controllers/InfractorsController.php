@@ -57,7 +57,8 @@ class InfractorsController extends Controller
 
             $validator = $request -> validate ([
            
-            'apellido_nombre_inf' =>'required' ,
+            'apellido_inf' =>'required' ,
+            'nombre_inf' =>'required' ,
             'leg_pers_inf' =>'required|unique:infractors' ,
             'dependen_inf' =>'required' ,
             'jerarquia_inf' =>'required' ,
@@ -66,7 +67,8 @@ class InfractorsController extends Controller
         
             $infractors =new Infractor();
                
-            $infractors->apellido_nombre_inf = $request->apellido_nombre_inf;
+            $infractors->apellido_inf = $request->apellido_inf;
+            $infractors->nombre_inf = $request->nombre_inf;
             $infractors->leg_pers_inf = $request->leg_pers_inf;
             $infractors->dependen_inf = $request->dependen_inf;
             $infractors->jerarquia_inf = $request->jerarquia_inf;
@@ -89,7 +91,8 @@ class InfractorsController extends Controller
 
         $validator = $request -> validate ([
           
-          'apellido_nombre_inf' =>'required',
+          'apellido_inf' =>'required',
+          'nombre_inf' =>'required',
           'leg_pers_inf' =>'required' ,
           'dependen_inf' =>'required' ,
           'jerarquia_inf' =>'required',
@@ -98,7 +101,8 @@ class InfractorsController extends Controller
     
         $infractors = Infractor::find($request->infractor_id);
                
-        $infractors->apellido_nombre_inf = $request->apellido_nombre_inf;
+        $infractors->apellido_inf = $request->apellido_inf;
+        $infractors->nombre_inf = $request->nombre_inf;
         $infractors->leg_pers_inf = $request->leg_pers_inf;
         $infractors->dependen_inf = $request->dependen_inf;
         $infractors->jerarquia_inf = $request->jerarquia_inf;

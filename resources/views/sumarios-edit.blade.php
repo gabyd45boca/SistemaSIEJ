@@ -209,19 +209,25 @@
                       <input type="text" name="infraccion" value="{{ $sumario-> infraccion }}" id="multicol-infraccion" class="form-control" placeholder="Infraccion cometida" required/>
                     </div>
 
+                    
                     <div class="col-md-6">
-                          <label class="form-label" for="multicol-nombre_mot">Motivo</label>
-                          <x-adminlte-select  name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Motivos" multiple required >
-                              @foreach ($motivos as $motivo) 
-                              <option value="{{$motivo->id}}">{{$motivo->nombre_mot}}</option>
-                              @endforeach
-                          </x-adminlte-select>
-                          @if ($errors->has('nombre_mot'))
-                          <span class="text-danger">
-                              <strong>{{$errors->first('nombre_mot') }}</strong>
-                          </span>
-                          @endif  
+                        <label class="form-label" for="multicol-nombre_mot">Motivo</label>
+                        <x-adminlte-select2 name="nombre_mot[]" id="nombre_mot" class="form-control" title="Seleccionar motivos" multiple required data-placeholder="Seleccionar motivos" data-allow-clear="true">
+                            @foreach ($motivos as $motivo)
+                                <option value="{{$motivo->id}}" 
+                                    {{ in_array($motivo->id, old('nombre_mot', $sumario->motivos->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{$motivo->nombre_mot}}
+                                </option>
+                            @endforeach
+                        </x-adminlte-select2>
+
+                        @if ($errors->has('nombre_mot'))
+                            <span class="text-danger">
+                                <strong>{{$errors->first('nombre_mot') }}</strong>
+                            </span>
+                        @endif
                     </div>
+
 
                     <div class="col-md-6">
                       <label class="form-label" for="multicol-extracto">Extracto</label>
@@ -270,20 +276,24 @@
                   <hr class="my-4 mx-n4" />
                   <h4 class="fw-normal">2. Carga del personal infractor</h4>
                   <div class="row g-3">
-                    
-                    <div class="col-md-12">
-                          <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
-                          <x-adminlte-select  name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control selectpicker" data-style="btn-primary" title="Seleccionar Infractores" multiple required >
-                              @foreach ($infractores as $infractor) 
-                              <option value="{{$infractor->id}}">{{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}</option>
-                              @endforeach
-                          </x-adminlte-select>
-                          @if ($errors->has('apellido_nombre_inf'))
+                                    
+                  <div class="col-md-12">
+                      <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
+                      <x-adminlte-select2 name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control" title="Seleccionar Infractores" multiple required data-tags="true" data-token-separators="[',']" data-allow-clear="true" data-placeholder="Seleccionar Infractores">
+                          @foreach ($infractores as $infractor)
+                              <option value="{{$infractor->id}}" 
+                                  {{ in_array($infractor->id, old('apellido_nombre_inf', $sumario->infractors->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                  {{$infractor->jerarquia_inf}} {{$infractor->apellido_inf}} {{$infractor->nombre_inf}} Lp: {{$infractor->leg_pers_inf }}
+                              </option>
+                          @endforeach
+                      </x-adminlte-select2>
+
+                      @if ($errors->has('apellido_nombre_inf'))
                           <span class="text-danger">
                               <strong>{{$errors->first('apellido_nombre_inf') }}</strong>
                           </span>
-                          @endif  
-                   </div>
+                      @endif
+                  </div>
                                       
                   </div>
                   @endcan 
@@ -798,9 +808,33 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 <script>
-  $(document).ready(()=>{});
-  $('#apellido_nombre_inf').selectpicker('val',@json($infractores_ids));
-  $('#nombre_mot').selectpicker('val',@json($motivos_ids));
+  
+
+  $(document).ready(function() {
+        // Inicializar select2 con etiquetas dentro del campo y sin tildes
+        $('#nombre_mot').select2({
+            tags: true,                    // Permite agregar etiquetas personalizadas
+            tokenSeparators: [','],        // Los tokens se separan por coma
+            placeholder: "Seleccionar motivos", // Texto de ejemplo
+            allowClear: true,              // Permite limpiar las selecciones
+            closeOnSelect: false,          // Evita que el select2 se cierre al seleccionar
+            dropdownAutoWidth: true,       // Ajusta el ancho del dropdown al contenido
+            width: '100%'                  // Asegura que el select2 ocupe todo el ancho disponible
+        });
+    });
+
+  $(document).ready(function() {
+      // Inicializar select2 con etiquetas dentro del campo y sin tildes
+      $('#apellido_nombre_inf').select2({
+          tags: true,                    // Permite agregar etiquetas personalizadas
+          tokenSeparators: [','],        // Los tokens se separan por coma
+          placeholder: "Seleccionar Infractores", // Texto de ejemplo
+          allowClear: true,              // Permite limpiar las selecciones
+          closeOnSelect: false,          // Evita que el select2 se cierre al seleccionar
+          dropdownAutoWidth: true,       // Ajusta el ancho del dropdown al contenido
+          width: '100%'                  // Asegura que el select2 ocupe todo el ancho disponible
+      });
+  });  
 </script>
 
 @endsection

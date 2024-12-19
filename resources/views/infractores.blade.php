@@ -16,7 +16,8 @@
       <thead class="bg-dark text-white">
         <tr>
           <th>ID</th>
-          <th>APELLIDO NOMBRE</th>
+          <th>APELLIDO</th>
+          <th>NOMBRES</th>
           <th>DEPENDENCIA</th>
           <th>JERARQUIA</th>
           <th>LEGAJO </th>
@@ -33,7 +34,8 @@
              <tr>
 
                     <td>{{$infractor->id}}</td>   
-                    <td>{{$infractor->apellido_nombre_inf}} </td>   
+                    <td>{{$infractor->apellido_inf}}</td>
+                    <td>{{$infractor->nombre_inf}} </td>      
                     <td>{{$infractor->dependen_inf}}</td>   
                     <td>{{$infractor->jerarquia_inf}} </td>   
                     <td>{{$infractor->leg_pers_inf}}</td>   

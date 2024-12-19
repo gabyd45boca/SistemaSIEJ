@@ -18,7 +18,8 @@ return new class extends Migration
 
             $table->bigIncrements('id');
 
-            $table->string('apellido_nombre_inf');
+            $table->string('apellido_inf');
+            $table->string('nombre_inf');
             $table->string('leg_pers_inf')->unique();
             $table->string('dependen_inf'); //poner un select  filtrar por aqui las consultas
             $table->string('jerarquia_inf'); //poner un select  filtrar por aqui las consultas

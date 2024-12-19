@@ -31,17 +31,20 @@
           <div class="row g-3">
             
             <div class="col-md-6">
-              <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombre</label>
-              <input type="text" name="apellido_nombre_inf" id="multicol-apellido_nombre_inf" class="form-control" value="{{old('apellido_nombre_inf')}}" placeholder="Escribir el apellido y nombre"/>
+              <label class="form-label" for="multicol-apellido_inf">Apellido</label>
+              <input type="text" name="apellido_inf" id="multicol-apellido_inf" class="form-control" value="{{old('apellido_inf')}}" placeholder="Escribir el apellido"/>
             </div>
 
+            <div class="col-md-6">
+              <label class="form-label" for="multicol-nombre_inf">Nombres</label>
+              <input type="text" name="nombre_inf" id="multicol-nombre_inf" class="form-control" value="{{old('nombre_inf')}}" placeholder="Escribir los nombres"/>
+            </div>
                            
             <div class="col-md-6">
               <label class="form-label" for="multicol-leg_pers_inf">Legajo Personal</label>
               <input type="text" name= "leg_pers_inf" id="multicol-leg_pers_inf" value="{{old('leg_pers_inf')}}" class="form-control" placeholder="Escribir el legajo personal" />
             </div>
-           
-
+         
             <div class="col-md-6">
                 <label class="form-label" for="multicol-dependen_inf">Dependencia</label>
                 <x-adminlte-select2 name="dependen_inf">

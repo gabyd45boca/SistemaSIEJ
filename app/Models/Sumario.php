@@ -81,6 +81,7 @@ class Sumario extends Model
     public function infractors(){
 
         return $this->belongsToMany(Infractor::class)->withTimestamps();
+      
     }
 
     public function motivos(){

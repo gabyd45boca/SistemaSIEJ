@@ -232,8 +232,8 @@ class SumariosController extends Controller
 
    
 
-    public function edit($sumario_id){
-
+    public function edit($sumario_id)
+    {
       $sumario = Sumario::find($sumario_id);
       $dependencias = Dependencia::all();
       $motivos = Motivo::all();
@@ -241,13 +241,14 @@ class SumariosController extends Controller
       $jerarquias = Jerarquia::all();
 
       $infractores = Infractor::all();
-      $infractores_ids = $sumario->infractors()->pluck('infractors.id')->toArray();
+      //$infractores_ids = $sumario->infractors()->pluck('infractors.id')->toArray();
+     // $motivos_ids = $sumario->motivos()->pluck('motivos.id');
       
-      $motivos = Motivo::all();
-      $motivos_ids = $sumario->motivos()->pluck('motivos.id');  
+      
      
-      return view('sumarios-edit',compact('motivos','motivos_ids','jerarquias','tipo_denuncias','sumario','infractores','infractores_ids','dependencias'));
+      return view('sumarios-edit',compact('motivos','jerarquias','tipo_denuncias','sumario','infractores','dependencias'));
     }
+    
     
 
     public function store(Request $request){

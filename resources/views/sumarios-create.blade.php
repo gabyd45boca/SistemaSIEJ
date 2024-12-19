@@ -147,7 +147,7 @@
                         <x-adminlte-select2 name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control" data-placeholder="Seleccionar infractores" multiple required>
                             @foreach ($infractores as $infractor) 
                                 <option value="{{$infractor->id}}" {{ collect(old('apellido_nombre_inf'))->contains($infractor->id) ? 'selected' : '' }}>
-                                    {{$infractor->apellido_nombre_inf}} Lp: {{$infractor->leg_pers_inf }}
+                                {{$infractor->jerarquia_inf}} {{$infractor->apellido_inf}} {{$infractor->nombre_inf}} Lp: {{$infractor->leg_pers_inf }}
                                 </option>
                             @endforeach
                         </x-adminlte-select2>
