@@ -75,14 +75,15 @@ class SumariosController extends Controller
 
     public function getMotivosData()
     {
-        $motivos = Sumario::select('motivos.nombre_mot', \DB::raw('count(*) as total'))
-                          ->join('motivos', 'sumarios.id', '=', 'motivos.id')
-                          ->groupBy('motivos.nombre_mot')
-                          ->get();
-
-                        //  dd($motivos); // Verifica los resultados aquí
+        $motivos = \DB::table('motivo_sumario')
+                      ->join('motivos', 'motivo_sumario.motivo_id', '=', 'motivos.id')
+                      ->select('motivos.nombre_mot', \DB::raw('COUNT(motivo_sumario.sumario_id) as total'))
+                      ->groupBy('motivos.nombre_mot')
+                      ->get();
+    
         return response()->json($motivos);
     }
+    
     
      //////////////////////////////////////////////////////////////////
     ///////// EXPORTACION EXCEL ///////////////////////////////////////////
