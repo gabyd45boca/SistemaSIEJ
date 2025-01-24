@@ -23,7 +23,7 @@ class SumariosExport implements FromCollection, WithHeadings, WithMapping
 
     public function collection()
     {
-        return Sumario::with('motivos','infractors','tipo_denuncias')
+        return Sumario::with('motivos','infractors')
         ->whereBetween('fecha_ingreso', [$this->startDate , $this->endDate])
         ->get(); // Cargar sumarios con sus motivos relacionados y rangos de fechas
     }
@@ -34,10 +34,12 @@ class SumariosExport implements FromCollection, WithHeadings, WithMapping
             //DATA TABLE
             'SUMARIO ID',
             'N°DJA',
+            'N°DJA ORIGINAL',
             'N°DJ',
             'MOTIVO',
             'LEGAJO',
-            'INFRACTOR',
+            'APELLIDO INFRACTOR',
+            'NOMBRE INFRACTOR',
             'TIPO DENUNCIA',    
             'FECHA INGRESO',
             'INFRACCION',
@@ -124,10 +126,14 @@ class SumariosExport implements FromCollection, WithHeadings, WithMapping
                         //DATA TABLE
                         $sumario->id,
                         $sumario->num_dja,
+                        $sumario->num_dja_original,
                         $sumario->num_dj,
                         $motivo->nombre_mot,
+
                         $infractor->leg_pers_inf,
-                        $infractor->apellido_nombre_inf,
+                        $infractor->apellido_inf,
+                        $infractor->nombre_inf,
+
                         $sumario->tipo_denun,
                         $sumario->fecha_ingreso,  
                         $sumario->infraccion,

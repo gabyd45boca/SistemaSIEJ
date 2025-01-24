@@ -54,7 +54,8 @@
           <th>N° DJA ORIGINAL</th>
           <th>MOTIVO</th>
           <th>LEGAJO PERSONAL</th>
-          <th>INFRACTOR</th>
+          <th>APELLIDO INFRACTOR</th>
+          <th>NOMBRE INFRACTOR</th>
           <th>TIPO DENUNCIA</th>
           <th>FECHA INGRESO</th>
           <th>INFRACCION</th>
@@ -82,7 +83,13 @@
                    
                                 <td>
                                     @foreach ($sumario->infractors as $infractor)
-                                    {{$infractor->apellido_nombre_inf}} <br>
+                                    {{$infractor->apellido_inf}} <br>
+                                    @endforeach
+                                </td>
+                                
+                                <td>
+                                    @foreach ($sumario->infractors as $infractor)
+                                    {{$infractor->nombre_inf}} <br>
                                     @endforeach
                                 </td>   
                     <td>{{$sumario->tipo_denun}}</td>   

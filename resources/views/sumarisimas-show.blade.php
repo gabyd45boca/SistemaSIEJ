@@ -48,7 +48,8 @@
                 <th>N° DJ</th>
                 <th>MOTIVO</th>
                 <th>LEGAJO</th>
-                <th>INFRACTOR</th>
+                <th>APELLIDO INFRACTOR</th>
+                <th>NOMBRE INFRACTOR</th>
                 <th>TIPO DENUNCIA</th>
                 <th>FECHA INGRESO</th>
                 <th>INFRACCION</th>
@@ -61,7 +62,11 @@
               <td>{{$sumarisima->id}}</td>   
                     <td>{{$sumarisima->num_dja}} </td>   
                     <td>{{$sumarisima->num_dj}}</td>   
-                    <td>{{$sumarisima->motivo}} </td>
+                                <td>
+                                    @foreach ($sumarisima->motivos as $motivo)
+                                    {{$motivo->nombre_mot}} <br>
+                                    @endforeach
+                                </td>
                                 <td>
                                     @foreach ($sumarisima->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>
@@ -70,7 +75,13 @@
                    
                                 <td>
                                     @foreach ($sumarisima->infractors as $infractor)
-                                    {{$infractor->apellido_nombre_inf}} <br>
+                                    {{$infractor->apellido_inf}} <br>
+                                    @endforeach
+                                </td>
+                                
+                                <td>
+                                    @foreach ($sumarisima->infractors as $infractor)
+                                    {{$infractor->nombre_inf}} <br>
                                     @endforeach
                                 </td>   
                     <td>{{$sumarisima->tipo_denun}}</td>   
@@ -160,7 +171,7 @@
                           <br>
                           <span class="card" id="multicol-tipo_mov">
                               @foreach ($sumarisima->infractors as $infractor)
-                              {{$infractor->apellido_nombre_inf}} Lp:{{$infractor->leg_pers_inf }}, 
+                              {{$infractor->jerarquia_inf}} {{$infractor->apellido_inf}} {{$infractor->nombre_inf}} Lp: {{$infractor->leg_pers_inf }}, 
                               @endforeach
                           </span>
                     </div>

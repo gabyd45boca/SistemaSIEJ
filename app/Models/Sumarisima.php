@@ -10,7 +10,8 @@ class Sumarisima extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['num_dj','sumarisima_original_id ','version','num_dj_original'];
+    protected $fillable = ['num_dj','sumarisima_original_id ','version','num_dj_original','lugar_proced','fecha_ingreso',
+                          'fecha_inicio','fojas','primera_interv','fecha_pase','tipo_denuncia','lugar_pase','observaciones'];
 
      // Método para crear un nuevo reingreso
      public function crearReingreso(array $data)
@@ -31,7 +32,7 @@ class Sumarisima extends Model
          $valoresPorDefecto = [
              'lugar_proced' => 'Lugar de procedencia por defecto',
              'fecha_ingreso' => 'Fecha de ingreso por defecto',
-             'num_dja' => 'Número de DJ por defecto',
+             'num_dja' => 'Número de DJA por defecto',
              'fecha_inicio' => 'Fecha de inicio por defecto',
              'fojas' => 'Fojas por defecto',
              'primera_interv' => 'Pprimera intervencion por defecto',
@@ -52,7 +53,7 @@ class Sumarisima extends Model
 
              'lugar_proced' => $datosCompletos['lugar_proced'],
              'fecha_ingreso' => $datosCompletos['fecha_ingreso'],
-             'num_dja' => $datosCompletos['num_dja'],
+             //'num_dja' => $datosCompletos['num_dja'],
              'fecha_inicio' => $datosCompletos['fecha_inicio'],
              'fojas' => $datosCompletos['fojas'],
              'primera_interv' => $datosCompletos['primera_interv'],
@@ -84,4 +85,5 @@ class Sumarisima extends Model
 
         return $this->belongsToMany(Motivo::class)->withTimestamps();
     }
+    
 }

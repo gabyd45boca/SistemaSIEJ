@@ -431,6 +431,12 @@ return [
                     'url' => '/sumarisimas/create',
                     'can'   => 'RegistrarSumarisimas'
                 ],
+                [
+                    'text' => 'Consultas Sumarisimas',
+                    'icon'       => 'fas fa-chart-pie',
+                    'url' => '/sumarisimas/consulta',
+                    'can'   => 'ConsultarSumarisimas'
+                ],
             ]
             ],
         

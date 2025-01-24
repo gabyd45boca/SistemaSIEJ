@@ -9,6 +9,10 @@ use App\Models\Dependencia;
 use App\Models\Motivo;
 use App\Models\TipoDenuncia;
 use App\Models\Jerarquia;
+use App\Exports\SumarisimasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+use Spatie\Permission\Traits\HasRoles;
 
 class SumarisimasController extends Controller
 {
@@ -60,6 +64,122 @@ class SumarisimasController extends Controller
            //dd($request->all());              
           return redirect()->route('sumarisimas')->with('message','Registrado correctamente!');
      
+      }
+
+      
+     //////////////////////////////////////////////////////////////////
+    ////////// TORTA ESTADISTICA ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function getMotivosData()
+    {
+        $motivos = \DB::table('motivo_sumarisima')
+                      ->join('motivos', 'motivo_sumarisima.motivo_id', '=', 'motivos.id')
+                      ->select('motivos.nombre_mot', \DB::raw('COUNT(motivo_sumarisima.sumarisima_id) as total'))
+                      ->groupBy('motivos.nombre_mot')
+                      ->get();
+    
+        return response()->json($motivos);
+    }
+
+     //////////////////////////////////////////////////////////////////
+    ///////// EXPORTACION EXCEL ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function export(Request $request)
+    {
+      
+      $fechaInicial = $request->query('start_date');
+      $fechaFinal = $request->query('end_date');
+
+        return Excel::download(new SumarisimasExport($fechaInicial, $fechaFinal), 'sumarisimas.xlsx');
+    }
+
+     //////////////////////////////////////////////////////////////////
+    ///////// CONSULTAS POR MOTIVOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function consulta(){
+             
+          $sumarisimas1 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'violencia de genero');
+            })->get();
+
+          $sumarisimas2 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'AUSENTISMO LABORAL');
+            })->get();
+
+          $sumarisimas3 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA');
+            })->get();
+          
+          $sumarisimas4 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'SINIESTRO VIAL');
+            })->get();
+              
+            $sumarisimas5 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'abuso sexual');
+            })->get();
+
+          $sumarisimas6 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'EBRIEDAD');
+            })->get();
+
+          $sumarisimas7 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES EN SERVICIO ADICIONAL');
+            })->get();
+          
+          $sumarisimas8 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES CON COMBUSTIBLE');
+            })->get();
+
+          $sumarisimas9 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DEL CELULAR');
+            })->get();
+
+          $sumarisimas10 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DE ARMA REGLAMENTARIA');
+            })->get();
+
+          $sumarisimas11 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'SUPUESTA INFRACCION AL ART. 205 DEL C.P.A');
+            })->get();
+          
+          $sumarisimas12 = Sumarisima::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'OTRO');
+            })->get();
+                    
+
+          $sumarisimas = Sumarisima::all();
+            
+          return view('sumarisimas-consulta',compact('sumarisimas','sumarisimas1','sumarisimas2','sumarisimas3','sumarisimas4','sumarisimas5',
+                                      'sumarisimas6','sumarisimas7','sumarisimas8','sumarisimas9','sumarisimas10',
+                                      'sumarisimas11','sumarisimas12'));
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ///////// FILTRADO DE FECHAS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+
+      public function filtrado(Request $request){
+        
+        $validator = $request -> validate ([
+          'fechaInicial' => 'required',
+          'fechaFinal' => 'required',
+                                                  
+          ]);
+
+        $fechaInicial = $request->fechaInicial;
+        $fechaFinal = $request->fechaFinal;
+        
+
+        $sumarisimas = Sumarisima::whereDate('fecha_ingreso','>=',$fechaInicial)
+                            ->whereDate('fecha_ingreso','<=',$fechaFinal)
+                        
+                            ->get();
+        
+        return view('sumarisimas',compact('sumarisimas'));                    
       }
 
 

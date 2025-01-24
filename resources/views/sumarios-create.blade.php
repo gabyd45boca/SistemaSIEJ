@@ -79,7 +79,7 @@
 
             <div class="col-md-6">
               <label class="form-label" for="multicol-nombre_mot">Motivo</label>
-              <x-adminlte-select2 name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" title="Seleccionar motivos" data-style="btn-primary" multiple required>
+              <x-adminlte-select2 name="nombre_mot[]" id="nombre_mot" class="form-control selectpicker" data-placeholder="Seleccionar motivos" data-style="btn-primary" multiple required>
                   @foreach ($motivos as $motivo) 
                       <option value="{{$motivo->id}}" {{ collect(old('nombre_mot'))->contains($motivo->id) ? 'selected' : '' }}>
                           {{$motivo->nombre_mot}} 
@@ -143,8 +143,8 @@
           <div class="row g-3">
             
                 <div class="col-md-12">
-                        <label class="form-label" for="multicol-apellido_nombre_inf">Apellido y Nombres</label>
-                        <x-adminlte-select2 name="apellido_nombre_inf[]" id="apellido_nombre_inf" class="form-control" data-placeholder="Seleccionar infractores" multiple required>
+                        <label class="form-label" for="multicol-apellido_inf">Apellido y Nombres</label>
+                        <x-adminlte-select2 name="apellido_inf[]" id="apellido_inf" class="form-control" data-placeholder="Seleccionar infractores" multiple required>
                             @foreach ($infractores as $infractor) 
                                 <option value="{{$infractor->id}}" {{ collect(old('apellido_nombre_inf'))->contains($infractor->id) ? 'selected' : '' }}>
                                 {{$infractor->jerarquia_inf}} {{$infractor->apellido_inf}} {{$infractor->nombre_inf}} Lp: {{$infractor->leg_pers_inf }}
@@ -152,9 +152,9 @@
                             @endforeach
                         </x-adminlte-select2>
 
-                        @if ($errors->has('apellido_nombre_inf'))
+                        @if ($errors->has('apellido_inf'))
                             <span class="text-danger">
-                                <strong>{{$errors->first('apellido_nombre_inf') }}</strong>
+                                <strong>{{$errors->first('apellido_inf') }}</strong>
                             </span>
                         @endif  
                 </div>

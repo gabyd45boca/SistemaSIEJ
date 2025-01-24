@@ -9,7 +9,8 @@ class Sumario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['num_dja','sumario_original_id ','version','num_dja_original'];
+    protected $fillable = ['num_dja','sumario_original_id ','version','num_dja_original','lugar_proced','fecha_ingreso','num_dj',
+                          'fecha_inicio','fojas','infraccion','extracto','tipo_denun','fecha_movimiento','destino_pase','observaciones'];
 
 
 

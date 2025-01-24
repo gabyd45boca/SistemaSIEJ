@@ -60,7 +60,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/sumarios/destroy/{sumario_id}',[App\Http\Controllers\SumariosController::class,'destroy'])->name('sumarios.destroy');
     
     Route::get('/sumarios/consulta/',[App\Http\Controllers\SumariosController::class,'consulta'])->name('sumarios.consulta');
-    //Route::get('home/',[App\Http\Controllers\SumariosController::class,'NumGenerales'])->name('sumarios.NumGenerales');
     Route::get('/sumarios/export', [App\Http\Controllers\SumariosController::class, 'export'])->name('sumarios.export');
     Route::get('/sumarios/motivos-data', [App\Http\Controllers\SumariosController::class, 'getMotivosData'])->name('sumarios.motivosData');
     
@@ -70,6 +69,8 @@ Route::middleware('auth')->group(function () {
     //sumarisimas///////////////////////////
     ////////////////////////////////////////
 
+    Route::get('/sumarisimas/filtrado', [App\Http\Controllers\SumarisimasController::class,'filtrado'])->name('sumarios.filtrado');
+
     Route::get('/sumarisimas', [App\Http\Controllers\SumarisimasController::class,'index'])->name('sumarisimas');
     Route::get('/sumarisimas/create', [App\Http\Controllers\SumarisimasController::class,'create'])->name('sumarisimas.create');
     Route::post('/sumarisimas/store',[App\Http\Controllers\SumarisimasController::class,'store'])->name('sumarisimas.store');
@@ -78,6 +79,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/sumarisimas/update',[App\Http\Controllers\SumarisimasController::class,'update'])->name('sumarisimas.update');  
     Route::delete('/sumarisimas/destroy/{sumarisima_id}',[App\Http\Controllers\SumarisimasController::class,'destroy'])->name('sumarisimas.destroy');
 
+    Route::get('/sumarisimas/consulta/',[App\Http\Controllers\SumarisimasController::class,'consulta'])->name('sumarisimas.consulta');
+    Route::get('/sumarisimas/export', [App\Http\Controllers\SumarisimasController::class, 'export'])->name('sumarisimas.export');
+    Route::get('/sumarisimas/motivos-data', [App\Http\Controllers\SumarisimasController::class, 'getMotivosData'])->name('sumarisimas.motivosData');
+    
     Route::get('/sumarisimas/{id}/reingresos/create', [App\Http\Controllers\SumarisimasController::class, 'mostrarFormularioReingreso'])->name('sumarisimas.reingreso.create');
     Route::post('/sumarisimas/{id}/reingresos/store', [App\Http\Controllers\SumarisimasController::class, 'storeReingreso'])->name('sumarisimas.reingreso.store');
     
