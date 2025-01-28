@@ -9,11 +9,16 @@ use App\Models\Dependencia;
 use App\Models\Motivo;
 use App\Models\TipoDenuncia;
 use App\Models\Jerarquia;
+use App\Exports\IsasExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Traits\HasRoles;
 
 
 class IsasController extends Controller
 {
+   //////////////////////////////////////////////////////////////////
+    ///////// CONTROL ACCESOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////    
 
     public function __construct(){
 
@@ -63,17 +68,141 @@ class IsasController extends Controller
      
       }
 
+         //////////////////////////////////////////////////////////////////
+    ////////// TORTA ESTADISTICA ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function getMotivosData()
+    {
+        $motivos = \DB::table('isa_motivo')
+                      ->join('motivos', 'isa_motivo.motivo_id', '=', 'motivos.id')
+                      ->select('motivos.nombre_mot', \DB::raw('COUNT(isa_motivo.isa_id) as total'))
+                      ->groupBy('motivos.nombre_mot')
+                      ->get();
+    
+        return response()->json($motivos);
+    }
+    
+    
+     //////////////////////////////////////////////////////////////////
+    ///////// EXPORTACION EXCEL ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function export(Request $request)
+    {
+      
+      $fechaInicial = $request->query('start_date');
+      $fechaFinal = $request->query('end_date');
+
+        return Excel::download(new IsasExport($fechaInicial, $fechaFinal), 'isas.xlsx');
+    }
 
      //////////////////////////////////////////////////////////////////
-    /////////   CRUD SUMARIOS ///////////////////////////////////////////
+    ///////// CONSULTAS POR MOTIVOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function consulta(){
+              /* $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
+              $motivosBuscados = ['VIOLENCIA DE GENERO', 'ROBO', 'FRAUDE'];
+              $sumarios = Sumario::whereHas('motivos', function($query) use ($motivosBuscados) {
+              $query->whereIn('nombre_mot', $motivosBuscados);
+          })->get();*/
+
+          $isas1 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'violencia de genero');
+            })->get();
+
+          $isas2 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'AUSENTISMO LABORAL');
+            })->get();
+
+          $isas3 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA');
+            })->get();
+          
+          $isas4 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'SINIESTRO VIAL');
+            })->get();
+              
+          $isas5 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'abuso sexual');
+            })->get();
+
+          $isas6 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'EBRIEDAD');
+            })->get();
+
+          $isas7 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES EN SERVICIO ADICIONAL');
+            })->get();
+          
+          $isas8 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES CON COMBUSTIBLE');
+            })->get();
+
+          $isas9 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DEL CELULAR');
+            })->get();
+
+          $isas10 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DE ARMA REGLAMENTARIA');
+            })->get();
+
+          $isas11 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'SUPUESTA INFRACCION AL ART. 205 DEL C.P.A');
+            })->get();
+          
+          $isas12 = Isa::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'OTRO');
+            })->get();
+                    
+
+          $isas = Isa::all();
+            
+          return view('isas-consulta',compact('isas','isas1','isas2','isas3','isas4','isas5',
+                                      'isas6','isas7','isas8','isas9','isas10',
+                                      'isas11','isas12'));
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ///////// FILTRADO DE FECHAS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+
+      public function filtrado(Request $request){
+        
+        $validator = $request -> validate ([
+          'fechaInicial' => 'required',
+          'fechaFinal' => 'required',
+                                                  
+          ]);
+
+        $fechaInicial = $request->fechaInicial;
+        $fechaFinal = $request->fechaFinal;
+        
+
+        $isas = Isa::whereDate('fecha_ingreso','>=',$fechaInicial)
+                            ->whereDate('fecha_ingreso','<=',$fechaFinal)
+                        
+                            ->get();
+        
+        return view('isas',compact('isas'));                    
+      }
+
+
+
+     //////////////////////////////////////////////////////////////////
+    /////////   CRUD ISAS ///////////////////////////////////////////
     //////////////////////////////////////////////////////////////////  
     
 
     public function index(){
 
         $isas = Isa::all();
+        $motivos = Motivo::all();
+        $infractores = Infractor::all();
         
-        return view('isas',compact('isas'));
+        return view('isas',compact('isas','infractores','motivos'));
     }
 
     public function create(){
@@ -219,7 +348,7 @@ class IsasController extends Controller
 
             //dd($request->all());
             $isa->motivos()->attach($request->input('nombre_mot'));
-            $isa->infractors()->attach($request->input('apellido_nombre_inf'));
+            $isa->infractors()->attach($request->input('apellido_inf'));
                           
             return redirect()->route('isas')->with('message','Registrado correctamente!');
     }

@@ -349,7 +349,7 @@ class SumariosController extends Controller
 
             //dd($request->all());
             $sumario->motivos()->attach($request->input('nombre_mot'));
-            $sumario->infractors()->attach($request->input('apellido_nombre_inf'));
+            $sumario->infractors()->attach($request->input('apellido_inf'));
                           
             return redirect()->route('sumarios')->with('message','Registrado correctamente!');
     }

@@ -461,6 +461,13 @@ return [
                     'url' => '/isas/create',
                     'can'   => 'RegistrarIsas'
                 ],
+                [
+                    'text' => 'Consultas I. S. A.',
+                    'icon'       => 'fas fa-chart-pie',
+                    'url' => '/isas/consulta',
+                    'can'   => 'ConsultarIsas'
+                ],
+
             ]
             ],
 
@@ -484,6 +491,12 @@ return [
                         'icon'       => 'fas fa-file-signature',
                         'url' => '/sancion/create',
                         'can'   => 'RegistrarSD'
+                    ],
+                    [
+                        'text' => 'Consultas Sancion Directa',
+                        'icon'       => 'fas fa-chart-pie',
+                        'url' => '/sancion/consulta',
+                        'can'   => 'ConsultarSancion'
                     ],
                 ]
             ] 

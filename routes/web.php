@@ -125,6 +125,7 @@ Route::middleware('auth')->group(function () {
 
     //informacion ISA sumaria///////////////////////////////////
     ///////////////////////////////////////////
+    Route::get('/isas/filtrado', [App\Http\Controllers\IsasController::class,'filtrado'])->name('isas.filtrado');
 
     Route::get('/isas', [App\Http\Controllers\IsasController::class,'index'])->name('isas');
     Route::get('/isas/create', [App\Http\Controllers\IsasController::class,'create'])->name('isas.create');
@@ -133,6 +134,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/isas/edit/{isa_id}',[App\Http\Controllers\IsasController::class,'edit'])->name('isas.edit');    
     Route::post('/isas/update',[App\Http\Controllers\IsasController::class,'update'])->name('isas.update');  
     Route::delete('/isas/destroy/{isa_id}',[App\Http\Controllers\IsasController::class,'destroy'])->name('isas.destroy');
+
+    Route::get('/isas/consulta/',[App\Http\Controllers\IsasController::class,'consulta'])->name('isas.consulta');
+    Route::get('/isas/export', [App\Http\Controllers\IsasController::class, 'export'])->name('isas.export');
+    Route::get('/isas/motivos-data', [App\Http\Controllers\IsasController::class, 'getMotivosData'])->name('isas.motivosData');
 
     Route::get('/isas/{id}/reingresos/create', [App\Http\Controllers\IsasController::class, 'mostrarFormularioReingreso'])->name('isas.reingreso.create');
     Route::post('/isas/{id}/reingresos/store', [App\Http\Controllers\IsasController::class, 'storeReingreso'])->name('isas.reingreso.store');

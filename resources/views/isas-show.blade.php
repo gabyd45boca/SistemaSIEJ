@@ -48,7 +48,8 @@
                 <th>N° DJ</th>
                 <th>MOTIVO</th>
                 <th>LEGAJO</th>
-                <th>INFRACTOR</th>
+                <th>APELLIDO INFRACTOR</th>
+                <th>NOMBRE INFRACTOR</th>
                 <th>CONVERSION CONVALIDAR</th>
                 <th>FECHA INGRESO</th>
                 <th>ELEVADO INSTRUCCION</th>
@@ -74,7 +75,13 @@
                    
                                 <td>
                                     @foreach ($isa->infractors as $infractor)
-                                    {{$infractor->apellido_nombre_inf}} <br>
+                                    {{$infractor->apellido_inf}} <br>
+                                    @endforeach
+                                </td>
+                                
+                                <td>
+                                    @foreach ($isa->infractors as $infractor)
+                                    {{$infractor->nombre_inf}} <br>
                                     @endforeach
                                 </td>   
                     <td>{{$isa->conversion_convalid}}</td>   
@@ -181,7 +188,7 @@
                           <br>
                           <span class="card" id="multicol-tipo_mov">
                               @foreach ($isa->infractors as $infractor)
-                              {{$infractor->apellido_nombre_inf}} Lp:{{$infractor->leg_pers_inf }}, 
+                              {{$infractor->jerarquia_inf}} {{$infractor->apellido_inf}} {{$infractor->nombre_inf}} Lp: {{$infractor->leg_pers_inf }},
                               @endforeach
                           </span>
                     </div>

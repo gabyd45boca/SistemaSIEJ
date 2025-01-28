@@ -8,6 +8,41 @@
 
 @section('content')
 
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+               @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+     @endif
+
+     <form method="GET" action="/isas/filtrado">
+        <div class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label">Fecha Inicial</label>
+                <x-adminlte-input type="date" name="fechaInicial" value="{{ request('fechaInicial', old('fechaInicial')) }}" class="form-control"/>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Fecha Final</label>
+                <x-adminlte-input type="date" name="fechaFinal" value="{{ request('fechaFinal', old('fechaFinal')) }}" class="form-control"/>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+            </div>
+            <div class="col-md-2">
+                <a href="/isas" class="btn btn-secondary w-100">Restablecer</a>
+            </div>
+
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success  w-100" onclick="exportExcel()">Exportar Excel</button>
+            </div>
+         
+        </div>
+    </form>
+
+
 <!-- Basic Bootstrap Table --> 
 <div class="card">
   <h5 class="card-header">Lista de Isas</h5>
@@ -20,7 +55,8 @@
           <th>N° DJA ORIGINAL</th>
           <th>MOTIVO</th>
           <th>LEGAJO PERSONAL</th>
-          <th>INFRACTOR</th>
+          <th>APELLIDO INFRACTOR</th>
+          <th>NOMBRE INFRACTOR</th>
           <th>TIPO DENUNCIA</th>
           <th>CONVERSION CONVALIDAR</th>
           <th>FECHA INGRESO</th>
@@ -48,7 +84,13 @@
                    
                                 <td>
                                     @foreach ($isa->infractors as $infractor)
-                                    {{$infractor->apellido_nombre_inf}} <br>
+                                    {{$infractor->apellido_inf}} <br>
+                                    @endforeach
+                                </td>
+                                
+                                <td>
+                                    @foreach ($isa->infractors as $infractor)
+                                    {{$infractor->nombre_inf}} <br>
                                     @endforeach
                                 </td>   
                     <td>{{$isa->tipo_denun}}</td>

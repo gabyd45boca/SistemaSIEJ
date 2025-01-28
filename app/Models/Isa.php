@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Isa extends Model
 {
     use HasFactory;
-    protected $fillable = ['num_dja','isa_original_id ','version','num_dja_original'];
+    protected $fillable = ['num_dja','isa_original_id ','version','num_dja_original','deslindar_resp','elevado_por_instruccion', 'opinion_sede_inst',
+    'conversion_convalid','lugar_proced','fecha_ingreso','num_dj','fecha_inicio','fojas','tipo_denun','fecha_movimiento','destino_pase','observaciones'];
 
     // Método para crear un nuevo reingreso
     public function crearReingreso(array $data)
@@ -27,6 +28,10 @@ class Isa extends Model
 
         // Valores por defecto para los campos que no son nulos
         $valoresPorDefecto = [
+            'deslindar_resp' => 'Deslindar responsabilidad por defecto',
+            'elevado_por_instruccion' => 'elevado por instruccion por defecto',
+            'opinion_sede_inst' => 'opinion por defecto',
+            'conversion_convalid' => 'conversion por defecto',
             'lugar_proced' => 'Lugar de procedencia por defecto',
             'fecha_ingreso' => 'Fecha de ingreso por defecto',
             'num_dj' => 'Número de DJ por defecto',
@@ -46,6 +51,10 @@ class Isa extends Model
             'num_dja_original' => $num_dja_original,
             'isa_original_id' => $this->id,
             'version' => $nuevaVersion,
+            'deslindar_resp' => $datosCompletos['deslindar_resp'],
+            'elevado_por_instruccion' => $datosCompletos['elevado_por_instruccion'],
+            'opinion_sede_inst' => $datosCompletos['opinion_sede_inst'],
+            'conversion_convalid' => $datosCompletos['conversion_convalid'],
             'lugar_proced' => $datosCompletos['lugar_proced'],
             'fecha_ingreso' => $datosCompletos['fecha_ingreso'],
             'num_dj' => $datosCompletos['num_dj'],

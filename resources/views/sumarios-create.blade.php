@@ -146,7 +146,7 @@
                         <label class="form-label" for="multicol-apellido_inf">Apellido y Nombres</label>
                         <x-adminlte-select2 name="apellido_inf[]" id="apellido_inf" class="form-control" data-placeholder="Seleccionar infractores" multiple required>
                             @foreach ($infractores as $infractor) 
-                                <option value="{{$infractor->id}}" {{ collect(old('apellido_nombre_inf'))->contains($infractor->id) ? 'selected' : '' }}>
+                                <option value="{{$infractor->id}}" {{ collect(old('apellido_inf'))->contains($infractor->id) ? 'selected' : '' }}>
                                 {{$infractor->jerarquia_inf}} {{$infractor->apellido_inf}} {{$infractor->nombre_inf}} Lp: {{$infractor->leg_pers_inf }}
                                 </option>
                             @endforeach
