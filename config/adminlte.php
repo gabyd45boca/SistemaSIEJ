@@ -378,6 +378,28 @@ return [
             ]
         ],
 
+        ['header' => 'DEPENDENCIAS',
+        'can'   => 'AdmistracionDGAJ',
+        ],
+
+        [
+            'text'       => 'Dependencias',
+            'icon'       => 'fas fa-folder-open',
+            'can'   => 'AdmistracionDGAJ',
+            'submenu'    => [
+                [
+                    'text' => 'Lista de Dependencias',
+                    'icon'       => 'fas fa-list-ul',
+                    'url' => '/dependencias'
+                ],
+                [
+                    'text' => 'Registrar Dependencias',
+                    'icon'       => 'fas fa-file-signature',
+                    'url' => '/dependencias/create'
+                ],
+            ]
+        ],
+
         ['header' => 'SUMARIOS',
         'can'   => 'AdministracionSumarios',        
         ],

@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('dependencias', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo_dep')->unique(); 
-            $table->string('nombre_dep');
+            $table->string('nombre_dep')->unique(); 
             $table->string('departamental_dep');
            
             $table->timestamps();

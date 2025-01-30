@@ -97,6 +97,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/infractores/update',[App\Http\Controllers\InfractorsController::class,'update'])->name('infractores.update');  
     Route::delete('/infractores/destroy/{infractor_id}',[App\Http\Controllers\InfractorsController::class,'destroy'])->name('infractores.destroy');
 
+     //dependencias ///////////////////////////
+    ////////////////////////////////////////
+
+    Route::get('/dependencias', [App\Http\Controllers\DependenciasController::class,'index'])->name('dependencias');
+    Route::get('/dependencias/create', [App\Http\Controllers\DependenciasController::class,'create'])->name('dependencias.create');
+    Route::post('/dependencias/store',[App\Http\Controllers\DependenciasController::class,'store'])->name('dependencias.store');
+    Route::get('/dependencias/show/{dependencia_id}',[App\Http\Controllers\DependenciasController::class,'show'])->name('dependencias.show');
+    Route::get('/dependencias/edit/{dependencia_id}',[App\Http\Controllers\DependenciasController::class,'edit'])->name('dependencias.edit');    
+    Route::post('/dependencias/update',[App\Http\Controllers\DependenciasController::class,'update'])->name('dependencias.update');  
+    Route::delete('/dependencias/destroy/{dependencia_id}',[App\Http\Controllers\DependenciasController::class,'destroy'])->name('dependencias.destroy');
+
     //expedientes///////////////////////////
     ////////////////////////////////////////
 
