@@ -2,6 +2,7 @@
 
 use App\Models\Event;
 use App\Models\Sumario;
+use App\Models\Sancion;
 use App\Models\Sumarisima;
 use App\Models\Infractor;
 use App\Models\Expediente;
@@ -155,6 +156,7 @@ Route::middleware('auth')->group(function () {
 
      //Sancion directa///////////////////////////////////
     ///////////////////////////////////////////
+    Route::get('/sancion/filtrado', [App\Http\Controllers\SancionController::class,'filtrado'])->name('sancion.filtrado');
 
     Route::get('/sancion', [App\Http\Controllers\SancionController::class,'index'])->name('sancion');
     Route::get('/sancion/create', [App\Http\Controllers\SancionController::class,'create'])->name('sancion.create');
@@ -163,6 +165,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/sancion/edit/{sancion_id}',[App\Http\Controllers\SancionController::class,'edit'])->name('sancion.edit');    
     Route::post('/sancion/update',[App\Http\Controllers\SancionController::class,'update'])->name('sancion.update');  
     Route::delete('/sancion/destroy/{sancion_id}',[App\Http\Controllers\SancionController::class,'destroy'])->name('sancion.destroy');
+
+    Route::get('/sancion/consulta/',[App\Http\Controllers\SancionController::class,'consulta'])->name('sancion.consulta');
+    Route::get('/sancion/export', [App\Http\Controllers\SancionController::class, 'export'])->name('sancion.export');
+    Route::get('/sancion/motivos-data', [App\Http\Controllers\SancionController::class, 'getMotivosData'])->name('sancion.motivosData');
     
     Route::get('/sancion/{id}/reingresos/create', [App\Http\Controllers\SancionController::class, 'mostrarFormularioReingreso'])->name('sancion.reingreso.create');
     Route::post('/sancion/{id}/reingresos/store', [App\Http\Controllers\SancionController::class, 'storeReingreso'])->name('sancion.reingreso.store');

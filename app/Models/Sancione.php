@@ -9,7 +9,8 @@ class Sancione extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['num_dj','sancion_original_id ','version','num_dj_original'];
+    protected $fillable = ['num_dj','sancion_original_id ','version','num_dj_original','lugar_proced',
+    'fecha_inicio','fecha_ingreso','fojas','tipo_denuncia','fecha_pase','lugar_pase','observaciones'];
 
      // Método para crear un nuevo reingreso
      public function crearReingreso(array $data)

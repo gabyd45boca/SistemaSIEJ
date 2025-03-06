@@ -8,6 +8,9 @@ use App\Models\Sancione;
 use App\Models\Motivo;
 use App\Models\TipoDenuncia;
 use App\Models\Jerarquia;
+use App\Exports\SancionesExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 
@@ -60,6 +63,127 @@ class SancionController extends Controller
            //dd($request->all());              
           return redirect()->route('sancion')->with('message','Registrado correctamente!');
      
+      }
+
+       //////////////////////////////////////////////////////////////////
+    ////////// TORTA ESTADISTICA ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function getMotivosData()
+    {
+        $motivos = \DB::table('motivo_sancion')
+                      ->join('motivos', 'motivo_sancion.motivo_id', '=', 'motivos.id')
+                      ->select('motivos.nombre_mot', \DB::raw('COUNT(motivo_sancion.sancion_id) as total'))
+                      ->groupBy('motivos.nombre_mot')
+                      ->get();
+    
+        return response()->json($motivos);
+    }
+    
+    
+     //////////////////////////////////////////////////////////////////
+    ///////// EXPORTACION EXCEL ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function export(Request $request)
+    {
+      
+      $fechaInicial = $request->query('start_date');
+      $fechaFinal = $request->query('end_date');
+
+        return Excel::download(new SancionesExport($fechaInicial, $fechaFinal), 'sanciones.xlsx');
+    }
+
+     //////////////////////////////////////////////////////////////////
+    ///////// CONSULTAS POR MOTIVOS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+    public function consulta(){
+              /* $sumarios1 = Sumario::where('motivo','LIKE','VIOLENCIA DE GENERO')->get();
+              $motivosBuscados = ['VIOLENCIA DE GENERO', 'ROBO', 'FRAUDE'];
+              $sumarios = Sumario::whereHas('motivos', function($query) use ($motivosBuscados) {
+              $query->whereIn('nombre_mot', $motivosBuscados);
+          })->get();*/
+
+          $sancion1 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'violencia de genero');
+            })->get();
+
+          $sancion2 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'AUSENTISMO LABORAL');
+            })->get();
+
+          $sancion3 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA');
+            })->get();
+          
+          $sancion4 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'SINIESTRO VIAL');
+            })->get();
+              
+            $sancion5 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'abuso sexual');
+            })->get();
+
+          $sancion6 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'EBRIEDAD');
+            })->get();
+
+          $sancion7 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES EN SERVICIO ADICIONAL');
+            })->get();
+          
+          $sancion8 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES CON COMBUSTIBLE');
+            })->get();
+
+          $sancion9 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DEL CELULAR');
+            })->get();
+
+          $sancion10 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DE ARMA REGLAMENTARIA');
+            })->get();
+
+          $sancion11 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'SUPUESTA INFRACCION AL ART. 205 DEL C.P.A');
+            })->get();
+          
+          $sancion12 = Sancion::whereHas('motivos', function($query) {
+            $query->where('nombre_mot', 'LIKE', 'OTRO');
+            })->get();
+                    
+
+          $sancion = Sancion::all();
+            
+          return view('sancion-consulta',compact('sancion1','sancion2','sancion3','sancion4','sancion5','sancion6',
+                                      'sancion7','sancion8','sancion9','sancion10','sancion11',
+                                      'sancion11','sancion12'));
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ///////// FILTRADO DE FECHAS ///////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////
+
+
+      public function filtrado(Request $request){
+        
+        $validator = $request -> validate ([
+          'fechaInicial' => 'required',
+          'fechaFinal' => 'required',
+                                                  
+          ]);
+
+        $fechaInicial = $request->fechaInicial;
+        $fechaFinal = $request->fechaFinal;
+        
+
+        $sanciones = Sancione :: whereDate('fecha_ingreso','>=',$fechaInicial)
+                            ->whereDate('fecha_ingreso','<=',$fechaFinal)
+                        
+                            ->get();
+        
+        return view('sancion',compact('sanciones'));                    
       }
     
      //////////////////////////////////////////////////////////////////
