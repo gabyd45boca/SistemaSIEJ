@@ -31,7 +31,7 @@
     
   <form method="POST" action="{{ route ('sancion.store')}}" class="card-body">
        @csrf
-       <h4 class="fw-normal">1. Carga de datos del expediente</h4>
+       <h4 class="fw-normal">1. Carga de datos de la sancion</h4>
       <div class="row g-3">
 
             <div class="col-md-6">

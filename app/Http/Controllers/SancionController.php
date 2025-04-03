@@ -71,9 +71,9 @@ class SancionController extends Controller
 
     public function getMotivosData()
     {
-        $motivos = \DB::table('motivo_sancion')
-                      ->join('motivos', 'motivo_sancion.motivo_id', '=', 'motivos.id')
-                      ->select('motivos.nombre_mot', \DB::raw('COUNT(motivo_sancion.sancion_id) as total'))
+        $motivos = \DB::table('motivo_sancione')
+                      ->join('motivos', 'motivo_sancione.motivo_id', '=', 'motivos.id')
+                      ->select('motivos.nombre_mot', \DB::raw('COUNT(motivo_sancione.sancione_id) as total'))
                       ->groupBy('motivos.nombre_mot')
                       ->get();
     
@@ -105,56 +105,56 @@ class SancionController extends Controller
               $query->whereIn('nombre_mot', $motivosBuscados);
           })->get();*/
 
-          $sancion1 = Sancion::whereHas('motivos', function($query) {
+          $sancion1 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'violencia de genero');
             })->get();
 
-          $sancion2 = Sancion::whereHas('motivos', function($query) {
+          $sancion2 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'AUSENTISMO LABORAL');
             })->get();
 
-          $sancion3 = Sancion::whereHas('motivos', function($query) {
+          $sancion3 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'PERDIDA Y/O SUSTRACCION DEL ARMA REGLAMENTARIA');
             })->get();
           
-          $sancion4 = Sancion::whereHas('motivos', function($query) {
+          $sancion4 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'SINIESTRO VIAL');
             })->get();
               
-            $sancion5 = Sancion::whereHas('motivos', function($query) {
+            $sancion5 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'abuso sexual');
             })->get();
 
-          $sancion6 = Sancion::whereHas('motivos', function($query) {
+          $sancion6 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'EBRIEDAD');
             })->get();
 
-          $sancion7 = Sancion::whereHas('motivos', function($query) {
+          $sancion7 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES EN SERVICIO ADICIONAL');
             })->get();
           
-          $sancion8 = Sancion::whereHas('motivos', function($query) {
+          $sancion8 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'IRREGULARIDADES CON COMBUSTIBLE');
             })->get();
 
-          $sancion9 = Sancion::whereHas('motivos', function($query) {
+          $sancion9 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DEL CELULAR');
             })->get();
 
-          $sancion10 = Sancion::whereHas('motivos', function($query) {
+          $sancion10 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'USO INDEBIDO DE ARMA REGLAMENTARIA');
             })->get();
 
-          $sancion11 = Sancion::whereHas('motivos', function($query) {
+          $sancion11 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'SUPUESTA INFRACCION AL ART. 205 DEL C.P.A');
             })->get();
           
-          $sancion12 = Sancion::whereHas('motivos', function($query) {
+          $sancion12 = Sancione::whereHas('motivos', function($query) {
             $query->where('nombre_mot', 'LIKE', 'OTRO');
             })->get();
                     
 
-          $sancion = Sancion::all();
+          $sancion = Sancione::all();
             
           return view('sancion-consulta',compact('sancion1','sancion2','sancion3','sancion4','sancion5','sancion6',
                                       'sancion7','sancion8','sancion9','sancion10','sancion11',
@@ -193,8 +193,10 @@ class SancionController extends Controller
     public function index(){
 
         $sanciones = Sancione::all();
-                 
-         return view('sancion',compact('sanciones'));
+        $motivos = Motivo::all();
+        $infractores = Infractor::all();
+
+         return view('sancion',compact('sanciones','infractores','motivos'));
      }
 
      public function create(){
@@ -318,7 +320,7 @@ class SancionController extends Controller
         $sanciones->save();
 
         $sanciones->motivos()->attach($request->input('nombre_mot'));
-        $sanciones->infractors()->attach($request->input('apellido_nombre_inf'));
+        $sanciones->infractors()->attach($request->input('apellido_inf'));
 
         return redirect()->route('sancion')->with('message','Registrado correctamente!');
     
@@ -403,7 +405,7 @@ class SancionController extends Controller
        $sanciones->save();
 
        $sanciones->motivos()->sync($request->input('nombre_mot'));  
-       $sanciones->infractors()->sync($request->input('apellido_nombre_inf'));  
+       $sanciones->infractors()->sync($request->input('apellido_inf'));  
           
        return redirect()->route('sancion')->with('message','Actualizado correctamente!');
       }

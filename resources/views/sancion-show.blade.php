@@ -61,16 +61,25 @@
               <td>{{$sanciones->id}}</td>   
                     <td>{{$sanciones->num_dja}} </td>   
                     <td>{{$sanciones->num_dj}}</td>   
-                    <td>{{$sanciones->motivo}} </td>
+                                <td>
+                                    @foreach ($sanciones->motivos as $motivo)
+                                    {{$motivo->nombre_mot}} <br>
+                                    @endforeach
+                                </td>
                                 <td>
                                     @foreach ($sanciones->infractors as $infractor)
                                     {{$infractor->leg_pers_inf }} <br>
                                     @endforeach
                                 </td>
-                   
                                 <td>
                                     @foreach ($sanciones->infractors as $infractor)
-                                    {{$infractor->apellido_nombre_inf}} <br>
+                                    {{$infractor->apellido_inf}} <br>
+                                    @endforeach
+                                </td>
+                                
+                                <td>
+                                    @foreach ($sanciones->infractors as $infractor)
+                                    {{$infractor->nombre_inf}} <br>
                                     @endforeach
                                 </td>   
                     <td>{{$sanciones->tipo_denun}}</td>   
@@ -160,7 +169,7 @@
                           <br>
                           <span class="card" id="multicol-tipo_mov">
                               @foreach ($sanciones->infractors as $infractor)
-                              {{$infractor->apellido_nombre_inf}} Lp:{{$infractor->leg_pers_inf }}, 
+                              {{$infractor->jerarquia_inf}} {{$infractor->apellido_inf}} {{$infractor->nombre_inf}} Lp: {{$infractor->leg_pers_inf }},
                               @endforeach
                           </span>
                     </div>
