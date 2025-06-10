@@ -24,6 +24,7 @@ class SumariosController extends Controller
 
         $this->middleware('can:CrearSumario')->only('create');
         $this->middleware('can:EliminarSumario')->only('destroy');
+        $this->middleware('can:EliminarSumario')->only('consulta');
        
     }
 

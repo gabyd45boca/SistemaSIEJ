@@ -19,10 +19,10 @@ use Illuminate\Http\Request;
 class SancionController extends Controller
 {
     public function __construct(){
-
+        $this->middleware('can:CrearSancion')->only('index');
         $this->middleware('can:CrearSancion')->only('create');
         $this->middleware('can:EliminarSancion')->only('destroy');
-      
+        $this->middleware('can:EliminarSancion')->only('consulta');
     }
     
      //////////////////////////////////////////////////////////////////

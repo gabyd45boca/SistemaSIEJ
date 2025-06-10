@@ -21,6 +21,7 @@ class SumarisimasController extends Controller
 
     $this->middleware('can:CrearSumarisima')->only('create');
     $this->middleware('can:EliminarSumarisima')->only('destroy');
+    $this->middleware('can:EliminarSumarisima')->only('consulta');
    
   }
   
